@@ -1,0 +1,40 @@
+name: Chiffre de la nuit
+
+on:
+  schedule:
+    - cron: "30 6 * * *"   # 7h30 heure de Paris (hiver), 8h30 (été)
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Jour à traiter (AAAA-MM-JJ), vide = aujourd'hui"
+        required: false
+
+jobs:
+  video:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installer ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+      - name: Fabriquer et envoyer la vidéo
+        env:
+          API_NBA_KEY: ${{ secrets.API_NBA_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+        run: |
+          if [ -n "${{ inputs.date }}" ]; then python -m chiffre.main --date "${{ inputs.date }}"; else python -m chiffre.main; fi
+      - name: Garder une copie de la vidéo (7 jours)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: video
+          path: out/*.mp4
+          retention-days: 7
