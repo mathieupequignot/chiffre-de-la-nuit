@@ -17,13 +17,25 @@ def synth(segments, out_wav):
         pos += len(t) + 1
     key, voice = os.environ.get("ELEVENLABS_API_KEY"), os.environ.get("ELEVENLABS_VOICE_ID")
     if key and voice:
-        r = requests.post(f"https://api.elevenlabs.io/v1/text-to-speech/{voice}/with-timestamps",
-                          headers={"xi-api-key": key, "Content-Type": "application/json"},
-                          json={"text": text, "model_id": MODEL,
-                                "voice_settings": {"stability": 0.4, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": True}},
-                          timeout=120)
-        r.raise_for_status()
-        js = r.json()
+        errors = []
+        js = None
+        # on essaie plusieurs modèles : certaines voix de la bibliothèque n'acceptent que certains modèles
+        for model in dict.fromkeys([MODEL, "eleven_multilingual_v2", "eleven_v3", "eleven_turbo_v2_5", "eleven_flash_v2_5"]):
+            for settings in ({"stability": 0.4, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": True}, None):
+                body = {"text": text, "model_id": model}
+                if settings:
+                    body["voice_settings"] = settings
+                r = requests.post(f"https://api.elevenlabs.io/v1/text-to-speech/{voice.strip()}/with-timestamps",
+                                  headers={"xi-api-key": key.strip(), "Content-Type": "application/json"}, json=body, timeout=180)
+                if r.ok:
+                    js = r.json(); print("Voix générée avec le modèle", model); break
+                errors.append(f"{model} -> {r.status_code} {r.text[:300]}")
+                if r.status_code in (401, 404):
+                    break
+            if js or (errors and errors[-1].split(" -> ")[1][:3] in ("401", "404")):
+                break
+        if js is None:
+            raise RuntimeError("ElevenLabs a refusé la demande :\n" + "\n".join(errors))
         mp3 = out_wav.replace(".wav", ".mp3")
         open(mp3, "wb").write(base64.b64decode(js["audio_base64"]))
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", mp3, "-ar", "48000", "-ac", "2", out_wav], check=True)
