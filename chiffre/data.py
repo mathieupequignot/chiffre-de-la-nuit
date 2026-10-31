@@ -2,18 +2,33 @@
 import datetime as dt
 import json
 import os
+import time
 import requests
 
 BASE = "https://v2.nba.api-sports.io"
 
 
+_last = [0.0]
+
+
 def _get(path, params):
-    r = requests.get(BASE + path, params=params, headers={"x-apisports-key": os.environ["API_NBA_KEY"]}, timeout=30)
-    r.raise_for_status()
-    js = r.json()
-    if js.get("errors"):
-        raise RuntimeError(f"API-NBA: {js['errors']}")
-    return js.get("response", [])
+    """Offre gratuite : 10 requêtes par minute -> une requête toutes les 7 s, et on réessaie si l'API dit d'attendre."""
+    for attempt in range(5):
+        wait = 7.0 - (time.time() - _last[0])
+        if wait > 0:
+            time.sleep(wait)
+        _last[0] = time.time()
+        r = requests.get(BASE + path, params=params, headers={"x-apisports-key": os.environ["API_NBA_KEY"]}, timeout=30)
+        r.raise_for_status()
+        js = r.json()
+        errs = js.get("errors")
+        if errs and "rateLimit" in (errs if isinstance(errs, dict) else {}):
+            time.sleep(65)
+            continue
+        if errs:
+            raise RuntimeError(f"API-NBA: {errs}")
+        return js.get("response", [])
+    raise RuntimeError("API-NBA : limite de requêtes toujours atteinte après plusieurs essais")
 
 
 def _num(v):
