@@ -19,10 +19,19 @@ except Exception as e:
 print("Wikidata :", len(titles), "pages trouvées")
 
 
+def api(params):
+    for k in range(6):
+        r = requests.get("https://en.wikipedia.org/w/api.php", headers=UA, timeout=60, params=params)
+        try:
+            return r.json()
+        except Exception:
+            print("   réessai", r.status_code); time.sleep(5 * (k + 1))
+    return {}
+
+
 def search(name):
-    js = requests.get("https://en.wikipedia.org/w/api.php", headers=UA, timeout=60,
-                      params={"action": "query", "list": "search", "srsearch": f"{name} NBA basketball player",
-                              "srlimit": 1, "format": "json"}).json()
+    js = api({"action": "query", "list": "search", "srsearch": f"{name} NBA basketball player",
+                              "srlimit": 1, "format": "json"})
     hits = js.get("query", {}).get("search", [])
     return hits[0]["title"] if hits else None
 out = {}
@@ -31,10 +40,8 @@ for p in players:
     if not t:
         out[p["id"]] = {"error": "pas de page"}; continue
     print(p["name"], "->", t)
-    rr = requests.get("https://en.wikipedia.org/w/api.php", headers=UA, timeout=60,
-                      params={"action": "parse", "page": requests.utils.unquote(t), "prop": "text", "section": 0,
-                              "format": "json", "redirects": 1})
-    txt = rr.json().get("parse", {}).get("text", {}).get("*", "")
+    js = api({"action": "parse", "page": requests.utils.unquote(t), "prop": "text", "section": 0, "format": "json", "redirects": 1})
+    txt = js.get("parse", {}).get("text", {}).get("*", "")
     m = re.search(r"Career history(.*?)(Career highlights|Stats\s*at|Medals|</tbody>)", txt, re.S)
     if not m: print("   pas d'historique dans l'infobox", len(txt))
     rows = []
@@ -43,6 +50,6 @@ for p in players:
             clean = lambda s: html.unescape(re.sub(r"<[^>]+>", "", s)).strip()
             rows.append([clean(yrs), clean(team)])
     out[p["id"]] = {"page": t, "career": rows}
-    time.sleep(0.3)
+    time.sleep(1.0)
 json.dump(out, open(os.path.join(HERE, "wiki_careers.json"), "w"), ensure_ascii=False, indent=1)
 print(sum(1 for v in out.values() if v.get("career")), "/", len(out), "parcours récupérés")
