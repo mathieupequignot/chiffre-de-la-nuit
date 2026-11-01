@@ -8,7 +8,7 @@ import requests
 MODEL = os.environ.get("ELEVENLABS_MODEL", "eleven_multilingual_v2")
 
 
-def synth(segments, out_wav):
+def synth(segments, out_wav, voice_settings=None):
     """segments: [(cue, texte)]. Écrit out_wav (48 kHz stéréo) et renvoie [(cue, debut_s, fin_s)] + durée totale."""
     text = " ".join(t for _, t in segments)
     bounds, pos = [], 0
@@ -21,7 +21,7 @@ def synth(segments, out_wav):
         js = None
         # on essaie plusieurs modèles : certaines voix de la bibliothèque n'acceptent que certains modèles
         for model in dict.fromkeys([MODEL, "eleven_multilingual_v2", "eleven_v3", "eleven_turbo_v2_5", "eleven_flash_v2_5"]):
-            for settings in ({"stability": 0.4, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": True}, None):
+            for settings in (voice_settings or {"stability": 0.4, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": True}, None):
                 body = {"text": text, "model_id": model}
                 if settings:
                     body["voice_settings"] = settings

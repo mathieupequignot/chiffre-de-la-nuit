@@ -2,7 +2,7 @@
 usage : python -m quiz.main [--player ID] [--no-post]"""
 import argparse, json, math, os, random, subprocess, sys, traceback, wave
 import numpy as np
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 
 from chiffre import tts, discord_post
 from chiffre.render import (W, H, FPS, ACCENT, WHITE, GREY, font, text, text_img, blit, panel,
@@ -13,8 +13,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SR = 48000
 LEVELS = {"facile": ("FACILE", (52, 211, 120)), "moyen": ("MOYEN", ACCENT), "difficile": ("DIFFICILE", (226, 27, 77))}
 CITY = {"LAL": "LOS ANGELES", "LAC": "LOS ANGELES"}
-STEP, FINAL = 0.85, 5          # écart entre deux cartes ; secondes de compte à rebours après la dernière carte
-CARD_TOP, CARD_BOTTOM, BAR_Y = 450, 1380, 1475
+STEP, FINAL = 1.5, 6          # écart entre deux cartes ; secondes de compte à rebours après la dernière carte
+CARD_TOP, CARD_BOTTOM, BAR_Y = 450, 1400, 1535
+GAP = 46
+LIVELY = {"stability": 0.25, "similarity_boost": 0.75, "style": 0.7, "use_speaker_boost": True}
 
 
 def team_info(t):
@@ -58,24 +60,101 @@ def level_badge(c, P, x, y, alpha=1.0, scale=1.0, s=46):
     blit(c, im, x, y, alpha=alpha, scale=scale)
 
 
-def card(c, i, info, years, t0, t, n, dim=1.0):
-    p = (t - t0) / 0.35
+def _lum(c): return 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]
+
+
+def _vivid(c):
+    """Couleur d'équipe éclaircie et saturée (même teinte) pour un rendu vif."""
+    import colorsys
+    h, sat, v = colorsys.rgb_to_hsv(*[x / 255 for x in c])
+    if sat > 0.25:
+        sat, v = max(sat, 0.75), max(v, 0.78)
+    r, g, b = colorsys.hsv_to_rgb(h, sat, v)
+    return int(r * 255), int(g * 255), int(b * 255)
+
+
+def _geom(n):
+    h = min(132, (CARD_BOTTOM - CARD_TOP - GAP * (n - 1)) / n)
+    tot = n * h + (n - 1) * GAP
+    top = CARD_TOP + (CARD_BOTTOM - CARD_TOP - tot) / 2
+    return h, top
+
+
+def arrow(c, i, t0, t, n, dim=1.0):
+    """Flèche entre la carte i-1 et la carte i (apparaît juste avant la carte i)."""
+    p = (t - (t0 - 0.35)) / 0.3
     if p <= 0: return
     a = min(1, p) * dim
-    gap = 16
-    h = min(150, (CARD_BOTTOM - CARD_TOP - gap * (n - 1)) / n)
-    y0 = CARD_TOP + i * (h + gap); off = (1 - ease_out(p)) * 220
-    x0, x1 = 60 + off, 940 + off
+    h, top = _geom(n)
+    yc = top + i * (h + GAP) - GAP / 2 + (1 - ease_out(p)) * -18
     lay = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
-    d.rounded_rectangle([x0, y0, x1, y0 + h], radius=26, fill=(26, 26, 33, int(235 * a)))
-    d.rounded_rectangle([x0, y0, x0 + 30, y0 + h], radius=14, fill=tuple(info["bg"]) + (int(255 * a),))
-    d.rectangle([x0 + 16, y0, x0 + 30, y0 + h], fill=tuple(info["bg"]) + (int(255 * a),))
-    d.rectangle([x0 + 30, y0, x0 + 38, y0 + h], fill=tuple(info["stripe"]) + (int(255 * a),))
+    for dx, col in ((0, (255, 210, 60)),):
+        d.line([(W / 2 - 26, yc - 12), (W / 2, yc + 12), (W / 2 + 26, yc - 12)], fill=col + (int(255 * a),), width=10, joint="curve")
     c.alpha_composite(lay)
-    cy = y0 + h / 2
-    text(c, info["city"], "ExtraBold", int(h * 0.36), WHITE, x0 + 72, cy - h * 0.15, anchor="lm", alpha=a, maxw=480)
-    text(c, info["nick"], "SemiBold", int(h * 0.22), GREY, x0 + 74, cy + h * 0.24, anchor="lm", alpha=a, spacing=3)
-    text(c, years, "Black", int(h * 0.3), ACCENT, x1 - 34, cy, anchor="rm", alpha=a)
+
+
+def card(c, i, info, years, t0, t, n, dim=1.0):
+    p = (t - t0) / 0.4
+    if p <= 0: return
+    a = min(1, p * 1.6) * dim
+    h, top = _geom(n)
+    y0 = top + i * (h + GAP)
+    sc = 0.55 + 0.45 * ease_back(min(1, p))
+    x0, x1 = 70, 1010 - 70
+    bg = _vivid(tuple(info["bg"])); st = tuple(info["stripe"])
+    fg = (15, 15, 20) if _lum(bg) > 170 else WHITE
+    cw, ch = int(x1 - x0), int(h)
+    im = Image.new("RGBA", (cw, ch), (0, 0, 0, 0))
+    grad = Image.new("RGBA", (cw, ch))
+    gd = ImageDraw.Draw(grad)
+    dark = tuple(int(v * 0.62) for v in bg)
+    for x in range(cw):
+        f = x / cw
+        gd.line([(x, 0), (x, ch)], fill=tuple(int(bg[k] * (1 - f) + dark[k] * f) for k in range(3)) + (255,))
+    gd.rectangle([0, ch - 12, cw, ch], fill=st + (255,))
+    mask = Image.new("L", (cw, ch), 0); ImageDraw.Draw(mask).rounded_rectangle([0, 0, cw - 1, ch - 1], radius=28, fill=255)
+    im.paste(grad, (0, 0), mask)
+    # numéro d'étape
+    d = ImageDraw.Draw(im)
+    d.ellipse([22, ch / 2 - 30, 82, ch / 2 + 30], fill=(255, 255, 255, 235))
+    num = text_img(str(i + 1), "Black", 36, (20, 20, 26))
+    im.alpha_composite(num, (52 - num.width // 2, int(ch / 2 - num.height / 2)))
+    city = text_img(info["city"], "Black", int(h * 0.34), fg)
+    if city.width > 470: city = city.resize((470, int(city.height * 470 / city.width)), Image.LANCZOS)
+    im.alpha_composite(city, (104, int(ch * 0.40 - city.height / 2)))
+    nick = text_img(info["nick"], "ExtraBold", int(h * 0.2), fg, spacing=3)
+    nick.putalpha(nick.getchannel("A").point(lambda v: int(v * 0.8)))
+    im.alpha_composite(nick, (108, int(ch * 0.72 - nick.height / 2)))
+    yr = text_img(years, "Black", int(h * 0.27), (20, 20, 26))
+    pw, ph = yr.width + 40, yr.height + 14
+    pill = Image.new("RGBA", (pw, ph), (0, 0, 0, 0))
+    ImageDraw.Draw(pill).rounded_rectangle([0, 0, pw - 1, ph - 1], radius=ph // 2, fill=(255, 255, 255, 255))
+    pill.alpha_composite(yr, (20, 7))
+    im.alpha_composite(pill, (cw - pw - 26, int(ch / 2 - ph / 2)))
+    # flash blanc à l'arrivée
+    if 0.6 < p < 1.6:
+        fl = Image.new("RGBA", (cw, ch), (255, 255, 255, 0))
+        fl.putalpha(mask.point(lambda v: int(v * 0.55 * (1 - (p - 0.6)))))
+        im.alpha_composite(fl)
+    blit(c, im, (x0 + x1) / 2, y0 + h / 2, scale=sc, alpha=a)
+
+
+def vivid_bg():
+    base = Image.new("RGBA", (W, H))
+    d = ImageDraw.Draw(base)
+    top, bot = (60, 18, 140), (14, 8, 40)
+    for y in range(H):
+        f = y / H
+        d.line([(0, y), (W, y)], fill=tuple(int(top[k] * (1 - f) + bot[k] * f) for k in range(3)) + (255,))
+    glow = Image.new("RGBA", (W + 600, H + 600), (0, 0, 0, 0)); g = ImageDraw.Draw(glow)
+    g.ellipse([0, 0, 1100, 1000], fill=(255, 40, 160, 120))
+    g.ellipse([600, 1300, 1680, 2500], fill=(255, 130, 0, 150))
+    glow = glow.filter(ImageFilter.GaussianBlur(190))
+    random.seed(3); grains = []
+    for _ in range(4):
+        nz = Image.effect_noise((W // 2, H // 2), 60).resize((W, H)).convert("L")
+        gr = Image.new("RGBA", (W, H), (255, 255, 255, 0)); gr.putalpha(nz.point(lambda v: max(0, v - 150) // 7)); grains.append(gr)
+    return base, glow, Image.new("RGBA", (W, H), (0, 0, 0, 0)), grains
 
 
 def timer(c, T, t):
@@ -85,7 +164,8 @@ def timer(c, T, t):
     frac = max(0.0, min(1.0, 1 - (t - T.Tb) / T.Dur))
     left = min(T.Dur, max(0, math.ceil(T.Te - t)))
     last = left <= 3 and t < T.Te
-    col = (226, 27, 77) if last else ACCENT
+    f = 1 - frac
+    col = (int(40 + 215 * min(1, f * 2)), int(230 - 180 * max(0, f * 2 - 1)), 70) if not last else (255, 40, 80)
     x0, x1, h = 230, 900, 34
     lay = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
     d.rounded_rectangle([x0, BAR_Y - h / 2, x1, BAR_Y + h / 2], radius=h // 2, fill=(255, 255, 255, int(40 * a)))
@@ -112,7 +192,7 @@ def qmark_cache(size, col, label):
 QM = None
 def frame(t, P, T, infos, parts):
     global QM
-    QM = QM or qmark(520, ACCENT)
+    QM = QM or qmark(520, (255, 196, 0))
     im = bg_at(t, parts)
     c = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     # --- intro (gros titre + ? + niveau), puis le titre remonte en en-tête
@@ -122,7 +202,7 @@ def frame(t, P, T, infos, parts):
     s_t = 1 - 0.45 * mv
     pop = ease_back(min(1, t / 0.45))
     text(c, "QUI EST", "Black", 150, WHITE, W / 2, y_t1, alpha=ia, scale=pop * s_t)
-    text(c, "CE JOUEUR ?", "Black", 150, ACCENT, W / 2, y_t2, alpha=ia, scale=pop * s_t, maxw=960)
+    text(c, "CE JOUEUR ?", "Black", 150, (255, 196, 0), W / 2, y_t2, alpha=ia, scale=pop * s_t, maxw=960)
     blit(c, QM, W / 2, 1120 + 300 * mv, alpha=ia * (1 - mv), scale=0.9 + 0.1 * ease_back(min(1, t / 0.6)))
     lt = T.cues.get("L", (T.I - 0.8, 0))[0]
     if t >= lt:
@@ -132,16 +212,17 @@ def frame(t, P, T, infos, parts):
     # --- cartes
     dim = 1 - 0.7 * ease_out((t - T.Te - 0.3) / 0.4) if t > T.Te + 0.3 else 1.0
     for i, (info, yrs) in enumerate(infos):
+        if i: arrow(c, i, T.card_t(i), t, len(infos), dim)
         card(c, i, info, yrs, T.card_t(i), t, len(infos), dim)
     timer(c, T, t)
     # --- fin : appel au commentaire
     if t > T.Te + 0.3:
         q = (t - T.Te - 0.3) / 0.45
         a = min(1, q); sc = 0.7 + 0.3 * ease_back(min(1, q))
-        panel(c, [90, 620, 990, 1290], (14, 14, 18, 240), alpha=a, r=40, outline=ACCENT + (255,))
-        blit(c, qmark(300, ACCENT), W / 2, 820, alpha=a, scale=sc)
+        panel(c, [90, 620, 990, 1290], (40, 14, 90, 245), alpha=a, r=40, outline=(255, 196, 0, 255))
+        blit(c, qmark(300, (255, 196, 0)), W / 2, 820, alpha=a, scale=sc)
         text(c, "ÉCRIS TA RÉPONSE", "Black", 76, WHITE, W / 2, 1050, alpha=a, scale=sc, maxw=820)
-        text(c, "EN COMMENTAIRE", "Black", 76, ACCENT, W / 2, 1140, alpha=a, scale=sc, maxw=820)
+        text(c, "EN COMMENTAIRE", "Black", 76, (255, 196, 0), W / 2, 1140, alpha=a, scale=sc, maxw=820)
         by = 1220 + 14 * math.sin((t - T.Te) * 7)
         lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         ImageDraw.Draw(lay).polygon([(W / 2 - 34, by), (W / 2 + 34, by), (W / 2, by + 40)], fill=WHITE + (int(255 * a),))
@@ -178,12 +259,12 @@ def mix(T, voice1, voice2, out_wav):
         i = int(at * SR); x = x[: max(0, n - i)]; buf[i:i + len(x)] += g * x
     add(_read(voice1), 0.0, 1.0); add(_read(voice2), T.To, 1.0)
     lt = T.cues.get("L", (None,))[0]
-    if lt is not None: add(_pop(), lt, 0.35)
-    for i in range(T.n): add(_pop(), T.card_t(i), 0.22)
+    if lt is not None: add(_pop(), lt, 0.16)
+    for i in range(T.n): add(_pop(), T.card_t(i), 0.11)
     for k in range(T.Dur):
         last = T.Dur - k <= 3
-        add(_tick(2600 if last else (1900 if k % 2 == 0 else 1400)), T.Tb + k, 0.32 if last else 0.22)
-    add(_buzz(), T.Te, 0.35)
+        add(_tick(2600 if last else (1900 if k % 2 == 0 else 1400)), T.Tb + k, 0.15 if last else 0.09)
+    add(_buzz(), T.Te, 0.16)
     buf = np.tanh(buf * 1.1) * 0.95
     st = (np.stack([buf, buf], 1) * 32767).astype(np.int16)
     with wave.open(out_wav, "wb") as w:
@@ -203,11 +284,11 @@ def run(pid=None, post=True, outdir="out_quiz"):
     P = next(p for p in players if p["id"] == pid) if pid else random.choice(players)
     lab = LEVELS[P["level"]][0].lower()
     v1, v2 = os.path.join(outdir, "v1.wav"), os.path.join(outdir, "v2.wav")
-    cues1, len1 = tts.synth([("H", "Seuls les vrais fans trouvent ce joueur."), ("L", f"Niveau : {lab}.")], v1)
-    _, len2 = tts.synth([("E", "Tu l'as trouvé ? Écris ta réponse en commentaire !")], v2)
+    cues1, len1 = tts.synth([("H", "Attention… seuls les VRAIS fans vont trouver ce joueur !"), ("L", f"Niveau : {lab} !")], v1, LIVELY)
+    _, len2 = tts.synth([("E", "Alors… tu l'as trouvé ?! Balance ta réponse en commentaire !")], v2, LIVELY)
     T = TL(P, cues1, len1, len2)
     infos = [(team_info(tm), yrs) for tm, yrs in P["teams"]]
-    parts = build_bg((70, 60, 110))
+    parts = vivid_bg()
     silent = os.path.join(outdir, "silent.mp4")
     pr = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
                            "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-maxrate", "1500k", "-bufsize", "3M",
