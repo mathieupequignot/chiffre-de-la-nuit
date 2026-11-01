@@ -2,6 +2,13 @@ name: Vérifier les parcours (Wikipédia)
 
 on:
   workflow_dispatch:
+    inputs:
+      src:
+        description: "Fichier de joueurs (dans quiz/)"
+        default: "players.json"
+      dst:
+        description: "Fichier de sortie (dans quiz/)"
+        default: "wiki_careers.json"
 
 permissions:
   contents: write
@@ -16,10 +23,10 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install requests
-      - run: python quiz/tools/wiki_careers.py
+      - run: python quiz/tools/wiki_careers.py "quiz/${{ inputs.src }}" "quiz/${{ inputs.dst }}"
       - name: Enregistrer
         run: |
           git config user.name "quiz-bot"
           git config user.email "quiz-bot@users.noreply.github.com"
-          git add quiz/wiki_careers.json
+          git add "quiz/${{ inputs.dst }}"
           git commit -m "Parcours Wikipédia" && git pull --rebase -q && git push

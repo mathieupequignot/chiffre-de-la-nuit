@@ -5,18 +5,11 @@ import requests
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UA = {"User-Agent": "nba-daily-news-quiz/1.0 (github.com/mathieupequignot/chiffre-de-la-nuit)"}
-players = json.load(open(os.path.join(HERE, "players.json"), encoding="utf-8"))
-ids = " ".join(f'"{p["id"]}"' for p in players)
-q = f"""SELECT ?bref ?article WHERE {{ VALUES ?bref {{ {ids} }} ?item wdt:P2685 ?bref .
- ?article schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> . }}"""
-r = requests.get("https://query.wikidata.org/sparql", params={"query": q, "format": "json"}, headers=UA, timeout=60)
+import sys
+SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "players.json")
+DST = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "wiki_careers.json")
+players = json.load(open(SRC, encoding="utf-8"))
 titles = {}
-try:
-    r.raise_for_status()
-    titles = {b["bref"]["value"]: b["article"]["value"].rsplit("/", 1)[1] for b in r.json()["results"]["bindings"]}
-except Exception as e:
-    print("wikidata:", e, r.text[:300])
-print("Wikidata :", len(titles), "pages trouvées")
 
 
 def api(params):
@@ -51,5 +44,5 @@ for p in players:
             rows.append([clean(yrs), clean(team)])
     out[p["id"]] = {"page": t, "career": rows}
     time.sleep(1.0)
-json.dump(out, open(os.path.join(HERE, "wiki_careers.json"), "w"), ensure_ascii=False, indent=1)
+json.dump(out, open(DST, "w"), ensure_ascii=False, indent=1)
 print(sum(1 for v in out.values() if v.get("career")), "/", len(out), "parcours récupérés")
