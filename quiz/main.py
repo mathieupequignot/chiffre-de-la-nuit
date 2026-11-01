@@ -1,6 +1,7 @@
 """Quiz « Qui est ce joueur ? » : parcours de franchises + années, compte à rebours, réponse en commentaire.
 usage : python -m quiz.main [--player ID] [--no-post]"""
-import argparse, json, math, os, random, subprocess, sys, traceback, wave
+import argparse, datetime as dt, json, math, os, random, subprocess, sys, traceback, wave
+from zoneinfo import ZoneInfo
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
@@ -19,11 +20,38 @@ GAP = 46
 LIVELY = {"stability": 0.25, "similarity_boost": 0.75, "style": 0.7, "use_speaker_boost": True}
 
 
+# codes Basketball-Reference -> (ville, surnom, couleur, liseré) ; codes actuels -> couleurs de chiffre/teams.py
+BREF = {"BRK": "BKN", "CHO": "CHA", "PHO": "PHX"}
+HIST = {
+    "SEA": ("SEATTLE", "SUPERSONICS", (0, 101, 58), (255, 194, 32)),
+    "NJN": ("NEW JERSEY", "NETS", (0, 42, 96), (205, 16, 65)),
+    "NOH": ("NEW ORLEANS", "HORNETS", (0, 119, 139), (40, 0, 113)),
+    "NOK": ("NEW ORLEANS", "HORNETS", (0, 119, 139), (40, 0, 113)),
+    "CHH": ("CHARLOTTE", "HORNETS", (0, 119, 139), (40, 0, 113)),
+    "CHA": ("CHARLOTTE", "BOBCATS", (242, 101, 49), (0, 47, 95)),
+    "VAN": ("VANCOUVER", "GRIZZLIES", (0, 178, 169), (228, 98, 40)),
+    "WSB": ("WASHINGTON", "BULLETS", (0, 43, 92), (227, 24, 55)),
+    "KCK": ("KANSAS CITY", "KINGS", (0, 45, 98), (200, 16, 46)),
+    "SDC": ("SAN DIEGO", "CLIPPERS", (200, 16, 46), (29, 66, 148)),
+}
+
+
+def _one(code):
+    if code in HIST:
+        c, n, bg, st = HIST[code]; return dict(city=c, nick=n, bg=bg, stripe=st)
+    code = BREF.get(code, code)
+    d = team(code)
+    return dict(city=CITY.get(code, d["name"]), nick=NICK.get(code, "").upper(), bg=d["bg"], stripe=d["stripe"])
+
+
 def team_info(t):
-    if isinstance(t, dict):  # franchise historique décrite dans players.json
-        return t
-    d = team(t)
-    return dict(city=CITY.get(t, d["name"]), nick=NICK.get(t, "").upper(), bg=d["bg"], stripe=d["stripe"])
+    """t : code ou liste de codes d'une même franchise (ex. ["NJN", "BRK"])."""
+    codes = t if isinstance(t, list) else [t]
+    parts = [_one(c) for c in codes]
+    info = dict(parts[-1])
+    cities = list(dict.fromkeys(p["city"] for p in parts)); nicks = list(dict.fromkeys(p["nick"] for p in parts))
+    info["city"] = " / ".join(cities); info["nick"] = " / ".join(nicks)
+    return info
 
 
 # ---------------- timeline
@@ -73,9 +101,14 @@ def _vivid(c):
     return int(r * 255), int(g * 255), int(b * 255)
 
 
+def _gap(n):
+    return GAP if n <= 6 else 34
+
+
 def _geom(n):
-    h = min(132, (CARD_BOTTOM - CARD_TOP - GAP * (n - 1)) / n)
-    tot = n * h + (n - 1) * GAP
+    gap = _gap(n)
+    h = min(132, (CARD_BOTTOM - CARD_TOP - gap * (n - 1)) / n)
+    tot = n * h + (n - 1) * gap
     top = CARD_TOP + (CARD_BOTTOM - CARD_TOP - tot) / 2
     return h, top
 
@@ -86,7 +119,7 @@ def arrow(c, i, t0, t, n, dim=1.0):
     if p <= 0: return
     a = min(1, p) * dim
     h, top = _geom(n)
-    yc = top + i * (h + GAP) - GAP / 2 + (1 - ease_out(p)) * -18
+    g = _gap(n); yc = top + i * (h + g) - g / 2 + (1 - ease_out(p)) * -18
     lay = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
     for dx, col in ((0, (255, 210, 60)),):
         d.line([(W / 2 - 26, yc - 12), (W / 2, yc + 12), (W / 2 + 26, yc - 12)], fill=col + (int(255 * a),), width=10, joint="curve")
@@ -98,7 +131,7 @@ def card(c, i, info, years, t0, t, n, dim=1.0):
     if p <= 0: return
     a = min(1, p * 1.6) * dim
     h, top = _geom(n)
-    y0 = top + i * (h + GAP)
+    y0 = top + i * (h + _gap(n))
     sc = 0.55 + 0.45 * ease_back(min(1, p))
     x0, x1 = 70, 1010 - 70
     bg = _vivid(tuple(info["bg"])); st = tuple(info["stripe"])
@@ -271,55 +304,145 @@ def mix(T, voice1, voice2, out_wav):
         w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes(st.tobytes())
 
 
-def norm(path):
-    out = path.replace(".wav", "_n.wav")
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", path, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-ar", str(SR), "-ac", "1", out], check=True)
+# ---------------- voix (en cache dans le dépôt : mêmes phrases chaque jour)
+VOICE_DIR = os.path.join(HERE, "voice")
+
+
+def voice(key, segs, outdir):
+    os.makedirs(VOICE_DIR, exist_ok=True)
+    wav, meta = os.path.join(VOICE_DIR, key + ".wav"), os.path.join(VOICE_DIR, key + ".json")
+    if os.path.exists(wav) and os.path.exists(meta):
+        m = json.load(open(meta)); return wav, [tuple(c) for c in m["cues"]], m["total"]
+    tmp = os.path.join(outdir, key + "_raw.wav")
+    cues, total = tts.synth(segs, tmp, LIVELY)
+    if not os.environ.get("ELEVENLABS_API_KEY"):
+        return tmp, cues, total  # mode test : on ne met pas de silence en cache
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", tmp, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-ar", str(SR), "-ac", "1", wav], check=True)
+    json.dump({"cues": cues, "total": total}, open(meta, "w"))
+    return wav, cues, total
+
+
+# ---------------- miniature
+def make_cover(P, out):
+    lab, col = LEVELS[P["level"]]
+    base, glow, _, grains = vivid_bg()
+    im = base.copy(); im.alpha_composite(glow.crop((300, 300, 300 + W, 300 + H))); im.alpha_composite(grains[0])
+    text(im, "QUI EST", "Black", 150, WHITE, W / 2, 520)
+    text(im, "CE JOUEUR ?", "Black", 150, (255, 196, 0), W / 2, 670, maxw=960)
+    blit(im, qmark(470, (255, 196, 0)), W / 2, 1010)
+    level_badge(im, P, W / 2, 1330, s=58)
+    n = n_franchises(P)
+    text(im, f"{n} FRANCHISES", "Black", 64, WHITE, W / 2, 1460, spacing=6)
+    text(im, "NBA DAILY NEWS", "ExtraBold", 36, (200, 190, 230), W / 2, 1790, spacing=8)
+    im.convert("RGB").save(out, quality=92)
     return out
 
 
+# ---------------- légendes
+TIMES = {"facile": "12h30", "moyen": "18h", "difficile": "21h"}
+
+
+def n_franchises(P):
+    return len({team_info(t)["nick"].split(" / ")[-1] for t, _ in P["teams"]})
+
+
+def captions(P):
+    lab = LEVELS[P["level"]][0].lower(); n = n_franchises(P)
+    base = f"Seuls les vrais fans trouvent ce joueur 👀 Niveau {lab} · {n} franchises. Ta réponse en commentaire 👇"
+    tk = ["#NBA", "#quizNBA", "#basketball", "#NBAFrance", "#devinelejoueur"]
+    ig = ["#NBA", "#quizNBA", "#basketball", "#basket", "#NBAFrance", "#NBADailyNews", "#devinelejoueur", "#quiz", "#nbatrivia", "#sport"]
+    return dict(
+        tiktok=f"{base}\n\n{' '.join(tk)}",
+        instagram=f"{base}\n\nAbonne-toi pour les quiz de chaque jour 🔔\n\n{' '.join(ig)}",
+        youtube_title=f"Qui est ce joueur NBA ? 🤔 Niveau {lab} ({n} franchises) #Shorts",
+        youtube=f"{base}\n\n#Shorts #NBA #quizNBA",
+        pin=f"✅ Réponse : {P['name']} ! Tu l'avais trouvé ? 👀",
+    )
+
+
+def message(P):
+    lab = LEVELS[P["level"]][0]; c = captions(P)
+    return (f"**🧩 Quiz {lab.lower()} — à poster vers {TIMES[P['level']]}**\n"
+            f"🔒 Réponse : ||{P['name']}||\n\n"
+            f"🎵 **TikTok** :\n```{c['tiktok']}```\n"
+            f"📸 **Instagram** :\n```{c['instagram']}```\n"
+            f"🖼️ Miniature jointe : « Modifier la couverture » → Importer.\n\n"
+            f"▶️ **YouTube Shorts** — titre :\n```{c['youtube_title']}```\ndescription :\n```{c['youtube']}```")
+
+
 # ---------------- programme
-def run(pid=None, post=True, outdir="out_quiz"):
+def render_quiz(P, outdir):
     os.makedirs(outdir, exist_ok=True)
-    players = json.load(open(os.path.join(HERE, "players.json"), encoding="utf-8"))
-    P = next(p for p in players if p["id"] == pid) if pid else random.choice(players)
     lab = LEVELS[P["level"]][0].lower()
-    v1, v2 = os.path.join(outdir, "v1.wav"), os.path.join(outdir, "v2.wav")
-    cues1, len1 = tts.synth([("H", "Attention… seuls les VRAIS fans vont trouver ce joueur !"), ("L", f"Niveau : {lab} !")], v1, LIVELY)
-    _, len2 = tts.synth([("E", "Alors… tu l'as trouvé ?! Balance ta réponse en commentaire !")], v2, LIVELY)
+    v1, cues1, len1 = voice(f"intro_{P['level']}", [("H", "Attention… seuls les VRAIS fans vont trouver ce joueur !"), ("L", f"Niveau : {lab} !")], outdir)
+    v2, _, len2 = voice("outro", [("E", "Alors… tu l'as trouvé ?! Balance ta réponse en commentaire !")], outdir)
     T = TL(P, cues1, len1, len2)
     infos = [(team_info(tm), yrs) for tm, yrs in P["teams"]]
     parts = vivid_bg()
-    silent = os.path.join(outdir, "silent.mp4")
+    silent = os.path.join(outdir, f"silent_{P['id']}.mp4")
     pr = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
                            "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-maxrate", "1500k", "-bufsize", "3M",
                            "-pix_fmt", "yuv420p", silent], stdin=subprocess.PIPE)
     for i in range(int(T.total * FPS)):
         pr.stdin.write(frame(i / FPS, P, T, infos, parts).tobytes())
     pr.stdin.close(); pr.wait()
-    audio = os.path.join(outdir, "mix.wav")
-    has_voice = bool(os.environ.get("ELEVENLABS_API_KEY"))
-    mix(T, norm(v1) if has_voice else v1, norm(v2) if has_voice else v2, audio)
-    final = os.path.join(outdir, f"quiz_{P['id']}.mp4")
+    audio = os.path.join(outdir, f"mix_{P['id']}.wav")
+    mix(T, v1, v2, audio)
+    final = os.path.join(outdir, f"quiz_{P['level']}_{P['id']}.mp4")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", silent, "-i", audio, "-map", "0:v", "-map", "1:a", "-c:v", "copy",
                     "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", final], check=True)
-    tags = "#NBA #quiz #basketball #NBAFrance #NBADailyNews"
-    msg = (f"**Quiz — qui est ce joueur ?** (niveau {lab})\n"
-           f"🔒 Réponse (à épingler en commentaire plus tard) : ||{P['name']}||\n\n"
-           f"🎵 **TikTok / 📸 Instagram** :\n```Seuls les vrais fans trouvent ce joueur 👀 Niveau {lab}. Réponse en commentaire 👇\n\n{tags}```\n"
-           f"▶️ **YouTube Shorts** — titre :\n```Qui est ce joueur NBA ? 🤔 (niveau {lab}) #Shorts```")
-    print("Vidéo :", final)
-    if post and os.environ.get("DISCORD_BOT_TOKEN"):
-        discord_post.post(final, msg)
-    return final
+    cover = make_cover(P, os.path.join(outdir, f"miniature_{P['level']}_{P['id']}.jpg"))
+    return final, cover
+
+
+USED = os.path.join(HERE, "used.json")
+
+
+def daily(day, post=True, outdir="out_quiz"):
+    """3 quiz du jour (facile, moyen, difficile), jamais deux fois le même joueur ; rappelle les réponses de la veille."""
+    players = json.load(open(os.path.join(HERE, "players.json"), encoding="utf-8"))
+    used = json.load(open(USED)) if os.path.exists(USED) else []
+    rnd = random.Random(day)
+    yesterday = [u for u in used if u["date"] == (dt.date.fromisoformat(day) - dt.timedelta(days=1)).isoformat()]
+    if post and yesterday and os.environ.get("DISCORD_BOT_TOKEN"):
+        names = {p["id"]: p for p in players}
+        lines = [f"• {LEVELS[u['level']][0].lower()} : {captions(names[u['id']])['pin']}" for u in yesterday if u["id"] in names]
+        discord_post.notify("📌 **Réponses des quiz d'hier** — à épingler en commentaire sous chaque vidéo :\n" + "\n".join(lines))
+    today = [u for u in used if u["date"] == day]
+    for lvl in ("facile", "moyen", "difficile"):
+        if any(u["level"] == lvl for u in today):
+            continue  # déjà fait aujourd'hui (relance)
+        done = {u["id"] for u in used}
+        pool = [p for p in players if p["level"] == lvl and p["id"] not in done]
+        if not pool:  # liste épuisée : on repart des plus anciens
+            order = [u["id"] for u in used if u["level"] == lvl]
+            pool = [p for p in players if p["level"] == lvl and p["id"] == order[0]] if order else [p for p in players if p["level"] == lvl]
+            used = [u for u in used if not (u["level"] == lvl and u["id"] == pool[0]["id"])]
+        P = rnd.choice(pool)
+        video, cover = render_quiz(P, outdir)
+        print("Quiz", lvl, ":", P["name"], video)
+        if post and os.environ.get("DISCORD_BOT_TOKEN"):
+            discord_post.post(video, message(P), cover)
+        used.append({"date": day, "level": lvl, "id": P["id"]})
+        json.dump(used, open(USED, "w"), indent=1)
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--player"); ap.add_argument("--no-post", action="store_true")
+    ap.add_argument("--player", help="un seul quiz pour ce joueur (test), sans toucher à l'historique")
+    ap.add_argument("--date", help="jour AAAA-MM-JJ (heure de Paris), vide = aujourd'hui")
+    ap.add_argument("--no-post", action="store_true")
     a = ap.parse_args()
     try:
-        run(a.player, not a.no_post)
+        if a.player:
+            P = next(p for p in json.load(open(os.path.join(HERE, "players.json"), encoding="utf-8")) if a.player in (p["id"], p["name"]))
+            v, c = render_quiz(P, "out_quiz")
+            if not a.no_post and os.environ.get("DISCORD_BOT_TOKEN"):
+                discord_post.post(v, message(P), c)
+        else:
+            day = a.date or dt.datetime.now(ZoneInfo("Europe/Paris")).date().isoformat()
+            daily(day, not a.no_post)
     except Exception:
         err = traceback.format_exc(); print(err)
-        discord_post.notify(f"⚠️ Le quiz n'a pas pu être généré.\n```{err[-1500:]}```")
+        discord_post.notify(f"⚠️ Les quiz n'ont pas pu être générés.\n```{err[-1500:]}```")
         sys.exit(1)
