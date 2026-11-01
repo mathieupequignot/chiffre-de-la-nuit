@@ -42,6 +42,20 @@ def choose(games):
     return a, p, g
 
 
+def _cover(angle, p):
+    """Chiffre, unité et ligne secondaire de la miniature."""
+    if angle == "sniper":
+        return dict(num=str(p["tpm"]), unit="À 3 POINTS", extra=f"{p['pts']} POINTS · {p['tpm']}/{p['tpa']} DE LOIN")
+    if angle in ("triple_double", "twenty_twenty"):
+        tag = "TRIPLE-DOUBLE" if angle == "triple_double" else "20-20"
+        return dict(num=str(p["pts"]), unit="POINTS", extra=f"+ {p['reb']} REB · {p['ast']} PD · {tag}")
+    if p["stl"] + p["blk"] >= 5:
+        ex = f"+ {p['blk']} CONTRES · {p['stl']} INTERCEPTIONS"
+    else:
+        ex = f"+ {p['reb']} REB · {p['ast']} PD"
+    return dict(num=str(p["pts"]), unit="POINTS", extra=ex)
+
+
 def build(games, paris_day, seed=None):
     ch = choose(games)
     if not ch:
@@ -108,7 +122,7 @@ def build(games, paris_day, seed=None):
     D = dict(date_label=date_label, angle=angle, first=p["first"].upper(), last=p["last"].upper(), me=me, opp=opp,
              my_pts=my_pts, op_pts=op_pts, win=win, home=g["home"], away=g["away"], home_pts=g["home_pts"], away_pts=g["away_pts"],
              rows=rows, banner=banner, stamp=exploit[1], line=f"{p['pts']} PTS  ·  {p['reb']} REB  ·  {p['ast']} PD",
-             fg=fg, pm=pm, punch=punch[:3])
+             fg=fg, pm=pm, punch=punch[:3], cover=_cover(angle, p))
     import re
     tag = lambda t: "#" + re.sub(r"[^0-9A-Za-zÀ-ÿ]", "", t)
     who, mine, theirs = tag(p["last"]), tag(me["nick"]), tag(opp["nick"])

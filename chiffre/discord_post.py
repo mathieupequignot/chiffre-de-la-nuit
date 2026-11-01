@@ -27,16 +27,20 @@ def _gateway_once():
         ws.close()
 
 
-def post(video_path, content):
+def post(video_path, content, cover_path=None):
     try:
         _gateway_once()
     except Exception as e:  # non bloquant : déjà connecté auparavant
         print("gateway:", e)
     ch = os.environ["DISCORD_CHANNEL_ID"]
-    with open(video_path, "rb") as f:
+    files = {"files[0]": ("chiffre_de_la_nuit.mp4", open(video_path, "rb"), "video/mp4")}
+    if cover_path and os.path.exists(cover_path):
+        files["files[1]"] = ("miniature.jpg", open(cover_path, "rb"), "image/jpeg")
+    try:
         r = requests.post(f"{API}/channels/{ch}/messages", headers=_h(),
-                          data={"payload_json": json.dumps({"content": content[:1990]})},
-                          files={"files[0]": ("chiffre_de_la_nuit.mp4", f, "video/mp4")}, timeout=120)
+                          data={"payload_json": json.dumps({"content": content[:1990]})}, files=files, timeout=120)
+    finally:
+        for _, fh, _ in files.values(): fh.close()
     r.raise_for_status()
     mid = r.json()["id"]
     for emoji in ("%E2%9C%85", "%E2%9D%8C"):  # ✅ ❌

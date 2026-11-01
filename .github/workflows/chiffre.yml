@@ -36,5 +36,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: video
-          path: out/*.mp4
+          path: |
+            out/*.mp4
+            out/*.jpg
           retention-days: 7

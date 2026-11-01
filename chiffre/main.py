@@ -7,7 +7,7 @@ import sys
 import traceback
 from zoneinfo import ZoneInfo
 
-from . import data, pick, tts, render, discord_post
+from . import data, pick, tts, render, discord_post, cover
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -56,14 +56,16 @@ def run(day, fixture=None, post=True, outdir="out"):
     TL = render.render(D, cues, total, silent)
     final = os.path.join(outdir, f"chiffre_de_la_nuit_{day.isoformat()}.mp4")
     mix(silent, voice, TL, final)
+    thumb = cover.from_D(D, os.path.join(outdir, f"miniature_{day.isoformat()}.jpg"))
     msg = (f"**Le chiffre de la nuit — {D['date_label'].lower()}**\n\n"
            f"🎵 **TikTok** (légende + hashtags) :\n```{caption['tiktok']}```\n"
            f"📸 **Instagram** :\n```{caption['instagram']}```\n"
+           f"🖼️ Miniature jointe : à choisir dans « Modifier la couverture » → Importer.\n\n"
            f"▶️ **YouTube Shorts** — titre :\n```{caption['youtube_title']}```\ndescription :\n```{caption['youtube']}```")
     open(os.path.join(outdir, "caption.txt"), "w", encoding="utf-8").write(msg)
     print("Vidéo :", final)
     if post and os.environ.get("DISCORD_BOT_TOKEN"):
-        discord_post.post(final, msg)
+        discord_post.post(final, msg, thumb)
     return final
 
 
