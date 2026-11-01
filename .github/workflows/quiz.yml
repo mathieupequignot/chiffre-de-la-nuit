@@ -1,0 +1,30 @@
+name: Quiz joueur
+
+on:
+  workflow_dispatch:
+    inputs:
+      player:
+        description: "Identifiant du joueur (voir quiz/players.json), vide = au hasard"
+        required: false
+
+jobs:
+  quiz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installer ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+      - name: Fabriquer et envoyer le quiz
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+        run: |
+          if [ -n "${{ inputs.player }}" ]; then python -m quiz.main --player "${{ inputs.player }}"; else python -m quiz.main; fi
