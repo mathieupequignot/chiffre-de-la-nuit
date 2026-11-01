@@ -68,7 +68,10 @@ def blit(canvas, im, x, y, anchor="mm", scale=1.0, alpha=1.0, rot=0.0):
         im = im.copy(); im.putalpha(im.getchannel("A").point(lambda v: int(v * alpha)))
     ax = {"l": 0, "m": 0.5, "r": 1}[anchor[0]]; ay = {"t": 0, "m": 0.5, "b": 1}[anchor[1]]
     px, py = int(x - im.width * ax), int(y - im.height * ay)
-    canvas.alpha_composite(im, (max(px, 0), max(py, 0)), (max(-px, 0), max(-py, 0)))
+    sx, sy = max(-px, 0), max(-py, 0)
+    if sx >= im.width or sy >= im.height or px >= canvas.width or py >= canvas.height:
+        return  # entièrement hors de l'image (pendant une animation d'entrée)
+    canvas.alpha_composite(im, (max(px, 0), max(py, 0)), (sx, sy))
 
 
 def text(canvas, txt, w, s, color, x, y, maxw=None, **kw):
@@ -308,7 +311,8 @@ def render(D, cues, total, out_mp4):
     TL = Timeline(cues, total)
     parts = build_bg(D["me"]["bg"])
     p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
-                          "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p", out_mp4], stdin=subprocess.PIPE)
+                          "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-maxrate", "1500k", "-bufsize", "3M",
+                          "-pix_fmt", "yuv420p", out_mp4], stdin=subprocess.PIPE)
     for i in range(int(TL.total * FPS)):
         p.stdin.write(frame(i / FPS, D, TL, parts).tobytes())
     p.stdin.close(); p.wait()
