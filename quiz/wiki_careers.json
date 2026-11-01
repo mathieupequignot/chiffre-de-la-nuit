@@ -1,311 +1,3297 @@
 {
  "onealsh01": {
-  "error": "pas de page"
+  "page": "Shaquille O'Neal",
+  "career": [
+   [
+    "1992–1996",
+    "Orlando Magic"
+   ],
+   [
+    "1996–2004",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2004–2008",
+    "Miami Heat"
+   ],
+   [
+    "2008–2009",
+    "Phoenix Suns"
+   ],
+   [
+    "2009–2010",
+    "Cleveland Cavaliers"
+   ],
+   [
+    "2010–2011",
+    "Boston Celtics"
+   ]
+  ]
  },
  "garneke01": {
-  "error": "pas de page"
+  "page": "Kevin Garnett",
+  "career": [
+   [
+    "1995–2007",
+    "Minnesota Timberwolves"
+   ],
+   [
+    "2007–2013",
+    "Boston Celtics"
+   ],
+   [
+    "2013–2015",
+    "Brooklyn Nets"
+   ],
+   [
+    "2015–2016",
+    "Minnesota Timberwolves"
+   ]
+  ]
  },
  "wadedw01": {
-  "error": "pas de page"
+  "page": "Dwyane Wade",
+  "career": [
+   [
+    "2003–2016",
+    "Miami Heat"
+   ],
+   [
+    "2016–2017",
+    "Chicago Bulls"
+   ],
+   [
+    "2017–2018",
+    "Cleveland Cavaliers"
+   ],
+   [
+    "2018–2019",
+    "Miami Heat"
+   ]
+  ]
  },
  "anthoca01": {
-  "error": "pas de page"
+  "page": "Carmelo Anthony",
+  "career": [
+   [
+    "2003–2011",
+    "Denver Nuggets"
+   ],
+   [
+    "2011–2017",
+    "New York Knicks"
+   ],
+   [
+    "2017–2018",
+    "Oklahoma City Thunder"
+   ],
+   [
+    "2018–2019",
+    "Houston Rockets"
+   ],
+   [
+    "2019–2021",
+    "Portland Trail Blazers"
+   ],
+   [
+    "2021–2022",
+    "Los Angeles Lakers"
+   ]
+  ]
  },
  "iversal01": {
-  "error": "pas de page"
+  "page": "Allen Iverson",
+  "career": [
+   [
+    "1996–2006",
+    "Philadelphia 76ers"
+   ],
+   [
+    "2006–2008",
+    "Denver Nuggets"
+   ],
+   [
+    "2008–2009",
+    "Detroit Pistons"
+   ],
+   [
+    "2009",
+    "Memphis Grizzlies"
+   ],
+   [
+    "2009–2010",
+    "Philadelphia 76ers"
+   ],
+   [
+    "2010–2011",
+    "Beşiktaş"
+   ]
+  ]
  },
  "piercpa01": {
-  "error": "pas de page"
+  "page": "Paul Pierce",
+  "career": [
+   [
+    "1998–2013",
+    "Boston Celtics"
+   ],
+   [
+    "2013–2014",
+    "Brooklyn Nets"
+   ],
+   [
+    "2014–2015",
+    "Washington Wizards"
+   ],
+   [
+    "2015–2017",
+    "Los Angeles Clippers"
+   ]
+  ]
  },
  "allenra02": {
-  "error": "pas de page"
+  "page": "Ray Allen",
+  "career": [
+   [
+    "1996–2003",
+    "Milwaukee Bucks"
+   ],
+   [
+    "2003–2007",
+    "Seattle SuperSonics"
+   ],
+   [
+    "2007–2012",
+    "Boston Celtics"
+   ],
+   [
+    "2012–2014",
+    "Miami Heat"
+   ]
+  ]
  },
  "kiddja01": {
-  "error": "pas de page"
+  "page": "Jason Kidd",
+  "career": [
+   [
+    "1994–1996",
+    "Dallas Mavericks"
+   ],
+   [
+    "1996–2001",
+    "Phoenix Suns"
+   ],
+   [
+    "2001–2008",
+    "New Jersey Nets"
+   ],
+   [
+    "2008–2012",
+    "Dallas Mavericks"
+   ],
+   [
+    "2012–2013",
+    "New York Knicks"
+   ],
+   [
+    "2013–2014",
+    "Brooklyn Nets"
+   ],
+   [
+    "2014–2018",
+    "Milwaukee Bucks"
+   ],
+   [
+    "2019–2021",
+    "Los Angeles Lakers (assistant)"
+   ],
+   [
+    "2021–2026",
+    "Dallas Mavericks"
+   ]
+  ]
  },
  "nashst01": {
-  "error": "pas de page"
+  "page": "Steve Nash",
+  "career": [
+   [
+    "1996–1998",
+    "Phoenix Suns"
+   ],
+   [
+    "1998–2004",
+    "Dallas Mavericks"
+   ],
+   [
+    "2004–2012",
+    "Phoenix Suns"
+   ],
+   [
+    "2012–2015",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2020–2022",
+    "Brooklyn Nets"
+   ]
+  ]
  },
  "mcgratr01": {
-  "error": "pas de page"
+  "page": "Tracy McGrady",
+  "career": [
+   [
+    "1997–2000",
+    "Toronto Raptors"
+   ],
+   [
+    "2000–2004",
+    "Orlando Magic"
+   ],
+   [
+    "2004–2010",
+    "Houston Rockets"
+   ],
+   [
+    "2010",
+    "New York Knicks"
+   ],
+   [
+    "2010–2011",
+    "Detroit Pistons"
+   ],
+   [
+    "2011–2012",
+    "Atlanta Hawks"
+   ],
+   [
+    "2012–2013",
+    "Qingdao Eagles"
+   ],
+   [
+    "2013",
+    "San Antonio Spurs"
+   ]
+  ]
  },
  "gasolpa01": {
-  "error": "pas de page"
+  "page": "Marc Gasol",
+  "career": [
+   [
+    "2003–2006",
+    "FC Barcelona"
+   ],
+   [
+    "2006–2008",
+    "CB Girona"
+   ],
+   [
+    "2008–2019",
+    "Memphis Grizzlies"
+   ],
+   [
+    "2019–2020",
+    "Toronto Raptors"
+   ],
+   [
+    "2020–2021",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2021–2023",
+    "Bàsquet Girona"
+   ]
+  ]
  },
  "hillgr01": {
-  "error": "pas de page"
+  "page": "Grant Hill",
+  "career": [
+   [
+    "1994–2000",
+    "Detroit Pistons"
+   ],
+   [
+    "2000–2007",
+    "Orlando Magic"
+   ],
+   [
+    "2007–2012",
+    "Phoenix Suns"
+   ],
+   [
+    "2012–2013",
+    "Los Angeles Clippers"
+   ]
+  ]
  },
  "stoudam01": {
-  "error": "pas de page"
+  "page": "Amar'e Stoudemire",
+  "career": [
+   [
+    "2002–2010",
+    "Phoenix Suns"
+   ],
+   [
+    "2010–2015",
+    "New York Knicks"
+   ],
+   [
+    "2015",
+    "Dallas Mavericks"
+   ],
+   [
+    "2015–2016",
+    "Miami Heat"
+   ],
+   [
+    "2016–2017,2018–2019",
+    "Hapoel Jerusalem"
+   ],
+   [
+    "2019",
+    "Fujian Sturgeons"
+   ],
+   [
+    "2020",
+    "Maccabi Tel Aviv"
+   ]
+  ]
  },
  "griffbl01": {
-  "error": "pas de page"
+  "page": "Blake Griffin",
+  "career": [
+   [
+    "2009–2018",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2018–2021",
+    "Detroit Pistons"
+   ],
+   [
+    "2021–2022",
+    "Brooklyn Nets"
+   ],
+   [
+    "2022–2023",
+    "Boston Celtics"
+   ]
+  ]
  },
  "webbech01": {
-  "error": "pas de page"
+  "page": "Chris Webber",
+  "career": [
+   [
+    "1993–1994",
+    "Golden State Warriors"
+   ],
+   [
+    "1994–1998",
+    "Washington Bullets / Wizards"
+   ],
+   [
+    "1998–2005",
+    "Sacramento Kings"
+   ],
+   [
+    "2005–2007",
+    "Philadelphia 76ers"
+   ],
+   [
+    "2007",
+    "Detroit Pistons"
+   ],
+   [
+    "2008",
+    "Golden State Warriors"
+   ]
+  ]
  },
  "cartevi01": {
-  "error": "pas de page"
+  "page": "Vince Carter",
+  "career": [
+   [
+    "1998–2004",
+    "Toronto Raptors"
+   ],
+   [
+    "2004–2009",
+    "New Jersey Nets"
+   ],
+   [
+    "2009–2010",
+    "Orlando Magic"
+   ],
+   [
+    "2010–2011",
+    "Phoenix Suns"
+   ],
+   [
+    "2011–2014",
+    "Dallas Mavericks"
+   ],
+   [
+    "2014–2017",
+    "Memphis Grizzlies"
+   ],
+   [
+    "2017–2018",
+    "Sacramento Kings"
+   ],
+   [
+    "2018–2020",
+    "Atlanta Hawks"
+   ]
+  ]
  },
  "rosede01": {
-  "error": "pas de page"
+  "page": "Derrick Rose",
+  "career": [
+   [
+    "2008–2016",
+    "Chicago Bulls"
+   ],
+   [
+    "2016–2017",
+    "New York Knicks"
+   ],
+   [
+    "2017–2018",
+    "Cleveland Cavaliers"
+   ],
+   [
+    "2018–2019",
+    "Minnesota Timberwolves"
+   ],
+   [
+    "2019–2021",
+    "Detroit Pistons"
+   ],
+   [
+    "2021–2023",
+    "New York Knicks"
+   ],
+   [
+    "2023–2024",
+    "Memphis Grizzlies"
+   ]
+  ]
  },
  "aldrila01": {
-  "error": "pas de page"
+  "page": "LaMarcus Aldridge",
+  "career": [
+   [
+    "2006–2015",
+    "Portland Trail Blazers"
+   ],
+   [
+    "2015–2021",
+    "San Antonio Spurs"
+   ],
+   [
+    "2021–2022",
+    "Brooklyn Nets"
+   ]
+  ]
  },
  "walljo01": {
-  "error": "pas de page"
+  "page": "John Wall",
+  "career": [
+   [
+    "2010–2020",
+    "Washington Wizards"
+   ],
+   [
+    "2020–2022",
+    "Houston Rockets"
+   ],
+   [
+    "2022–2023",
+    "Los Angeles Clippers"
+   ]
+  ]
  },
  "walkeke02": {
-  "error": "pas de page"
+  "page": "Kemba Walker",
+  "career": [
+   [
+    "2011–2019",
+    "Charlotte Bobcats / Hornets"
+   ],
+   [
+    "2019–2021",
+    "Boston Celtics"
+   ],
+   [
+    "2021–2022",
+    "New York Knicks"
+   ],
+   [
+    "2022–2023",
+    "Dallas Mavericks"
+   ],
+   [
+    "2023–2024",
+    "AS Monaco"
+   ],
+   [
+    "2024–present",
+    "Charlotte Hornets (player enhancement)"
+   ]
+  ]
  },
  "mournal01": {
-  "error": "pas de page"
+  "page": "Alonzo Mourning",
+  "career": [
+   [
+    "1992–1995",
+    "Charlotte Hornets"
+   ],
+   [
+    "1995–2003",
+    "Miami Heat"
+   ],
+   [
+    "2003–2004",
+    "New Jersey Nets"
+   ],
+   [
+    "2005–2008",
+    "Miami Heat"
+   ]
+  ]
  },
  "hardaan01": {
-  "error": "pas de page"
+  "page": "Anfernee Simons",
+  "career": [
+   [
+    "2018–2025",
+    "Portland Trail Blazers"
+   ],
+   [
+    "2019",
+    "→Agua Caliente Clippers"
+   ],
+   [
+    "2025–2026",
+    "Boston Celtics"
+   ],
+   [
+    "2026",
+    "Chicago Bulls"
+   ],
+   [
+    "2026–present",
+    "Philadelphia 76ers"
+   ]
+  ]
  },
  "johnsjo02": {
-  "error": "pas de page"
+  "page": "Joe Johnson (basketball)",
+  "career": [
+   [
+    "2001–2002",
+    "Boston Celtics"
+   ],
+   [
+    "2002–2005",
+    "Phoenix Suns"
+   ],
+   [
+    "2005–2012",
+    "Atlanta Hawks"
+   ],
+   [
+    "2012–2016",
+    "Brooklyn Nets"
+   ],
+   [
+    "2016",
+    "Miami Heat"
+   ],
+   [
+    "2016–2018",
+    "Utah Jazz"
+   ],
+   [
+    "2018",
+    "Houston Rockets"
+   ],
+   [
+    "2021–2022",
+    "Boston Celtics"
+   ]
+  ]
  },
  "haywago01": {
-  "error": "pas de page"
+  "page": "Gordon Hayward",
+  "career": [
+   [
+    "2010–2017",
+    "Utah Jazz"
+   ],
+   [
+    "2017–2020",
+    "Boston Celtics"
+   ],
+   [
+    "2020–2024",
+    "Charlotte Hornets"
+   ],
+   [
+    "2024",
+    "Oklahoma City Thunder"
+   ]
+  ]
  },
  "couside01": {
-  "error": "pas de page"
+  "page": "DeMarcus Cousins",
+  "career": [
+   [
+    "2010–2017",
+    "Sacramento Kings"
+   ],
+   [
+    "2017–2018",
+    "New Orleans Pelicans"
+   ],
+   [
+    "2018–2019",
+    "Golden State Warriors"
+   ],
+   [
+    "2020–2021",
+    "Houston Rockets"
+   ],
+   [
+    "2021",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2021–2022",
+    "Milwaukee Bucks"
+   ],
+   [
+    "2022",
+    "Denver Nuggets"
+   ],
+   [
+    "2023",
+    "Mets de Guaynabo"
+   ],
+   [
+    "2023–2024",
+    "Taiwan Beer Leopards"
+   ],
+   [
+    "2025",
+    "Selenge Bodons"
+   ],
+   [
+    "2025",
+    "Mets de Guaynabo"
+   ],
+   [
+    "2026–present",
+    "Selenge Bodons"
+   ]
+  ]
  },
  "iguodan01": {
-  "error": "pas de page"
+  "page": "Andre Iguodala",
+  "career": [
+   [
+    "2004–2012",
+    "Philadelphia 76ers"
+   ],
+   [
+    "2012–2013",
+    "Denver Nuggets"
+   ],
+   [
+    "2013–2019",
+    "Golden State Warriors"
+   ],
+   [
+    "2020–2021",
+    "Miami Heat"
+   ],
+   [
+    "2021–2023",
+    "Golden State Warriors"
+   ]
+  ]
  },
  "artesro01": {
-  "error": "pas de page"
+  "page": "Metta Sandiford-Artest",
+  "career": [
+   [
+    "1999–2002",
+    "Chicago Bulls"
+   ],
+   [
+    "2002–2006",
+    "Indiana Pacers"
+   ],
+   [
+    "2006–2008",
+    "Sacramento Kings"
+   ],
+   [
+    "2008–2009",
+    "Houston Rockets"
+   ],
+   [
+    "2009–2013",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2013–2014",
+    "New York Knicks"
+   ],
+   [
+    "2014",
+    "Sichuan Blue Whales"
+   ],
+   [
+    "2015",
+    "Cantù"
+   ],
+   [
+    "2015–2017",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2017–2018",
+    "South Bay Lakers (player development)"
+   ]
+  ]
  },
  "odomla01": {
-  "error": "pas de page"
+  "page": "Lamar Odom",
+  "career": [
+   [
+    "1999–2003",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2003–2004",
+    "Miami Heat"
+   ],
+   [
+    "2004–2011",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2011–2012",
+    "Dallas Mavericks"
+   ],
+   [
+    "2012–2013",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2014",
+    "Laboral Kutxa Baskonia"
+   ]
+  ]
  },
  "linje01": {
-  "error": "pas de page"
+  "page": "Jeremy Lin",
+  "career": [
+   [
+    "2010–2011",
+    "Golden State Warriors"
+   ],
+   [
+    "2010–2011",
+    "→Reno Bighorns"
+   ],
+   [
+    "2011",
+    "Dongguan Leopards"
+   ],
+   [
+    "2011–2012",
+    "New York Knicks"
+   ],
+   [
+    "2012",
+    "→Erie BayHawks"
+   ],
+   [
+    "2012–2014",
+    "Houston Rockets"
+   ],
+   [
+    "2014–2015",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2015–2016",
+    "Charlotte Hornets"
+   ],
+   [
+    "2016–2018",
+    "Brooklyn Nets"
+   ],
+   [
+    "2018–2019",
+    "Atlanta Hawks"
+   ],
+   [
+    "2019",
+    "Toronto Raptors"
+   ],
+   [
+    "2019–2020",
+    "Beijing Ducks"
+   ],
+   [
+    "2021",
+    "Santa Cruz Warriors"
+   ],
+   [
+    "2021–2022",
+    "Beijing Ducks"
+   ],
+   [
+    "2022",
+    "Guangzhou Loong Lions"
+   ],
+   [
+    "2023",
+    "Kaohsiung 17LIVE Steelers"
+   ],
+   [
+    "2023–2025",
+    "New Taipei Kings"
+   ]
+  ]
  },
  "wallara01": {
-  "error": "pas de page"
+  "page": "Rasheed Wallace",
+  "career": [
+   [
+    "1995–1996",
+    "Washington Bullets"
+   ],
+   [
+    "1996–2004",
+    "Portland Trail Blazers"
+   ],
+   [
+    "2004",
+    "Atlanta Hawks"
+   ],
+   [
+    "2004–2009",
+    "Detroit Pistons"
+   ],
+   [
+    "2009–2010",
+    "Boston Celtics"
+   ],
+   [
+    "2012–2013",
+    "New York Knicks"
+   ],
+   [
+    "2013–2014",
+    "Detroit Pistons (assistant)"
+   ],
+   [
+    "2019–2021",
+    "Jordan HS"
+   ],
+   [
+    "2021–2022",
+    "Memphis (assistant)"
+   ]
+  ]
  },
  "gasolma01": {
-  "error": "pas de page"
+  "page": "Marc Gasol",
+  "career": [
+   [
+    "2003–2006",
+    "FC Barcelona"
+   ],
+   [
+    "2006–2008",
+    "CB Girona"
+   ],
+   [
+    "2008–2019",
+    "Memphis Grizzlies"
+   ],
+   [
+    "2019–2020",
+    "Toronto Raptors"
+   ],
+   [
+    "2020–2021",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2021–2023",
+    "Bàsquet Girona"
+   ]
+  ]
  },
  "francst01": {
-  "error": "pas de page"
+  "page": "Steve Francis",
+  "career": [
+   [
+    "1999–2004",
+    "Houston Rockets"
+   ],
+   [
+    "2004–2006",
+    "Orlando Magic"
+   ],
+   [
+    "2006–2007",
+    "New York Knicks"
+   ],
+   [
+    "2007–2008",
+    "Houston Rockets"
+   ],
+   [
+    "2010",
+    "Beijing Ducks"
+   ]
+  ]
  },
  "arenagi01": {
-  "error": "pas de page"
+  "page": "Gilbert Arenas",
+  "career": [
+   [
+    "2001–2003",
+    "Golden State Warriors"
+   ],
+   [
+    "2003–2010",
+    "Washington Wizards"
+   ],
+   [
+    "2010–2011",
+    "Orlando Magic"
+   ],
+   [
+    "2012",
+    "Memphis Grizzlies"
+   ],
+   [
+    "2012–2013",
+    "Shanghai Sharks"
+   ]
+  ]
  },
  "willide01": {
-  "error": "pas de page"
+  "page": "Deron Williams",
+  "career": [
+   [
+    "2005–2011",
+    "Utah Jazz"
+   ],
+   [
+    "2011–2015",
+    "New Jersey / Brooklyn Nets"
+   ],
+   [
+    "2011",
+    "Beşiktaş"
+   ],
+   [
+    "2015–2017",
+    "Dallas Mavericks"
+   ],
+   [
+    "2017",
+    "Cleveland Cavaliers"
+   ]
+  ]
  },
  "sprewla01": {
-  "error": "pas de page"
+  "page": "Latrell Sprewell",
+  "career": [
+   [
+    "1992–1998",
+    "Golden State Warriors"
+   ],
+   [
+    "1999–2003",
+    "New York Knicks"
+   ],
+   [
+    "2003–2005",
+    "Minnesota Timberwolves"
+   ]
+  ]
  },
  "mariosh01": {
-  "error": "pas de page"
+  "page": "Shawn Marion",
+  "career": [
+   [
+    "1999–2008",
+    "Phoenix Suns"
+   ],
+   [
+    "2008–2009",
+    "Miami Heat"
+   ],
+   [
+    "2009",
+    "Toronto Raptors"
+   ],
+   [
+    "2009–2014",
+    "Dallas Mavericks"
+   ],
+   [
+    "2014–2015",
+    "Cleveland Cavaliers"
+   ]
+  ]
  },
  "millspa01": {
-  "error": "pas de page"
+  "page": "Paul Millsap",
+  "career": [
+   [
+    "2006–2013",
+    "Utah Jazz"
+   ],
+   [
+    "2013–2017",
+    "Atlanta Hawks"
+   ],
+   [
+    "2017–2021",
+    "Denver Nuggets"
+   ],
+   [
+    "2021–2022",
+    "Brooklyn Nets"
+   ],
+   [
+    "2022",
+    "Philadelphia 76ers"
+   ]
+  ]
  },
  "jamisan01": {
-  "error": "pas de page"
+  "page": "Antawn Jamison",
+  "career": [
+   [
+    "1998–2003",
+    "Golden State Warriors"
+   ],
+   [
+    "2003–2004",
+    "Dallas Mavericks"
+   ],
+   [
+    "2004–2010",
+    "Washington Wizards"
+   ],
+   [
+    "2010–2012",
+    "Cleveland Cavaliers"
+   ],
+   [
+    "2012–2013",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2013–2014",
+    "Los Angeles Clippers"
+   ]
+  ]
  },
  "hamilri01": {
-  "error": "pas de page"
+  "page": "Richard Hamilton (basketball)",
+  "career": [
+   [
+    "1999–2002",
+    "Washington Wizards"
+   ],
+   [
+    "2002–2011",
+    "Detroit Pistons"
+   ],
+   [
+    "2011–2013",
+    "Chicago Bulls"
+   ]
+  ]
  },
  "walkean02": {
-  "error": "pas de page"
+  "page": "Antoine Walker",
+  "career": [
+   [
+    "1996–2003",
+    "Boston Celtics"
+   ],
+   [
+    "2003–2004",
+    "Dallas Mavericks"
+   ],
+   [
+    "2004–2005",
+    "Atlanta Hawks"
+   ],
+   [
+    "2005",
+    "Boston Celtics"
+   ],
+   [
+    "2005–2007",
+    "Miami Heat"
+   ],
+   [
+    "2007–2008",
+    "Minnesota Timberwolves"
+   ],
+   [
+    "2010",
+    "Mets de Guaynabo"
+   ],
+   [
+    "2010–2012",
+    "Idaho Stampede"
+   ]
+  ]
  },
  "randoza01": {
-  "error": "pas de page"
+  "page": "Zach Randolph",
+  "career": [
+   [
+    "2001–2007",
+    "Portland Trail Blazers"
+   ],
+   [
+    "2007–2008",
+    "New York Knicks"
+   ],
+   [
+    "2008–2009",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2009–2017",
+    "Memphis Grizzlies"
+   ],
+   [
+    "2017–2019",
+    "Sacramento Kings"
+   ]
+  ]
  },
  "bakervi01": {
-  "error": "pas de page"
+  "page": "Vin Baker",
+  "career": [
+   [
+    "1993–1997",
+    "Milwaukee Bucks"
+   ],
+   [
+    "1997–2002",
+    "Seattle SuperSonics"
+   ],
+   [
+    "2002–2004",
+    "Boston Celtics"
+   ],
+   [
+    "2004–2005",
+    "New York Knicks"
+   ],
+   [
+    "2005",
+    "Houston Rockets"
+   ],
+   [
+    "2006",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2018–2026",
+    "Milwaukee Bucks (assistant)"
+   ],
+   [
+    "2026–present",
+    "Miami Heat (assistant)"
+   ]
+  ]
  },
  "finlemi01": {
-  "error": "pas de page"
+  "page": "Michael Finley",
+  "career": [
+   [
+    "1995–1996",
+    "Phoenix Suns"
+   ],
+   [
+    "1996–2005",
+    "Dallas Mavericks"
+   ],
+   [
+    "2005–2010",
+    "San Antonio Spurs"
+   ],
+   [
+    "2010",
+    "Boston Celtics"
+   ]
+  ]
  },
  "jonesed02": {
-  "error": "pas de page"
+  "page": "Eddie Jones (basketball)",
+  "career": [
+   [
+    "1994–1999",
+    "Los Angeles Lakers"
+   ],
+   [
+    "1999–2000",
+    "Charlotte Hornets"
+   ],
+   [
+    "2000–2005",
+    "Miami Heat"
+   ],
+   [
+    "2005–2007",
+    "Memphis Grizzlies"
+   ],
+   [
+    "2007",
+    "Miami Heat"
+   ],
+   [
+    "2007–2008",
+    "Dallas Mavericks"
+   ]
+  ]
  },
  "brandel01": {
-  "error": "pas de page"
+  "page": "Elton Brand",
+  "career": [
+   [
+    "1999–2001",
+    "Chicago Bulls"
+   ],
+   [
+    "2001–2008",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2008–2012",
+    "Philadelphia 76ers"
+   ],
+   [
+    "2012–2013",
+    "Dallas Mavericks"
+   ],
+   [
+    "2013–2015",
+    "Atlanta Hawks"
+   ],
+   [
+    "2016",
+    "Philadelphia 76ers"
+   ]
+  ]
  },
  "stojape01": {
-  "error": "pas de page"
+  "page": "Peja Stojaković",
+  "career": [
+   [
+    "1992–1993",
+    "Crvena zvezda"
+   ],
+   [
+    "1993–1998",
+    "PAOK"
+   ],
+   [
+    "1998–2006",
+    "Sacramento Kings"
+   ],
+   [
+    "2006",
+    "Indiana Pacers"
+   ],
+   [
+    "2006–2010",
+    "New Orleans Hornets"
+   ],
+   [
+    "2010–2011",
+    "Toronto Raptors"
+   ],
+   [
+    "2011",
+    "Dallas Mavericks"
+   ]
+  ]
  },
  "marbust01": {
-  "error": "pas de page"
+  "page": "Stephon Marbury",
+  "career": [
+   [
+    "1996–1999",
+    "Minnesota Timberwolves"
+   ],
+   [
+    "1999–2001",
+    "New Jersey Nets"
+   ],
+   [
+    "2001–2004",
+    "Phoenix Suns"
+   ],
+   [
+    "2004–2009",
+    "New York Knicks"
+   ],
+   [
+    "2009",
+    "Boston Celtics"
+   ],
+   [
+    "2010",
+    "Shanxi Zhongyu Brave Dragons"
+   ],
+   [
+    "2010–2011",
+    "Foshan Dralions"
+   ],
+   [
+    "2011–2017",
+    "Beijing Ducks"
+   ],
+   [
+    "2017–2018",
+    "Beijing Fly Dragons"
+   ],
+   [
+    "2019–2023",
+    "Beijing Royal Fighters"
+   ]
+  ]
  },
  "lewisra02": {
-  "error": "pas de page"
+  "page": "Rashard Lewis",
+  "career": [
+   [
+    "1998–2007",
+    "Seattle SuperSonics"
+   ],
+   [
+    "2007–2010",
+    "Orlando Magic"
+   ],
+   [
+    "2010–2012",
+    "Washington Wizards"
+   ],
+   [
+    "2012–2014",
+    "Miami Heat"
+   ]
+  ]
  },
  "davisba01": {
-  "error": "pas de page"
+  "page": "Baron Davis",
+  "career": [
+   [
+    "1999–2002",
+    "Charlotte Hornets"
+   ],
+   [
+    "2002–2005",
+    "New Orleans Hornets"
+   ],
+   [
+    "2005–2008",
+    "Golden State Warriors"
+   ],
+   [
+    "2008–2011",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2011",
+    "Cleveland Cavaliers"
+   ],
+   [
+    "2011–2012",
+    "New York Knicks"
+   ],
+   [
+    "2016",
+    "Delaware 87ers"
+   ]
+  ]
  },
  "denglu01": {
-  "error": "pas de page"
+  "page": "Luol Deng",
+  "career": [
+   [
+    "2004–2014",
+    "Chicago Bulls"
+   ],
+   [
+    "2014",
+    "Cleveland Cavaliers"
+   ],
+   [
+    "2014–2016",
+    "Miami Heat"
+   ],
+   [
+    "2016–2018",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2018–2019",
+    "Minnesota Timberwolves"
+   ]
+  ]
  },
  "terryja01": {
-  "error": "pas de page"
+  "page": "Jason Terry",
+  "career": [
+   [
+    "1999–2004",
+    "Atlanta Hawks"
+   ],
+   [
+    "2004–2012",
+    "Dallas Mavericks"
+   ],
+   [
+    "2012–2013",
+    "Boston Celtics"
+   ],
+   [
+    "2013–2014",
+    "Brooklyn Nets"
+   ],
+   [
+    "2014–2016",
+    "Houston Rockets"
+   ],
+   [
+    "2016–2018",
+    "Milwaukee Bucks"
+   ],
+   [
+    "2020–2021",
+    "Arizona (assistant)"
+   ],
+   [
+    "2021–2022",
+    "Grand Rapids Gold"
+   ],
+   [
+    "2022–present",
+    "Utah Jazz (assistant)"
+   ]
+  ]
  },
  "wallabe01": {
-  "error": "pas de page"
+  "page": "Ben Wallace (basketball)",
+  "career": [
+   [
+    "1996",
+    "Viola Reggio Calabria"
+   ],
+   [
+    "1996–1999",
+    "Washington Bullets / Wizards"
+   ],
+   [
+    "1999–2000",
+    "Orlando Magic"
+   ],
+   [
+    "2000–2006",
+    "Detroit Pistons"
+   ],
+   [
+    "2006–2008",
+    "Chicago Bulls"
+   ],
+   [
+    "2008–2009",
+    "Cleveland Cavaliers"
+   ],
+   [
+    "2009–2012",
+    "Detroit Pistons"
+   ]
+  ]
  },
  "abdursh01": {
-  "error": "pas de page"
+  "page": "Shareef Abdur-Rahim",
+  "career": [
+   [
+    "1996–2001",
+    "Vancouver Grizzlies"
+   ],
+   [
+    "2001–2004",
+    "Atlanta Hawks"
+   ],
+   [
+    "2004–2005",
+    "Portland Trail Blazers"
+   ],
+   [
+    "2005–2008",
+    "Sacramento Kings"
+   ],
+   [
+    "2008–2010",
+    "Sacramento Kings (assistant)"
+   ]
+  ]
  },
  "gayru01": {
-  "error": "pas de page"
+  "page": "Rudy Gay",
+  "career": [
+   [
+    "2006–2013",
+    "Memphis Grizzlies"
+   ],
+   [
+    "2013",
+    "Toronto Raptors"
+   ],
+   [
+    "2013–2017",
+    "Sacramento Kings"
+   ],
+   [
+    "2017–2021",
+    "San Antonio Spurs"
+   ],
+   [
+    "2021–2023",
+    "Utah Jazz"
+   ]
+  ]
  },
  "leeda02": {
-  "error": "pas de page"
+  "page": "David Lee (basketball)",
+  "career": [
+   [
+    "2005–2010",
+    "New York Knicks"
+   ],
+   [
+    "2010–2015",
+    "Golden State Warriors"
+   ],
+   [
+    "2015–2016",
+    "Boston Celtics"
+   ],
+   [
+    "2016",
+    "Dallas Mavericks"
+   ],
+   [
+    "2016–2017",
+    "San Antonio Spurs"
+   ]
+  ]
  },
  "ellismo01": {
-  "error": "pas de page"
+  "page": "Monta Ellis",
+  "career": [
+   [
+    "2005–2012",
+    "Golden State Warriors"
+   ],
+   [
+    "2012–2013",
+    "Milwaukee Bucks"
+   ],
+   [
+    "2013–2015",
+    "Dallas Mavericks"
+   ],
+   [
+    "2015–2017",
+    "Indiana Pacers"
+   ]
+  ]
  },
  "korveky01": {
-  "error": "pas de page"
+  "page": "Kyle Korver",
+  "career": [
+   [
+    "2003–2007",
+    "Philadelphia 76ers"
+   ],
+   [
+    "2007–2010",
+    "Utah Jazz"
+   ],
+   [
+    "2010–2012",
+    "Chicago Bulls"
+   ],
+   [
+    "2012–2017",
+    "Atlanta Hawks"
+   ],
+   [
+    "2017–2018",
+    "Cleveland Cavaliers"
+   ],
+   [
+    "2018–2019",
+    "Utah Jazz"
+   ],
+   [
+    "2019–2020",
+    "Milwaukee Bucks"
+   ]
+  ]
  },
  "fishede01": {
-  "error": "pas de page"
+  "page": "Derek Fisher",
+  "career": [
+   [
+    "1996–2004",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2004–2006",
+    "Golden State Warriors"
+   ],
+   [
+    "2006–2007",
+    "Utah Jazz"
+   ],
+   [
+    "2007–2012",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2012",
+    "Oklahoma City Thunder"
+   ],
+   [
+    "2012",
+    "Dallas Mavericks"
+   ],
+   [
+    "2013–2014",
+    "Oklahoma City Thunder"
+   ],
+   [
+    "2014–2016",
+    "New York Knicks"
+   ],
+   [
+    "2019–2022",
+    "Los Angeles Sparks"
+   ]
+  ]
  },
  "smithjr01": {
-  "error": "pas de page"
+  "page": "Malachi Smith (basketball)",
+  "career": [
+   [
+    "2023–2024",
+    "Rip City Remix"
+   ],
+   [
+    "2024",
+    "Wisconsin Herd"
+   ],
+   [
+    "2024–2025",
+    "Memphis Hustle"
+   ],
+   [
+    "2025–2026",
+    "Long Island Nets"
+   ],
+   [
+    "2026",
+    "Brooklyn Nets"
+   ],
+   [
+    "2026–present",
+    "Toronto Raptors"
+   ],
+   [
+    "2026–present",
+    "→Raptors 905"
+   ]
+  ]
  },
  "oladivi01": {
-  "error": "pas de page"
+  "page": "Victor Oladipo",
+  "career": [
+   [
+    "2013–2016",
+    "Orlando Magic"
+   ],
+   [
+    "2016–2017",
+    "Oklahoma City Thunder"
+   ],
+   [
+    "2017–2021",
+    "Indiana Pacers"
+   ],
+   [
+    "2021",
+    "Houston Rockets"
+   ],
+   [
+    "2021–2023",
+    "Miami Heat"
+   ],
+   [
+    "2025–2026",
+    "Wisconsin Herd"
+   ]
+  ]
  },
  "robinna01": {
-  "error": "pas de page"
+  "page": "Nate Robinson",
+  "career": [
+   [
+    "2005–2010",
+    "New York Knicks"
+   ],
+   [
+    "2010–2011",
+    "Boston Celtics"
+   ],
+   [
+    "2011",
+    "Oklahoma City Thunder"
+   ],
+   [
+    "2012",
+    "Golden State Warriors"
+   ],
+   [
+    "2012–2013",
+    "Chicago Bulls"
+   ],
+   [
+    "2013–2015",
+    "Denver Nuggets"
+   ],
+   [
+    "2015",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2015",
+    "New Orleans Pelicans"
+   ],
+   [
+    "2016",
+    "Hapoel Tel Aviv"
+   ],
+   [
+    "2017",
+    "Delaware 87ers"
+   ],
+   [
+    "2017",
+    "Guaros de Lara"
+   ]
+  ]
  },
  "beaslmi01": {
-  "error": "pas de page"
+  "page": "Michael Beasley",
+  "career": [
+   [
+    "2008–2010",
+    "Miami Heat"
+   ],
+   [
+    "2010–2012",
+    "Minnesota Timberwolves"
+   ],
+   [
+    "2012–2013",
+    "Phoenix Suns"
+   ],
+   [
+    "2013–2014",
+    "Miami Heat"
+   ],
+   [
+    "2014–2015",
+    "Shanghai Sharks"
+   ],
+   [
+    "2015",
+    "Miami Heat"
+   ],
+   [
+    "2015–2016",
+    "Shandong Golden Stars"
+   ],
+   [
+    "2016",
+    "Houston Rockets"
+   ],
+   [
+    "2016–2017",
+    "Milwaukee Bucks"
+   ],
+   [
+    "2017–2018",
+    "New York Knicks"
+   ],
+   [
+    "2018–2019",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2019",
+    "Guangdong Southern Tigers"
+   ],
+   [
+    "2021",
+    "Cangrejeros de Santurce"
+   ],
+   [
+    "2022",
+    "Shanghai Sharks"
+   ]
+  ]
  },
  "dragigo01": {
-  "error": "pas de page"
+  "page": "Goran Dragić",
+  "career": [
+   [
+    "2004–2006",
+    "Geoplin Slovan"
+   ],
+   [
+    "2006–2007",
+    "Murcia"
+   ],
+   [
+    "2007–2008",
+    "Union Olimpija"
+   ],
+   [
+    "2008–2011",
+    "Phoenix Suns"
+   ],
+   [
+    "2011–2012",
+    "Houston Rockets"
+   ],
+   [
+    "2011",
+    "Saski Baskonia"
+   ],
+   [
+    "2012–2015",
+    "Phoenix Suns"
+   ],
+   [
+    "2015–2021",
+    "Miami Heat"
+   ],
+   [
+    "2021–2022",
+    "Toronto Raptors"
+   ],
+   [
+    "2022",
+    "Brooklyn Nets"
+   ],
+   [
+    "2022–2023",
+    "Chicago Bulls"
+   ],
+   [
+    "2023",
+    "Milwaukee Bucks"
+   ]
+  ]
  },
  "ibakase01": {
-  "error": "pas de page"
+  "page": "Serge Ibaka",
+  "career": [
+   [
+    "2006",
+    "Inter Club"
+   ],
+   [
+    "2007–2008",
+    "L'Hospitalet"
+   ],
+   [
+    "2008–2009",
+    "Manresa"
+   ],
+   [
+    "2009–2016",
+    "Oklahoma City Thunder"
+   ],
+   [
+    "2011",
+    "Real Madrid"
+   ],
+   [
+    "2016–2017",
+    "Orlando Magic"
+   ],
+   [
+    "2017–2020",
+    "Toronto Raptors"
+   ],
+   [
+    "2020–2022",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2021",
+    "→Agua Caliente Clippers"
+   ],
+   [
+    "2022–2023",
+    "Milwaukee Bucks"
+   ],
+   [
+    "2023–2024",
+    "Bayern Munich"
+   ],
+   [
+    "2024–2025",
+    "Real Madrid"
+   ]
+  ]
  },
  "noahjo01": {
-  "error": "pas de page"
+  "page": "Joakim Noah",
+  "career": [
+   [
+    "2007–2016",
+    "Chicago Bulls"
+   ],
+   [
+    "2016–2018",
+    "New York Knicks"
+   ],
+   [
+    "2017",
+    "→Westchester Knicks"
+   ],
+   [
+    "2018–2019",
+    "Memphis Grizzlies"
+   ],
+   [
+    "2020",
+    "Los Angeles Clippers"
+   ]
+  ]
  },
  "horryro01": {
-  "error": "pas de page"
+  "page": "Robert Horry",
+  "career": [
+   [
+    "1992–1996",
+    "Houston Rockets"
+   ],
+   [
+    "1996–1997",
+    "Phoenix Suns"
+   ],
+   [
+    "1997–2003",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2003–2008",
+    "San Antonio Spurs"
+   ]
+  ]
  },
  "turkohe01": {
-  "error": "pas de page"
+  "page": "Hedo Türkoğlu",
+  "career": [
+   [
+    "1996–2000",
+    "Efes Pilsen"
+   ],
+   [
+    "2000–2003",
+    "Sacramento Kings"
+   ],
+   [
+    "2003–2004",
+    "San Antonio Spurs"
+   ],
+   [
+    "2004–2009",
+    "Orlando Magic"
+   ],
+   [
+    "2009–2010",
+    "Toronto Raptors"
+   ],
+   [
+    "2010",
+    "Phoenix Suns"
+   ],
+   [
+    "2010–2014",
+    "Orlando Magic"
+   ],
+   [
+    "2014–2015",
+    "Los Angeles Clippers"
+   ]
+  ]
  },
  "cambyma01": {
-  "error": "pas de page"
+  "page": "Marcus Camby",
+  "career": [
+   [
+    "1996–1998",
+    "Toronto Raptors"
+   ],
+   [
+    "1998–2002",
+    "New York Knicks"
+   ],
+   [
+    "2002–2008",
+    "Denver Nuggets"
+   ],
+   [
+    "2008–2010",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2010–2012",
+    "Portland Trail Blazers"
+   ],
+   [
+    "2012",
+    "Houston Rockets"
+   ],
+   [
+    "2012–2013",
+    "New York Knicks"
+   ]
+  ]
  },
  "vanexni01": {
-  "error": "pas de page"
+  "page": "Nick Van Exel",
+  "career": [
+   [
+    "1993–1998",
+    "Los Angeles Lakers"
+   ],
+   [
+    "1998–2002",
+    "Denver Nuggets"
+   ],
+   [
+    "2002–2003",
+    "Dallas Mavericks"
+   ],
+   [
+    "2003–2004",
+    "Golden State Warriors"
+   ],
+   [
+    "2004–2005",
+    "Portland Trail Blazers"
+   ],
+   [
+    "2005–2006",
+    "San Antonio Spurs"
+   ],
+   [
+    "2009–2010",
+    "Texas Southern (assistant)"
+   ],
+   [
+    "2013–2014",
+    "Milwaukee Bucks (assistant)"
+   ],
+   [
+    "2014–2015",
+    "Texas Legends (assistant)"
+   ],
+   [
+    "2015–2016",
+    "Texas Legends"
+   ],
+   [
+    "2016–2019",
+    "Memphis Grizzlies (assistant)"
+   ],
+   [
+    "2021–2023",
+    "Atlanta Hawks (assistant)"
+   ]
+  ]
  },
  "mcdyean01": {
-  "error": "pas de page"
+  "page": "Antonio McDyess",
+  "career": [
+   [
+    "1995–1997",
+    "Denver Nuggets"
+   ],
+   [
+    "1997–1998",
+    "Phoenix Suns"
+   ],
+   [
+    "1999–2002",
+    "Denver Nuggets"
+   ],
+   [
+    "2002–2004",
+    "New York Knicks"
+   ],
+   [
+    "2004",
+    "Phoenix Suns"
+   ],
+   [
+    "2004–2009",
+    "Detroit Pistons"
+   ],
+   [
+    "2009–2011",
+    "San Antonio Spurs"
+   ]
+  ]
  },
  "bibbymi01": {
-  "error": "pas de page"
+  "page": "Mike Bibby",
+  "career": [
+   [
+    "1998–2001",
+    "Vancouver Grizzlies"
+   ],
+   [
+    "2001–2008",
+    "Sacramento Kings"
+   ],
+   [
+    "2008–2011",
+    "Atlanta Hawks"
+   ],
+   [
+    "2011",
+    "Washington Wizards"
+   ],
+   [
+    "2011",
+    "Miami Heat"
+   ],
+   [
+    "2011–2012",
+    "New York Knicks"
+   ],
+   [
+    "2013–2014",
+    "Shadow Mountain HS (assistant)"
+   ],
+   [
+    "2014–2019",
+    "Shadow Mountain HS"
+   ],
+   [
+    "2019",
+    "Hillcrest Prep HS"
+   ],
+   [
+    "2025−present",
+    "Sacramento State"
+   ]
+  ]
  },
  "richaja01": {
-  "error": "pas de page"
+  "page": "Jason Richardson",
+  "career": [
+   [
+    "2001–2007",
+    "Golden State Warriors"
+   ],
+   [
+    "2007–2008",
+    "Charlotte Bobcats"
+   ],
+   [
+    "2008–2010",
+    "Phoenix Suns"
+   ],
+   [
+    "2010–2012",
+    "Orlando Magic"
+   ],
+   [
+    "2012–2015",
+    "Philadelphia 76ers"
+   ]
+  ]
  },
  "mashbja01": {
-  "error": "pas de page"
+  "page": "Jamal Mashburn",
+  "career": [
+   [
+    "1993–1997",
+    "Dallas Mavericks"
+   ],
+   [
+    "1997–2000",
+    "Miami Heat"
+   ],
+   [
+    "2000–2002",
+    "Charlotte Hornets"
+   ],
+   [
+    "2002–2005",
+    "New Orleans Hornets"
+   ]
+  ]
  },
  "jeffeal01": {
-  "error": "pas de page"
+  "page": "Al Jefferson",
+  "career": [
+   [
+    "2004–2007",
+    "Boston Celtics"
+   ],
+   [
+    "2007–2010",
+    "Minnesota Timberwolves"
+   ],
+   [
+    "2010–2013",
+    "Utah Jazz"
+   ],
+   [
+    "2013–2016",
+    "Charlotte Bobcats / Hornets"
+   ],
+   [
+    "2016–2018",
+    "Indiana Pacers"
+   ],
+   [
+    "2018",
+    "Xinjiang Flying Tigers"
+   ]
+  ]
  },
  "laettch01": {
-  "error": "pas de page"
+  "page": "Christian Laettner",
+  "career": [
+   [
+    "1992–1996",
+    "Minnesota Timberwolves"
+   ],
+   [
+    "1996–1998",
+    "Atlanta Hawks"
+   ],
+   [
+    "1999–2000",
+    "Detroit Pistons"
+   ],
+   [
+    "2000–2001",
+    "Dallas Mavericks"
+   ],
+   [
+    "2001–2004",
+    "Washington Wizards"
+   ],
+   [
+    "2004–2005",
+    "Miami Heat"
+   ],
+   [
+    "2012",
+    "Fort Wayne Mad Ants (assistant)"
+   ]
+  ]
  },
  "harride01": {
-  "error": "pas de page"
+  "page": "Devin Harris",
+  "career": [
+   [
+    "2004–2008",
+    "Dallas Mavericks"
+   ],
+   [
+    "2008–2011",
+    "New Jersey Nets"
+   ],
+   [
+    "2011–2012",
+    "Utah Jazz"
+   ],
+   [
+    "2012–2013",
+    "Atlanta Hawks"
+   ],
+   [
+    "2013–2018",
+    "Dallas Mavericks"
+   ],
+   [
+    "2018",
+    "Denver Nuggets"
+   ],
+   [
+    "2018–2019",
+    "Dallas Mavericks"
+   ]
+  ]
  },
  "roseja01": {
-  "error": "pas de page"
+  "page": "Jalen Rose",
+  "career": [
+   [
+    "1994–1996",
+    "Denver Nuggets"
+   ],
+   [
+    "1996–2002",
+    "Indiana Pacers"
+   ],
+   [
+    "2002–2003",
+    "Chicago Bulls"
+   ],
+   [
+    "2003–2006",
+    "Toronto Raptors"
+   ],
+   [
+    "2006",
+    "New York Knicks"
+   ],
+   [
+    "2006–2007",
+    "Phoenix Suns"
+   ]
+  ]
  },
  "maggeco01": {
-  "error": "pas de page"
+  "page": "Corey Maggette",
+  "career": [
+   [
+    "1999–2000",
+    "Orlando Magic"
+   ],
+   [
+    "2000–2008",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2008–2010",
+    "Golden State Warriors"
+   ],
+   [
+    "2010–2011",
+    "Milwaukee Bucks"
+   ],
+   [
+    "2011–2012",
+    "Charlotte Bobcats"
+   ],
+   [
+    "2012–2013",
+    "Detroit Pistons"
+   ]
+  ]
  },
  "teaguje01": {
-  "error": "pas de page"
+  "page": "Jeff Teague",
+  "career": [
+   [
+    "2009–2016",
+    "Atlanta Hawks"
+   ],
+   [
+    "2016–2017",
+    "Indiana Pacers"
+   ],
+   [
+    "2017–2020",
+    "Minnesota Timberwolves"
+   ],
+   [
+    "2020",
+    "Atlanta Hawks"
+   ],
+   [
+    "2020–2021",
+    "Boston Celtics"
+   ],
+   [
+    "2021",
+    "Milwaukee Bucks"
+   ],
+   [
+    "2023–present",
+    "Pike High School"
+   ]
+  ]
  },
  "smithjo03": {
-  "error": "pas de page"
+  "page": "Josh Smith",
+  "career": [
+   [
+    "2004–2013",
+    "Atlanta Hawks"
+   ],
+   [
+    "2013–2014",
+    "Detroit Pistons"
+   ],
+   [
+    "2014–2015",
+    "Houston Rockets"
+   ],
+   [
+    "2015–2016",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2016",
+    "Houston Rockets"
+   ],
+   [
+    "2016–2017",
+    "Sichuan Blue Whales"
+   ],
+   [
+    "2017",
+    "New Orleans Pelicans"
+   ]
+  ]
  },
  "nelsoja01": {
-  "error": "pas de page"
+  "page": "Jameer Nelson",
+  "career": [
+   [
+    "2004–2014",
+    "Orlando Magic"
+   ],
+   [
+    "2014",
+    "Dallas Mavericks"
+   ],
+   [
+    "2014–2015",
+    "Boston Celtics"
+   ],
+   [
+    "2015–2017",
+    "Denver Nuggets"
+   ],
+   [
+    "2017–2018",
+    "New Orleans Pelicans"
+   ],
+   [
+    "2018",
+    "Detroit Pistons"
+   ]
+  ]
  },
  "wallage01": {
-  "error": "pas de page"
+  "page": "Gerald Wallace",
+  "career": [
+   [
+    "2001–2004",
+    "Sacramento Kings"
+   ],
+   [
+    "2004–2011",
+    "Charlotte Bobcats"
+   ],
+   [
+    "2011–2012",
+    "Portland Trail Blazers"
+   ],
+   [
+    "2012–2013",
+    "New Jersey / Brooklyn Nets"
+   ],
+   [
+    "2013–2015",
+    "Boston Celtics"
+   ]
+  ]
  },
  "guglito01": {
-  "error": "pas de page"
+  "page": "Tom Gugliotta",
+  "career": [
+   [
+    "1992–1994",
+    "Washington Bullets"
+   ],
+   [
+    "1994–1995",
+    "Golden State Warriors"
+   ],
+   [
+    "1995–1998",
+    "Minnesota Timberwolves"
+   ],
+   [
+    "1999–2004",
+    "Phoenix Suns"
+   ],
+   [
+    "2004",
+    "Utah Jazz"
+   ],
+   [
+    "2004–2005",
+    "Boston Celtics"
+   ],
+   [
+    "2005",
+    "Atlanta Hawks"
+   ]
+  ]
  },
  "martike02": {
-  "error": "pas de page"
+  "page": "Kevin Durant",
+  "career": [
+   [
+    "2007–2016",
+    "Seattle SuperSonics / Oklahoma City Thunder"
+   ],
+   [
+    "2016–2019",
+    "Golden State Warriors"
+   ],
+   [
+    "2019–2023",
+    "Brooklyn Nets"
+   ],
+   [
+    "2023–2025",
+    "Phoenix Suns"
+   ],
+   [
+    "2025–present",
+    "Houston Rockets"
+   ]
+  ]
  },
  "martike01": {
-  "error": "pas de page"
+  "page": "Kenyon Martin Jr.",
+  "career": [
+   [
+    "2020–2023",
+    "Houston Rockets"
+   ],
+   [
+    "2021",
+    "→Rio Grande Valley Vipers"
+   ],
+   [
+    "2023",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2023–2025",
+    "Philadelphia 76ers"
+   ],
+   [
+    "2025",
+    "Utah Jazz"
+   ],
+   [
+    "2025–2026",
+    "Ningbo Rockets"
+   ],
+   [
+    "2026–present",
+    "Iowa Wolves"
+   ]
+  ]
  },
  "szczewa02": {
-  "error": "pas de page"
+  "page": "Wally Szczerbiak",
+  "career": [
+   [
+    "1999–2006",
+    "Minnesota Timberwolves"
+   ],
+   [
+    "2006–2007",
+    "Boston Celtics"
+   ],
+   [
+    "2007–2008",
+    "Seattle SuperSonics"
+   ],
+   [
+    "2008–2009",
+    "Cleveland Cavaliers"
+   ]
+  ]
  },
  "redicjj01": {
-  "error": "pas de page"
+  "page": "JJ Redick",
+  "career": [
+   [
+    "2006–2013",
+    "Orlando Magic"
+   ],
+   [
+    "2013",
+    "Milwaukee Bucks"
+   ],
+   [
+    "2013–2017",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2017–2019",
+    "Philadelphia 76ers"
+   ],
+   [
+    "2019–2021",
+    "New Orleans Pelicans"
+   ],
+   [
+    "2021",
+    "Dallas Mavericks"
+   ],
+   [
+    "2024–present",
+    "Los Angeles Lakers"
+   ]
+  ]
  },
  "moblecu01": {
-  "error": "pas de page"
+  "page": "Cuttino Mobley",
+  "career": [
+   [
+    "1998–2004",
+    "Houston Rockets"
+   ],
+   [
+    "2004–2005",
+    "Orlando Magic"
+   ],
+   [
+    "2005",
+    "Sacramento Kings"
+   ],
+   [
+    "2005–2008",
+    "Los Angeles Clippers"
+   ]
+  ]
  },
  "stoudda01": {
-  "error": "pas de page"
+  "page": "Damon Stoudamire",
+  "career": [
+   [
+    "1995–1998",
+    "Toronto Raptors"
+   ],
+   [
+    "1998–2005",
+    "Portland Trail Blazers"
+   ],
+   [
+    "2005–2008",
+    "Memphis Grizzlies"
+   ],
+   [
+    "2008",
+    "San Antonio Spurs"
+   ],
+   [
+    "2008–2009",
+    "Rice (director of player development)"
+   ],
+   [
+    "2009–2011",
+    "Memphis Grizzlies (assistant)"
+   ],
+   [
+    "2011–2013",
+    "Memphis (assistant)"
+   ],
+   [
+    "2013–2015",
+    "Arizona (assistant)"
+   ],
+   [
+    "2015–2016",
+    "Memphis (assistant)"
+   ],
+   [
+    "2016–2021",
+    "Pacific"
+   ],
+   [
+    "2021–2023",
+    "Boston Celtics (assistant)"
+   ],
+   [
+    "2023–2026",
+    "Georgia Tech"
+   ],
+   [
+    "2026–present",
+    "LSU (assistant)"
+   ]
+  ]
  },
  "okurme01": {
-  "error": "pas de page"
+  "page": "Mehmet Okur",
+  "career": [
+   [
+    "1997–1998",
+    "Oyak Renault"
+   ],
+   [
+    "1998–2000",
+    "Tofaş"
+   ],
+   [
+    "2000–2002",
+    "Efes Pilsen"
+   ],
+   [
+    "2002–2004",
+    "Detroit Pistons"
+   ],
+   [
+    "2004–2011",
+    "Utah Jazz"
+   ],
+   [
+    "2011",
+    "Türk Telekom"
+   ],
+   [
+    "2011–2012",
+    "New Jersey Nets"
+   ],
+   [
+    "2016–2017",
+    "Phoenix Suns (player development)"
+   ]
+  ]
  },
  "princta01": {
-  "error": "pas de page"
+  "page": "Tayshaun Prince",
+  "career": [
+   [
+    "2002–2013",
+    "Detroit Pistons"
+   ],
+   [
+    "2013–2015",
+    "Memphis Grizzlies"
+   ],
+   [
+    "2015",
+    "Boston Celtics"
+   ],
+   [
+    "2015",
+    "Detroit Pistons"
+   ],
+   [
+    "2015–2016",
+    "Minnesota Timberwolves"
+   ]
+  ]
  },
  "kamanch01": {
-  "error": "pas de page"
+  "page": "Chris Kaman",
+  "career": [
+   [
+    "2003–2011",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2011–2012",
+    "New Orleans Hornets"
+   ],
+   [
+    "2012–2013",
+    "Dallas Mavericks"
+   ],
+   [
+    "2013–2014",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2014–2016",
+    "Portland Trail Blazers"
+   ]
+  ]
  },
  "gordobe01": {
-  "error": "pas de page"
+  "page": "Ben Gordon",
+  "career": [
+   [
+    "2004–2009",
+    "Chicago Bulls"
+   ],
+   [
+    "2009–2012",
+    "Detroit Pistons"
+   ],
+   [
+    "2012–2014",
+    "Charlotte Bobcats"
+   ],
+   [
+    "2014–2015",
+    "Orlando Magic"
+   ],
+   [
+    "2017",
+    "Texas Legends"
+   ]
+  ]
  },
  "dunlemi02": {
-  "error": "pas de page"
+  "page": "Mike Dunleavy Jr.",
+  "career": [
+   [
+    "2002–2007",
+    "Golden State Warriors"
+   ],
+   [
+    "2007–2011",
+    "Indiana Pacers"
+   ],
+   [
+    "2011–2013",
+    "Milwaukee Bucks"
+   ],
+   [
+    "2013–2016",
+    "Chicago Bulls"
+   ],
+   [
+    "2016–2017",
+    "Cleveland Cavaliers"
+   ],
+   [
+    "2017",
+    "Atlanta Hawks"
+   ]
+  ]
  },
  "millebr01": {
-  "error": "pas de page"
+  "page": "Brad Miller (basketball)",
+  "career": [
+   [
+    "1998",
+    "Bini Viaggi Livorno"
+   ],
+   [
+    "1999–2000",
+    "Charlotte Hornets"
+   ],
+   [
+    "2000–2002",
+    "Chicago Bulls"
+   ],
+   [
+    "2002–2003",
+    "Indiana Pacers"
+   ],
+   [
+    "2003–2009",
+    "Sacramento Kings"
+   ],
+   [
+    "2009–2010",
+    "Chicago Bulls"
+   ],
+   [
+    "2010–2011",
+    "Houston Rockets"
+   ],
+   [
+    "2011–2012",
+    "Minnesota Timberwolves"
+   ]
+  ]
  },
  "davisri01": {
-  "error": "pas de page"
+  "page": "Ricky Davis",
+  "career": [
+   [
+    "1998–2000",
+    "Charlotte Hornets"
+   ],
+   [
+    "2000–2001",
+    "Miami Heat"
+   ],
+   [
+    "2001–2003",
+    "Cleveland Cavaliers"
+   ],
+   [
+    "2003–2006",
+    "Boston Celtics"
+   ],
+   [
+    "2006–2007",
+    "Minnesota Timberwolves"
+   ],
+   [
+    "2007–2008",
+    "Miami Heat"
+   ],
+   [
+    "2008–2010",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2010",
+    "Türk Telekom"
+   ],
+   [
+    "2010",
+    "Jiangsu Dragons"
+   ],
+   [
+    "2011",
+    "Chorale Roanne"
+   ],
+   [
+    "2011–2012",
+    "Maine Red Claws"
+   ],
+   [
+    "2012",
+    "Piratas de Quebradillas"
+   ],
+   [
+    "2013–2014",
+    "Erie BayHawks"
+   ]
+  ]
  },
  "rideris01": {
-  "error": "pas de page"
+  "page": "Isaiah Rider",
+  "career": [
+   [
+    "1993–1996",
+    "Minnesota Timberwolves"
+   ],
+   [
+    "1996–1999",
+    "Portland Trail Blazers"
+   ],
+   [
+    "1999–2000",
+    "Atlanta Hawks"
+   ],
+   [
+    "2000–2001",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2001",
+    "Denver Nuggets"
+   ]
+  ]
  },
  "chrisdo01": {
-  "error": "pas de page"
+  "page": "Doug Christie",
+  "career": [
+   [
+    "1993–1994",
+    "Los Angeles Lakers"
+   ],
+   [
+    "1994–1996",
+    "New York Knicks"
+   ],
+   [
+    "1996–2000",
+    "Toronto Raptors"
+   ],
+   [
+    "2000–2005",
+    "Sacramento Kings"
+   ],
+   [
+    "2005",
+    "Orlando Magic"
+   ],
+   [
+    "2005",
+    "Dallas Mavericks"
+   ],
+   [
+    "2007",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2021–2024",
+    "Sacramento Kings (assistant)"
+   ],
+   [
+    "2024–present",
+    "Sacramento Kings"
+   ]
+  ]
  },
  "vanhoke01": {
-  "error": "pas de page"
+  "page": "Keith Van Horn",
+  "career": [
+   [
+    "1997–2002",
+    "New Jersey Nets"
+   ],
+   [
+    "2002–2003",
+    "Philadelphia 76ers"
+   ],
+   [
+    "2003–2004",
+    "New York Knicks"
+   ],
+   [
+    "2004–2005",
+    "Milwaukee Bucks"
+   ],
+   [
+    "2005–2006",
+    "Dallas Mavericks"
+   ]
+  ]
  },
  "diawbo01": {
-  "error": "pas de page"
+  "page": "Boris Diaw",
+  "career": [
+   [
+    "1998–2000",
+    "Centre Fédéral"
+   ],
+   [
+    "2000–2003",
+    "Pau-Orthez"
+   ],
+   [
+    "2003–2005",
+    "Atlanta Hawks"
+   ],
+   [
+    "2005–2008",
+    "Phoenix Suns"
+   ],
+   [
+    "2008–2012",
+    "Charlotte Bobcats"
+   ],
+   [
+    "2011",
+    "JSA Bordeaux"
+   ],
+   [
+    "2012–2016",
+    "San Antonio Spurs"
+   ],
+   [
+    "2016–2017",
+    "Utah Jazz"
+   ],
+   [
+    "2017–2018",
+    "Levallois Metropolitans"
+   ]
+  ]
  },
  "barbole01": {
-  "error": "pas de page"
+  "page": "Leandro Barbosa",
+  "career": [
+   [
+    "1999–2001",
+    "Palmeiras"
+   ],
+   [
+    "2001–2003",
+    "Bauru"
+   ],
+   [
+    "2003–2010",
+    "Phoenix Suns"
+   ],
+   [
+    "2010–2012",
+    "Toronto Raptors"
+   ],
+   [
+    "2011",
+    "Flamengo"
+   ],
+   [
+    "2012",
+    "Indiana Pacers"
+   ],
+   [
+    "2012–2013",
+    "Boston Celtics"
+   ],
+   [
+    "2013–2014",
+    "Pinheiros"
+   ],
+   [
+    "2014",
+    "Phoenix Suns"
+   ],
+   [
+    "2014–2016",
+    "Golden State Warriors"
+   ],
+   [
+    "2016–2017",
+    "Phoenix Suns"
+   ],
+   [
+    "2017–2018",
+    "Franca"
+   ],
+   [
+    "2018–2020",
+    "Minas"
+   ],
+   [
+    "2020–2022",
+    "Golden State Warriors (assistant)"
+   ],
+   [
+    "2022–present",
+    "Sacramento Kings (assistant)"
+   ]
+  ]
  },
  "scolalu01": {
-  "error": "pas de page"
+  "page": "Luis Scola",
+  "career": [
+   [
+    "1995–1998",
+    "Ferro Carril Oeste"
+   ],
+   [
+    "1998–2007",
+    "Tau Ceramica"
+   ],
+   [
+    "1998–2000",
+    "→Gijón"
+   ],
+   [
+    "2007–2012",
+    "Houston Rockets"
+   ],
+   [
+    "2012–2013",
+    "Phoenix Suns"
+   ],
+   [
+    "2013–2015",
+    "Indiana Pacers"
+   ],
+   [
+    "2015–2016",
+    "Toronto Raptors"
+   ],
+   [
+    "2016–2017",
+    "Brooklyn Nets"
+   ],
+   [
+    "2017–2018",
+    "Shanxi Brave Dragons"
+   ],
+   [
+    "2018–2019",
+    "Shanghai Sharks"
+   ],
+   [
+    "2019–2020",
+    "Olimpia Milano"
+   ],
+   [
+    "2020–2021",
+    "Varese"
+   ]
+  ]
  },
  "willilo02": {
-  "error": "pas de page"
+  "page": "Lou Williams",
+  "career": [
+   [
+    "2005–2012",
+    "Philadelphia 76ers"
+   ],
+   [
+    "2006",
+    "→Fort Worth Flyers"
+   ],
+   [
+    "2012–2014",
+    "Atlanta Hawks"
+   ],
+   [
+    "2014–2015",
+    "Toronto Raptors"
+   ],
+   [
+    "2015–2017",
+    "Los Angeles Lakers"
+   ],
+   [
+    "2017",
+    "Houston Rockets"
+   ],
+   [
+    "2017–2021",
+    "Los Angeles Clippers"
+   ],
+   [
+    "2021–2022",
+    "Atlanta Hawks"
+   ]
+  ]
  }
 }
