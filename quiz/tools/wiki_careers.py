@@ -43,6 +43,6 @@ for p in players:
             clean = lambda s: html.unescape(re.sub(r"<[^>]+>", "", s)).strip()
             rows.append([clean(yrs), clean(team)])
     out[p["id"]] = {"page": t, "career": rows}
-    time.sleep(1.0)
+    time.sleep(2.0)
 json.dump(out, open(DST, "w"), ensure_ascii=False, indent=1)
 print(sum(1 for v in out.values() if v.get("career")), "/", len(out), "parcours récupérés")

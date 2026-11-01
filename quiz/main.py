@@ -332,7 +332,7 @@ def make_cover(P, out):
     blit(im, qmark(470, (255, 196, 0)), W / 2, 1010)
     level_badge(im, P, W / 2, 1330, s=58)
     n = n_franchises(P)
-    text(im, f"{n} FRANCHISES", "Black", 64, WHITE, W / 2, 1460, spacing=6)
+    text(im, f"{n} FRANCHISE" + ("S" if n > 1 else ""), "Black", 64, WHITE, W / 2, 1460, spacing=6)
     text(im, "NBA DAILY NEWS", "ExtraBold", 36, (200, 190, 230), W / 2, 1790, spacing=8)
     im.convert("RGB").save(out, quality=92)
     return out
@@ -348,22 +348,22 @@ def n_franchises(P):
 
 def captions(P):
     lab = LEVELS[P["level"]][0].lower(); n = n_franchises(P)
-    base = f"Seuls les vrais fans trouvent ce joueur 👀 Niveau {lab} · {n} franchises. Ta réponse en commentaire 👇"
+    fr = f"{n} franchise" + ("s" if n > 1 else "")
+    base = f"Seuls les vrais fans trouvent ce joueur 👀 Niveau {lab} · {fr}. Ta réponse en commentaire 👇"
     tk = ["#NBA", "#quizNBA", "#basketball", "#NBAFrance", "#devinelejoueur"]
     ig = ["#NBA", "#quizNBA", "#basketball", "#basket", "#NBAFrance", "#NBADailyNews", "#devinelejoueur", "#quiz", "#nbatrivia", "#sport"]
     return dict(
         tiktok=f"{base}\n\n{' '.join(tk)}",
         instagram=f"{base}\n\nAbonne-toi pour les quiz de chaque jour 🔔\n\n{' '.join(ig)}",
-        youtube_title=f"Qui est ce joueur NBA ? 🤔 Niveau {lab} ({n} franchises) #Shorts",
+        youtube_title=f"Qui est ce joueur NBA ? 🤔 Niveau {lab} ({fr}) #Shorts",
         youtube=f"{base}\n\n#Shorts #NBA #quizNBA",
-        pin=f"✅ Réponse : {P['name']} ! Tu l'avais trouvé ? 👀",
     )
 
 
 def message(P):
     lab = LEVELS[P["level"]][0]; c = captions(P)
     return (f"**🧩 Quiz {lab.lower()} — à poster vers {TIMES[P['level']]}**\n"
-            f"🔒 Réponse : ||{P['name']}||\n\n"
+            f"🔒 Réponse (pour toi) : ||{P['name']}||\n\n"
             f"🎵 **TikTok** :\n```{c['tiktok']}```\n"
             f"📸 **Instagram** :\n```{c['instagram']}```\n"
             f"🖼️ Miniature jointe : « Modifier la couverture » → Importer.\n\n"
@@ -403,11 +403,6 @@ def daily(day, post=True, outdir="out_quiz"):
     players = json.load(open(os.path.join(HERE, "players.json"), encoding="utf-8"))
     used = json.load(open(USED)) if os.path.exists(USED) else []
     rnd = random.Random(day)
-    yesterday = [u for u in used if u["date"] == (dt.date.fromisoformat(day) - dt.timedelta(days=1)).isoformat()]
-    if post and yesterday and os.environ.get("DISCORD_BOT_TOKEN"):
-        names = {p["id"]: p for p in players}
-        lines = [f"• {LEVELS[u['level']][0].lower()} : {captions(names[u['id']])['pin']}" for u in yesterday if u["id"] in names]
-        discord_post.notify("📌 **Réponses des quiz d'hier** — à épingler en commentaire sous chaque vidéo :\n" + "\n".join(lines))
     today = [u for u in used if u["date"] == day]
     for lvl in ("facile", "moyen", "difficile"):
         if any(u["level"] == lvl for u in today):
