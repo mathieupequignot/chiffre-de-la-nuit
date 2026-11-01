@@ -10,18 +10,33 @@ ids = " ".join(f'"{p["id"]}"' for p in players)
 q = f"""SELECT ?bref ?article WHERE {{ VALUES ?bref {{ {ids} }} ?item wdt:P2685 ?bref .
  ?article schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> . }}"""
 r = requests.get("https://query.wikidata.org/sparql", params={"query": q, "format": "json"}, headers=UA, timeout=60)
-r.raise_for_status()
-titles = {b["bref"]["value"]: b["article"]["value"].rsplit("/", 1)[1] for b in r.json()["results"]["bindings"]}
+titles = {}
+try:
+    r.raise_for_status()
+    titles = {b["bref"]["value"]: b["article"]["value"].rsplit("/", 1)[1] for b in r.json()["results"]["bindings"]}
+except Exception as e:
+    print("wikidata:", e, r.text[:300])
+print("Wikidata :", len(titles), "pages trouvées")
+
+
+def search(name):
+    js = requests.get("https://en.wikipedia.org/w/api.php", headers=UA, timeout=60,
+                      params={"action": "query", "list": "search", "srsearch": f"{name} NBA basketball player",
+                              "srlimit": 1, "format": "json"}).json()
+    hits = js.get("query", {}).get("search", [])
+    return hits[0]["title"] if hits else None
 out = {}
 for p in players:
-    t = titles.get(p["id"])
+    t = titles.get(p["id"]) or search(p["name"])
     if not t:
         out[p["id"]] = {"error": "pas de page"}; continue
+    print(p["name"], "->", t)
     rr = requests.get("https://en.wikipedia.org/w/api.php", headers=UA, timeout=60,
                       params={"action": "parse", "page": requests.utils.unquote(t), "prop": "text", "section": 0,
                               "format": "json", "redirects": 1})
     txt = rr.json().get("parse", {}).get("text", {}).get("*", "")
-    m = re.search(r"Career history(.*?)(Career highlights|Stats at|Medals|</table>)", txt, re.S)
+    m = re.search(r"Career history(.*?)(Career highlights|Stats\s*at|Medals|</tbody>)", txt, re.S)
+    if not m: print("   pas d'historique dans l'infobox", len(txt))
     rows = []
     if m:
         for yrs, team in re.findall(r'<th[^>]*infobox-label[^>]*>(.*?)</th>\s*<td[^>]*infobox-data[^>]*>(.*?)</td>', m.group(1), re.S):
