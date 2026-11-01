@@ -10,6 +10,7 @@ from zoneinfo import ZoneInfo
 from . import data, pick, tts, render, discord_post, cover
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+SFX_GAIN = 0.5  # volume global des effets sonores (1.0 = niveau des premières vidéos)
 
 
 def mix(video, voice, TL, out):
@@ -32,7 +33,7 @@ def mix(video, voice, TL, out):
     m = ["[v]"]
     for j, (n, t, g) in enumerate(fx):
         inputs += ["-i", os.path.join(sfxdir, n + ".wav")]
-        f.append(f"[{j + 2}:a]volume={g},adelay={int(t * 1000)}:all=1[f{j}]"); m.append(f"[f{j}]")
+        f.append(f"[{j + 2}:a]volume={g * SFX_GAIN:.3f},adelay={int(t * 1000)}:all=1[f{j}]"); m.append(f"[f{j}]")
     f.append("".join(m) + f"amix=inputs={len(m)}:normalize=0:duration=first,alimiter=limit=0.89[a]")
     subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", ";".join(f), "-map", "0:v", "-map", "[a]",
                     "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-t", f"{TL.total:.2f}", "-movflags", "+faststart", out], check=True)
