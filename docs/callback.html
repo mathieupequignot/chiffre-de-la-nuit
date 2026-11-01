@@ -1,0 +1,9 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connexion TikTok — Le chiffre de la nuit</title>
+<style>body{font-family:system-ui,sans-serif;max-width:680px;margin:40px auto;padding:0 20px;line-height:1.6;color:#111}code{display:block;word-break:break-all;background:#f3f3f3;padding:12px;border-radius:8px;font-size:15px}button{margin-top:10px;padding:10px 16px;border:0;border-radius:8px;background:#ff7a1a;color:#fff;font-weight:600}</style></head>
+<body><h1>Connexion TikTok</h1><div id="out">Chargement…</div>
+<script>
+var p=new URLSearchParams(location.search),c=p.get('code'),e=p.get('error'),o=document.getElementById('out');
+if(c){o.innerHTML='<p>Autorisation réussie. Copie ce code (valable quelques minutes) et colle-le dans le workflow <b>Connexion TikTok</b> sur GitHub :</p><code id="c"></code><button onclick="navigator.clipboard.writeText(document.getElementById(\'c\').textContent);this.textContent=\'Copié !\'">Copier</button>';document.getElementById('c').textContent=c;}
+else if(e){o.textContent='Erreur TikTok : '+e+' — '+(p.get('error_description')||'');}
+else{o.textContent='Aucun code reçu. Lance la connexion depuis le lien fourni.';}
+</script></body></html>
