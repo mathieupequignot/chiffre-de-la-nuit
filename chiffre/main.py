@@ -56,11 +56,14 @@ def run(day, fixture=None, post=True, outdir="out"):
     TL = render.render(D, cues, total, silent)
     final = os.path.join(outdir, f"chiffre_de_la_nuit_{day.isoformat()}.mp4")
     mix(silent, voice, TL, final)
-    open(os.path.join(outdir, "caption.txt"), "w", encoding="utf-8").write(caption)
+    msg = (f"**Le chiffre de la nuit — {D['date_label'].lower()}**\n\n"
+           f"🎵 **TikTok** (légende + hashtags) :\n```{caption['tiktok']}```\n"
+           f"📸 **Instagram** :\n```{caption['instagram']}```\n"
+           f"▶️ **YouTube Shorts** — titre :\n```{caption['youtube_title']}```\ndescription :\n```{caption['youtube']}```")
+    open(os.path.join(outdir, "caption.txt"), "w", encoding="utf-8").write(msg)
     print("Vidéo :", final)
     if post and os.environ.get("DISCORD_BOT_TOKEN"):
-        discord_post.post(final, f"**Le chiffre de la nuit — {D['date_label'].lower()}**\n"
-                                 f"Réagis ✅ si c'est bon pour publier, ❌ sinon.\n\n**Légende proposée :**\n{caption}")
+        discord_post.post(final, msg)
     return final
 
 

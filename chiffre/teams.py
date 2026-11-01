@@ -36,6 +36,13 @@ _T = {
 }
 
 
+NICK = {"ATL": "Hawks", "BOS": "Celtics", "BKN": "Nets", "CHA": "Hornets", "CHI": "Bulls", "CLE": "Cavaliers",
+        "DAL": "Mavericks", "DEN": "Nuggets", "DET": "Pistons", "GSW": "Warriors", "HOU": "Rockets", "IND": "Pacers",
+        "LAC": "Clippers", "LAL": "Lakers", "MEM": "Grizzlies", "MIA": "Heat", "MIL": "Bucks", "MIN": "Timberwolves",
+        "NOP": "Pelicans", "NYK": "Knicks", "OKC": "Thunder", "ORL": "Magic", "PHI": "Sixers", "PHX": "Suns",
+        "POR": "Blazers", "SAC": "Kings", "SAS": "Spurs", "TOR": "Raptors", "UTA": "Jazz", "WAS": "Wizards"}
+
+
 def team(code):
     n, avec, face, bg, fg, stripe = _T.get(code, (code, f"avec {code}", f"face à {code}", (60, 60, 70), W, (150, 150, 160)))
-    return dict(code=code, name=n, avec=avec, face=face, bg=bg, fg=fg, stripe=stripe)
+    return dict(code=code, name=n, avec=avec, face=face, bg=bg, fg=fg, stripe=stripe, nick=NICK.get(code, code))

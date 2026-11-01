@@ -54,8 +54,9 @@ def build(games, paris_day, seed=None):
     win = my_pts > op_pts
     full = f"{p['first']} {p['last']}"
     y = dt.date.fromordinal(paris_day.toordinal() - 1)
-    date_label = f"NUIT DU {y.day} AU {paris_day.day} {MOIS[paris_day.month - 1].upper()}" if y.month == paris_day.month \
-        else f"NUIT DU {y.day} {MOIS[y.month - 1].upper()} AU {paris_day.day} {MOIS[paris_day.month - 1].upper()}"
+    j = lambda d: "1ER" if d == 1 else str(d)
+    date_label = f"NUIT DU {j(y.day)} AU {j(paris_day.day)} {MOIS[paris_day.month - 1].upper()}" if y.month == paris_day.month \
+        else f"NUIT DU {j(y.day)} {MOIS[y.month - 1].upper()} AU {j(paris_day.day)} {MOIS[paris_day.month - 1].upper()}"
 
     # ---- statistiques mises en avant (scène A) + bandeau
     if angle == "sniper":
@@ -108,6 +109,20 @@ def build(games, paris_day, seed=None):
              my_pts=my_pts, op_pts=op_pts, win=win, home=g["home"], away=g["away"], home_pts=g["home_pts"], away_pts=g["away_pts"],
              rows=rows, banner=banner, stamp=exploit[1], line=f"{p['pts']} PTS  ·  {p['reb']} REB  ·  {p['ast']} PD",
              fg=fg, pm=pm, punch=punch[:3])
-    caption = (f"{full} : {exploit[0]} cette nuit ({p['pts']} pts, {p['reb']} reb, {p['ast']} pd) "
-               f"{me['avec']} {opp['face']}. 🏀\n\n#NBA #basket #{p['last'].replace(' ', '')} #chiffredelanuit #nbafrance")
+    import re
+    tag = lambda t: "#" + re.sub(r"[^0-9A-Za-zÀ-ÿ]", "", t)
+    who, mine, theirs = tag(p["last"]), tag(me["nick"]), tag(opp["nick"])
+    base = f"{full} : {exploit[0]} cette nuit ({p['pts']} pts, {p['reb']} reb, {p['ast']} pd) {me['avec']} {opp['face']}. 🏀"
+    tags = {
+        "tiktok": [who, "#NBA", mine, "#basketball", "#NBAFrance"],
+        "instagram": [who, "#NBA", mine, theirs, "#basketball", "#basket", "#NBAFrance", "#NBADailyNews", "#nbastats", "#sport"],
+        "youtube": ["#Shorts", "#NBA", who],
+    }
+    caption = dict(
+        text=base,
+        tiktok=f"{base}\n\n{' '.join(tags['tiktok'])}",
+        instagram=f"{base}\n\nAbonne-toi pour le chiffre de chaque nuit 🔔\n\n{' '.join(tags['instagram'])}",
+        youtube_title=f"{full} : {exploit[0]} ! 🏀 #Shorts"[:100],
+        youtube=f"{base}\n\n{' '.join(tags['youtube'])}",
+    )
     return D, segs, caption
