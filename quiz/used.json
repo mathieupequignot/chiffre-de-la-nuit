@@ -13,5 +13,20 @@
   "date": "2026-11-01",
   "level": "difficile",
   "id": "millebr01"
+ },
+ {
+  "date": "2026-11-02",
+  "level": "facile",
+  "id": "gilgesh01"
+ },
+ {
+  "date": "2026-11-02",
+  "level": "moyen",
+  "id": "oubreke01"
+ },
+ {
+  "date": "2026-11-02",
+  "level": "difficile",
+  "id": "strusma01"
  }
 ]
