@@ -28,5 +28,20 @@
   "date": "2026-11-02",
   "level": "difficile",
   "id": "strusma01"
+ },
+ {
+  "date": "2026-11-03",
+  "level": "facile",
+  "id": "curryst01"
+ },
+ {
+  "date": "2026-11-03",
+  "level": "moyen",
+  "id": "sabondo01"
+ },
+ {
+  "date": "2026-11-03",
+  "level": "difficile",
+  "id": "onealro01"
  }
 ]
