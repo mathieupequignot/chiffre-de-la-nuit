@@ -54,19 +54,33 @@ def team_info(t):
     return info
 
 
+# ---------------- format v2 : le jeu démarre à la 1re seconde, accroche variée
+V2 = os.environ.get("QUIZ_FORMAT", "v1") == "v2"
+HOOKS = [
+    ("90 % des fans se trompent sur celui-là…", "90 % DES FANS SE TROMPENT"),
+    ("Si tu trouves celui-là, t'es un vrai fan de NBA.", "SI TU TROUVES, T'ES UN VRAI"),
+    ("Personne ne le trouve du premier coup…", "PERSONNE NE TROUVE DU 1ER COUP"),
+    ("Trouve-le avant la fin du chrono !", "TROUVE-LE AVANT LA FIN DU CHRONO"),
+    ("Seuls les vrais fans vont trouver ce joueur !", "SEULS LES VRAIS FANS TROUVENT"),
+    ("Tu as cinq secondes. Qui est-ce ?", "TU AS 5 SECONDES"),
+]
+
+
 # ---------------- timeline
 class TL:
     def __init__(self, P, intro_cues, intro_len, outro_len):
         self.cues = {c: (a, b) for c, a, b in intro_cues}
-        self.I = intro_len + 0.25
+        self.I = 0.0 if V2 else intro_len + 0.25
         self.n = len(P["teams"])
-        self.Tb = self.I + 0.3                       # début du chrono + 1re carte
+        self.Tb = 0.15 if V2 else self.I + 0.3       # début du chrono + 1re carte
         self.Dur = math.ceil(self.n * STEP) + FINAL   # durée totale du chrono (secondes entières)
         self.Te = self.Tb + self.Dur                  # fin du chrono
         self.To = self.Te + 0.35                      # début de la voix de fin
         self.total = self.To + outro_len + 0.9
 
     def card_t(self, i):
+        if V2 and i == 0:
+            return -0.5  # la 1re franchise est déjà à l'écran dès la 1re image
         return self.Tb + i * STEP
 
 
@@ -229,8 +243,14 @@ def frame(t, P, T, infos, parts):
     im = bg_at(t, parts)
     c = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     # --- intro (gros titre + ? + niveau), puis le titre remonte en en-tête
-    mv = ease_out((t - T.I) / 0.4) if t > T.I else 0.0
-    ia = min(1, t / 0.25)
+    if V2:
+        # en-tête fixe dès la 1re image : accroche + question + niveau
+        pop = 0.85 + 0.15 * ease_back(min(1, t / 0.3))
+        text(c, T.hook_txt, "Black", 62, WHITE, W / 2, 158, scale=pop, maxw=940)
+        text(c, "QUI EST CE JOUEUR ?", "Black", 96, (255, 196, 0), W / 2, 252, scale=pop, maxw=960)
+        level_badge(c, P, W / 2, 352, scale=0.8 * pop, s=46)
+    mv = 1.0 if V2 else (ease_out((t - T.I) / 0.4) if t > T.I else 0.0)
+    ia = 0.0 if V2 else min(1, t / 0.25)
     y_t1 = 560 + (170 - 560) * mv; y_t2 = 690 + (262 - 690) * mv
     s_t = 1 - 0.45 * mv
     pop = ease_back(min(1, t / 0.45))
@@ -238,7 +258,7 @@ def frame(t, P, T, infos, parts):
     text(c, "CE JOUEUR ?", "Black", 150, (255, 196, 0), W / 2, y_t2, alpha=ia, scale=pop * s_t, maxw=960)
     blit(c, QM, W / 2, 1120 + 300 * mv, alpha=ia * (1 - mv), scale=0.9 + 0.1 * ease_back(min(1, t / 0.6)))
     lt = T.cues.get("L", (T.I - 0.8, 0))[0]
-    if t >= lt:
+    if not V2 and t >= lt:
         q = (t - lt) / 0.35
         bx_y = 1500 + (362 - 1500) * mv
         level_badge(c, P, W / 2, bx_y, alpha=min(1, q), scale=(0.6 + 0.4 * ease_back(min(1, q))) * (1 - 0.3 * mv))
@@ -292,8 +312,8 @@ def mix(T, voice1, voice2, out_wav):
         i = int(at * SR); x = x[: max(0, n - i)]; buf[i:i + len(x)] += g * x
     add(_read(voice1), 0.0, 1.0); add(_read(voice2), T.To, 1.0)
     lt = T.cues.get("L", (None,))[0]
-    if lt is not None: add(_pop(), lt, 0.16)
-    for i in range(T.n): add(_pop(), T.card_t(i), 0.11)
+    if lt is not None and not V2: add(_pop(), lt, 0.16)
+    for i in range(T.n): add(_pop(), max(0.0, T.card_t(i)), 0.11)
     for k in range(T.Dur):
         last = T.Dur - k <= 3
         add(_tick(2600 if last else (1900 if k % 2 == 0 else 1400)), T.Tb + k, 0.15 if last else 0.09)
@@ -374,9 +394,15 @@ def message(P):
 def render_quiz(P, outdir):
     os.makedirs(outdir, exist_ok=True)
     lab = LEVELS[P["level"]][0].lower()
-    v1, cues1, len1 = voice(f"intro_{P['level']}", [("H", "Attention… seuls les VRAIS fans vont trouver ce joueur !"), ("L", f"Niveau : {lab} !")], outdir)
+    if V2:
+        k = random.Random(P["id"] + os.environ.get("QUIZ_DAY", "")).randrange(len(HOOKS))
+        hook_voice, hook_txt = HOOKS[k]
+        v1, cues1, len1 = voice(f"hook{k}_{P['level']}", [("H", hook_voice), ("L", f"Niveau {lab} !")], outdir)
+    else:
+        hook_txt = ""
+        v1, cues1, len1 = voice(f"intro_{P['level']}", [("H", "Attention… seuls les VRAIS fans vont trouver ce joueur !"), ("L", f"Niveau : {lab} !")], outdir)
     v2, _, len2 = voice("outro", [("E", "Alors… tu l'as trouvé ?! Balance ta réponse en commentaire !")], outdir)
-    T = TL(P, cues1, len1, len2)
+    T = TL(P, cues1, len1, len2); T.hook_txt = hook_txt
     infos = [(team_info(tm), yrs) for tm, yrs in P["teams"]]
     parts = vivid_bg()
     silent = os.path.join(outdir, f"silent_{P['id']}.mp4")
