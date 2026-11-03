@@ -62,7 +62,7 @@ HOOKS = [
     ("Personne ne le trouve du premier coup…", "PERSONNE NE TROUVE DU 1ER COUP"),
     ("Trouve-le avant la fin du chrono !", "TROUVE-LE AVANT LA FIN DU CHRONO"),
     ("Seuls les vrais fans vont trouver ce joueur !", "SEULS LES VRAIS FANS TROUVENT"),
-    ("Tu as cinq secondes. Qui est-ce ?", "TU AS 5 SECONDES"),
+    ("Celui-là, tu le connais forcément…", "TU LE CONNAIS FORCÉMENT"),
 ]
 
 
