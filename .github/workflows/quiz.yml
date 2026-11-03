@@ -10,7 +10,7 @@ on:
         required: false
       format:
         description: "Format du quiz (v1 ou v2)"
-        default: "v1"
+        default: "v2"
 
 permissions:
   contents: write
@@ -38,7 +38,7 @@ jobs:
           ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
-          QUIZ_FORMAT: ${{ inputs.format || 'v1' }}
+          QUIZ_FORMAT: ${{ inputs.format || 'v2' }}
         run: |
           if [ -n "${{ inputs.player }}" ]; then python -m quiz.main --player "${{ inputs.player }}"; else python -m quiz.main; fi
       - name: Enregistrer l'historique des joueurs et les voix

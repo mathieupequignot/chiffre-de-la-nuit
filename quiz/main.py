@@ -55,7 +55,7 @@ def team_info(t):
 
 
 # ---------------- format v2 : le jeu démarre à la 1re seconde, accroche variée
-V2 = os.environ.get("QUIZ_FORMAT", "v1") == "v2"
+V2 = os.environ.get("QUIZ_FORMAT", "v2") == "v2"
 HOOKS = [
     ("90 % des fans se trompent sur celui-là…", "90 % DES FANS SE TROMPENT"),
     ("Si tu trouves celui-là, t'es un vrai fan de NBA.", "SI TU TROUVES, T'ES UN VRAI"),
