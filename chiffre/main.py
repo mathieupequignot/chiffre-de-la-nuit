@@ -44,6 +44,8 @@ def run(day, fixture=None, post=True, outdir="out"):
     games = data.load_fixture(fixture) if fixture else data.fetch_night(day)
     if not games:
         print("Aucun match terminé cette nuit.")
+        if post and os.environ.get("DISCORD_BOT_TOKEN"):
+            discord_post.notify("😴 Pas de match NBA cette nuit : pas de chiffre de la nuit aujourd'hui. Rendez-vous demain matin !")
         return None
     built = pick.build(games, day)
     if not built:
