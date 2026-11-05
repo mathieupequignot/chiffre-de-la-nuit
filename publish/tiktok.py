@@ -73,7 +73,7 @@ def upload_draft(video_path):
             "Content-Type": "video/mp4", "Content-Length": str(size), "Content-Range": f"bytes 0-{size - 1}/{size}"})
     if up.status_code >= 300:
         raise RuntimeError(f"TikTok envoi : {up.status_code} {up.text[:300]}")
-    for _ in range(30):
+    for _ in range(90):  # le traitement TikTok peut prendre plusieurs minutes
         s = requests.post(f"{API}/post/publish/status/fetch/", headers=h, json={"publish_id": pid}, timeout=30).json()
         st = s.get("data", {}).get("status")
         if st in ("SEND_TO_USER_INBOX", "PUBLISH_COMPLETE"):
@@ -81,4 +81,5 @@ def upload_draft(video_path):
         if st == "FAILED":
             raise RuntimeError(f"TikTok a refusé la vidéo : {s}")
         time.sleep(10)
+    print("TikTok : toujours en traitement après 15 min, le brouillon arrivera plus tard", pid)
     return pid
