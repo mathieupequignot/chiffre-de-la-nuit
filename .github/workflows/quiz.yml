@@ -38,7 +38,7 @@ jobs:
           ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
-          AUTO_PUBLISH: ${{ vars.AUTO_PUBLISH }}
+          AUTO_PUBLISH: ${{ (secrets.IG_TOKEN != '' || secrets.YT_REFRESH_TOKEN != '') && '1' || '0' }}
           QUIZ_FORMAT: ${{ inputs.format || 'v2' }}
         run: |
           if [ -n "${{ inputs.player }}" ]; then python -m quiz.main --player "${{ inputs.player }}"; else python -m quiz.main; fi

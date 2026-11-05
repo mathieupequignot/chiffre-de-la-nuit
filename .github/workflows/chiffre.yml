@@ -32,7 +32,7 @@ jobs:
           ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
-          AUTO_PUBLISH: ${{ vars.AUTO_PUBLISH }}
+          AUTO_PUBLISH: ${{ (secrets.IG_TOKEN != '' || secrets.YT_REFRESH_TOKEN != '') && '1' || '0' }}
         run: |
           if [ -n "${{ inputs.date }}" ]; then python -m chiffre.main --date "${{ inputs.date }}"; else python -m chiffre.main; fi
       - name: Garder une copie de la vidéo (7 jours)
