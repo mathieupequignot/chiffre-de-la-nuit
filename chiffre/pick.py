@@ -16,15 +16,23 @@ def _game_score(p):
 
 
 def angle_of(p):
-    if _double_count(p) >= 3:
-        return "triple_double", 1000 + p["pts"]
-    if p["pts"] >= 40:
-        return "scorer", 900 + p["pts"]
-    if p["pts"] >= 20 and p["reb"] >= 20:
-        return "twenty_twenty", 850 + p["pts"]
-    if p["tpm"] >= 8:
-        return "sniper", 800 + p["tpm"]
-    return "best", _game_score(p)
+    """Angle du récit + score d'impact. On classe par impact (game score + bonus d'exploit),
+    et non plus par catégorie : un 52-24 passe devant un triple-double à 32 points."""
+    gs = _game_score(p)
+    td = _double_count(p) >= 3
+    bonus = (8 if td else 0) + (6 if p["pts"] >= 40 else 0) + (6 if p["pts"] >= 50 else 0) \
+        + (6 if p["pts"] >= 20 and p["reb"] >= 20 else 0) + (5 if p["tpm"] >= 8 else 0)
+    if td:
+        a = "triple_double"
+    elif p["pts"] >= 40:
+        a = "scorer"
+    elif p["pts"] >= 20 and p["reb"] >= 20:
+        a = "twenty_twenty"
+    elif p["tpm"] >= 8:
+        a = "sniper"
+    else:
+        a = "best"
+    return a, gs + bonus
 
 
 def choose(games):
@@ -79,6 +87,9 @@ def build(games, paris_day, seed=None):
     elif angle == "twenty_twenty":
         rows = [(p["pts"], "POINTS"), (p["reb"], "REBONDS"), (p["ast"], "PASSES")]
         hook = [f"{p['pts']} points.", f"{p['reb']} rebonds.", f"{p['ast']} passes."]
+    elif p["blk"] >= 4 and p["blk"] > p["ast"]:
+        rows = [(p["pts"], "POINTS"), (p["reb"], "REBONDS"), (p["blk"], "CONTRES")]
+        hook = [f"{p['pts']} points.", f"{p['reb']} rebonds.", f"{p['blk']} contres."]
     else:
         rows = [(p["pts"], "POINTS"), (p["reb"], "REBONDS"), (p["ast"], "PASSES")]
         hook = [f"{p['pts']} points.", f"{p['reb']} rebonds.", f"{p['ast']} passes."]
