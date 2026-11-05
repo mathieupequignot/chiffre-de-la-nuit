@@ -458,12 +458,18 @@ if __name__ == "__main__":
     ap.add_argument("--player", help="un seul quiz pour ce joueur (test), sans toucher à l'historique")
     ap.add_argument("--date", help="jour AAAA-MM-JJ (heure de Paris), vide = aujourd'hui")
     ap.add_argument("--no-post", action="store_true")
+    ap.add_argument("--queue-at", help="avec --player : met la vidéo en file de publication auto à HH:MM (Paris) au lieu de l'envoyer sur Discord")
     a = ap.parse_args()
     try:
         if a.player:
             P = next(p for p in json.load(open(os.path.join(HERE, "players.json"), encoding="utf-8")) if a.player in (p["id"], p["name"]))
             v, c = render_quiz(P, "out_quiz")
-            if not a.no_post and os.environ.get("DISCORD_BOT_TOKEN"):
+            if a.queue_at:
+                from publish import queue
+                cap = captions(P); day = dt.datetime.now(ZoneInfo("Europe/Paris")).date().isoformat()
+                queue.add(f"quiz_{day}_{P['level']}", v, c, cap["instagram"], cap["youtube_title"], cap["youtube"], a.queue_at)
+                print("En file de publication :", P["name"], a.queue_at)
+            elif not a.no_post and os.environ.get("DISCORD_BOT_TOKEN"):
                 discord_post.post(v, message(P), c)
         else:
             day = a.date or dt.datetime.now(ZoneInfo("Europe/Paris")).date().isoformat()
