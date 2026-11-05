@@ -10,9 +10,10 @@ def enabled():
 
 def _access_token():
     r = requests.post("https://oauth2.googleapis.com/token", timeout=30, data={
-        "client_id": os.environ["YT_CLIENT_ID"], "client_secret": os.environ["YT_CLIENT_SECRET"],
-        "refresh_token": os.environ["YT_REFRESH_TOKEN"], "grant_type": "refresh_token"})
-    r.raise_for_status()
+        "client_id": os.environ["YT_CLIENT_ID"].strip(), "client_secret": os.environ["YT_CLIENT_SECRET"].strip(),
+        "refresh_token": os.environ["YT_REFRESH_TOKEN"].strip(), "grant_type": "refresh_token"})
+    if not r.ok:
+        raise RuntimeError(f"Google refuse le jeton : {r.status_code} {r.json().get('error')} — {r.json().get('error_description')}")
     return r.json()["access_token"]
 
 
