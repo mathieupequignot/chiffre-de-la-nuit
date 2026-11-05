@@ -8,6 +8,9 @@ on:
       player:
         description: "Test : un seul quiz pour ce joueur (nom ou identifiant), vide = les 3 quiz du jour"
         required: false
+      queue_at:
+        description: "Avec player : publier automatiquement à HH:MM (Paris) au lieu d'envoyer sur Discord"
+        required: false
       format:
         description: "Format du quiz (v1 ou v2)"
         default: "v2"
@@ -41,7 +44,7 @@ jobs:
           AUTO_PUBLISH: ${{ (secrets.IG_TOKEN != '' || secrets.YT_REFRESH_TOKEN != '') && '1' || '0' }}
           QUIZ_FORMAT: ${{ inputs.format || 'v2' }}
         run: |
-          if [ -n "${{ inputs.player }}" ]; then python -m quiz.main --player "${{ inputs.player }}"; else python -m quiz.main; fi
+          if [ -n "${{ inputs.player }}" ]; then python -m quiz.main --player "${{ inputs.player }}" ${{ inputs.queue_at && format('--queue-at {0}', inputs.queue_at) || '' }}; else python -m quiz.main; fi
       - name: Enregistrer l'historique des joueurs et les voix
         if: always()
         run: |
