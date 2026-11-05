@@ -384,7 +384,7 @@ def short_message(P):
     lab = LEVELS[P["level"]][0]
     return (f"**🧩 Quiz {lab.lower()}** — 🔒 réponse : ||{P['name']}||\n"
             f"📸 Instagram + ▶️ YouTube : publication automatique à {TIMES[P['level']]}.\n"
-            f"🎵 TikTok : description dans le message suivant 👇")
+            f"🎵 TikTok : la vidéo arrive dans tes brouillons ; description à copier dans le message suivant 👇")
 
 
 def message(P):

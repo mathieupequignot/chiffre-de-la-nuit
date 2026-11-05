@@ -64,7 +64,7 @@ def run(day, fixture=None, post=True, outdir="out"):
     if auto:
         msg = (f"**Le chiffre de la nuit — {D['date_label'].lower()}**\n"
                f"📸 Instagram + ▶️ YouTube : publication automatique à 8h00.\n"
-               f"🎵 TikTok : description dans le message suivant 👇")
+               f"🎵 TikTok : la vidéo arrive dans tes brouillons ; description à copier dans le message suivant 👇")
     else:
         msg = (f"**Le chiffre de la nuit — {D['date_label'].lower()}**\n\n"
            f"🎵 **TikTok** (légende + hashtags) :\n```{caption['tiktok']}```\n"
