@@ -1,4 +1,4 @@
-name: Publication auto (Instagram, YouTube)
+name: Publication auto (Instagram, YouTube, brouillons TikTok)
 
 on:
   schedule:
@@ -29,6 +29,8 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          TT_CLIENT_KEY: ${{ secrets.TT_CLIENT_KEY }}
+          TT_CLIENT_SECRET: ${{ secrets.TT_CLIENT_SECRET }}
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
         run: python -m publish.run
@@ -37,7 +39,7 @@ jobs:
         run: |
           git config user.name "publish-bot"
           git config user.email "publish-bot@users.noreply.github.com"
-          git add -A publish/queue.json docs/media
+          git add -A publish/queue.json docs/media publish/tt_token.enc 2>/dev/null || git add -A publish/queue.json docs/media
           if ! git diff --cached --quiet; then
             git commit -m "Publication : file d'attente" && git pull --rebase -q && git push
           fi

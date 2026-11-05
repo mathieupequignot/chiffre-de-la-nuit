@@ -6,7 +6,7 @@ import traceback
 import requests
 
 from chiffre import discord_post
-from . import queue, instagram
+from . import queue, instagram, tiktok
 
 API = "https://discord.com/api/v10"
 
@@ -37,6 +37,22 @@ def platforms():
 def main():
     now = dt.datetime.now(queue.PARIS)
     q = queue.load(); plats = platforms()
+    # TikTok : dépôt en brouillon dès que la vidéo est prête (sans attendre l'heure), tu publies depuis l'appli
+    if tiktok.enabled():
+        for e in q:
+            if e["status"].get("tiktok") in ("ok", "échec") or now - dt.datetime.fromisoformat(e["at"]) > dt.timedelta(hours=20):
+                continue
+            try:
+                e.setdefault("ids", {})["tiktok"] = tiktok.upload_draft(os.path.join(queue.MEDIA, e["video"]))
+                e["status"]["tiktok"] = "ok"
+                discord_post.notify(f"📥 Brouillon TikTok prêt : {e['key']} — ouvre TikTok (boîte de réception) pour le publier.")
+            except Exception:
+                err = traceback.format_exc(); print(err)
+                n = e.setdefault("errors", {}).get("tiktok", 0) + 1; e["errors"]["tiktok"] = n
+                if n >= 2:
+                    e["status"]["tiktok"] = "échec"
+                    discord_post.notify(f"⚠️ Brouillon TikTok impossible pour {e['key']} — poste-la à la main.\n```{err[-800:]}```")
+            queue.save(q)
     for e in q:
         at = dt.datetime.fromisoformat(e["at"])
         if at > now:
