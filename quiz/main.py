@@ -380,6 +380,13 @@ def captions(P):
     )
 
 
+def short_message(P):
+    lab = LEVELS[P["level"]][0]
+    return (f"**🧩 Quiz {lab.lower()}** — 🔒 réponse : ||{P['name']}||\n"
+            f"📸 Instagram + ▶️ YouTube : publication automatique à {TIMES[P['level']]}.\n"
+            f"🎵 TikTok : description dans le message suivant 👇")
+
+
 def message(P):
     lab = LEVELS[P["level"]][0]; c = captions(P)
     return (f"**🧩 Quiz {lab.lower()} — à poster vers {TIMES[P['level']]}**\n"
@@ -443,8 +450,10 @@ def daily(day, post=True, outdir="out_quiz"):
         video, cover = render_quiz(P, outdir)
         print("Quiz", lvl, ":", P["name"], video)
         if post and os.environ.get("DISCORD_BOT_TOKEN"):
-            mid = discord_post.post(video, message(P), cover)
-            if os.environ.get("AUTO_PUBLISH") == "1":
+            auto = os.environ.get("AUTO_PUBLISH") == "1"
+            mid = discord_post.post(video, short_message(P) if auto else message(P), cover,
+                                    captions(P)["tiktok"] if auto else None)
+            if auto:
                 from publish import queue
                 c = captions(P)
                 queue.add(f"quiz_{day}_{lvl}", video, cover, c["instagram"], c["youtube_title"], c["youtube"],

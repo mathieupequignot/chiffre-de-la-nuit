@@ -60,7 +60,13 @@ def run(day, fixture=None, post=True, outdir="out"):
     final = os.path.join(outdir, f"chiffre_de_la_nuit_{day.isoformat()}.mp4")
     mix(silent, voice, TL, final)
     thumb = cover.from_D(D, os.path.join(outdir, f"miniature_{day.isoformat()}.jpg"))
-    msg = (f"**Le chiffre de la nuit — {D['date_label'].lower()}**\n\n"
+    auto = post and os.environ.get("AUTO_PUBLISH") == "1"
+    if auto:
+        msg = (f"**Le chiffre de la nuit — {D['date_label'].lower()}**\n"
+               f"📸 Instagram + ▶️ YouTube : publication automatique à 8h00.\n"
+               f"🎵 TikTok : description dans le message suivant 👇")
+    else:
+        msg = (f"**Le chiffre de la nuit — {D['date_label'].lower()}**\n\n"
            f"🎵 **TikTok** (légende + hashtags) :\n```{caption['tiktok']}```\n"
            f"📸 **Instagram** :\n```{caption['instagram']}```\n"
            f"🖼️ Miniature jointe : à choisir dans « Modifier la couverture » → Importer.\n\n"
@@ -69,7 +75,7 @@ def run(day, fixture=None, post=True, outdir="out"):
     print("Vidéo :", final)
     mid = None
     if post and os.environ.get("DISCORD_BOT_TOKEN"):
-        mid = discord_post.post(final, msg, thumb)
+        mid = discord_post.post(final, msg, thumb, caption["tiktok"] if auto else None)
     if post and os.environ.get("AUTO_PUBLISH") == "1":
         from publish import queue
         queue.add(f"chiffre_{day.isoformat()}", final, thumb, caption["instagram"], caption["youtube_title"],

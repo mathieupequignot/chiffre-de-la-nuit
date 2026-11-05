@@ -27,7 +27,9 @@ def _gateway_once():
         ws.close()
 
 
-def post(video_path, content, cover_path=None):
+def post(video_path, content, cover_path=None, tiktok=None):
+    """Envoie la vidéo (+ miniature) avec un court message, puis, si fourni, la description TikTok
+    seule dans un second message (appui long → Copier le texte sur téléphone)."""
     try:
         _gateway_once()
     except Exception as e:  # non bloquant : déjà connecté auparavant
@@ -43,8 +45,8 @@ def post(video_path, content, cover_path=None):
         for _, fh, _ in files.values(): fh.close()
     r.raise_for_status()
     mid = r.json()["id"]
-    for emoji in ("%E2%9C%85", "%E2%9D%8C"):  # ✅ ❌
-        requests.put(f"{API}/channels/{ch}/messages/{mid}/reactions/{emoji}/@me", headers=_h(), timeout=30)
+    if tiktok:
+        requests.post(f"{API}/channels/{ch}/messages", headers=_h(), json={"content": tiktok[:2000]}, timeout=30)
     return mid
 
 
