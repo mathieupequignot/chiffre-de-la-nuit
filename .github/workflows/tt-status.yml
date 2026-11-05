@@ -1,0 +1,28 @@
+name: Statut TikTok
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish_id:
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - env:
+          TT_CLIENT_KEY: ${{ secrets.TT_CLIENT_KEY }}
+          TT_CLIENT_SECRET: ${{ secrets.TT_CLIENT_SECRET }}
+        run: python -m publish.tt_status "${{ inputs.publish_id }}"
+      - run: |
+          git config user.name "publish-bot"
+          git config user.email "publish-bot@users.noreply.github.com"
+          git add publish/tt_token.enc && git commit -m "TikTok : jeton (chiffré)" && git pull --rebase -q && git push || true
