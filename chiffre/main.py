@@ -67,8 +67,13 @@ def run(day, fixture=None, post=True, outdir="out"):
            f"▶️ **YouTube Shorts** — titre :\n```{caption['youtube_title']}```\ndescription :\n```{caption['youtube']}```")
     open(os.path.join(outdir, "caption.txt"), "w", encoding="utf-8").write(msg)
     print("Vidéo :", final)
+    mid = None
     if post and os.environ.get("DISCORD_BOT_TOKEN"):
-        discord_post.post(final, msg, thumb)
+        mid = discord_post.post(final, msg, thumb)
+    if post and os.environ.get("AUTO_PUBLISH") == "1":
+        from publish import queue
+        queue.add(f"chiffre_{day.isoformat()}", final, thumb, caption["instagram"], caption["youtube_title"],
+                  caption["youtube"], "08:00", mid)
     return final
 
 

@@ -9,6 +9,9 @@ on:
         description: "Jour à traiter (AAAA-MM-JJ), vide = aujourd'hui"
         required: false
 
+permissions:
+  contents: write
+
 jobs:
   video:
     runs-on: ubuntu-latest
@@ -29,6 +32,7 @@ jobs:
           ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+          AUTO_PUBLISH: ${{ vars.AUTO_PUBLISH }}
         run: |
           if [ -n "${{ inputs.date }}" ]; then python -m chiffre.main --date "${{ inputs.date }}"; else python -m chiffre.main; fi
       - name: Garder une copie de la vidéo (7 jours)
@@ -40,3 +44,12 @@ jobs:
             out/*.mp4
             out/*.jpg
           retention-days: 7
+      - name: Mettre en file pour la publication auto
+        if: always()
+        run: |
+          git config user.name "publish-bot"
+          git config user.email "publish-bot@users.noreply.github.com"
+          git add -A publish/queue.json docs/media 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Publication : chiffre en file" && git pull --rebase -q && git push
+          fi

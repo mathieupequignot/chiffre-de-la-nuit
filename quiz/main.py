@@ -443,7 +443,12 @@ def daily(day, post=True, outdir="out_quiz"):
         video, cover = render_quiz(P, outdir)
         print("Quiz", lvl, ":", P["name"], video)
         if post and os.environ.get("DISCORD_BOT_TOKEN"):
-            discord_post.post(video, message(P), cover)
+            mid = discord_post.post(video, message(P), cover)
+            if os.environ.get("AUTO_PUBLISH") == "1":
+                from publish import queue
+                c = captions(P)
+                queue.add(f"quiz_{day}_{lvl}", video, cover, c["instagram"], c["youtube_title"], c["youtube"],
+                          {"facile": "12:30", "moyen": "18:00", "difficile": "21:00"}[lvl], mid)
         used.append({"date": day, "level": lvl, "id": P["id"]})
         json.dump(used, open(USED, "w"), indent=1)
 

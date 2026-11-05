@@ -38,6 +38,7 @@ jobs:
           ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+          AUTO_PUBLISH: ${{ vars.AUTO_PUBLISH }}
           QUIZ_FORMAT: ${{ inputs.format || 'v2' }}
         run: |
           if [ -n "${{ inputs.player }}" ]; then python -m quiz.main --player "${{ inputs.player }}"; else python -m quiz.main; fi
@@ -46,7 +47,7 @@ jobs:
         run: |
           git config user.name "quiz-bot"
           git config user.email "quiz-bot@users.noreply.github.com"
-          git add quiz/used.json quiz/voice 2>/dev/null || true
+          for p in quiz/used.json quiz/voice publish/queue.json docs/media; do git add -A "$p" 2>/dev/null || true; done
           if ! git diff --cached --quiet; then
             git commit -m "Quiz : historique du $(date +%F)"
             git pull --rebase -q && git push

@@ -1,0 +1,76 @@
+"""Publie les vidéos en attente dont l'heure est arrivée (Instagram, puis YouTube quand il sera branché).
+Une réaction ❌ de ta part sur le message Discord de la vidéo annule sa publication."""
+import datetime as dt
+import os
+import traceback
+import requests
+
+from chiffre import discord_post
+from . import queue, instagram
+
+API = "https://discord.com/api/v10"
+
+
+def cancelled(mid):
+    if not (mid and os.environ.get("DISCORD_BOT_TOKEN")):
+        return False
+    h = discord_post._h(); ch = os.environ["DISCORD_CHANNEL_ID"]
+    me = requests.get(f"{API}/users/@me", headers=h, timeout=30).json()["id"]
+    users = requests.get(f"{API}/channels/{ch}/messages/{mid}/reactions/%E2%9D%8C", headers=h, timeout=30)
+    return users.ok and any(u["id"] != me for u in users.json())
+
+
+def platforms():
+    p = {}
+    if instagram.enabled():
+        p["instagram"] = lambda e: instagram.publish_reel(queue.url(e["video"]), e["instagram"], queue.url(e["cover"]) if e["cover"] else None)
+    try:
+        from . import youtube
+        if youtube.enabled():
+            p["youtube"] = lambda e: youtube.upload(os.path.join(queue.MEDIA, e["video"]), e["yt_title"], e["yt_desc"],
+                                                  os.path.join(queue.MEDIA, e["cover"]) if e["cover"] else None)
+    except ImportError:
+        pass
+    return p
+
+
+def main():
+    now = dt.datetime.now(queue.PARIS)
+    q = queue.load(); plats = platforms()
+    for e in q:
+        at = dt.datetime.fromisoformat(e["at"])
+        if at > now:
+            continue
+        todo = [k for k in plats if e["status"].get(k) not in ("ok", "annulé", "échec", "trop tard")]
+        if not todo:
+            continue
+        if now - at > dt.timedelta(hours=20):
+            for k in todo: e["status"][k] = "trop tard"
+            continue
+        if cancelled(e.get("discord_mid")):
+            for k in todo: e["status"][k] = "annulé"
+            discord_post.notify(f"🚫 Publication annulée (❌) : {e['key']}")
+            continue
+        for k in todo:
+            try:
+                pid = plats[k](e)
+                e["status"][k] = "ok"; e.setdefault("ids", {})[k] = pid
+                discord_post.notify(f"✅ Publié sur **{k.capitalize()}** : {e['key']}")
+            except Exception:
+                err = traceback.format_exc(); print(err)
+                n = e.setdefault("errors", {}).get(k, 0) + 1; e["errors"][k] = n
+                if n >= 2:
+                    e["status"][k] = "échec"
+                    discord_post.notify(f"⚠️ Échec de la publication **{k}** pour {e['key']} — publie-la à la main.\n```{err[-800:]}```")
+        queue.save(q)
+    # ménage : on garde 3 jours
+    keep = [e for e in q if now - dt.datetime.fromisoformat(e["at"]) < dt.timedelta(days=3)]
+    used = {e["video"] for e in keep} | {e["cover"] for e in keep if e["cover"]}
+    for f in os.listdir(queue.MEDIA):
+        if f not in used and f != ".keep":
+            os.remove(os.path.join(queue.MEDIA, f))
+    queue.save(keep)
+
+
+if __name__ == "__main__":
+    main()
