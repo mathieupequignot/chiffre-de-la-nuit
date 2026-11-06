@@ -170,12 +170,21 @@ def count(v, t, t0, d=0.45):
 def content(t, D, TL):
     c = Image.new("RGBA", (W, H), (0, 0, 0, 0)); vis = TL.vis
     me, opp = D["me"], D["opp"]
+    # H — accroche (dès la 1re image)
+    if "H" in TL.S and D.get("hook"):
+        a, p = vis(t, "H", -0.2, 0.08)
+        if a:
+            lines = D["hook"]
+            for k, ln in enumerate(lines):
+                y = 880 + (k - (len(lines) - 1) / 2) * 190
+                text(c, ln, "Black", 150 if k == 0 else 120, WHITE if k == 0 else ACCENT, W / 2, y + Y, alpha=a,
+                     scale=0.88 + 0.12 * ease_back(min(1, p / 1.2)), maxw=960)
     # A — stats
     if "A" in TL.S:
         subs = TL.sub["A"]
         for i, (v, lab) in enumerate(D["rows"]):
             t0 = subs[i][0] if i < len(subs) else TL.S["A"][0] + 0.8 * i
-            if i == 0: t0 = 0.0
+            if i == 0: t0 = 0.0 if "H" not in TL.S else TL.S["A"][0] + 0.15
             y = 560 + 270 * i
             a, p = vis(t, "A", t0)
             if a:
@@ -282,7 +291,7 @@ def content(t, D, TL):
 
 def header(im, t, D, TL):
     g = TL.S.get("G", (1e9, 0))[0]
-    ha = min(1.0, t / 0.3) * (1.0 if t < g else max(0.0, 1 - (t - g) / 0.3))
+    ha = (1.0 if "H" in TL.S else min(1.0, t / 0.3)) * (1.0 if t < g else max(0.0, 1 - (t - g) / 0.3))
     text(im, "LE CHIFFRE DE LA NUIT", "Black", 54, ACCENT, W / 2, 170, alpha=ha, spacing=6)
     badge(im, D["me"], W / 2 - 200, 252, 72, alpha=ha)
     text(im, f"{D['my_pts']} – {D['op_pts']}", "ExtraBold", 46, WHITE, W / 2, 250, alpha=ha)

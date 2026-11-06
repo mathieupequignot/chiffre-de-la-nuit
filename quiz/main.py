@@ -119,11 +119,50 @@ def _gap(n):
     return GAP if n <= 6 else 34
 
 
+# ---------------- silhouette (indice visuel) : photo officielle NBA -> ombre noire
+NBA_IDS = json.load(open(os.path.join(HERE, "nba_ids.json")))
+SIL = None          # image de la silhouette du joueur en cours (None = ancienne mise en page)
+SIL_Y, SIL_H = 655, 430
+
+
+def silhouette(P, size_h=430, src=None):
+    """Silhouette noire cerclée de jaune à partir de la photo officielle (fond transparent)."""
+    import io, requests
+    try:
+        if src is None:
+            pid = NBA_IDS[P["id"]]
+            r = requests.get(f"https://cdn.nba.com/headshots/nba/latest/1040x760/{pid}.png", timeout=20)
+            r.raise_for_status(); src = Image.open(io.BytesIO(r.content))
+        a = src.convert("RGBA").getchannel("A").point(lambda v: 255 if v > 110 else 0)
+        box = a.getbbox()
+        if not box or (box[2] - box[0]) * (box[3] - box[1]) < 0.05 * a.width * a.height:
+            return None
+        a = a.crop(box)
+        sc = size_h / a.height; a = a.resize((max(1, int(a.width * sc)), size_h), Image.LANCZOS)
+        pad = 40
+        A = Image.new("L", (a.width + 2 * pad, a.height + pad), 0); A.paste(a, (pad, pad))
+        edge = A.filter(ImageFilter.MaxFilter(13))
+        glow = edge.filter(ImageFilter.GaussianBlur(14))
+        im = Image.new("RGBA", A.size, (255, 196, 0, 0))
+        im.putalpha(glow.point(lambda v: int(v * 0.9)))
+        ring = Image.new("RGBA", A.size, (255, 196, 0, 255)); ring.putalpha(edge)
+        im.alpha_composite(ring)
+        body = Image.new("RGBA", A.size, (14, 10, 30, 255)); body.putalpha(A)
+        im.alpha_composite(body)
+        q = text_img("?", "Black", int(size_h * 0.42), (255, 196, 0))
+        im.alpha_composite(q, ((im.width - q.width) // 2, int(pad + a.height * 0.42 - q.height / 2)))
+        return im
+    except Exception as e:  # pas de photo : on garde la mise en page classique
+        print("silhouette indisponible :", e)
+        return None
+
+
 def _geom(n):
-    gap = _gap(n)
-    h = min(132, (CARD_BOTTOM - CARD_TOP - gap * (n - 1)) / n)
+    gap = _gap(n) if SIL is None else min(_gap(n), 30)
+    ct = CARD_TOP if SIL is None else SIL_Y + SIL_H / 2 + 50
+    h = min(132, (CARD_BOTTOM - ct - gap * (n - 1)) / n)
     tot = n * h + (n - 1) * gap
-    top = CARD_TOP + (CARD_BOTTOM - CARD_TOP - tot) / 2
+    top = ct + (CARD_BOTTOM - ct - tot) / 2
     return h, top
 
 
@@ -133,7 +172,7 @@ def arrow(c, i, t0, t, n, dim=1.0):
     if p <= 0: return
     a = min(1, p) * dim
     h, top = _geom(n)
-    g = _gap(n); yc = top + i * (h + g) - g / 2 + (1 - ease_out(p)) * -18
+    g = _gap(n) if SIL is None else min(_gap(n), 30); yc = top + i * (h + g) - g / 2 + (1 - ease_out(p)) * -18
     lay = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
     for dx, col in ((0, (255, 210, 60)),):
         d.line([(W / 2 - 26, yc - 12), (W / 2, yc + 12), (W / 2 + 26, yc - 12)], fill=col + (int(255 * a),), width=10, joint="curve")
@@ -145,7 +184,7 @@ def card(c, i, info, years, t0, t, n, dim=1.0):
     if p <= 0: return
     a = min(1, p * 1.6) * dim
     h, top = _geom(n)
-    y0 = top + i * (h + _gap(n))
+    y0 = top + i * (h + (_gap(n) if SIL is None else min(_gap(n), 30)))
     sc = 0.55 + 0.45 * ease_back(min(1, p))
     x0, x1 = 70, 1010 - 70
     bg = _vivid(tuple(info["bg"])); st = tuple(info["stripe"])
@@ -262,6 +301,10 @@ def frame(t, P, T, infos, parts):
         q = (t - lt) / 0.35
         bx_y = 1500 + (362 - 1500) * mv
         level_badge(c, P, W / 2, bx_y, alpha=min(1, q), scale=(0.6 + 0.4 * ease_back(min(1, q))) * (1 - 0.3 * mv))
+    # --- silhouette du joueur (indice visuel), visible dès la 1re image
+    if SIL is not None:
+        da = 1 - 0.7 * ease_out((t - T.Te - 0.3) / 0.4) if t > T.Te + 0.3 else 1.0
+        blit(c, SIL, W / 2, SIL_Y, alpha=da, scale=(0.92 + 0.08 * ease_back(min(1, t / 0.35))) * (1 + 0.012 * math.sin(t * 2.4)))
     # --- cartes
     dim = 1 - 0.7 * ease_out((t - T.Te - 0.3) / 0.4) if t > T.Te + 0.3 else 1.0
     for i, (info, yrs) in enumerate(infos):
@@ -349,7 +392,12 @@ def make_cover(P, out):
     im = base.copy(); im.alpha_composite(glow.crop((300, 300, 300 + W, 300 + H))); im.alpha_composite(grains[0])
     text(im, "QUI EST", "Black", 150, WHITE, W / 2, 520)
     text(im, "CE JOUEUR ?", "Black", 150, (255, 196, 0), W / 2, 670, maxw=960)
-    blit(im, qmark(470, (255, 196, 0)), W / 2, 1010)
+    if SIL is not None:
+        f = 520 / SIL.height
+        big = SIL.resize((int(SIL.width * f), int(SIL.height * f)), Image.LANCZOS)
+        blit(im, big, W / 2, 1010)
+    else:
+        blit(im, qmark(470, (255, 196, 0)), W / 2, 1010)
     level_badge(im, P, W / 2, 1330, s=58)
     n = n_franchises(P)
     text(im, f"{n} FRANCHISE" + ("S" if n > 1 else ""), "Black", 64, WHITE, W / 2, 1460, spacing=6)
@@ -369,7 +417,13 @@ def n_franchises(P):
 def captions(P):
     lab = LEVELS[P["level"]][0].lower(); n = n_franchises(P)
     fr = f"{n} franchise" + ("s" if n > 1 else "")
-    base = f"Seuls les vrais fans trouvent ce joueur 👀 Niveau {lab} · {fr}. Ta réponse en commentaire 👇"
+    hook = random.Random(P["id"]).choice([
+        "Tu le reconnais rien qu'à sa silhouette ? 👀",
+        "Si tu ne trouves pas celui-là, rends ton maillot 😅",
+        "Seuls les vrais fans trouvent ce joueur 👀",
+        "Silhouette + équipes… tu l'as en combien de secondes ? ⏱️",
+    ]) if SIL is not None else "Seuls les vrais fans trouvent ce joueur 👀"
+    base = f"{hook} Niveau {lab} · {fr}. Ta réponse en commentaire 👇"
     tk = ["#NBA", "#quizNBA", "#basketball", "#NBAFrance", "#devinelejoueur"]
     ig = ["#NBA", "#quizNBA", "#basketball", "#basket", "#NBAFrance", "#NBADailyNews", "#devinelejoueur", "#quiz", "#nbatrivia", "#sport"]
     return dict(
@@ -398,8 +452,14 @@ def message(P):
 
 
 # ---------------- programme
-def render_quiz(P, outdir):
+def render_quiz(P, outdir, sil_src=None):
+    global SIL
     os.makedirs(outdir, exist_ok=True)
+    global SIL_H, SIL_Y
+    n = len(P["teams"])
+    SIL_H = 430 if n <= 2 else (370 if n == 3 else 300)
+    SIL_Y = 410 + (SIL_H + 40) / 2
+    SIL = silhouette(P, SIL_H, src=sil_src) if os.environ.get("QUIZ_SILHOUETTE", "1") == "1" else None
     lab = LEVELS[P["level"]][0].lower()
     if V2:
         k = random.Random(P["id"] + os.environ.get("QUIZ_DAY", "")).randrange(len(HOOKS))
@@ -432,12 +492,12 @@ USED = os.path.join(HERE, "used.json")
 
 
 def daily(day, post=True, outdir="out_quiz"):
-    """3 quiz du jour (facile, moyen, difficile), jamais deux fois le même joueur ; rappelle les réponses de la veille."""
+    """Quiz du jour (par défaut 1 seul, niveau facile — QUIZ_LEVELS pour en faire plus), jamais deux fois le même joueur."""
     players = json.load(open(os.path.join(HERE, "players.json"), encoding="utf-8"))
     used = json.load(open(USED)) if os.path.exists(USED) else []
     rnd = random.Random(day)
     today = [u for u in used if u["date"] == day]
-    for lvl in ("facile", "moyen", "difficile"):
+    for lvl in os.environ.get("QUIZ_LEVELS", "facile").split(","):
         if any(u["level"] == lvl for u in today):
             continue  # déjà fait aujourd'hui (relance)
         done = {u["id"] for u in used}

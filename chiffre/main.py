@@ -19,8 +19,9 @@ def mix(video, voice, TL, out):
         subprocess.run([sys.executable, os.path.join(HERE, "sfx.py"), sfxdir, "2.9"], check=True)
     fx = []
     for sc, (a, b) in TL.S.items():
-        if sc != "A":
+        if sc != next(iter(TL.S)):
             fx.append(("whoosh", max(0, a - 0.2), 0.35))
+    if "H" in TL.S: fx.append(("hit", 0.05, 0.4))
     for a, _ in TL.sub.get("A", [])[:4]:
         fx.append(("hit", max(0.02, a), 0.3))
     if "B" in TL.S: fx.append(("hit", TL.at("B", 0.5), 0.45))
@@ -47,7 +48,12 @@ def run(day, fixture=None, post=True, outdir="out"):
         if post and os.environ.get("DISCORD_BOT_TOKEN"):
             discord_post.notify("😴 Pas de match NBA cette nuit : pas de chiffre de la nuit aujourd'hui. Rendez-vous demain matin !")
         return None
-    built = pick.build(games, day)
+    ctx = {}
+    ch = pick.choose(games)
+    if ch and not fixture:
+        ctx = data.season_context(ch[1], ch[2]["id"], day)
+        print("Contexte :", ctx)
+    built = pick.build(games, day, ctx=ctx)
     if not built:
         print("Pas de joueur exploitable.")
         return None

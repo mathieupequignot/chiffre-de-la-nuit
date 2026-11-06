@@ -59,7 +59,7 @@ def fetch_night(paris_day):
         g["players"] = []
         for p in _get("/players/statistics", {"game": g["id"]}):
             g["players"].append(dict(
-                first=p["player"]["firstname"], last=p["player"]["lastname"], team=p["team"]["code"],
+                pid=p["player"].get("id"), first=p["player"]["firstname"], last=p["player"]["lastname"], team=p["team"]["code"],
                 pts=_num(p.get("points")), reb=_num(p.get("totReb")), ast=_num(p.get("assists")),
                 stl=_num(p.get("steals")), blk=_num(p.get("blocks")), tov=_num(p.get("turnovers")),
                 fgm=_num(p.get("fgm")), fga=_num(p.get("fga")), tpm=_num(p.get("tpm")), tpa=_num(p.get("tpa")),
@@ -69,3 +69,19 @@ def fetch_night(paris_day):
 
 def load_fixture(path):
     return json.load(open(path, encoding="utf-8"))
+
+
+def season_context(p, game_id, paris_day):
+    """Contexte pour l'accroche : record de points de la saison (1 requête). Ne lève jamais d'erreur."""
+    try:
+        if not p.get("pid"):
+            return {}
+        season = paris_day.year if paris_day.month >= 9 else paris_day.year - 1
+        logs = [g for g in _get("/players/statistics", {"id": p["pid"], "season": season})
+                if g.get("game", {}).get("id") != game_id and _num(g.get("min", "0").split(":")[0] if isinstance(g.get("min"), str) else g.get("min")) > 0]
+        prev = [_num(g.get("points")) for g in logs]
+        return {"games_before": len(prev), "season_high_pts": len(prev) >= 3 and p["pts"] > max(prev),
+                "prev_high": max(prev) if prev else None}
+    except Exception as e:
+        print("contexte indisponible :", e)
+        return {}

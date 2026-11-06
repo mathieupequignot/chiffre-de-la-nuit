@@ -1,0 +1,53 @@
+name: Prototypes (sans publication)
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Nuit du chiffre (AAAA-MM-JJ)"
+        required: false
+      player:
+        description: "Joueur du quiz (identifiant)"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  proto:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installer ffmpeg
+        timeout-minutes: 8
+        run: |
+          for i in 1 2 3; do
+            timeout 150 sudo apt-get install -y --no-install-recommends ffmpeg && exit 0
+            timeout 150 sudo apt-get update -o Acquire::Retries=3 && timeout 150 sudo apt-get install -y --no-install-recommends ffmpeg && exit 0
+            sleep 10
+          done
+          exit 1
+      - run: pip install -r requirements.txt
+      - env:
+          API_NBA_KEY: ${{ secrets.API_NBA_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+        run: |
+          mkdir -p docs/proto
+          if [ -n "${{ inputs.date }}" ]; then
+            python -m chiffre.main --date "${{ inputs.date }}" --no-post
+            cp out/chiffre_de_la_nuit_*.mp4 docs/proto/chiffre.mp4; cp out/miniature_*.jpg docs/proto/chiffre.jpg; cp out/caption.txt docs/proto/chiffre.txt
+          fi
+          if [ -n "${{ inputs.player }}" ]; then
+            python -m quiz.main --player "${{ inputs.player }}" --no-post
+            cp out_quiz/quiz_*_${{ inputs.player }}.mp4 docs/proto/quiz.mp4; cp out_quiz/miniature_*_${{ inputs.player }}.jpg docs/proto/quiz.jpg
+            python -c "import json; from quiz import main as Q; P=next(p for p in json.load(open('quiz/players.json')) if p['id']=='${{ inputs.player }}'); Q.SIL=1; print(Q.captions(P)['tiktok'])" > docs/proto/quiz.txt
+          fi
+      - run: |
+          git config user.name "proto-bot"
+          git config user.email "proto-bot@users.noreply.github.com"
+          git add -A docs/proto quiz/voice && git commit -m "Prototypes" && git pull --rebase -q && git push
