@@ -26,9 +26,9 @@ def tts(voice, text, model, settings, name):
 # voix actuelle
 info = requests.get(f"https://api.elevenlabs.io/v1/voices/{CUR}", headers=H, timeout=30).json()
 print("Voix actuelle :", info.get("name"), info.get("labels"))
-#tts(CUR, ROBOT, "eleven_multilingual_v2", {"stability": 0.4, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": True}, "1_actuel")
-#tts(CUR, NATUREL, "eleven_multilingual_v2", {"stability": 0.35, "similarity_boost": 0.8, "style": 0.45, "use_speaker_boost": True}, "2_actuel_texte_naturel")
-#tts(CUR, V3, "eleven_v3", {"stability": 0.5}, "3_actuel_v3")
+tts(CUR, ROBOT, "eleven_multilingual_v2", {"stability": 0.4, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": True}, "1_actuel")
+tts(CUR, NATUREL, "eleven_multilingual_v2", {"stability": 0.35, "similarity_boost": 0.8, "style": 0.45, "use_speaker_boost": True}, "2_actuel_texte_naturel")
+tts(CUR, V3, "eleven_v3", {"stability": 0.5}, "3_actuel_v3")
 
 # voix françaises de la bibliothèque (hommes, style commentateur / narration)
 sv = requests.get("https://api.elevenlabs.io/v1/shared-voices", headers=H, timeout=30, params={

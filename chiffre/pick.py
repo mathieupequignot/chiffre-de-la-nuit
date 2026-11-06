@@ -123,26 +123,26 @@ def build(games, paris_day, seed=None, ctx=None):
     date_label = f"NUIT DU {j(y.day)} AU {j(paris_day.day)} {MOIS[paris_day.month - 1].upper()}" if y.month == paris_day.month \
         else f"NUIT DU {j(y.day)} {MOIS[y.month - 1].upper()} AU {j(paris_day.day)} {MOIS[paris_day.month - 1].upper()}"
 
-    # ---- statistiques mises en avant (scène A) + bandeau
+    # ---- statistiques mises en avant (scène A) + bandeau — texte écrit « à l'oral »
     if angle == "sniper":
         rows = [(p["tpm"], "À 3 POINTS"), (p["pts"], "POINTS"), (p["tpa"], "TENTATIVES")]
-        hook = [f"{p['tpm']} paniers à 3 points.", f"{p['pts']} points.", f"Sur seulement {p['tpa']} tentatives de loin."]
+        hook = [f"{p['tpm']} paniers à 3 points…", f"{p['pts']} points au total…", f"et seulement {p['tpa']} tentatives de loin !"]
     elif angle == "twenty_twenty":
         rows = [(p["pts"], "POINTS"), (p["reb"], "REBONDS"), (p["ast"], "PASSES")]
-        hook = [f"{p['pts']} points.", f"{p['reb']} rebonds.", f"{p['ast']} passes."]
+        hook = [f"{p['pts']} points,", f"{p['reb']} rebonds…", f"et {p['ast']} passes en bonus !"]
     elif p["blk"] >= 4 and p["blk"] > p["ast"]:
         rows = [(p["pts"], "POINTS"), (p["reb"], "REBONDS"), (p["blk"], "CONTRES")]
-        hook = [f"{p['pts']} points.", f"{p['reb']} rebonds.", f"{p['blk']} contres."]
+        hook = [f"{p['pts']} points,", f"{p['reb']} rebonds…", f"et {p['blk']} contres !"]
     else:
         rows = [(p["pts"], "POINTS"), (p["reb"], "REBONDS"), (p["ast"], "PASSES")]
-        hook = [f"{p['pts']} points.", f"{p['reb']} rebonds.", f"{p['ast']} passes."]
+        hook = [f"{p['pts']} points,", f"{p['reb']} rebonds…", f"et {p['ast']} passes !"]
     banner = None
     if p["tov"] <= 1 and p["fga"] >= 10:
         banner = "1 SEULE BALLE PERDUE" if p["tov"] == 1 else "0 BALLE PERDUE"
-        hook.append("Et une seule balle perdue." if p["tov"] == 1 else "Et zéro balle perdue.")
+        hook.append("Avec une seule balle perdue, en plus." if p["tov"] == 1 else "Et zéro balle perdue, en plus !")
     elif p["stl"] + p["blk"] >= 5:
         banner = f"{p['stl']} INTERCEPTIONS · {p['blk']} CONTRES"
-        hook.append(f"Et {p['stl'] + p['blk']} ballons volés ou contrés.")
+        hook.append(f"Et {p['stl'] + p['blk']} ballons volés ou contrés derrière !")
 
     exploit = {"triple_double": ("un triple-double monstrueux", "TRIPLE-DOUBLE"),
                "scorer": (f"un carton à {p['pts']} points", f"{p['pts']} POINTS"),
@@ -151,28 +151,30 @@ def build(games, paris_day, seed=None, ctx=None):
                "best": ("le meilleur match de la nuit", "MVP DE LA NUIT")}[angle]
 
     hook_voice, hook_screen = hook_of(angle, p, ctx, rnd)
-    segs = [("H", hook_voice)] + [("A", s) for s in hook]
-    segs.append(("B", f"Cette nuit, {full} a signé {exploit[0]} {me['avec']} {opp['face']}."))
+    segs = [("H", "[excited] " + hook_voice)] + [("A", s) for s in hook]
+    segs.append(("B", rnd.choice(["Et ça, c'est {n}, avec {m} {o} !", "Le patron de la soirée ? {n}, avec {m} {o}.",
+                                  "Tout ça signé {n}, avec {m} {o} !"]).format(n=full, m=me["avec"].replace("avec ", "", 1), o=opp["face"])))
     fg = None
     if p["fga"] >= 8 and p["fgm"] / p["fga"] >= 0.5:
         fg = (p["fgm"], p["fga"])
-        segs.append(("C", rnd.choice(["Et surtout, avec une efficacité folle : {m} tirs réussis sur {a}.",
-                                      "Le tout avec une adresse redoutable : {m} tirs réussis sur {a}.",
-                                      "Et quelle efficacité : {m} sur {a} aux tirs."]).format(m=p["fgm"], a=p["fga"])))
+        segs.append(("C", rnd.choice(["[impressed] Et à {m} sur {a} au tir, s'il vous plaît !",
+                                      "[impressed] Avec {m} tirs réussis sur {a}… propre !",
+                                      "[impressed] Et quelle adresse : {m} sur {a} au tir !"]).format(m=p["fgm"], a=p["fga"])))
     pm = None
     if p["pm"] >= 10 and win:
         pm = p["pm"]
-        segs.append(("D", f"Quand il était sur le terrain, {me['name'].title()} a dominé de {pm} points."))
+        segs.append(("D", f"Quand il était sur le terrain, {me['name'].title()} a mis {pm} points d'écart."))
     w_hi, w_lo = max(my_pts, op_pts), min(my_pts, op_pts)
-    segs.append(("E", f"Résultat : victoire {w_hi} à {w_lo}." if win else f"Mais ça n'a pas suffi : défaite {w_lo} à {w_hi}."))
+    segs.append(("E", rnd.choice([f"Au final, victoire {w_hi} à {w_lo} !", f"Et au bout : victoire {w_hi} à {w_lo} !"]) if win
+                 else f"[sighs] Mais bon… défaite {w_lo} à {w_hi}."))
     last = p["last"].upper()
     punch = rnd.choice([
-        (f"{last}", "EN MODE PATRON", "La ligue est prévenue.", f"{p['last']} en mode patron… la ligue est prévenue."),
-        ("QUELLE", "PERFORMANCE", "On en reparle demain.", "Quelle performance… on en reparlera."),
-        (f"{last}", "INARRÊTABLE", "Qui va l'arrêter ?", f"{p['last']}, inarrêtable… mais qui va l'arrêter ?"),
+        (f"{last}", "EN MODE PATRON", "La ligue est prévenue.", f"{p['last']} en mode patron… la ligue est prévenue !"),
+        ("QUELLE", "PERFORMANCE", "On en reparle demain.", "Franchement… quelle performance !"),
+        (f"{last}", "INARRÊTABLE", "Qui va l'arrêter ?", f"{p['last']} est inarrêtable… mais qui va l'arrêter ?"),
     ]) if win else (f"{last}", "SEUL CONTRE TOUS", "Ça ne suffit pas toujours.", f"{p['last']} seul contre tous… et parfois, ça ne suffit pas.")
     segs.append(("F", punch[3]))
-    segs.append(("G", "Abonne-toi pour ne rater aucun chiffre de la nuit."))
+    segs.append(("G", "Abonne-toi pour ne rater aucun chiffre de la nuit !"))
 
     D = dict(date_label=date_label, angle=angle, first=p["first"].upper(), last=p["last"].upper(), me=me, opp=opp,
              my_pts=my_pts, op_pts=op_pts, win=win, home=g["home"], away=g["away"], home_pts=g["home_pts"], away_pts=g["away_pts"],

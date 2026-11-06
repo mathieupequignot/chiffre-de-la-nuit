@@ -464,11 +464,11 @@ def render_quiz(P, outdir, sil_src=None):
     if V2:
         k = random.Random(P["id"] + os.environ.get("QUIZ_DAY", "")).randrange(len(HOOKS))
         hook_voice, hook_txt = HOOKS[k]
-        v1, cues1, len1 = voice(f"hook{k}_{P['level']}", [("H", hook_voice), ("L", f"Niveau {lab} !")], outdir)
+        v1, cues1, len1 = voice(f"v3_hook{k}_{P['level']}", [("H", "[excited] " + hook_voice), ("L", f"Niveau {lab} !")], outdir)
     else:
         hook_txt = ""
         v1, cues1, len1 = voice(f"intro_{P['level']}", [("H", "Attention… seuls les VRAIS fans vont trouver ce joueur !"), ("L", f"Niveau : {lab} !")], outdir)
-    v2, _, len2 = voice("outro", [("E", "Alors… tu l'as trouvé ?! Balance ta réponse en commentaire !")], outdir)
+    v2, _, len2 = voice("v3_outro", [("E", "[excited] Alors… tu l'as trouvé ?! Balance ta réponse en commentaire !")], outdir)
     T = TL(P, cues1, len1, len2); T.hook_txt = hook_txt
     infos = [(team_info(tm), yrs) for tm, yrs in P["teams"]]
     parts = vivid_bg()
