@@ -184,7 +184,7 @@ def content(t, D, TL):
         subs = TL.sub["A"]
         for i, (v, lab) in enumerate(D["rows"]):
             t0 = subs[i][0] if i < len(subs) else TL.S["A"][0] + 0.8 * i
-            if i == 0: t0 = 0.0 if "H" not in TL.S else TL.S["A"][0] + 0.15
+            if i == 0: t0 = 0.0 if "H" not in TL.S else TL.S["A"][0]
             y = 560 + 270 * i
             a, p = vis(t, "A", t0)
             if a:
@@ -258,7 +258,7 @@ def content(t, D, TL):
                 panel(c, [90 + off, y - 110 + Y, W - 90 + off, y + 110 + Y], (255, 255, 255, 30 if won else 16), a, 32,
                       (255, 255, 255, 70 if won else 30))
                 badge(c, tm, 205 + off, y + Y, 160, alpha=a)
-                text(c, tm["name"], "Black", 78, WHITE if won else GREY, 310 + off, y + Y, anchor="lm", alpha=a, maxw=440)
+                text(c, tm["name"], "Black", 78, WHITE if won else GREY, 310 + off, y + Y, anchor="lm", alpha=a, maxw=360)
                 text(c, str(count(pts, t, t0 + 0.4, 0.6)), "Black", 132, ACCENT if won else GREY, W - 140 + off, y + Y, anchor="rm", alpha=a)
     # F — punchline
     if "F" in TL.S:
