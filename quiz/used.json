@@ -73,5 +73,20 @@
   "date": "2026-11-05",
   "level": "difficile",
   "id": "trentga02"
+ },
+ {
+  "date": "2026-11-06",
+  "level": "facile",
+  "id": "townska01"
+ },
+ {
+  "date": "2026-11-06",
+  "level": "moyen",
+  "id": "randlju01"
+ },
+ {
+  "date": "2026-11-06",
+  "level": "difficile",
+  "id": "wagnemo01"
  }
 ]
