@@ -1,0 +1,25 @@
+name: Test des voix
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  voix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+        run: python -m chiffre.voice_test
+      - run: |
+          git config user.name "proto-bot"
+          git config user.email "proto-bot@users.noreply.github.com"
+          git add -A docs/voix && git commit -m "Extraits de voix" && git pull --rebase -q && git push
