@@ -48,12 +48,8 @@ def run(day, fixture=None, post=True, outdir="out"):
         if post and os.environ.get("DISCORD_BOT_TOKEN"):
             discord_post.notify("😴 Pas de match NBA cette nuit : pas de chiffre de la nuit aujourd'hui. Rendez-vous demain matin !")
         return None
-    ctx = {}
-    ch = pick.choose(games)
-    if ch and not fixture:
-        ctx = data.season_context(ch[1], ch[2]["id"], day)
-        print("Contexte :", ctx)
-    built = pick.build(games, day, ctx=ctx)
+    # (record de la saison : indisponible avec l'offre gratuite d'API-NBA -> pas de contexte pour l'instant)
+    built = pick.build(games, day)
     if not built:
         print("Pas de joueur exploitable.")
         return None
