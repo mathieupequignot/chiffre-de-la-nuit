@@ -48,7 +48,17 @@
   "yt_desc": "Seuls les vrais fans trouvent ce joueur 👀 Niveau facile · 2 franchises. Ta réponse en commentaire 👇\n\n#Shorts #NBA #quizNBA",
   "at": "2026-11-06T12:30:00+01:00",
   "discord_mid": "1568252514544001155",
-  "status": {}
+  "status": {
+   "instagram": "ok",
+   "youtube": "ok"
+  },
+  "errors": {
+   "tiktok": 1
+  },
+  "ids": {
+   "instagram": "18117235436035987",
+   "youtube": "AKZ30INkFS8"
+  }
  },
  {
   "key": "quiz_2026-11-06_moyen",
@@ -59,7 +69,12 @@
   "yt_desc": "Seuls les vrais fans trouvent ce joueur 👀 Niveau moyen · 5 franchises. Ta réponse en commentaire 👇\n\n#Shorts #NBA #quizNBA",
   "at": "2026-11-06T18:00:00+01:00",
   "discord_mid": "1568252723151900792",
-  "status": {}
+  "status": {
+   "tiktok": "ok"
+  },
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7705046685718120471"
+  }
  },
  {
   "key": "quiz_2026-11-06_difficile",
@@ -70,6 +85,11 @@
   "yt_desc": "Seuls les vrais fans trouvent ce joueur 👀 Niveau difficile · 5 franchises. Ta réponse en commentaire 👇\n\n#Shorts #NBA #quizNBA",
   "at": "2026-11-06T21:00:00+01:00",
   "discord_mid": "1568252935027298456",
-  "status": {}
+  "status": {
+   "tiktok": "ok"
+  },
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7705047814874892310"
+  }
  }
 ]
