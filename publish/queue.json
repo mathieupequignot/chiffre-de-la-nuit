@@ -92,10 +92,15 @@
   "at": "2026-11-06T21:00:00+01:00",
   "discord_mid": "1568252935027298456",
   "status": {
-   "tiktok": "ok"
+   "tiktok": "ok",
+   "youtube": "ok"
   },
   "ids": {
-   "tiktok": "v_inbox_file~v2.7705047814874892310"
+   "tiktok": "v_inbox_file~v2.7705047814874892310",
+   "youtube": "JdwbP27qa2g"
+  },
+  "errors": {
+   "instagram": 1
   }
  }
 ]
