@@ -18,7 +18,7 @@ jobs:
       - env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
-        run: python -m chiffre.voice_test
+        run: python -m chiffre.voice_probe && python -m chiffre.voice_test
       - run: |
           git config user.name "proto-bot"
           git config user.email "proto-bot@users.noreply.github.com"
