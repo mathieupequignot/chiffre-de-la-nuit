@@ -113,7 +113,17 @@
   "yt_desc": "Doncic a passé la barre des 50 points ! 🤯\nLuka Doncic : 53 pts, 5 reb, 5 pd avec les Lakers face à Portland (victoire 124-118).\n\nTu le mets dans ton top 5 actuel ? 👇\n\n#Shorts #NBA #Doncic",
   "at": "2026-11-07T08:00:00+01:00",
   "discord_mid": "1568528644274655262",
-  "status": {}
+  "status": {
+   "tiktok": "ok",
+   "youtube": "ok"
+  },
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7705334037665138710",
+   "youtube": "AkpCwhEnpvM"
+  },
+  "errors": {
+   "instagram": 1
+  }
  },
  {
   "key": "quiz_2026-11-07_facile",
@@ -124,6 +134,11 @@
   "yt_desc": "Seuls les vrais fans trouvent ce joueur 👀 Niveau facile · 1 franchise. Ta réponse en commentaire 👇\n\n#Shorts #NBA #quizNBA",
   "at": "2026-11-07T12:30:00+01:00",
   "discord_mid": "1568530993248346142",
-  "status": {}
+  "status": {
+   "tiktok": "ok"
+  },
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7705334669110249494"
+  }
  }
 ]
