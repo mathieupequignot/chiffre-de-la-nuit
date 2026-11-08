@@ -157,7 +157,17 @@
   "yt_desc": "Curry était injouable cette nuit. 🤯\nStephen Curry : 41 pts, 6 reb, 6 pd avec Golden State face à Orlando (victoire 126-119).\n\nTu le mets dans ton top 5 actuel ? 👇\n\n#Shorts #NBA #Curry",
   "at": "2026-11-08T08:00:00+01:00",
   "discord_mid": "1568891146480914442",
-  "status": {}
+  "status": {
+   "tiktok": "ok",
+   "youtube": "ok"
+  },
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7705705515300702230",
+   "youtube": "_LNV7ob18PQ"
+  },
+  "errors": {
+   "instagram": 1
+  }
  },
  {
   "key": "quiz_2026-11-08_facile",
@@ -168,6 +178,11 @@
   "yt_desc": "Si tu ne trouves pas celui-là, rends ton maillot 😅 Niveau facile · 2 franchises. Ta réponse en commentaire 👇\n\n#Shorts #NBA #quizNBA",
   "at": "2026-11-08T12:30:00+01:00",
   "discord_mid": "1568893497912594506",
-  "status": {}
+  "status": {
+   "tiktok": "ok"
+  },
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7705707566214678550"
+  }
  }
 ]
