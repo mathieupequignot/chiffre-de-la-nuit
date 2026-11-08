@@ -180,10 +180,15 @@
   "at": "2026-11-08T12:30:00+01:00",
   "discord_mid": "1568893497912594506",
   "status": {
-   "tiktok": "ok"
+   "tiktok": "ok",
+   "youtube": "ok"
   },
   "ids": {
-   "tiktok": "v_inbox_file~v2.7705707566214678550"
+   "tiktok": "v_inbox_file~v2.7705707566214678550",
+   "youtube": "QDK03nm6M-8"
+  },
+  "errors": {
+   "instagram": 1
   }
  }
 ]
