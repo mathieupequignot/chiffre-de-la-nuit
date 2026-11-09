@@ -366,7 +366,7 @@ def mix(voice_wav, T, out_wav):
             add(whoosh(), max(0, a - 0.1), 0.10)
         if k.isdigit():
             add(pop(), a + 0.05, 0.12)
-    add(ding(), T.span["1"][0] + 0.05, 0.10)
+    add(ding(), T.span[next(k for k, v in NUM.items() if v == 1)][0] + 0.05, 0.10)
     out = np.clip(out, -1, 1)
     with wave.open(out_wav, "wb") as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((out * 32767).astype(np.int16).tobytes())
