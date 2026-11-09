@@ -161,7 +161,17 @@
   "yt_desc": "Tu as vu ce que Reaves a fait cette nuit ? 🤯\nAustin Reaves : 43 pts, 5 reb, 4 pd avec les Lakers face à Detroit (victoire 121-116).\n\nQuelle note sur 10 pour ce match ? 👇\n\n#Shorts #NBA #Reaves",
   "at": "2026-11-09T08:00:00+01:00",
   "discord_mid": "1569259110220701837",
-  "status": {}
+  "status": {
+   "tiktok": "ok",
+   "youtube": "ok"
+  },
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7706090116862724118",
+   "youtube": "WMeYQtfRw40"
+  },
+  "errors": {
+   "instagram": 1
+  }
  },
  {
   "key": "quiz_2026-11-09_facile",
@@ -172,6 +182,11 @@
   "yt_desc": "Silhouette + équipes… tu l'as en combien de secondes ? ⏱️ Niveau facile · 4 franchises. Ta réponse en commentaire 👇\n\n#Shorts #NBA #quizNBA",
   "at": "2026-11-09T12:30:00+01:00",
   "discord_mid": "1569260682459742360",
-  "status": {}
+  "status": {
+   "tiktok": "ok"
+  },
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7706090087001360406"
+  }
  }
 ]
