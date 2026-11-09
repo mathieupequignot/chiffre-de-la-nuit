@@ -162,14 +162,15 @@
   "discord_mid": "1569260682459742360",
   "status": {
    "tiktok": "ok",
-   "youtube": "ok"
+   "youtube": "ok",
+   "instagram": "échec"
   },
   "ids": {
    "tiktok": "v_inbox_file~v2.7706090087001360406",
    "youtube": "GqZbXo_4oVM"
   },
   "errors": {
-   "instagram": 1
+   "instagram": 2
   }
  }
 ]
