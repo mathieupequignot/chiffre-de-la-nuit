@@ -25,7 +25,8 @@ Fond aux couleurs de l'équipe (table TEAM dans top10/main.py, ou champ JSON `co
 Nouveau joueur hors table : ajouter sa couleur dans TEAM.
 
 ## Programme des joueurs (photos fournies par Mathieu dans top10/assets/)
-Ordre de passage par défaut (un par samedi). Si un joueur est très réclamé en commentaire ou fait l'actualité
+Rythme : 2 épisodes par semaine, mercredi et samedi à 18:30 (préparés le lundi et le jeudi). Passage à 3/semaine
+à réévaluer après 2–3 semaines selon les stats. Ordre de passage par défaut : Si un joueur est très réclamé en commentaire ou fait l'actualité
 de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
 - [x] Victor Wembanyama — wemby.png (épisodes 1 et 2)
 - [ ] LeBron James — lebron.png (actu : 24e saison, nouveau départ aux 76ers)
@@ -40,8 +41,9 @@ de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
 - [ ] Kyrie Irving — kyrie.png
 Critère de choix : uniquement des superstars très connues du grand public (objectif : un maximum de vues).
 Si la photo du joueur est présente dans top10/assets/, mettre `"photo": "<fichier>"` dans le JSON de l'épisode.
-**Quand il ne reste plus que 2 joueurs non traités avec photo**, le signaler à Mathieu sur Discord pour qu'il en envoie
-de nouvelles (avec une proposition de prochains joueurs).
+**Quand il ne reste plus que 4 joueurs non traités avec photo**, le signaler à Mathieu sur Discord pour qu'il en envoie
+de nouvelles (avec une proposition de prochains joueurs : superstars actuelles et légendes très connues —
+Jordan, Kobe, Shaq, Iverson, Magic, Bird, Dirk, Tony Parker…).
 
 ## Règles absolues
 1. **Chaque fait est vérifié par au moins 2 sources fiables** (ESPN, The Athletic, L'Équipe, AP, NBA.com,
