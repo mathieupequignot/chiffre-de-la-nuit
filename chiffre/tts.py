@@ -8,6 +8,7 @@ import subprocess
 import requests
 
 MODEL = os.environ.get("ELEVENLABS_MODEL", "eleven_v3")
+LAST = {}   # dernier horodatage caractère par caractère (texte envoyé, débuts, fins en secondes) — pour les sous-titres
 SPEED = float(os.environ.get("VOICE_SPEED", "1.12"))   # validé : +12 % paraît plus naturel
 V3_SETTINGS = {"stability": 0.5}                         # v3 : 0 = créatif, 0.5 = naturel, 1 = stable
 TAG = re.compile(r"\s*\[[a-zA-Z ]+\]\s*")
@@ -60,6 +61,7 @@ def synth(segments, out_wav, voice_settings=None, speed=None):
         starts, ends = al["character_start_times_seconds"], al["character_end_times_seconds"]
         n = len(starts); print("alignement :", n, "caractères pour", len(" ".join(t for _, t in (segments))), "envoyés")
         cues = [(c, starts[min(a, n - 1)] / speed, ends[min(max(b - 1, 0), n - 1)] / speed) for c, a, b in bounds]
+        LAST.update(text=" ".join(t for _, t in (segs if 'segs' in dir() else segments)), starts=[x / speed for x in starts], ends=[x / speed for x in ends])
         total = ends[-1] / speed
     else:  # mode test : ~14 caractères par seconde, pauses entre phrases
         cues, t = [], 0.0
@@ -67,5 +69,6 @@ def synth(segments, out_wav, voice_settings=None, speed=None):
             d = len(_plain(txt)) / 14.0 / speed
             cues.append((c, t, t + d)); t += d + 0.3
         total = t
+        LAST.clear()
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-t", f"{total:.2f}", out_wav], check=True)
     return cues, total

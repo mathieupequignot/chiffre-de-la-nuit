@@ -1,0 +1,35 @@
+name: Vidéo spéciale (10 trucs fous)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  video:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installer ffmpeg et les emojis
+        timeout-minutes: 8
+        run: |
+          for i in 1 2 3; do
+            timeout 150 sudo apt-get install -y --no-install-recommends ffmpeg fonts-noto-color-emoji && exit 0
+            timeout 150 sudo apt-get update -o Acquire::Retries=3 && timeout 150 sudo apt-get install -y --no-install-recommends ffmpeg fonts-noto-color-emoji && exit 0
+            sleep 10
+          done
+          exit 1
+      - run: pip install -r requirements.txt
+      - env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: qR7W98P3YFvanKmMWcIb
+        run: python -m top10.main --out docs/proto
+      - run: |
+          git config user.name "proto-bot"
+          git config user.email "proto-bot@users.noreply.github.com"
+          git add docs/proto/10_trucs_fous_wemby.mp4 docs/proto/10_trucs_fous_wemby.jpg && git commit -m "Vidéo spéciale" && git pull --rebase -q && git push

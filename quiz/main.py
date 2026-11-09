@@ -125,7 +125,7 @@ SIL = None          # image de la silhouette du joueur en cours (None = ancienne
 SIL_Y, SIL_H = 655, 430
 
 
-def silhouette(P, size_h=430, src=None):
+def silhouette(P, size_h=430, src=None, qmark=True):
     """Silhouette noire cerclée de jaune à partir de la photo officielle (fond transparent)."""
     import io, requests
     try:
@@ -150,7 +150,7 @@ def silhouette(P, size_h=430, src=None):
         body = Image.new("RGBA", A.size, (14, 10, 30, 255)); body.putalpha(A)
         im.alpha_composite(body)
         q = text_img("?", "Black", int(size_h * 0.42), (255, 196, 0))
-        im.alpha_composite(q, ((im.width - q.width) // 2, int(pad + a.height * 0.42 - q.height / 2)))
+        if qmark: im.alpha_composite(q, ((im.width - q.width) // 2, int(pad + a.height * 0.42 - q.height / 2)))
         return im
     except Exception as e:  # pas de photo : on garde la mise en page classique
         print("silhouette indisponible :", e)
