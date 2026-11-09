@@ -40,12 +40,16 @@ def main():
     # TikTok : dépôt en brouillon dès que la vidéo est prête (sans attendre l'heure), tu publies depuis l'appli
     if tiktok.enabled():
         for e in q:
-            if e["status"].get("tiktok") in ("ok", "échec") or now - dt.datetime.fromisoformat(e["at"]) > dt.timedelta(hours=20):
-                continue
+            at = dt.datetime.fromisoformat(e["at"])
+            if e["status"].get("tiktok") in ("ok", "échec") or now - at > dt.timedelta(hours=20) or at - now > dt.timedelta(hours=5):
+                continue  # trop tard, ou trop tôt (le brouillon arrive au plus 5 h avant l'heure prévue)
             try:
                 e.setdefault("ids", {})["tiktok"] = tiktok.upload_draft(os.path.join(queue.MEDIA, e["video"]))
                 e["status"]["tiktok"] = "ok"
-                discord_post.notify(f"📥 Brouillon TikTok prêt : {e['key']} — ouvre TikTok (boîte de réception) pour le publier.")
+                discord_post.notify(f"📥 Brouillon TikTok prêt : {e['key']} — à publier vers {at.strftime('%H:%M')} depuis TikTok (boîte de réception)."
+                                    + (" Description dans le message suivant 👇" if e.get("tiktok_caption") else ""))
+                if e.get("tiktok_caption"):
+                    discord_post.notify(e["tiktok_caption"])
             except Exception:
                 err = traceback.format_exc(); print(err)
                 n = e.setdefault("errors", {}).get("tiktok", 0) + 1; e["errors"]["tiktok"] = n

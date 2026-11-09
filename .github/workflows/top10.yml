@@ -4,8 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       episode:
-        description: "a ou b"
+        description: "a, b, ou chemin d'un épisode JSON (top10/episodes/...)"
         default: "a"
+      queue_at:
+        description: "Programmer la publication : AAAA-MM-JJ HH:MM (vide = simple aperçu)"
+        required: false
 
 permissions:
   contents: write
@@ -32,8 +35,11 @@ jobs:
       - env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           ELEVENLABS_VOICE_ID: qR7W98P3YFvanKmMWcIb
-        run: python -m top10.main --out docs/proto --episode "${{ inputs.episode }}"
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+        run: python -m top10.main --out docs/proto --episode "${{ inputs.episode }}" ${{ inputs.queue_at && format('--queue-at "{0}"', inputs.queue_at) || '' }}
       - run: |
           git config user.name "proto-bot"
           git config user.email "proto-bot@users.noreply.github.com"
-          rm -f docs/proto/video.mp4; git add docs/proto/*.mp4 docs/proto/*.jpg && git commit -m "Vidéo spéciale" && git pull --rebase -q && git push
+          rm -f docs/proto/video.mp4
+          if [ -n "${{ inputs.queue_at }}" ]; then rm -rf docs/proto; git add -A publish/queue.json docs/media; else git add docs/proto/*.mp4 docs/proto/*.jpg; fi && git commit -m "Vidéo spéciale" && git pull --rebase -q && git push

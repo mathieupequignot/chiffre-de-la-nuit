@@ -130,7 +130,7 @@ def silhouette(P, size_h=430, src=None, qmark=True):
     import io, requests
     try:
         if src is None:
-            pid = NBA_IDS[P["id"]]
+            pid = NBA_IDS.get(P["id"]) or P["id"]  # identifiant Basketball-Reference connu, ou identifiant NBA direct
             r = requests.get(f"https://cdn.nba.com/headshots/nba/latest/1040x760/{pid}.png", timeout=20)
             r.raise_for_status(); src = Image.open(io.BytesIO(r.content))
         a = src.convert("RGBA").getchannel("A").point(lambda v: 255 if v > 110 else 0)

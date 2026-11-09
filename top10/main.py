@@ -51,10 +51,30 @@ TITLE, HEADER, NUM, SEGS = EP["title"], EP["header"], EP["num"], EP["segs"]
 ORDER = [c for c, _ in SEGS]
 
 
+VIS = {}
+
+
 def use(ep):
-    global EP, TITLE, HEADER, NUM, SEGS, ORDER
-    EP = EPISODES[ep]; TITLE, HEADER, NUM, SEGS = EP["title"], EP["header"], EP["num"], EP["segs"]
+    """ep : 'a'/'b' (épisodes Wemby) ou chemin d'un épisode JSON (voir top10/SERIE.md)."""
+    global EP, TITLE, HEADER, NUM, SEGS, ORDER, VIS, PHOTO
+    if ep in EPISODES:
+        EP = EPISODES[ep]
+    else:
+        import json
+        J = json.load(open(ep, encoding="utf-8"))
+        facts = J["facts"]  # du n°5 au n°1
+        n = len(facts)
+        EP = dict(title=tuple(J["title"]), header=J["header"], cover=tuple(J["cover"]), file=J["file"],
+                  num={f"f{i}": n - i for i in range(n)}, nba_id=J.get("nba_id"),
+                  segs=[("H", J["hook"])] + [(f"f{i}", f["voice"]) for i, f in enumerate(facts)] + [("E", J["outro"])])
+        VIS = {f"f{i}": f["visual"] for i, f in enumerate(facts)}
+        EP["json"] = J
+        ph = os.path.join(os.path.dirname(PHOTO), J.get("photo", "none.png"))
+        PHOTO = ph
+    TITLE, HEADER, NUM, SEGS = EP["title"], EP["header"], EP["num"], EP["segs"]
     ORDER = [c for c, _ in SEGS]
+    global N
+    N = len(NUM)
 
 
 # ---------------------------------------------------------------- outils de dessin
@@ -188,9 +208,77 @@ def captions(c, t, groups):
             return
 
 
-# ---------------------------------------------------------------- visuels par fait
+# ---------------------------------------------------------------- visuels génériques (épisodes en JSON)
+COLS = {"accent": ACCENT, "silver": SILVER, "yellow": YEL, "red": RED, "green": GREEN, "brown": (150, 100, 60),
+        "blue": (0, 54, 120), "wine": (165, 0, 68)}
+
+
+def _num_anim(v, e):
+    """Anime un nombre écrit à la française ('1,91', '+13', '15,56') ; renvoie le texte tel quel sinon."""
+    m = re.fullmatch(r"([+-]?)(\d+)(?:,(\d+))?", v)
+    if not m:
+        return v
+    dec = len(m.group(3) or "")
+    x = float(m.group(2) + "." + (m.group(3) or "0"))
+    return m.group(1) + f"{x * e:.{dec}f}".replace(".", ",")
+
+
+def generic(c, V, p, cy=900):
+    a = min(1, p / 0.25); e = ease_out((p - 0.5) / 1.2)
+    t = V.get("type", "big")
+    pop = 0.85 + 0.15 * ease_back(min(1, p / 0.4))
+    if t == "big":
+        val = _num_anim(V["value"], e) if V.get("count", True) else V["value"]
+        text(c, val + V.get("unit", ""), "Black", 220, WHITE, W / 2, cy - 60, alpha=a, scale=pop, maxw=1000)
+        if V.get("label"): text(c, V["label"], "Black", 58, ACCENT, W / 2, cy + 100, alpha=a * ease_out((p - 1.2) / 0.4), maxw=960)
+        if V.get("sub"): text(c, V["sub"], "Black", 52, SILVER, W / 2, cy + 190, alpha=ease_out((p - 2.2) / 0.4), maxw=960)
+    elif t == "bars":
+        if V.get("value"): text(c, V["value"], "Black", 190, WHITE, W / 2, cy - 200, alpha=a, scale=pop, maxw=1000)
+        if V.get("label"): text(c, V["label"], "Black", 58, ACCENT, W / 2, cy - 40, alpha=a, maxw=960)
+        for i, (lab, val, frac, col) in enumerate(V["bars"]):
+            g = ease_out((p - 1.0 - 0.6 * i) / 0.9)
+            bar(c, 120, cy + 120 + i * 170, 840, g * frac, 52, COLS.get(col, ACCENT), min(1, g * 2), lab, val)
+        if V.get("note"): text(c, V["note"], "Black", 56, YEL, W / 2, cy + 120 + len(V["bars"]) * 170, alpha=ease_out((p - 3.0) / 0.4), maxw=960)
+    elif t == "versus":
+        b1, b2 = ease_out((p - 0.4) / 0.4), ease_out((p - 2.0) / 0.4)
+        panel(c, [110, cy - 250, 970, cy - 70], COLS.get(V.get("no_col", "wine"), RED) + (255,), b1, r=34)
+        text(c, V["no"], "Black", 76, WHITE, W / 2, cy - 160, alpha=b1, maxw=820)
+        if b2 > 0:
+            lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+            ImageDraw.Draw(lay).line([150, cy - 230, 930, cy - 90], fill=RED + (int(255 * b2),), width=18); c.alpha_composite(lay)
+        panel(c, [110, cy + 40, 970, cy + 220], COLS.get(V.get("yes_col", "blue"), GREEN) + (255,), b2, r=34)
+        text(c, V["yes"], "Black", 76, WHITE, W / 2, cy + 130, alpha=b2, maxw=820)
+        if V.get("sub"): text(c, V["sub"], "Black", 56, SILVER, W / 2, cy + 320, alpha=b1, maxw=960)
+    elif t == "list":
+        text(c, V["value"], "Black", 180, WHITE, W / 2, cy - 160, alpha=a, scale=pop, maxw=1000)
+        if V.get("label"): text(c, V["label"], "Black", 58, ACCENT, W / 2, cy - 30, alpha=a, maxw=960)
+        for i, lab in enumerate(V.get("items", [])[:3]):
+            b = ease_out((p - 1.6 - 0.9 * i) / 0.35)
+            panel(c, [150, cy + 70 + i * 120, 930, cy + 170 + i * 120], (255, 255, 255, 24), b, r=26)
+            text(c, lab, "Black", 50, YEL if i == len(V["items"]) - 1 else WHITE, W / 2, cy + 120 + i * 120, alpha=b, maxw=740)
+    elif t == "emoji":
+        if V.get("top"):
+            b1 = ease_out((p - 0.3) / 0.4)
+            panel(c, [130, cy - 330, 950, cy - 170], COLS.get(V.get("top_col", "green"), GREEN) + (255,), b1, r=30)
+            text(c, V["top"], "Black", 56, WHITE, W / 2, cy - 250, alpha=b1, maxw=760)
+        em = emoji(V.get("emoji", "🏀"), 260)
+        b2 = ease_out((p - 1.2) / 0.6)
+        if em is not None: blit(c, em, W / 2, cy + 10, alpha=b2, scale=0.8 + 0.2 * ease_back(min(1, max(0, p - 1.2) / 0.4)))
+        if V.get("bottom"):
+            b3 = ease_out((p - 3.0) / 0.4)
+            panel(c, [90, cy + 200, 990, cy + 360], YEL + (255,), b3, r=30)
+            text(c, V["bottom"], "Black", 54, (20, 20, 20), W / 2, cy + 280, alpha=b3, maxw=860)
+    if V.get("shout"):
+        st = V.get("shout_at", 3.4)
+        text(c, V["shout"], "Black", 104, YEL, W / 2, 610, alpha=ease_out((p - st) / 0.3),
+             scale=0.8 + 0.2 * ease_back(min(1, max(0, p - st) / 0.3)), maxw=980)
+
+
+# ---------------------------------------------------------------- visuels par fait (épisodes Wemby codés à la main)
 def visual(c, k, p, d, SIL):
     """p : secondes depuis le début du fait ; d : durée du fait."""
+    if k in VIS:
+        return generic(c, VIS[k], p * max(1.0, 6.0 / max(d, 0.5)))  # fait court : animations accélérées
     a = min(1, p / 0.25)
     e = ease_out((p - 0.5) / 1.2)
     cy = 900
@@ -392,13 +480,15 @@ def cover(SIL, out):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--out", default="out_top10"); ap.add_argument("--episode", default="a")
+    ap.add_argument("--queue-at", help="'AAAA-MM-JJ HH:MM' : programme la publication (Instagram, YouTube, brouillon TikTok) + aperçu Discord")
     a = ap.parse_args(); use(a.episode)
     os.makedirs(a.out, exist_ok=True)
     global PH
     PH = load_photo()
     from quiz.main import silhouette
-    SIL = silhouette({"id": "wembavi01"}, 420, qmark=False)
-    intro = silhouette({"id": "wembavi01"}, 900, qmark=False)
+    pid = EP.get("nba_id") or "wembavi01"
+    SIL = silhouette({"id": pid}, 420, qmark=False)
+    intro = silhouette({"id": pid}, 900, qmark=False)
     vw = os.path.join(a.out, "voix.wav")
     cues, total = tts.synth(SEGS, vw)
     T = TL(cues, total)
@@ -413,7 +503,7 @@ def main():
     parts = build_bg((40, 50, 70))
     silent = os.path.join(a.out, "video.mp4")
     p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
-                          "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", silent], stdin=subprocess.PIPE)
+                          "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "22", "-maxrate", "4M", "-bufsize", "8M", "-pix_fmt", "yuv420p", silent], stdin=subprocess.PIPE)
     for i in range(int(T.total * FPS)):
         p.stdin.write(frame(i / FPS, T, parts, groups, SIL, intro).tobytes())
     p.stdin.close(); p.wait()
@@ -423,6 +513,28 @@ def main():
                     "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-shortest", final], check=True)
     cover(SIL, os.path.join(a.out, EP["file"] + ".jpg"))
     print("Vidéo :", final, f"{T.total:.1f}s")
+    if a.queue_at:
+        schedule(final, os.path.join(a.out, EP["file"] + ".jpg"), a.queue_at)
+
+
+def schedule(video, cover_path, at):
+    """Met l'épisode dans la file de publication et l'envoie sur Discord (❌ sur le message = annulation)."""
+    from publish import queue
+    from chiffre import discord_post
+    J = EP.get("json", {})
+    tags = " ".join(J.get("hashtags", ["#NBA", "#basketball", "#NBAFrance", "#basket", "#lesaviezvous"]))
+    base = J.get("caption", " ".join(TITLE).title())
+    yt_title = J.get("yt_title", " ".join(TITLE).capitalize())
+    msg = (f"**🎬 Nouvel épisode « {' '.join(TITLE).lower()} »** — publication automatique le {at} "
+           f"(Instagram + YouTube ; brouillon TikTok quelques heures avant).\n"
+           f"Mets ❌ sur ce message pour l'annuler. Sources des faits : {', '.join(J.get('sources', [])) or '—'}")
+    mid = None
+    if os.environ.get("DISCORD_BOT_TOKEN"):
+        mid = discord_post.post(video, msg[:1900], cover_path)
+    key = "top5_" + EP["file"]
+    queue.add(key, video, cover_path, f"{base}\n\nAbonne-toi pour la suite 🔔\n\n{tags}", f"{yt_title} #Shorts",
+              f"{base}\n\n#Shorts {tags}", at, mid, f"{base}\n\n{tags}")
+    print("Programmé :", key, at)
 
 
 if __name__ == "__main__":

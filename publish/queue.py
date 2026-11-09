@@ -22,18 +22,23 @@ def save(q):
     json.dump(q, open(QUEUE, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 
-def add(key, video, cover, instagram, yt_title, yt_desc, at_paris, discord_mid=None):
-    """at_paris : 'HH:MM' (aujourd'hui, heure de Paris). Si l'heure est déjà passée, publication au prochain passage."""
+def add(key, video, cover, instagram, yt_title, yt_desc, at_paris, discord_mid=None, tiktok_caption=None):
+    """at_paris : 'HH:MM' (aujourd'hui) ou 'AAAA-MM-JJ HH:MM' (heure de Paris). Heure passée = publication au prochain passage.
+    tiktok_caption : description TikTok envoyée sur Discord quand le brouillon arrive (vidéos programmées à l'avance)."""
     os.makedirs(MEDIA, exist_ok=True)
     v = f"{key}.mp4"; shutil.copy(video, os.path.join(MEDIA, v))
     c = None
     if cover and os.path.exists(cover):
         c = f"{key}.jpg"; shutil.copy(cover, os.path.join(MEDIA, c))
+    day = dt.datetime.now(PARIS)
+    if " " in at_paris:
+        d, at_paris = at_paris.split(" ")
+        day = day.replace(**dict(zip(("year", "month", "day"), map(int, d.split("-")))))
     h, m = map(int, at_paris.split(":"))
-    at = dt.datetime.now(PARIS).replace(hour=h, minute=m, second=0, microsecond=0)
+    at = day.replace(hour=h, minute=m, second=0, microsecond=0)
     q = [e for e in load() if e["key"] != key]
     q.append(dict(key=key, video=v, cover=c, instagram=instagram, yt_title=yt_title[:100], yt_desc=yt_desc,
-                  at=at.isoformat(), discord_mid=discord_mid, status={}))
+                  at=at.isoformat(), discord_mid=discord_mid, status={}, tiktok_caption=tiktok_caption))
     save(q)
 
 
