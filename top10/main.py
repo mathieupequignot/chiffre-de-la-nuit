@@ -284,7 +284,7 @@ def whoosh(d=0.45):
 
 
 def pop():
-    return _sine(880, 0.18, 22) * 0.8 + _sine(1320, 0.12, 30) * 0.4
+    return _sine(880, 0.18, 22) * 0.8 + _sine(1320, 0.18, 30) * 0.4
 
 
 def ding():
