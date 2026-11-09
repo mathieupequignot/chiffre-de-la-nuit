@@ -32,4 +32,4 @@ jobs:
       - run: |
           git config user.name "proto-bot"
           git config user.email "proto-bot@users.noreply.github.com"
-          git add docs/proto/10_trucs_fous_wemby.mp4 docs/proto/10_trucs_fous_wemby.jpg && git commit -m "Vidéo spéciale" && git pull --rebase -q && git push
+          git add docs/proto/5_trucs_fous_wemby.mp4 docs/proto/5_trucs_fous_wemby.jpg && git commit -m "Vidéo spéciale" && git pull --rebase -q && git push

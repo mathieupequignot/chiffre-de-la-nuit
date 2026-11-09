@@ -1,4 +1,4 @@
-"""Série « 10 trucs fous sur… » — top 10 décompté, sous-titres mot à mot, visuels animés, voix off.
+"""Série « 5 trucs fous sur… » — top 10 décompté, sous-titres mot à mot, visuels animés, voix off.
 Épisode 1 : Victor Wembanyama (faits vérifiés : ESPN, CBS, Eurohoops, Sixth Tone, Le 10 Sport, Brut, Business Cool, Orange).
 usage : python -m top10.main [--out out_top10]"""
 import argparse, math, os, re, subprocess, wave
@@ -15,18 +15,18 @@ RED = (235, 64, 52)
 GREEN = (52, 211, 120)
 SILVER = (196, 206, 214)
 
-TITLE = ("10 TRUCS FOUS", "SUR WEMBY")
+TITLE = ("5 TRUCS FOUS", "SUR WEMBY")
+HEADER = "5 TRUCS FOUS SUR WEMBY"
+PHOTO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "wemby.png")
+# cue = identifiant du visuel ; NUM = numéro affiché
+NUM = {"10": 5, "7": 4, "4": 3, "2": 2, "1": 1}
+N = 5
 SEGS = [
-    ("H", "[excited] Tu crois connaître Wemby ? Voici dix trucs complètement fous sur lui."),
-    ("10", "Numéro dix. À onze ans, il mesurait déjà un mètre quatre-vingt-onze… autant que sa mère !"),
-    ("9", "Numéro neuf. Son envergure ? Deux mètres quarante-trois. Plus large qu'une voiture !"),
-    ("8", "Numéro huit. Son père faisait du triple saut : record à quinze mètres cinquante-six… et le cent mètres en onze secondes."),
-    ("7", "Numéro sept. À dix ans, il fait un essai au FC Barcelone… et il préfère rester à Nanterre."),
-    ("6", "Numéro six. Depuis son arrivée en NBA, il a pris plus de treize kilos… de muscle."),
-    ("5", "Numéro cinq. [surprised] Il a encore grandi ! Deux mètres vingt-deux à son arrivée en NBA… deux mètres vingt-six aujourd'hui sur sa fiche officielle."),
-    ("4", "Numéro quatre. Après un match à New York, il donne rendez-vous à ses fans… pour jouer aux échecs, sous la pluie. Battu deux fois par des pros… mais il a battu son frère."),
-    ("3", "Numéro trois. Il a passé dix jours chez les moines Shaolin : crâne rasé, kung-fu tous les jours, et réveil à quatre heures et demie."),
-    ("2", "Numéro deux. [laughs] Problème : les lits du temple faisaient un mètre quatre-vingt-dix. Il ne pouvait même pas étendre ses jambes !"),
+    ("H", "[excited] Tu crois connaître Wemby ? Voici cinq trucs complètement fous sur lui."),
+    ("10", "Numéro cinq. À onze ans, il mesurait déjà un mètre quatre-vingt-onze… autant que sa mère !"),
+    ("7", "Numéro quatre. À dix ans, il fait un essai au FC Barcelone… et il préfère rester à Nanterre."),
+    ("4", "Numéro trois. Après un match à New York, il donne rendez-vous à ses fans… pour jouer aux échecs, sous la pluie. Battu deux fois par des pros… mais il a battu son frère."),
+    ("2", "Numéro deux. [laughs] Il a passé dix jours chez les moines Shaolin… mais les lits du temple faisaient un mètre quatre-vingt-dix. Il ne pouvait même pas étendre ses jambes !"),
     ("1", "[excited] Et numéro un. Au temple, tout le monde mange végan… mais plusieurs fois par jour, une camionnette venait le chercher pour un repas protéiné… à l'extérieur des murs !"),
     ("E", "[excited] Lequel t'a le plus surpris ? Dis-le en commentaire… et dis-moi quel joueur tu veux dans le prochain épisode !"),
 ]
@@ -66,6 +66,36 @@ def bar(c, x0, y, wfull, frac, h, color, alpha=1.0, label=None, val=None):
 def num(v, p, dec=2):
     s = f"{v * p:.{dec}f}"
     return s.replace(".", ",")
+
+
+PH = None
+
+
+def load_photo():
+    """Photo détourée : grande (accroche), moyenne (fin), avatar rond (en-tête)."""
+    if not os.path.exists(PHOTO):
+        return None
+    ph = Image.open(PHOTO).convert("RGBA")
+    def sized(wd):
+        return ph.resize((wd, int(ph.height * wd / ph.width)), Image.LANCZOS)
+    big = sized(1180)
+    fade = Image.new("L", big.size, 255); dd = ImageDraw.Draw(fade)
+    for y in range(big.height):
+        f = max(0, (y - big.height * 0.62) / (big.height * 0.38))
+        dd.line([0, y, big.width, y], fill=int(255 * (1 - f)))
+    big.putalpha(Image.composite(big.getchannel("A"), Image.new("L", big.size, 0), fade))
+    mid = sized(860)
+    fm = Image.new("L", mid.size, 255); dm = ImageDraw.Draw(fm)
+    for y in range(mid.height):
+        f = max(0, (y - mid.height * 0.55) / (mid.height * 0.45)); dm.line([0, y, mid.width, y], fill=int(255 * (1 - f)))
+    mid.putalpha(Image.composite(mid.getchannel("A"), Image.new("L", mid.size, 0), fm))
+    face = ph.crop((int(ph.width * 0.27), 0, int(ph.width * 0.73), int(ph.width * 0.46))).resize((110, 110), Image.LANCZOS)
+    av = Image.new("RGBA", (124, 124), (0, 0, 0, 0)); da = ImageDraw.Draw(av)
+    da.ellipse([0, 0, 123, 123], fill=ACCENT + (255,))
+    bgc = Image.new("RGBA", (110, 110), (30, 30, 40, 255)); bgc.alpha_composite(face)
+    m = Image.new("L", (110, 110), 0); ImageDraw.Draw(m).ellipse([0, 0, 109, 109], fill=255)
+    av.paste(bgc, (7, 7), m)
+    return {"big": big, "mid": mid, "avatar": av, "raw": ph}
 
 
 # ---------------------------------------------------------------- timeline / sous-titres
@@ -215,6 +245,8 @@ def visual(c, k, p, d, SIL):
         if o > 0:
             panel(c, [x0 + lb, cy + 195, x0 + L, cy + 265], RED + (255,), o, r=35)
             text(c, "34 CM DE TROP", "Black", 46, RED, x0 + (lb + L) / 2, cy + 330, alpha=o)
+        sh = min(1, p / 0.3) * (1 - ease_out((p - 3.3) / 0.3))
+        text(c, "10 JOURS CHEZ LES MOINES SHAOLIN", "Black", 50, ACCENT, W / 2, cy - 140, alpha=sh, maxw=960)
         text(c, "ÇA DÉPASSE !", "Black", 110, YEL, W / 2, cy - 140, alpha=ease_out((p - 3.6) / 0.3),
              scale=0.8 + 0.2 * ease_back(min(1, max(0, p - 3.6) / 0.3)))
     elif k == "1":
@@ -238,24 +270,30 @@ def frame(t, T, parts, groups, SIL, intro_sil):
     k, p, d = T.at(t)
     # ------- accroche
     if k == "H":
-        if intro_sil is not None:
+        if PH is not None:
+            blit(c, PH["big"], W / 2, 1180, scale=1.0 + 0.05 * p)
+        elif intro_sil is not None:
             blit(c, intro_sil, W / 2, 1050, alpha=1, scale=1.0 + 0.04 * p)
         z = 0.82 + 0.18 * ease_back(min(1, (t + 0.05) / 0.35))
         t0, t1 = outlined(TITLE[0], "Black", 150, WHITE, 12), outlined(TITLE[1], "Black", 170, YEL, 12)
         blit(c, t0, W / 2, 470, scale=z * min(1, 1000 / t0.width))
         blit(c, t1, W / 2, 650, scale=z * min(1, 1000 / t1.width))
     elif k == "E":
+        if PH is not None:
+            blit(c, PH["mid"], W / 2, 1270, alpha=min(1, p / 0.4))
         text(c, "LEQUEL T'A LE PLUS", "Black", 92, WHITE, W / 2, 620, alpha=min(1, p / 0.3))
         text(c, "SURPRIS ?", "Black", 150, YEL, W / 2, 760, alpha=min(1, p / 0.3), scale=0.85 + 0.15 * ease_back(min(1, p / 0.4)))
         b = ease_out((p - 2.2) / 0.5)
-        panel(c, [140, 950, 940, 1150], (255, 255, 255, 26), b, r=34)
-        text(c, "PROCHAIN ÉPISODE :", "Black", 50, SILVER, W / 2, 1010, alpha=b)
-        text(c, "TU CHOISIS LE JOUEUR", "Black", 62, ACCENT, W / 2, 1085, alpha=b, maxw=760)
+        panel(c, [140, 860, 940, 1060], (20, 20, 28, 235), b, r=34)
+        text(c, "PROCHAIN ÉPISODE :", "Black", 50, SILVER, W / 2, 920, alpha=b)
+        text(c, "TU CHOISIS LE JOUEUR", "Black", 62, ACCENT, W / 2, 995, alpha=b, maxw=760)
     else:
-        n = int(k)
+        n = NUM[k]
         # en-tête de série + barre de progression
-        text(c, "10 TRUCS FOUS SUR WEMBY", "Black", 44, SILVER, W / 2, 175, alpha=1)
-        prog = (11 - n - 1 + min(1, p / d)) / 10
+        if PH is not None:
+            blit(c, PH["avatar"], 150, 180)
+        text(c, HEADER, "Black", 44, SILVER, W / 2 + 40, 175, alpha=1)
+        prog = (N - n + min(1, p / d)) / N
         panel(c, [140, 225, 940, 239], (255, 255, 255, 30), 1, r=7)
         panel(c, [140, 225, 140 + 800 * prog, 239], ACCENT + (255,), 1, r=7)
         # numéro
@@ -313,21 +351,25 @@ def mix(voice_wav, T, out_wav):
 # ---------------------------------------------------------------- miniature
 def cover(SIL, out):
     parts = build_bg((40, 50, 70)); c = bg_at(0.5, parts)
-    if SIL is not None:
+    if PH is not None:
+        blit(c, PH["big"].resize((1400, int(PH["big"].height * 1400 / PH["big"].width))), W / 2, 1300)
+    elif SIL is not None:
         big = SIL.resize((int(SIL.width * 1.5), int(SIL.height * 1.5)), Image.LANCZOS)
         blit(c, big, W / 2, 1150)
-    blit(c, outlined("10 TRUCS", "Black", 190, WHITE, 14), W / 2, 380)
+    blit(c, outlined("5 TRUCS", "Black", 190, WHITE, 14), W / 2, 380)
     blit(c, outlined("FOUS SUR", "Black", 190, WHITE, 14), W / 2, 580)
     blit(c, outlined("WEMBY", "Black", 260, YEL, 16), W / 2, 820)
     e = emoji("🤯", 200)
     if e is not None:
-        blit(c, e, 900, 1650, rot=-10)
+        blit(c, e, 920, 1080, rot=-10)
     c.convert("RGB").save(out, quality=92)
 
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--out", default="out_top10"); a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
+    global PH
+    PH = load_photo()
     from quiz.main import silhouette
     SIL = silhouette({"id": "wembavi01"}, 420, qmark=False)
     intro = silhouette({"id": "wembavi01"}, 900, qmark=False)
@@ -350,10 +392,10 @@ def main():
         p.stdin.write(frame(i / FPS, T, parts, groups, SIL, intro).tobytes())
     p.stdin.close(); p.wait()
     aud = os.path.join(a.out, "audio.wav"); mix(vw, T, aud)
-    final = os.path.join(a.out, "10_trucs_fous_wemby.mp4")
+    final = os.path.join(a.out, "5_trucs_fous_wemby.mp4")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", silent, "-i", aud, "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
                     "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-shortest", final], check=True)
-    cover(SIL, os.path.join(a.out, "10_trucs_fous_wemby.jpg"))
+    cover(SIL, os.path.join(a.out, "5_trucs_fous_wemby.jpg"))
     print("Vidéo :", final, f"{T.total:.1f}s")
 
 
