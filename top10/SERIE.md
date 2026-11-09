@@ -19,6 +19,11 @@ les règles à ne jamais enfreindre et ce qu'on a appris épisode après épisod
 - **Publication** : 1 épisode par semaine, le samedi vers 18 h 30 (Instagram + YouTube auto, brouillon TikTok
   quelques heures avant), en plus du chiffre de la nuit et du quiz.
 
+## Miniature (v2, 10/11)
+Fond aux couleurs de l'équipe (table TEAM dans top10/main.py, ou champ JSON `color`), rayons, joueur détouré avec contour blanc
++ ombre, badge rond « 5 », nom géant jaune incliné, bandeau rouge (champ JSON optionnel `cover_tag`, défaut « LE N°1 VA TE CHOQUER »).
+Nouveau joueur hors table : ajouter sa couleur dans TEAM.
+
 ## Programme des joueurs (photos fournies par Mathieu dans top10/assets/)
 Ordre de passage par défaut (un par samedi). Si un joueur est très réclamé en commentaire ou fait l'actualité
 de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].

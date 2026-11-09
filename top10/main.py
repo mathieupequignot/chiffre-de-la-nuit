@@ -115,25 +115,42 @@ def num(v, p, dec=2):
 PH = None
 
 
+def _fit(ph, bw, bh):
+    k = min(bw / ph.width, bh / ph.height)
+    return ph.resize((max(1, int(ph.width * k)), max(1, int(ph.height * k))), Image.LANCZOS)
+
+
+def _fade(im, start):
+    f = Image.new("L", im.size, 255); d = ImageDraw.Draw(f)
+    for y in range(im.height):
+        v = max(0, (y - im.height * start) / (im.height * (1 - start)))
+        d.line([0, y, im.width, y], fill=int(255 * (1 - v)))
+    im.putalpha(Image.composite(im.getchannel("A"), Image.new("L", im.size, 0), f))
+    return im
+
+
+def head_box(ph):
+    """Carré autour de la tête : haut de la silhouette, centré sur les pixels opaques du haut."""
+    a = np.array(ph.getchannel("A")) > 40
+    rows = np.where(a.any(1))[0]; top = int(rows[0]) if len(rows) else 0
+    full = ph.height / ph.width > 1.25  # photo en pied
+    side = int(ph.height * 0.17) if full else (int(ph.height * 0.62) if ph.height < ph.width else int(ph.width * 0.46))
+    band = a[top:top + max(4, int(side * 0.6))]
+    xs = np.where(band.any(0))[0]
+    cx = int(xs.mean()) if len(xs) else ph.width // 2
+    x0 = max(0, min(ph.width - side, cx - side // 2)); y0 = max(0, top - int(side * 0.06))
+    return (x0, y0, x0 + side, y0 + side)
+
+
 def load_photo():
-    """Photo détourée : grande (accroche), moyenne (fin), avatar rond (en-tête)."""
+    """Photo détourée (portrait ou en pied) : grande (accroche), moyenne (fin), avatar rond (en-tête)."""
     if not os.path.exists(PHOTO):
         return None
     ph = Image.open(PHOTO).convert("RGBA")
-    def sized(wd):
-        return ph.resize((wd, int(ph.height * wd / ph.width)), Image.LANCZOS)
-    big = sized(1180)
-    fade = Image.new("L", big.size, 255); dd = ImageDraw.Draw(fade)
-    for y in range(big.height):
-        f = max(0, (y - big.height * 0.62) / (big.height * 0.38))
-        dd.line([0, y, big.width, y], fill=int(255 * (1 - f)))
-    big.putalpha(Image.composite(big.getchannel("A"), Image.new("L", big.size, 0), fade))
-    mid = sized(860)
-    fm = Image.new("L", mid.size, 255); dm = ImageDraw.Draw(fm)
-    for y in range(mid.height):
-        f = max(0, (y - mid.height * 0.55) / (mid.height * 0.45)); dm.line([0, y, mid.width, y], fill=int(255 * (1 - f)))
-    mid.putalpha(Image.composite(mid.getchannel("A"), Image.new("L", mid.size, 0), fm))
-    face = ph.crop((int(ph.width * 0.27), 0, int(ph.width * 0.73), int(ph.width * 0.46))).resize((110, 110), Image.LANCZOS)
+    full = ph.height / ph.width > 1.25
+    big = _fade(_fit(ph, 1180, 1250), 0.72 if full else 0.62)
+    mid = _fade(_fit(ph, 860, 950), 0.65 if full else 0.55)
+    face = ph.crop(head_box(ph)).resize((110, 110), Image.LANCZOS)
     av = Image.new("RGBA", (124, 124), (0, 0, 0, 0)); da = ImageDraw.Draw(av)
     da.ellipse([0, 0, 123, 123], fill=ACCENT + (255,))
     bgc = Image.new("RGBA", (110, 110), (30, 30, 40, 255)); bgc.alpha_composite(face)
@@ -461,20 +478,82 @@ def mix(voice_wav, T, out_wav):
 
 
 # ---------------------------------------------------------------- miniature
+# couleurs d'équipe (fond de la miniature) — clé = nom du fichier photo
+TEAM = {"wemby": (0, 0, 0), "lebron": (0, 107, 182), "curry": (29, 66, 138), "doncic": (85, 37, 130),
+        "giannis": (0, 71, 27), "sga": (0, 125, 195), "edwards": (12, 35, 64), "jokic": (13, 34, 64),
+        "durant": (206, 17, 65), "flagg": (0, 83, 188), "kyrie": (0, 83, 188)}
+
+
+def _rays(size, center, color, n=18, alpha=70):
+    im = Image.new("RGBA", size, (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    cx, cy = center; R = 2600
+    for i in range(n):
+        a0 = 2 * math.pi * i / n; a1 = a0 + math.pi / n * 0.55
+        d.polygon([(cx, cy), (cx + R * math.cos(a0), cy + R * math.sin(a0)), (cx + R * math.cos(a1), cy + R * math.sin(a1))],
+                  fill=color + (alpha,))
+    return im.filter(ImageFilter.GaussianBlur(6))
+
+
+def _outline_sticker(ph, px=12, col=(255, 255, 255)):
+    """Contour blanc façon autocollant + ombre portée."""
+    pad = px * 4
+    a = ph.getchannel("A").point(lambda v: 255 if v > 60 else 0)
+    A = Image.new("L", (ph.width + 2 * pad, ph.height + 2 * pad), 0); A.paste(a, (pad, pad))
+    st = A.filter(ImageFilter.MaxFilter(2 * (px // 2) + 1)).filter(ImageFilter.MaxFilter(2 * (px // 2) + 1)).filter(ImageFilter.GaussianBlur(1.2))
+    out = Image.new("RGBA", A.size, (0, 0, 0, 0))
+    sh = Image.new("RGBA", A.size, (0, 0, 0, 255)); sh.putalpha(st.filter(ImageFilter.GaussianBlur(22)).point(lambda v: int(v * 0.8)))
+    out.alpha_composite(sh, (14, 22))
+    wl = Image.new("RGBA", A.size, col + (255,)); wl.putalpha(st); out.alpha_composite(wl)
+    out.alpha_composite(ph, (pad, pad))
+    return out
+
+
 def cover(SIL, out):
-    parts = build_bg((40, 50, 70)); c = bg_at(0.5, parts)
+    key = os.path.splitext(os.path.basename(PHOTO))[0]
+    tc = tuple(EP.get("json", {}).get("color") or TEAM.get(key) or (40, 50, 70))
+    # fond : dégradé radial couleur d'équipe -> presque noir
+    yy, xx = np.mgrid[0:H, 0:W]
+    d = np.sqrt(((xx - W / 2) / W) ** 2 + ((yy - 1250) / H * 1.1) ** 2)
+    k = np.clip(1 - d * 1.5, 0, 1)[..., None]
+    base = np.array([10, 10, 16], float); hi = np.array(tc, float) * 0.85 + np.array([255, 255, 255]) * 0.15
+    if max(tc) < 30: hi = np.array([255, 150, 40], float) * 0.75
+    c = Image.fromarray((base + (hi - base) * k ** 1.3).astype(np.uint8), "RGB").convert("RGBA")
+    c.alpha_composite(_rays((W, H), (W // 2, 1150), (255, 255, 255), alpha=34))
+    # joueur
     if PH is not None:
-        blit(c, PH["big"].resize((1400, int(PH["big"].height * 1400 / PH["big"].width))), W / 2, 1300)
+        ph = PH["raw"]; full = ph.height / ph.width > 1.25
+        P = _fit(ph, 1180, 1500 if full else 1150)
+        S = _outline_sticker(P)
+        blit(c, S, W / 2, max(H - S.height / 2 + (140 if full else 60), 900 + S.height / 2))
     elif SIL is not None:
-        big = SIL.resize((int(SIL.width * 1.5), int(SIL.height * 1.5)), Image.LANCZOS)
-        blit(c, big, W / 2, 1150)
+        big = SIL.resize((int(SIL.width * 1.6), int(SIL.height * 1.6)), Image.LANCZOS)
+        blit(c, big, W / 2, 1250)
+    # vignette haut pour la lisibilité du titre
+    g = Image.new("L", (1, H)); [g.putpixel((0, y), int(230 * max(0, 1 - y / 720))) for y in range(H)]
+    shade = Image.new("RGBA", (W, H), (0, 0, 0, 255)); shade.putalpha(g.resize((W, H))); c.alpha_composite(shade)
     l1, l2, l3 = EP["cover"]
-    for txt, y, sz, col in ((l1, 380, 190, WHITE), (l2, 580, 190, WHITE), (l3, 820, 260, YEL)):
-        im = outlined(txt, "Black", sz, col, 14 if col == WHITE else 16)
-        blit(c, im, W / 2, y, scale=min(1, 1020 / im.width))
-    e = emoji("🤯", 200)
+    # badge rond « 5 » + ligne 1/2
+    bd = Image.new("RGBA", (250, 250), (0, 0, 0, 0)); dd = ImageDraw.Draw(bd)
+    dd.ellipse([8, 8, 242, 242], fill=(0, 0, 0, 255)); dd.ellipse([18, 18, 232, 232], fill=RED + (255,))
+    n5 = outlined(str(N), "Black", 190, WHITE, 0); blit(bd, n5, 125, 128)
+    head = " ".join([l1, l2]).replace(str(N) + " ", "", 1) if l1.startswith(str(N)) else " ".join([l1, l2])
+    words = head.split(); half = (len(words) + 1) // 2
+    hl = [" ".join(words[:half]), " ".join(words[half:])]
+    blit(c, bd, 180, 300, rot=-8)
+    for i, t in enumerate(hl):
+        im = outlined(t, "Black", 118, WHITE, 12)
+        blit(c, im, 330 + min(im.width, 720) / 2, 235 + i * 135, scale=min(1, 720 / im.width))
+    name = outlined(l3, "Black", 300, YEL, 18)
+    blit(c, name, W / 2, 560, scale=min(1, 1030 / name.width), rot=-4)
+    # bandeau d'accroche
+    tag = EP.get("json", {}).get("cover_tag") or "LE N°1 VA TE CHOQUER"
+    ti = outlined(tag, "Black", 64, WHITE, 0)
+    rib = Image.new("RGBA", (ti.width + 70, ti.height + 40), RED + (255,)); rib.alpha_composite(ti, (35, 20))
+    sh = Image.new("RGBA", (rib.width + 12, rib.height + 12), (0, 0, 0, 0)); sh.paste((0, 0, 0, 255), (12, 12, rib.width + 12, rib.height + 12)); sh.alpha_composite(rib)
+    blit(c, sh, W / 2, 760, rot=3, scale=min(1, 900 / sh.width))
+    e = emoji("🤯", 140)
     if e is not None:
-        blit(c, e, 920, 1080, rot=-10)
+        blit(c, e, 985, 730, rot=12)
     c.convert("RGB").save(out, quality=92)
 
 
