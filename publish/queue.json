@@ -1,28 +1,5 @@
 [
  {
-  "key": "quiz_2026-11-06_facile",
-  "video": "quiz_2026-11-06_facile.mp4",
-  "cover": "quiz_2026-11-06_facile.jpg",
-  "instagram": "Seuls les vrais fans trouvent ce joueur 👀 Niveau facile · 2 franchises. Ta réponse en commentaire 👇\n\nAbonne-toi pour les quiz de chaque jour 🔔\n\n#NBA #quizNBA #basketball #basket #NBAFrance #NBADailyNews #devinelejoueur #quiz #nbatrivia #sport",
-  "yt_title": "Qui est ce joueur NBA ? 🤔 Niveau facile (2 franchises) #Shorts",
-  "yt_desc": "Seuls les vrais fans trouvent ce joueur 👀 Niveau facile · 2 franchises. Ta réponse en commentaire 👇\n\n#Shorts #NBA #quizNBA",
-  "at": "2026-11-06T12:30:00+01:00",
-  "discord_mid": "1568252514544001155",
-  "status": {
-   "instagram": "ok",
-   "youtube": "ok",
-   "tiktok": "ok"
-  },
-  "errors": {
-   "tiktok": 1
-  },
-  "ids": {
-   "instagram": "18117235436035987",
-   "youtube": "AKZ30INkFS8",
-   "tiktok": "v_inbox_file~v2.7705049462359754774"
-  }
- },
- {
   "key": "quiz_2026-11-06_moyen",
   "video": "quiz_2026-11-06_moyen.mp4",
   "cover": "quiz_2026-11-06_moyen.jpg",
@@ -184,10 +161,15 @@
   "at": "2026-11-09T12:30:00+01:00",
   "discord_mid": "1569260682459742360",
   "status": {
-   "tiktok": "ok"
+   "tiktok": "ok",
+   "youtube": "ok"
   },
   "ids": {
-   "tiktok": "v_inbox_file~v2.7706090087001360406"
+   "tiktok": "v_inbox_file~v2.7706090087001360406",
+   "youtube": "GqZbXo_4oVM"
+  },
+  "errors": {
+   "instagram": 1
   }
  }
 ]
