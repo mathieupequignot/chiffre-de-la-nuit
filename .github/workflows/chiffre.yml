@@ -36,7 +36,7 @@ jobs:
         env:
           API_NBA_KEY: ${{ secrets.API_NBA_KEY }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
-          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          ELEVENLABS_VOICE_ID: qR7W98P3YFvanKmMWcIb  # voix « Mathieu NBA » (clone validé le 9 nov.)
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
           AUTO_PUBLISH: ${{ (secrets.IG_TOKEN != '' || secrets.YT_REFRESH_TOKEN != '') && '1' || '0' }}
