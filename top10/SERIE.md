@@ -19,12 +19,30 @@ les règles à ne jamais enfreindre et ce qu'on a appris épisode après épisod
 - **Publication** : 1 épisode par semaine, le samedi vers 18 h 30 (Instagram + YouTube auto, brouillon TikTok
   quelques heures avant), en plus du chiffre de la nuit et du quiz.
 
+## Programme des joueurs (photos fournies par Mathieu dans top10/assets/)
+Ordre de passage par défaut (un par samedi). Si un joueur est très réclamé en commentaire ou fait l'actualité
+de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
+- [x] Victor Wembanyama — wemby.png (épisodes 1 et 2)
+- [ ] Stephen Curry — curry.png
+- [ ] Luka Dončić — doncic.png
+- [ ] LeBron James — lebron.png
+- [ ] Rudy Gobert — gobert.png
+- [ ] Nikola Jokić — jokic.png
+- [ ] Giannis Antetokounmpo — giannis.png
+- [ ] Anthony Edwards — edwards.png
+- [ ] Shai Gilgeous-Alexander — sga.png
+- [ ] Kevin Durant — durant.png
+- [ ] Zaccharie Risacher — risacher.png
+Si la photo du joueur est présente dans top10/assets/, mettre `"photo": "<fichier>"` dans le JSON de l'épisode.
+**Quand il ne reste plus que 2 joueurs non traités avec photo**, le signaler à Mathieu sur Discord pour qu'il en envoie
+de nouvelles (avec une proposition de prochains joueurs).
+
 ## Règles absolues
 1. **Chaque fait est vérifié par au moins 2 sources fiables** (ESPN, The Athletic, L'Équipe, AP, NBA.com,
    CBS, Basketball-Reference, presse nationale…). Les sources sont listées dans le JSON de l'épisode.
    Aucune rumeur, aucun fait « on dit que ». Dans le doute, on enlève le fait.
-2. Pas d'image de match ni de musique protégée. Pas de photo trouvée sur le web : silhouette du joueur par défaut ;
-   une photo n'est utilisée que si Mathieu l'a fournie (déposée dans top10/assets/).
+2. Pas d'image de match ni de musique protégée. Jamais de photo trouvée sur le web par Claude : on utilise uniquement
+   les photos fournies par Mathieu (top10/assets/) ; sans photo, silhouette du joueur.
 3. Rien de blessant ou de dégradant sur un joueur (l'humour vise la situation, pas la personne).
 4. On ne change pas la recette d'un coup : au plus 1 ou 2 améliorations par épisode, notées dans le carnet,
    pour savoir ce qui a marché.
