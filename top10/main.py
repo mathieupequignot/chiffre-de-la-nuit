@@ -15,22 +15,46 @@ RED = (235, 64, 52)
 GREEN = (52, 211, 120)
 SILVER = (196, 206, 214)
 
-TITLE = ("5 TRUCS FOUS", "SUR WEMBY")
-HEADER = "5 TRUCS FOUS SUR WEMBY"
 PHOTO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "wemby.png")
-# cue = identifiant du visuel ; NUM = numéro affiché
-NUM = {"10": 5, "7": 4, "4": 3, "2": 2, "1": 1}
 N = 5
-SEGS = [
-    ("H", "[excited] Tu crois connaître Wemby ? Voici cinq trucs complètement fous sur lui."),
-    ("10", "Numéro cinq. À onze ans, il mesurait déjà un mètre quatre-vingt-onze… autant que sa mère !"),
-    ("7", "Numéro quatre. À dix ans, il fait un essai au FC Barcelone… et il préfère rester à Nanterre."),
-    ("4", "Numéro trois. Après un match à New York, il donne rendez-vous à ses fans… pour jouer aux échecs, sous la pluie. Battu deux fois par des pros… mais il a battu son frère."),
-    ("2", "Numéro deux. [laughs] Il a passé dix jours chez les moines Shaolin… mais les lits du temple faisaient un mètre quatre-vingt-dix. Il ne pouvait même pas étendre ses jambes !"),
-    ("1", "[excited] Et numéro un. Au temple, tout le monde mange végan… mais plusieurs fois par jour, une camionnette venait le chercher pour un repas protéiné… à l'extérieur des murs !"),
-    ("E", "[excited] Lequel t'a le plus surpris ? Dis-le en commentaire… et dis-moi quel joueur tu veux dans le prochain épisode !"),
-]
+EPISODES = {
+    # cue = identifiant du visuel ; num = numéro affiché
+    "a": dict(
+        title=("5 TRUCS FOUS", "SUR WEMBY"), header="5 TRUCS FOUS SUR WEMBY",
+        cover=("5 TRUCS", "FOUS SUR", "WEMBY"), file="5_trucs_fous_wemby",
+        num={"10": 5, "9": 4, "7": 3, "4": 2, "1": 1},
+        segs=[
+            ("H", "[excited] Tu crois connaître Wemby ? Voici cinq trucs complètement fous sur lui."),
+            ("10", "Numéro cinq. À onze ans, il mesurait déjà un mètre quatre-vingt-onze… autant que sa mère !"),
+            ("9", "Numéro quatre. Son envergure ? Deux mètres quarante-trois. Plus large qu'une voiture !"),
+            ("7", "Numéro trois. À dix ans, il fait un essai au FC Barcelone… et il préfère rester à Nanterre."),
+            ("4", "Numéro deux. Après un match à New York, il donne rendez-vous à ses fans… pour jouer aux échecs, sous la pluie. Battu deux fois par des pros… mais il a battu son frère."),
+            ("1", "[excited] Et numéro un. Pendant sa retraite chez les moines Shaolin, tout le monde mange végan… mais plusieurs fois par jour, une camionnette venait le chercher pour un repas protéiné… à l'extérieur des murs !"),
+            ("E", "[excited] Lequel t'a le plus surpris ? Dis-le en commentaire… et dis-moi quel joueur tu veux dans le prochain épisode !"),
+        ]),
+    "b": dict(
+        title=("5 TRUCS QUE TU", "IGNORES SUR WEMBY"), header="CE QUE TU IGNORES SUR WEMBY",
+        cover=("5 TRUCS QUE", "TU IGNORES SUR", "WEMBY"), file="5_trucs_wemby_tu_ne_savais_pas",
+        num={"6": 5, "8": 4, "5": 3, "3": 2, "2": 1},
+        segs=[
+            ("H", "[excited] Cinq trucs que tu ne savais pas sur Wemby… et le numéro un va te faire rire."),
+            ("6", "Numéro cinq. Depuis son arrivée en NBA, il a pris plus de treize kilos… de muscle."),
+            ("8", "Numéro quatre. Son père faisait du triple saut : record à quinze mètres cinquante-six… et le cent mètres en onze secondes."),
+            ("5", "Numéro trois. [surprised] Il a encore grandi ! Deux mètres vingt-deux à son arrivée en NBA… deux mètres vingt-six aujourd'hui sur sa fiche officielle."),
+            ("3", "Numéro deux. Il a passé dix jours chez les moines Shaolin : crâne rasé, kung-fu tous les jours, et réveil à quatre heures et demie."),
+            ("2", "[laughs] Et numéro un. Problème : les lits du temple faisaient un mètre quatre-vingt-dix. Il ne pouvait même pas étendre ses jambes !"),
+            ("E", "[excited] Lequel t'a le plus surpris ? Dis-le en commentaire… et dis-moi quel joueur tu veux dans le prochain épisode !"),
+        ]),
+}
+EP = EPISODES["a"]
+TITLE, HEADER, NUM, SEGS = EP["title"], EP["header"], EP["num"], EP["segs"]
 ORDER = [c for c, _ in SEGS]
+
+
+def use(ep):
+    global EP, TITLE, HEADER, NUM, SEGS, ORDER
+    EP = EPISODES[ep]; TITLE, HEADER, NUM, SEGS = EP["title"], EP["header"], EP["num"], EP["segs"]
+    ORDER = [c for c, _ in SEGS]
 
 
 # ---------------------------------------------------------------- outils de dessin
@@ -209,7 +233,7 @@ def visual(c, k, p, d, SIL):
             panel(c, [x - 110, base - hgt, x + 110, base], col + (255,), min(1, b * 2) * a, r=24)
             text(c, num(v, 1) + " m", "Black", 84, WHITE, x, base - hgt - 60, alpha=b)
             text(c, lab, "Black", 40, SILVER, x, base + 50, alpha=b, maxw=380)
-        text(c, "+4 CM ?!", "Black", 110, YEL, W / 2, 560, alpha=ease_out((p - 4.0) / 0.4),
+        text(c, "+4 CM ?!", "Black", 110, YEL, W / 2, 620, alpha=ease_out((p - 4.0) / 0.4),
              scale=0.8 + 0.2 * ease_back(min(1, max(0, p - 4.0) / 0.3)))
     elif k == "4":
         s = 64; x0, y0 = W / 2 - 4 * s, cy - 330
@@ -275,7 +299,7 @@ def frame(t, T, parts, groups, SIL, intro_sil):
         elif intro_sil is not None:
             blit(c, intro_sil, W / 2, 1050, alpha=1, scale=1.0 + 0.04 * p)
         z = 0.82 + 0.18 * ease_back(min(1, (t + 0.05) / 0.35))
-        t0, t1 = outlined(TITLE[0], "Black", 150, WHITE, 12), outlined(TITLE[1], "Black", 170, YEL, 12)
+        t0, t1 = outlined(TITLE[0], "Black", 150, WHITE, 12), outlined(TITLE[1], "Black", 150, YEL, 12)
         blit(c, t0, W / 2, 470, scale=z * min(1, 1000 / t0.width))
         blit(c, t1, W / 2, 650, scale=z * min(1, 1000 / t1.width))
     elif k == "E":
@@ -292,7 +316,7 @@ def frame(t, T, parts, groups, SIL, intro_sil):
         # en-tête de série + barre de progression
         if PH is not None:
             blit(c, PH["avatar"], 150, 180)
-        text(c, HEADER, "Black", 44, SILVER, W / 2 + 40, 175, alpha=1)
+        text(c, HEADER, "Black", 44, SILVER, W / 2 + 40, 175, alpha=1, maxw=700)
         prog = (N - n + min(1, p / d)) / N
         panel(c, [140, 225, 940, 239], (255, 255, 255, 30), 1, r=7)
         panel(c, [140, 225, 140 + 800 * prog, 239], ACCENT + (255,), 1, r=7)
@@ -356,9 +380,10 @@ def cover(SIL, out):
     elif SIL is not None:
         big = SIL.resize((int(SIL.width * 1.5), int(SIL.height * 1.5)), Image.LANCZOS)
         blit(c, big, W / 2, 1150)
-    blit(c, outlined("5 TRUCS", "Black", 190, WHITE, 14), W / 2, 380)
-    blit(c, outlined("FOUS SUR", "Black", 190, WHITE, 14), W / 2, 580)
-    blit(c, outlined("WEMBY", "Black", 260, YEL, 16), W / 2, 820)
+    l1, l2, l3 = EP["cover"]
+    for txt, y, sz, col in ((l1, 380, 190, WHITE), (l2, 580, 190, WHITE), (l3, 820, 260, YEL)):
+        im = outlined(txt, "Black", sz, col, 14 if col == WHITE else 16)
+        blit(c, im, W / 2, y, scale=min(1, 1020 / im.width))
     e = emoji("🤯", 200)
     if e is not None:
         blit(c, e, 920, 1080, rot=-10)
@@ -366,7 +391,8 @@ def cover(SIL, out):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--out", default="out_top10"); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument("--out", default="out_top10"); ap.add_argument("--episode", default="a")
+    a = ap.parse_args(); use(a.episode)
     os.makedirs(a.out, exist_ok=True)
     global PH
     PH = load_photo()
@@ -392,10 +418,10 @@ def main():
         p.stdin.write(frame(i / FPS, T, parts, groups, SIL, intro).tobytes())
     p.stdin.close(); p.wait()
     aud = os.path.join(a.out, "audio.wav"); mix(vw, T, aud)
-    final = os.path.join(a.out, "5_trucs_fous_wemby.mp4")
+    final = os.path.join(a.out, EP["file"] + ".mp4")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", silent, "-i", aud, "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
                     "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-shortest", final], check=True)
-    cover(SIL, os.path.join(a.out, "5_trucs_fous_wemby.jpg"))
+    cover(SIL, os.path.join(a.out, EP["file"] + ".jpg"))
     print("Vidéo :", final, f"{T.total:.1f}s")
 
 

@@ -2,6 +2,10 @@ name: Vidéo spéciale (10 trucs fous)
 
 on:
   workflow_dispatch:
+    inputs:
+      episode:
+        description: "a ou b"
+        default: "a"
 
 permissions:
   contents: write
@@ -28,8 +32,8 @@ jobs:
       - env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           ELEVENLABS_VOICE_ID: qR7W98P3YFvanKmMWcIb
-        run: python -m top10.main --out docs/proto
+        run: python -m top10.main --out docs/proto --episode "${{ inputs.episode }}"
       - run: |
           git config user.name "proto-bot"
           git config user.email "proto-bot@users.noreply.github.com"
-          git add docs/proto/5_trucs_fous_wemby.mp4 docs/proto/5_trucs_fous_wemby.jpg && git commit -m "Vidéo spéciale" && git pull --rebase -q && git push
+          git add docs/proto/*.mp4 docs/proto/*.jpg && git commit -m "Vidéo spéciale" && git pull --rebase -q && git push
