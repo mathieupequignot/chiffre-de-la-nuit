@@ -373,6 +373,7 @@ VOICE_DIR = os.path.join(HERE, "voice")
 
 def voice(key, segs, outdir):
     os.makedirs(VOICE_DIR, exist_ok=True)
+    key = f"{key}_{os.environ.get('ELEVENLABS_VOICE_ID', 'x').strip()[:6]}"  # une voix différente = un autre cache
     wav, meta = os.path.join(VOICE_DIR, key + ".wav"), os.path.join(VOICE_DIR, key + ".json")
     if os.path.exists(wav) and os.path.exists(meta):
         m = json.load(open(meta)); return wav, [tuple(c) for c in m["cues"]], m["total"]
