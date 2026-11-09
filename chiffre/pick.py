@@ -163,7 +163,7 @@ def build(games, paris_day, seed=None, ctx=None):
     pm = None
     if p["pm"] >= 10 and win:
         pm = p["pm"]
-        segs.append(("D", f"Quand il était sur le terrain, {me['name'].title()} a mis {pm} points d'écart."))
+        segs.append(("D", f"Et quand il était sur le terrain, son équipe a fait +{pm} !"))
     w_hi, w_lo = max(my_pts, op_pts), min(my_pts, op_pts)
     segs.append(("E", rnd.choice([f"Au final, victoire {w_hi} à {w_lo} !", f"Et au bout : victoire {w_hi} à {w_lo} !"]) if win
                  else f"[sighs] Mais bon… défaite {w_lo} à {w_hi}."))
