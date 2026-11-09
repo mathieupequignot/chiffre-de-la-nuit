@@ -23,16 +23,17 @@ les règles à ne jamais enfreindre et ce qu'on a appris épisode après épisod
 Ordre de passage par défaut (un par samedi). Si un joueur est très réclamé en commentaire ou fait l'actualité
 de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
 - [x] Victor Wembanyama — wemby.png (épisodes 1 et 2)
+- [ ] LeBron James — lebron.png (actu : 24e saison, nouveau départ aux 76ers)
 - [ ] Stephen Curry — curry.png
 - [ ] Luka Dončić — doncic.png
-- [ ] LeBron James — lebron.png
-- [ ] Rudy Gobert — gobert.png
-- [ ] Nikola Jokić — jokic.png
 - [ ] Giannis Antetokounmpo — giannis.png
-- [ ] Anthony Edwards — edwards.png
 - [ ] Shai Gilgeous-Alexander — sga.png
+- [ ] Anthony Edwards — edwards.png
+- [ ] Nikola Jokić — jokic.png
 - [ ] Kevin Durant — durant.png
-- [ ] Zaccharie Risacher — risacher.png
+- [ ] Cooper Flagg — flagg.png
+- [ ] Kyrie Irving — kyrie.png
+Critère de choix : uniquement des superstars très connues du grand public (objectif : un maximum de vues).
 Si la photo du joueur est présente dans top10/assets/, mettre `"photo": "<fichier>"` dans le JSON de l'épisode.
 **Quand il ne reste plus que 2 joueurs non traités avec photo**, le signaler à Mathieu sur Discord pour qu'il en envoie
 de nouvelles (avec une proposition de prochains joueurs).
