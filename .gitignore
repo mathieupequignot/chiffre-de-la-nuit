@@ -1,3 +1,5 @@
 out/
 out_quiz/
 __pycache__/
+__pycache__/
+*.pyc
