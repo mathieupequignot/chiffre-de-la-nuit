@@ -3,6 +3,7 @@ name: Chiffre de la nuit
 on:
   schedule:
     - cron: "30 6 * * *"   # 7h30 heure de Paris (hiver), 8h30 (été)
+    - cron: "10 7 * * *"   # filet de sécurité si GitHub a sauté le premier passage (ignoré si déjà fait)
   workflow_dispatch:
     inputs:
       date:
@@ -11,6 +12,11 @@ on:
 
 permissions:
   contents: write
+  actions: write
+
+concurrency:
+  group: chiffre
+  cancel-in-progress: false
 
 jobs:
   video:
@@ -18,10 +24,17 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+      - name: Déjà fait aujourd'hui ?
+        if: github.event_name == 'schedule'
+        run: |
+          d=$(TZ=Europe/Paris date +%F)
+          if grep -q "\"chiffre_$d\"" publish/queue.json; then echo "Chiffre du $d déjà en file : rien à faire"; echo "SKIP=1" >> $GITHUB_ENV; fi
       - uses: actions/setup-python@v5
+        if: env.SKIP != '1'
         with:
           python-version: "3.12"
       - name: Installer ffmpeg
+        if: env.SKIP != '1'
         timeout-minutes: 8
         run: |
           for i in 1 2 3; do
@@ -31,8 +44,10 @@ jobs:
           done
           exit 1
       - name: Installer les dépendances
+        if: env.SKIP != '1'
         run: pip install -r requirements.txt
       - name: Fabriquer et envoyer la vidéo
+        if: env.SKIP != '1'
         env:
           API_NBA_KEY: ${{ secrets.API_NBA_KEY }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
@@ -43,7 +58,7 @@ jobs:
         run: |
           if [ -n "${{ inputs.date }}" ]; then python -m chiffre.main --date "${{ inputs.date }}"; else python -m chiffre.main; fi
       - name: Garder une copie de la vidéo (7 jours)
-        if: always()
+        if: always() && env.SKIP != '1'
         uses: actions/upload-artifact@v4
         with:
           name: video
@@ -52,7 +67,7 @@ jobs:
             out/*.jpg
           retention-days: 7
       - name: Mettre en file pour la publication auto
-        if: always()
+        if: always() && env.SKIP != '1'
         run: |
           git config user.name "publish-bot"
           git config user.email "publish-bot@users.noreply.github.com"
@@ -60,6 +75,11 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "Publication : chiffre en file" && git pull --rebase -q && git push
           fi
+      - name: Lancer la publication tout de suite (brouillon TikTok sans attendre le prochain passage)
+        if: success() && env.SKIP != '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run publish.yml --ref main || true
       - name: Prévenir sur Discord en cas d'échec
         if: failure() || cancelled()
         env:

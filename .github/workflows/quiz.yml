@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: quiz
@@ -62,6 +63,11 @@ jobs:
             git commit -m "Quiz : historique du $(date +%F)"
             git pull --rebase -q && git push
           fi
+      - name: Lancer la publication tout de suite (brouillon TikTok sans attendre le prochain passage)
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run publish.yml --ref main || true
       - name: Prévenir sur Discord en cas d'échec
         if: failure() || cancelled()
         env:
