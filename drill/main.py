@@ -349,7 +349,11 @@ def schedule(video, cover_path, at):
            f"(Instagram + YouTube ; brouillon TikTok quelques heures avant). Mets ❌ sur ce message pour l'annuler.")
     mid = None
     if os.environ.get("DISCORD_BOT_TOKEN"):
-        mid = discord_post.post(video, msg[:1900], cover_path)
+        try:
+            mid = discord_post.post(video, msg[:1900], cover_path)
+        except Exception as ex:   # vidéo trop lourde pour Discord, etc. : on programme quand même
+            print("Aperçu Discord impossible :", ex)
+            discord_post.notify(msg[:1800] + "\n(Vidéo trop lourde pour l'aperçu Discord.)")
     key = "drill_" + D["id"]
     queue.add(key, video, cover_path, cap, yt_title, f"{cap}\n\n#Shorts", at, mid, cap)
     mark_done(D["id"])
@@ -377,7 +381,7 @@ def main():
     parts = build_bg((20, 60, 110))
     silent = os.path.join(a.out, "video_drill.mp4")
     p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
-                          "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "22", "-pix_fmt", "yuv420p", silent], stdin=subprocess.PIPE)
+                          "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "23", "-maxrate", "2.4M", "-bufsize", "4.8M", "-pix_fmt", "yuv420p", silent], stdin=subprocess.PIPE)
     for i in range(int(T.total * FPS)):
         p.stdin.write(frame(i / FPS, T, parts, groups).tobytes())
     p.stdin.close(); p.wait()
