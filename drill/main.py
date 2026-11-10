@@ -29,6 +29,23 @@ DRILLS = {
             ("C", "[excited] Ce drill, c'est le jour un de Dribble trente : trente jours pour devenir shifty. Le programme complet est en bio."),
         ]),
 }
+TAG = {"DRIBBLE 30": "30 JOURS POUR DEVENIR SHIFTY", "SHOOT 30": "30 JOURS POUR DEVENIR UN SHOOTER FIABLE"}
+VOICE_TAG = {"DRIBBLE 30": ("Dribble trente", "trente jours pour devenir shifty"),
+             "SHOOT 30": ("Shoot trente", "trente jours pour devenir un shooter fiable")}
+DRILLS["pound"]["id"] = "pound"
+DRILLS["pound"]["caption"] = ("Ta main faible te lâche sous pression ? 🏀 Pound dribble 3 hauteurs : 10 à la cheville, 10 au genou, "
+                              "10 à la hanche. Commence par ta main faible.")
+import json as _json
+for _d in _json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "drills.json"), encoding="utf-8")):
+    name, tag = VOICE_TAG[_d["program"]]
+    _d["segs"] = [tuple(x) for x in _d["segs"]] + [
+        ("SV", "Enregistre la vidéo pour ta prochaine séance."),
+        ("C", f"[excited] Ce drill est dans {name} : {tag}. Le programme complet est en bio.")]
+    _d["file"] = "drill_" + _d["id"].replace("-", "_")
+    _d["mock"] = "dribble30.png" if _d["program"] == "DRIBBLE 30" else "shoot30.png"
+    _d["diagram"] = ("dribble_" if _d["program"] == "DRIBBLE 30" else "shoot_") + _d["code"] + ".png"
+    _d["hook"] = tuple(_d["hook"])
+    DRILLS[_d["id"]] = _d
 D = DRILLS["pound"]
 LEVELS = {"D1": ("CHEVILLE", 1240), "D2": ("GENOU", 1070), "D3": ("HANCHE", 880)}
 FLOOR = 1330
@@ -128,6 +145,27 @@ def mini_bounce(c, t, x=W / 2, top=1000, period=0.3):
 
 
 MOCK = None
+DIAG = None
+
+
+def diagram_panel(c, p):
+    global DIAG
+    if DIAG is None:
+        im = Image.open(os.path.join(ASSETS, D["diagram"])).convert("RGBA")
+        im = im.resize((900, int(900 * im.height / im.width)), Image.LANCZOS)
+        m = Image.new("L", im.size, 0); ImageDraw.Draw(m).rounded_rectangle([0, 0, im.width - 1, im.height - 1], radius=40, fill=255)
+        im.putalpha(m); DIAG = im
+    e = ease_out(min(1, p / 0.4))
+    blit(c, DIAG, W / 2, 560, alpha=e)
+    text(c, "EXTRAIT DU PROGRAMME " + D["program"], "Black", 30, CYAN, W / 2, 560 + DIAG.height / 2 + 34, alpha=e)
+
+
+def generic_step(c, k, p, first):
+    header(c, p if first else 1)
+    diagram_panel(c, p if first else 1)
+    l1, l2 = D["cards"][k]
+    col = {"K": CYAN, "X": YEL}.get(k, ACCENT)
+    card(c, l1, l2, p, col=col, y=1160)
 
 
 def cta(c, t, p):
@@ -138,7 +176,7 @@ def cta(c, t, p):
     e = ease_out(min(1, p / 0.5))
     blit(c, MOCK, W / 2, 800 + (1 - e) * 300, alpha=e)
     glow_text(c, D["program"], 120, YEL, W / 2, 250, alpha=min(1, p / 0.3), scale=0.9 + 0.1 * ease_back(min(1, p / 0.4)))
-    text(c, "30 JOURS POUR DEVENIR SHIFTY", "Black", 52, WHITE, W / 2, 360, alpha=min(1, p / 0.4), maxw=900)
+    text(c, TAG[D["program"]], "Black", 52, WHITE, W / 2, 360, alpha=min(1, p / 0.4), maxw=900)
     b = ease_out((p - 1.2) / 0.4)
     pulse = 1 + 0.05 * math.sin(t * 7) * (p > 1.6)
     panel(c, [250, 1270, 830, 1390], ACCENT + (255,), b, r=60)
@@ -153,6 +191,8 @@ def frame(t, T, parts, groups):
         glow_text(c, D["hook"][0], 130, WHITE, W / 2, 470, scale=z)
         glow_text(c, D["hook"][1], 150, YEL, W / 2, 640, scale=z)
         mini_bounce(c, t, top=980, period=0.32)
+    elif k in ("S1", "S2", "S3") or (k in ("K", "X") and "cards" in D):
+        generic_step(c, k, p, k == "S1")
     elif k in LEVELS:
         header(c, p if k == "D1" else 1)
         scene_levels(c, k, t, p)
@@ -167,7 +207,7 @@ def frame(t, T, parts, groups):
         e = emoji("😌", 150)
         if e is not None:
             blit(c, e, W / 2, 1130, alpha=min(1, p / 0.3))
-    elif k == "S":
+    elif k in ("S", "SV"):
         card(c, "ENREGISTRE", "POUR TA PROCHAINE SÉANCE", p, col=CYAN, y=700)
         e = emoji("📌", 150)
         if e is not None:
@@ -220,6 +260,13 @@ def mix(voice_wav, T, out_wav):
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((out * 32767).astype(np.int16).tobytes())
 
 
+def _ribbon(c, txt):
+    ti = outlined(txt, "Black", 60, WHITE, 0)
+    rib = Image.new("RGBA", (ti.width + 70, ti.height + 40), (235, 64, 52, 255)); rib.alpha_composite(ti, (35, 20))
+    sh = Image.new("RGBA", (rib.width + 12, rib.height + 12), (0, 0, 0, 0)); sh.paste((0, 0, 0, 255), (12, 12, rib.width + 12, rib.height + 12)); sh.alpha_composite(rib)
+    blit(c, sh, W / 2, 700, rot=3, scale=min(1, 960 / sh.width))
+
+
 def cover(out):
     from top10.main import _rays
     yy, xx = np.mgrid[0:H, 0:W]
@@ -229,10 +276,20 @@ def cover(out):
     c = Image.fromarray((base + (hi - base) * k ** 1.4).astype(np.uint8), "RGB").convert("RGBA")
     c.alpha_composite(_rays((W, H), (W // 2, 1150), (255, 255, 255), alpha=26))
     # titre
-    t1 = outlined("TA MAIN FAIBLE", "Black", 128, WHITE, 12)
+    t1 = outlined(D["hook"][0], "Black", 128, WHITE, 12)
     blit(c, t1, W / 2, 300, scale=min(1, 1000 / t1.width))
-    t2 = outlined("TE LÂCHE ?", "Black", 230, YEL, 16)
+    t2 = outlined(D["hook"][1], "Black", 230, YEL, 16)
     blit(c, t2, W / 2, 500, scale=min(1, 1020 / t2.width), rot=-4)
+    if "diagram" in D:
+        im = Image.open(os.path.join(ASSETS, D["diagram"])).convert("RGBA")
+        im = im.resize((960, int(960 * im.height / im.width)), Image.LANCZOS)
+        m = Image.new("L", im.size, 0); ImageDraw.Draw(m).rounded_rectangle([0, 0, im.width - 1, im.height - 1], radius=44, fill=255)
+        im.putalpha(m); blit(c, im, W / 2, 1110, rot=-2)
+        _ribbon(c, "LE DRILL " + ("POUR DEVENIR SHIFTY" if D["program"] == "DRIBBLE 30" else "POUR DEVENIR SHOOTER"))
+        panel(c, [250, 1520, 830, 1620], CYAN + (255,), 1, r=50)
+        text(c, D["header"], "Black", 52, (8, 10, 18), W / 2, 1570, maxw=540)
+        c.convert("RGB").save(out, quality=92)
+        return
     # schéma 3 hauteurs + ballon avec traînée
     lay = Image.new("RGBA", (W, H), (0, 0, 0, 0)); dr = ImageDraw.Draw(lay)
     for lab, y, col in (("HANCHE", 900, (255, 255, 255)), ("GENOU", 1080, (255, 255, 255)), ("CHEVILLE", 1260, YEL)):
@@ -247,27 +304,64 @@ def cover(out):
     blit(c, BALL, 790, 1320, scale=1.45)
     ten = outlined("10×", "Black", 150, WHITE, 12)
     blit(c, ten, 540, 1165, rot=-6)
-    # bandeau
-    ti = outlined("LE DRILL POUR DEVENIR SHIFTY", "Black", 60, WHITE, 0)
-    rib = Image.new("RGBA", (ti.width + 70, ti.height + 40), (235, 64, 52, 255)); rib.alpha_composite(ti, (35, 20))
-    sh = Image.new("RGBA", (rib.width + 12, rib.height + 12), (0, 0, 0, 0)); sh.paste((0, 0, 0, 255), (12, 12, rib.width + 12, rib.height + 12)); sh.alpha_composite(rib)
-    blit(c, sh, W / 2, 700, rot=3, scale=min(1, 960 / sh.width))
+    _ribbon(c, "LE DRILL POUR DEVENIR SHIFTY")
     # pastille
     panel(c, [300, 1520, 780, 1620], CYAN + (255,), 1, r=50)
     text(c, "3 MIN PAR JOUR", "Black", 56, (8, 10, 18), W / 2, 1570)
     c.convert("RGB").save(out, quality=92)
 
 
-CAPTION = ("Ta main faible te lâche sous pression ? 🏀 Pound dribble 3 hauteurs : 10 à la cheville, 10 au genou, 10 à la hanche. "
-           "Commence par ta main faible 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet DRIBBLE 30 (30 jours pour devenir shifty) : lien en bio 🔗\n\n"
-           "#basket #basketball #dribble #handles #basketballdrills #entrainementbasket #hooper #playground")
+HASHTAGS = "#basket #basketball #handles #basketballdrills #entrainementbasket #hooper #playground"
+
+
+def caption():
+    tags = HASHTAGS if D["program"] == "DRIBBLE 30" else HASHTAGS.replace("#handles", "#shooting").replace("#hooper", "#shooter")
+    return (f"{D['caption']} 👇\n\nEnregistre pour ta prochaine séance 📌\n\n"
+            f"Le programme complet {D['program']} ({TAG[D['program']].lower()}) : lien en bio 🔗\n\n{tags}")
+
+
+STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "state.json")
+
+
+def next_drill():
+    done = _json.load(open(STATE)).get("done", []) if os.path.exists(STATE) else []
+    order = [k for k in DRILLS if k != "pound"]
+    for k in order:
+        if k not in done:
+            return k
+    return order[len(done) % len(order)]   # tout fait : on recommence la boucle
+
+
+def mark_done(k):
+    st = _json.load(open(STATE)) if os.path.exists(STATE) else {"done": []}
+    if k not in st["done"]:
+        st["done"].append(k)
+    _json.dump(st, open(STATE, "w"), ensure_ascii=False, indent=1)
+
+
+def schedule(video, cover_path, at):
+    """File de publication (Instagram + YouTube auto, brouillon TikTok) + aperçu Discord (❌ = annulation)."""
+    from publish import queue
+    from chiffre import discord_post
+    cap = caption()
+    yt_title = f"{D['hook'][0].capitalize()} {D['hook'][1].lower()} Le drill {D['header'].title()} 🏀 #Shorts"
+    msg = (f"**🏀 Exercice de la semaine : {D['header']}** ({D['program']}) — publication automatique le {at} "
+           f"(Instagram + YouTube ; brouillon TikTok quelques heures avant). Mets ❌ sur ce message pour l'annuler.")
+    mid = None
+    if os.environ.get("DISCORD_BOT_TOKEN"):
+        mid = discord_post.post(video, msg[:1900], cover_path)
+    key = "drill_" + D["id"]
+    queue.add(key, video, cover_path, cap, yt_title, f"{cap}\n\n#Shorts", at, mid, cap)
+    mark_done(D["id"])
+    print("Programmé :", key, at)
 
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--out", default="out_drill"); ap.add_argument("--drill", default="pound")
+    ap.add_argument("--queue-at", help="'AAAA-MM-JJ HH:MM' (Paris) : programme la publication")
     a = ap.parse_args()
     global D
-    D = DRILLS[a.drill]
+    D = DRILLS[next_drill() if a.drill == "next" else a.drill]
     os.makedirs(a.out, exist_ok=True)
     vw = os.path.join(a.out, "voix_drill.wav")
     cues, total = tts.synth(D["segs"], vw)
@@ -293,8 +387,10 @@ def main():
                     "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-shortest", final], check=True)
     os.remove(silent)
     cover(os.path.join(a.out, D["file"] + ".jpg"))
-    open(os.path.join(a.out, D["file"] + ".txt"), "w", encoding="utf-8").write(CAPTION)
+    open(os.path.join(a.out, D["file"] + ".txt"), "w", encoding="utf-8").write(caption())
     print("Vidéo :", final, f"{T.total:.1f}s")
+    if a.queue_at:
+        schedule(final, os.path.join(a.out, D["file"] + ".jpg"), a.queue_at)
 
 
 if __name__ == "__main__":

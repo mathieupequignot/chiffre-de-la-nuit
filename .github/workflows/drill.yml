@@ -1,11 +1,16 @@
-name: Exercice de la semaine (aperçu, sans publication)
+name: Exercice de la semaine (Playground Lab)
 
 on:
+  schedule:
+    - cron: "0 9 * * 6"   # samedi ~10h Paris : prépare le drill suivant, publié le dimanche à 18:00
   workflow_dispatch:
     inputs:
       drill:
-        description: "Drill (pound, ...)"
-        default: "pound"
+        description: "Drill (pound, crossover… ou next = le suivant de la liste)"
+        default: "next"
+      queue_at:
+        description: "Programmer : AAAA-MM-JJ HH:MM (vide = simple aperçu, aucune publication)"
+        required: false
 
 permissions:
   contents: write
@@ -29,12 +34,24 @@ jobs:
           done
           exit 1
       - run: pip install -r requirements.txt
-      - env:
+      - name: Vidéo
+        env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           ELEVENLABS_VOICE_ID: qR7W98P3YFvanKmMWcIb
-        run: python -m drill.main --out docs/proto --drill "${{ inputs.drill }}"
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+        run: |
+          DRILL="${{ inputs.drill || 'next' }}"
+          AT="${{ inputs.queue_at }}"
+          if [ "${{ github.event_name }}" = "schedule" ]; then AT="$(TZ=Europe/Paris date -d 'next sunday' +%F) 18:00"; fi
+          if [ -n "$AT" ]; then
+            python -m drill.main --out out_drill --drill "$DRILL" --queue-at "$AT"
+          else
+            python -m drill.main --out docs/proto --drill "$DRILL"
+          fi
       - run: |
-          git config user.name "proto-bot"
-          git config user.email "proto-bot@users.noreply.github.com"
+          git config user.name "drill-bot"
+          git config user.email "drill-bot@users.noreply.github.com"
           rm -f docs/proto/*.wav
-          git add docs/proto/drill_* && git commit -m "Aperçu exercice de la semaine" && git pull --rebase -q && git push
+          git add -A publish/queue.json docs/media drill/state.json docs/proto/drill_* 2>/dev/null || true
+          git commit -m "Exercice de la semaine" && git pull --rebase -q && git push || echo "rien à publier"
