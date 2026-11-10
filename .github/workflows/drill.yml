@@ -1,0 +1,40 @@
+name: Exercice de la semaine (aperçu, sans publication)
+
+on:
+  workflow_dispatch:
+    inputs:
+      drill:
+        description: "Drill (pound, ...)"
+        default: "pound"
+
+permissions:
+  contents: write
+
+jobs:
+  video:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installer ffmpeg et les emojis
+        timeout-minutes: 8
+        run: |
+          for i in 1 2 3; do
+            timeout 150 sudo apt-get install -y --no-install-recommends ffmpeg fonts-noto-color-emoji && exit 0
+            timeout 150 sudo apt-get update -o Acquire::Retries=3 && timeout 150 sudo apt-get install -y --no-install-recommends ffmpeg fonts-noto-color-emoji && exit 0
+            sleep 10
+          done
+          exit 1
+      - run: pip install -r requirements.txt
+      - env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: qR7W98P3YFvanKmMWcIb
+        run: python -m drill.main --out docs/proto --drill "${{ inputs.drill }}"
+      - run: |
+          git config user.name "proto-bot"
+          git config user.email "proto-bot@users.noreply.github.com"
+          rm -f docs/proto/*.wav
+          git add docs/proto/drill_* && git commit -m "Aperçu exercice de la semaine" && git pull --rebase -q && git push
