@@ -221,13 +221,40 @@ def mix(voice_wav, T, out_wav):
 
 
 def cover(out):
-    parts = build_bg((20, 60, 110))
-    c = bg_at(0.5, parts)
-    glow_text(c, "TA MAIN FAIBLE", 120, WHITE, W / 2, 380)
-    glow_text(c, "TE LÂCHE ?", 170, YEL, W / 2, 560)
-    blit(c, BALL, W / 2, 1000, scale=2.2)
-    panel(c, [190, 1330, 890, 1460], ACCENT + (255,), 1, r=60)
-    text(c, "LE DRILL QUI CHANGE TOUT", "Black", 54, (10, 10, 14), W / 2, 1395, maxw=640)
+    from top10.main import _rays
+    yy, xx = np.mgrid[0:H, 0:W]
+    d = np.sqrt(((xx - W / 2) / W) ** 2 + ((yy - 1150) / H * 1.1) ** 2)
+    k = np.clip(1 - d * 1.6, 0, 1)[..., None]
+    base = np.array([8, 10, 18], float); hi = np.array([255, 120, 30], float) * 0.85
+    c = Image.fromarray((base + (hi - base) * k ** 1.4).astype(np.uint8), "RGB").convert("RGBA")
+    c.alpha_composite(_rays((W, H), (W // 2, 1150), (255, 255, 255), alpha=26))
+    # titre
+    t1 = outlined("TA MAIN FAIBLE", "Black", 128, WHITE, 12)
+    blit(c, t1, W / 2, 300, scale=min(1, 1000 / t1.width))
+    t2 = outlined("TE LÂCHE ?", "Black", 230, YEL, 16)
+    blit(c, t2, W / 2, 500, scale=min(1, 1020 / t2.width), rot=-4)
+    # schéma 3 hauteurs + ballon avec traînée
+    lay = Image.new("RGBA", (W, H), (0, 0, 0, 0)); dr = ImageDraw.Draw(lay)
+    for lab, y, col in (("HANCHE", 900, (255, 255, 255)), ("GENOU", 1080, (255, 255, 255)), ("CHEVILLE", 1260, YEL)):
+        for x in range(110, 980, 30):
+            dr.line([x, y, x + 16, y], fill=col + (200,), width=6)
+        c.alpha_composite(lay); lay = Image.new("RGBA", (W, H), (0, 0, 0, 0)); dr = ImageDraw.Draw(lay)
+        tl = outlined(lab, "Black", 54, col, 6)
+        blit(c, tl, 130 + tl.width / 2, y - 45)
+    panel(c, [90, 1400, 990, 1412], (255, 255, 255, 160), 1, r=6)
+    for i, (yb, a) in enumerate(((930, 0.18), (1080, 0.3), (1220, 0.5))):
+        blit(c, BALL, 790, yb, scale=1.25, alpha=a)
+    blit(c, BALL, 790, 1320, scale=1.45)
+    ten = outlined("10×", "Black", 150, WHITE, 12)
+    blit(c, ten, 540, 1165, rot=-6)
+    # bandeau
+    ti = outlined("LE DRILL POUR DEVENIR SHIFTY", "Black", 60, WHITE, 0)
+    rib = Image.new("RGBA", (ti.width + 70, ti.height + 40), (235, 64, 52, 255)); rib.alpha_composite(ti, (35, 20))
+    sh = Image.new("RGBA", (rib.width + 12, rib.height + 12), (0, 0, 0, 0)); sh.paste((0, 0, 0, 255), (12, 12, rib.width + 12, rib.height + 12)); sh.alpha_composite(rib)
+    blit(c, sh, W / 2, 700, rot=3, scale=min(1, 960 / sh.width))
+    # pastille
+    panel(c, [300, 1520, 780, 1620], CYAN + (255,), 1, r=50)
+    text(c, "3 MIN PAR JOUR", "Black", 56, (8, 10, 18), W / 2, 1570)
     c.convert("RGB").save(out, quality=92)
 
 
