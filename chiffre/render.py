@@ -173,10 +173,14 @@ def content(t, D, TL):
     # H — accroche (dès la 1re image)
     if "H" in TL.S and D.get("hook"):
         a, p = vis(t, "H", -0.2, 0.08)
+        ph = D.get("_ph")
+        if a and ph:
+            im = ph["hook"]; sec = p * 0.08; rise = (1 - ease_out(min(1, sec / 0.5))) * 120
+            blit(c, im, W / 2, H - im.height / 2 + 40 + rise, alpha=a, scale=1.0 + 0.04 * min(1, sec / 3))
         if a:
             lines = D["hook"]
             for k, ln in enumerate(lines):
-                y = 880 + (k - (len(lines) - 1) / 2) * 190
+                y = (620 if ph else 880) + (k - (len(lines) - 1) / 2) * 190
                 text(c, ln, "Black", 150 if k == 0 else 120, WHITE if k == 0 else ACCENT, W / 2, y + Y, alpha=a,
                      scale=0.88 + 0.12 * ease_back(min(1, p / 1.2)), maxw=960)
     # A — stats
@@ -201,7 +205,10 @@ def content(t, D, TL):
         if a:
             off = (1 - ease_out(p)) * 140
             panel(c, [80, 430 + Y + off, W - 80, 1400 + Y + off], (255, 255, 255, 18), a, 40, (255, 255, 255, 50))
-            badge(c, me, W / 2, 580 + Y + off, 170, alpha=a)
+            if D.get("_ph"):
+                blit(c, D["_ph"]["avatar"], W / 2, 585 + Y + off, alpha=a, scale=260 / 300)
+            else:
+                badge(c, me, W / 2, 580 + Y + off, 170, alpha=a)
             text(c, D["first"], "Black", 150, WHITE, W / 2, 800 + Y + off, alpha=a, maxw=860)
             text(c, D["last"], "Black", 100, ACCENT, W / 2, 935 + Y + off, alpha=a, maxw=860)
         t0 = TL.at("B", 0.5)
@@ -318,6 +325,11 @@ def frame(t, D, TL, parts):
 
 def render(D, cues, total, out_mp4):
     TL = Timeline(cues, total)
+    try:
+        from . import photos
+        D["_ph"] = photos.prepare(D["first"], D["last"], ACCENT)
+    except Exception as e:  # la photo est un bonus : jamais bloquant
+        print("photo joueur ignorée :", e); D["_ph"] = None
     parts = build_bg(D["me"]["bg"])
     p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
                           "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-maxrate", "1500k", "-bufsize", "3M",

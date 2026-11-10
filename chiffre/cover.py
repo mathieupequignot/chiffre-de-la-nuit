@@ -24,7 +24,7 @@ def _fit(txt, w, size, maxw):
     return font(w, size)
 
 
-def make(num, unit, first, last, extra, date, team_col, out):
+def make(num, unit, first, last, extra, date, team_col, out, photo=None):
     im = Image.new("RGB", (W, H), (8, 8, 11))
     g = Image.new("RGBA", (W, H), (0, 0, 0, 0)); gd = ImageDraw.Draw(g)
     gd.ellipse([-300, -200, 700, 800], fill=tuple(team_col) + (110,))
@@ -33,6 +33,14 @@ def make(num, unit, first, last, extra, date, team_col, out):
     im.paste(g, (0, 0), g)
     random.seed(1)
     im.paste((255, 255, 255), (0, 0), Image.effect_noise((W, H), 40).point(lambda v: max(0, v - 140) // 5))
+    if photo is not None:  # joueur en fond, estompé vers le haut et assombri pour garder les textes lisibles
+        from .photos import fit
+        ph = fit(photo, 1060, 1250); a = ph.getchannel("A")
+        grad = Image.linear_gradient("L").resize(ph.size)  # 0 en haut -> 255 en bas
+        a = Image.composite(a, Image.new("L", ph.size, 0), grad.point(lambda v: min(255, int(v * 1.6))))
+        a = a.point(lambda v: int(v * 0.45))
+        dark = Image.new("RGB", ph.size, (0, 0, 0)); ph_rgb = Image.blend(ph.convert("RGB"), dark, 0.35)
+        im.paste(ph_rgb, ((W - ph.width) // 2, H - ph.height + 40), a)
     d = ImageDraw.Draw(im)
     t = "LE CHIFFRE DE LA NUIT"; f = font("ExtraBold", 44)
     tw = sum(f.getlength(c) for c in t) + 6 * (len(t) - 1)
@@ -54,4 +62,10 @@ def make(num, unit, first, last, extra, date, team_col, out):
 
 def from_D(D, out):
     c = D["cover"]
-    return make(c["num"], c["unit"], D["first"], D["last"], c["extra"], D["date_label"], D["me"]["bg"], out)
+    ph = None
+    try:
+        from .photos import find
+        ph = find(D["first"], D["last"])
+    except Exception as e:
+        print("photo miniature ignorée :", e)
+    return make(c["num"], c["unit"], D["first"], D["last"], c["extra"], D["date_label"], D["me"]["bg"], out, photo=ph)
