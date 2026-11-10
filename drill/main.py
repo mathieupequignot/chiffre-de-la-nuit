@@ -109,9 +109,8 @@ def scene_levels(c, k, t, p):
     s = squash(y)
     blit(c, BALL, 780, y, scale=1.15)
     # compteur 1 → 10
-    n = min(10, 1 + int(p / max(0.2, period)))
-    glow_text(c, f"{n}", 230, YEL, 460, 540)
-    text(c, "/ 10", "Black", 70, SILVER, 640, 580, alpha=0.95)
+    beat = 1 + 0.06 * max(0.0, 1 - ph * 4)          # petit « pop » à chaque rebond
+    glow_text(c, "10 ×", 210, YEL, W / 2, 545, scale=beat)
     text(c, "MAIN FAIBLE D'ABORD", "Black", 40, CYAN, W / 2, 700, alpha=0.9)
 
 
