@@ -11,6 +11,11 @@ NAMES = {  # prénom + nom (sans accents, minuscules) -> fichier
     "victor wembanyama": "wemby", "lebron james": "lebron", "stephen curry": "curry", "luka doncic": "doncic",
     "giannis antetokounmpo": "giannis", "shai gilgeous-alexander": "sga", "anthony edwards": "edwards",
     "nikola jokic": "jokic", "kevin durant": "durant", "cooper flagg": "flagg", "kyrie irving": "kyrie",
+    "jalen brunson": "brunson", "donovan mitchell": "mitchell", "devin booker": "booker", "tyrese maxey": "maxey",
+    "cade cunningham": "cunningham", "jayson tatum": "tatum", "jaylen brown": "brown", "joel embiid": "embiid",
+    "trae young": "trae", "ja morant": "morant", "paolo banchero": "banchero", "karl-anthony towns": "towns",
+    "austin reaves": "reaves", "rudy gobert": "gobert", "zaccharie risacher": "risacher", "alex sarr": "sarr",
+    "alexandre sarr": "sarr", "bilal coulibaly": "coulibaly",
 }
 
 
