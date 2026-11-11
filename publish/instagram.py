@@ -14,9 +14,29 @@ def enabled():
     return bool(os.environ.get("IG_TOKEN") and os.environ.get("IG_USER_ID"))
 
 
+def already_posted(caption, hours=24):
+    """Garde-fou anti-doublon : un post avec la même légende existe déjà dans les dernières 24 h ? -> son id."""
+    import datetime as dt
+    tok, uid = os.environ["IG_TOKEN"].strip(), os.environ["IG_USER_ID"].strip()
+    try:
+        j = requests.get(f"{_base()}/{uid}/media", params={"fields": "id,caption,timestamp", "limit": 15, "access_token": tok}, timeout=30).json()
+        now = dt.datetime.now(dt.timezone.utc)
+        for m in j.get("data", []):
+            t = dt.datetime.strptime(m["timestamp"], "%Y-%m-%dT%H:%M:%S%z")
+            if now - t < dt.timedelta(hours=hours) and (m.get("caption") or "").strip() == caption.strip():
+                return m["id"]
+    except Exception as e:
+        print("contrôle anti-doublon Instagram impossible :", e)
+    return None
+
+
 def publish_reel(video_url, caption, cover_url=None):
     tok, uid = os.environ["IG_TOKEN"].strip(), os.environ["IG_USER_ID"].strip()
     G = _base()
+    dup = already_posted(caption)
+    if dup:
+        print("Déjà publié sur Instagram (même légende) : pas de doublon.")
+        return dup
     data = {"media_type": "REELS", "video_url": video_url, "caption": caption, "share_to_feed": "true", "access_token": tok}
     if cover_url:
         data["cover_url"] = cover_url
