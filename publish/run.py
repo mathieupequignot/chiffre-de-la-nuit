@@ -20,6 +20,23 @@ def cancelled(mid):
     return users.ok and any(u["id"] != me for u in users.json())
 
 
+def live(e, wait=420):
+    """Instagram va chercher la vidéo sur GitHub Pages : on attend (jusqu'à 7 min) qu'elle y soit publiée,
+    sinon Instagram renvoie l'erreur 2207076."""
+    import time
+    t0 = time.time()
+    while True:
+        try:
+            if all(requests.head(queue.url(f), timeout=20, allow_redirects=True).status_code == 200
+                   for f in [e["video"]] + ([e["cover"]] if e.get("cover") else [])):
+                return True
+        except Exception:
+            pass
+        if time.time() - t0 > wait:
+            return False
+        time.sleep(20)
+
+
 def platforms():
     p = {}
     if instagram.enabled():
@@ -71,6 +88,9 @@ def main():
             for k in todo: e["status"][k] = "annulé"
             discord_post.notify(f"🚫 Publication annulée (❌) : {e['key']}")
             continue
+        if "instagram" in todo and not live(e):
+            print(f"{e['key']} : vidéo pas encore en ligne sur GitHub Pages, Instagram au prochain passage")
+            todo = [k for k in todo if k != "instagram"]
         for k in todo:
             try:
                 pid = plats[k](e)
