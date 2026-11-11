@@ -36,13 +36,7 @@ jobs:
         run: python -m publish.run
       - name: Enregistrer la file d'attente
         if: always()
-        run: |
-          git config user.name "publish-bot"
-          git config user.email "publish-bot@users.noreply.github.com"
-          git add -A publish/queue.json docs/media publish/tt_token.enc 2>/dev/null || git add -A publish/queue.json docs/media
-          if ! git diff --cached --quiet; then
-            git commit -m "Publication : file d'attente" && git pull --rebase -q && git push
-          fi
+        run: python publish/save.py
       # Passage lancé par la fabrication d'une vidéo : on attend l'heure pile de la prochaine publication (≤ 4 h)
       - name: Attendre l'heure de publication
         if: github.event_name == 'workflow_dispatch' && success()
@@ -64,8 +58,4 @@ jobs:
           python -m publish.run
       - name: Enregistrer la file d'attente (2)
         if: always() && env.WAITED == '1'
-        run: |
-          git add -A publish/queue.json docs/media publish/tt_token.enc 2>/dev/null || git add -A publish/queue.json docs/media
-          if ! git diff --cached --quiet; then
-            git commit -m "Publication : file d'attente" && git pull --rebase -q && git push
-          fi
+        run: python publish/save.py
