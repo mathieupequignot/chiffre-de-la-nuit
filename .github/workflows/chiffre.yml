@@ -2,6 +2,7 @@ name: Chiffre de la nuit
 
 on:
   schedule:
+    - cron: "47 5 * * *"   # passage anticipé (GitHub a souvent ~1 h de retard le matin) : ne fait rien si un match est encore en cours
     - cron: "30 6 * * *"   # 7h30 heure de Paris (hiver), 8h30 (été)
     - cron: "10 7 * * *"   # filet de sécurité si GitHub a sauté le premier passage (ignoré si déjà fait)
   workflow_dispatch:
@@ -54,6 +55,7 @@ jobs:
           ELEVENLABS_VOICE_ID: qR7W98P3YFvanKmMWcIb  # voix « Mathieu NBA » (clone validé le 9 nov.)
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+          CHIFFRE_EARLY: ${{ github.event.schedule == '47 5 * * *' && '1' || '0' }}
           AUTO_PUBLISH: ${{ (secrets.IG_TOKEN != '' || secrets.YT_REFRESH_TOKEN != '') && '1' || '0' }}
         run: |
           if [ -n "${{ inputs.date }}" ]; then python -m chiffre.main --date "${{ inputs.date }}"; else python -m chiffre.main; fi

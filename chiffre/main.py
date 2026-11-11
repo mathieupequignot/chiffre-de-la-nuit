@@ -42,6 +42,14 @@ def mix(video, voice, TL, out):
 
 def run(day, fixture=None, post=True, outdir="out"):
     os.makedirs(outdir, exist_ok=True)
+    if not fixture and os.environ.get("CHIFFRE_EARLY") == "1":
+        try:
+            n = data.unfinished(day)
+        except Exception as e:
+            n = 0; print("contrôle des matchs en cours impossible :", e)
+        if n:
+            print(f"Passage anticipé : {n} match(s) encore en cours, on laisse le passage suivant faire le chiffre.")
+            return None
     games = data.load_fixture(fixture) if fixture else data.fetch_night(day)
     if not games:
         print("Aucun match terminé cette nuit.")

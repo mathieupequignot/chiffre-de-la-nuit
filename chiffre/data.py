@@ -67,6 +67,18 @@ def fetch_night(paris_day):
     return games
 
 
+def unfinished(paris_day):
+    """Nombre de matchs de la nuit déjà commencés mais pas encore terminés."""
+    start, end = night_window(paris_day); now = dt.datetime.now(dt.timezone.utc); n = 0
+    for day in {start.date(), end.date()}:
+        for g in _get("/games", {"date": day.isoformat()}):
+            t = dt.datetime.fromisoformat(g["date"]["start"].replace("Z", "+00:00"))
+            fin = str(g.get("status", {}).get("long", "")).lower() in ("finished", "final") or g.get("status", {}).get("short") == 3
+            if start <= t < min(end, now) and not fin and g.get("status", {}).get("short") != 1:
+                n += 1
+    return n
+
+
 def load_fixture(path):
     return json.load(open(path, encoding="utf-8"))
 
