@@ -29,7 +29,7 @@ Rythme : 2 épisodes par semaine, mercredi et samedi à 18:30 (préparés le lun
 à réévaluer après 2–3 semaines selon les stats. Ordre de passage par défaut : Si un joueur est très réclamé en commentaire ou fait l'actualité
 de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
 - [x] Victor Wembanyama — wemby.png (épisodes 1 et 2)
-- [ ] LeBron James — lebron.png (actu : 24e saison, nouveau départ aux 76ers)
+- [x] LeBron James — lebron.png (épisode du 18 nov. 2026)
 - [ ] Stephen Curry — curry.png
 - [ ] Luka Dončić — doncic.png
 - [ ] Giannis Antetokounmpo — giannis.png
@@ -91,6 +91,24 @@ Types de visuels : `big` (grand nombre animé), `bars` (comparaison en barres, `
 `nba_id` : identifiant Basketball-Reference présent dans quiz/nba_ids.json, ou identifiant NBA direct.
 
 ## Carnet (un bloc par épisode, le plus récent en haut)
+### Épisode 3 — LeBron (« 5 trucs fous sur LeBron ») — programmé le mer. 18 nov. 2026, 18:30
+- Faits : salaire 52,6 M$ → 3,9 M$ aux Sixers (Fortune, CBS, IBTimes) ; 83 jours d'école manqués en CM1
+  (The 74, FutureEd, GMA, ESPN) ; gaucher qui tire de la droite (Complex, GiveMeSport) ; jamais de 27-7-7 en saison
+  régulière (AP, ESPN via Sportskeeda, LarryBrownSports) ; n°1 : gorgée du vin d'un fan en plein match contre
+  Chicago le 2 nov., « c'était correct » (AP, 6abc, SI). Durée 38,4 s.
+- Amélioration testée (1) : **accroche avec aperçu du n°1** (« …et le numéro un s'est passé ce mois-ci, en plein
+  match ! ») : écart de curiosité dès les 3 premières secondes ; les études 2026 sur les hooks TikTok (opus.pro,
+  34 k clips) montrent que l'algorithme juge en ~1,5 s et que les hooks « résultat/aperçu » font ~2× plus de vues.
+  À comparer avec les épisodes Wemby (hook sans teasing).
+- Code : dans le visuel `emoji`, l'emoji est réduit (×0,75) quand il y a un bandeau en haut ET en bas
+  (le verre chevauchait le bandeau). Option `shout` à éviter avec `emoji` + `top` (chevauchement à y≈610).
+- Code : vidéo de 20 Mo refusée par Discord (413, limite ~10 Mo) → `schedule` envoie désormais un aperçu allégé
+  en 720p (~7 Mo) si l'envoi pleine qualité échoue ; la publication reste en pleine qualité.
+- Stats Instagram (12 nov.) : aucun épisode « 5 trucs » encore publié (Wemby 1 décalé au 12 nov. 19:00).
+  Repère : les vidéos Wemby du chiffre de la nuit font 39–51 likes, les autres 5–18, les quiz 4–11 →
+  la notoriété du joueur pèse énormément. Insights (vues) non accessibles : permission #10 de l'appli.
+- Pas d'alerte photos : 9 joueurs non traités avec photo restent.
+
 ### Épisodes 1 et 2 — Wemby (« 5 trucs fous », « 5 trucs que tu ignores ») — programmés les 11 et 14 nov. 2026
 - Construits d'après l'analyse du 9 nov. : formats viraux sans visage = « 10 trucs bizarres sur X »
   (Why Guy, 180 k–1 M vues), anecdotes coulisses (@nbafacts_fr, 5–170 k), data animée (@justcodingvibes, jusqu'à 1,4 M).

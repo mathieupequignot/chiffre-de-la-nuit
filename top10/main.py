@@ -610,7 +610,20 @@ def schedule(video, cover_path, at):
            f"Mets ❌ sur ce message pour l'annuler. Sources des faits : {', '.join(J.get('sources', [])) or '—'}")
     mid = None
     if os.environ.get("DISCORD_BOT_TOKEN"):
-        mid = discord_post.post(video, msg[:1900], cover_path)
+        try:
+            mid = discord_post.post(video, msg[:1900], cover_path)
+        except Exception as ex:  # vidéo trop lourde pour Discord (limite ~10 Mo) : aperçu allégé en 720p
+            print("Aperçu Discord pleine qualité impossible :", ex)
+            light = os.path.splitext(video)[0] + "_apercu.mp4"
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", video, "-vf", "scale=720:-2", "-c:v", "libx264", "-preset", "veryfast",
+                            "-b:v", "1400k", "-maxrate", "1600k", "-bufsize", "3200k", "-c:a", "aac", "-b:a", "96k", light], check=True)
+            try:
+                mid = discord_post.post(light, (msg + "\n(Aperçu allégé ; la publication se fait en pleine qualité.)")[:1900], cover_path)
+            except Exception as ex2:
+                print("Aperçu Discord impossible :", ex2)
+                discord_post.notify(msg[:1800] + "\n(Vidéo trop lourde pour l'aperçu Discord.)")
+            finally:
+                if os.path.exists(light): os.remove(light)
     key = "top5_" + EP["file"]
     queue.add(key, video, cover_path, f"{base}\n\nAbonne-toi pour la suite 🔔\n\n{tags}", f"{yt_title} #Shorts",
               f"{base}\n\n#Shorts {tags}", at, mid, f"{base}\n\n{tags}")
