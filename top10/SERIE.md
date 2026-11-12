@@ -95,7 +95,7 @@ Types de visuels : `big` (grand nombre animé), `bars` (comparaison en barres, `
 - Faits : salaire 52,6 M$ → 3,9 M$ aux Sixers (Fortune, CBS, IBTimes) ; 83 jours d'école manqués en CM1
   (The 74, FutureEd, GMA, ESPN) ; gaucher qui tire de la droite (Complex, GiveMeSport) ; jamais de 27-7-7 en saison
   régulière (AP, ESPN via Sportskeeda, LarryBrownSports) ; n°1 : gorgée du vin d'un fan en plein match contre
-  Chicago le 2 nov., « c'était correct » (AP, 6abc, SI). Durée 38,4 s.
+  Chicago le 2 nov., « c'était correct » (AP, 6abc, SI). Durée finale 40,2 s (limite haute : viser ~150 mots de voix).
 - Amélioration testée (1) : **accroche avec aperçu du n°1** (« …et le numéro un s'est passé ce mois-ci, en plein
   match ! ») : écart de curiosité dès les 3 premières secondes ; les études 2026 sur les hooks TikTok (opus.pro,
   34 k clips) montrent que l'algorithme juge en ~1,5 s et que les hooks « résultat/aperçu » font ~2× plus de vues.
@@ -104,6 +104,8 @@ Types de visuels : `big` (grand nombre animé), `bars` (comparaison en barres, `
   (le verre chevauchait le bandeau). Option `shout` à éviter avec `emoji` + `top` (chevauchement à y≈610).
 - Code : vidéo de 20 Mo refusée par Discord (413, limite ~10 Mo) → `schedule` envoie désormais un aperçu allégé
   en 720p (~7 Mo) si l'envoi pleine qualité échoue ; la publication reste en pleine qualité.
+- docs/proto supprimé : ses fichiers suivis (aperçus d'autres séries) faisaient échouer le commit de mise en file
+  (`rm -rf docs/proto` + `pull --rebase`). Un 1er message Discord LeBron (sans file) est orphelin : seul le 2e compte.
 - Stats Instagram (12 nov.) : aucun épisode « 5 trucs » encore publié (Wemby 1 décalé au 12 nov. 19:00).
   Repère : les vidéos Wemby du chiffre de la nuit font 39–51 likes, les autres 5–18, les quiz 4–11 →
   la notoriété du joueur pèse énormément. Insights (vues) non accessibles : permission #10 de l'appli.
