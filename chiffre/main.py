@@ -40,6 +40,28 @@ def mix(video, voice, TL, out):
                     "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-t", f"{TL.total:.2f}", "-movflags", "+faststart", out], check=True)
 
 
+def make_part(D, segs, outdir, name):
+    """Voix + animation + effets sonores d'une perf. Renvoie (mp4, durée de la voix)."""
+    print("Texte :", " ".join(t for _, t in segs))
+    voice = os.path.join(outdir, f"voice_{name}.wav")
+    cues, total = tts.synth(segs, voice)
+    silent = os.path.join(outdir, f"video_silent_{name}.mp4")
+    TL = render.render(D, cues, total, silent)
+    out = os.path.join(outdir, f"part_{name}.mp4")
+    mix(silent, voice, TL, out)
+    return out, total
+
+
+def concat(part1, voice1, part2, out):
+    """Enchaîne les deux perfs du combo (1re partie coupée 0,5 s après la fin de la voix)."""
+    t1 = voice1 + 0.5
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", part1, "-i", part2, "-filter_complex",
+                    f"[0:v]trim=0:{t1:.2f},setpts=PTS-STARTPTS[v0];[0:a]atrim=0:{t1:.2f},asetpts=PTS-STARTPTS[a0];"
+                    "[v0][a0][1:v][1:a]concat=n=2:v=1:a=1[v][a]", "-map", "[v]", "-map", "[a]",
+                    "-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-maxrate", "1500k", "-bufsize", "3M",
+                    "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out], check=True)
+
+
 def run(day, fixture=None, post=True, outdir="out"):
     os.makedirs(outdir, exist_ok=True)
     if not fixture and os.environ.get("CHIFFRE_EARLY") == "1":
@@ -57,18 +79,26 @@ def run(day, fixture=None, post=True, outdir="out"):
             discord_post.notify("😴 Pas de match NBA cette nuit : pas de chiffre de la nuit aujourd'hui. Rendez-vous demain matin !")
         return None
     # (record de la saison : indisponible avec l'offre gratuite d'API-NBA -> pas de contexte pour l'instant)
-    built = pick.build(games, day)
-    if not built:
-        print("Pas de joueur exploitable.")
-        return None
-    D, segs, caption = built
-    print("Texte :", " ".join(t for _, t in segs))
-    voice = os.path.join(outdir, "voice.wav")
-    cues, total = tts.synth(segs, voice)
-    silent = os.path.join(outdir, "video_silent.mp4")
-    TL = render.render(D, cues, total, silent)
     final = os.path.join(outdir, f"chiffre_de_la_nuit_{day.isoformat()}.mp4")
-    mix(silent, voice, TL, final)
+    combo = None
+    try:
+        combo = pick.build_combo(games, day)
+    except Exception as e:  # le combo est un bonus : en cas de souci on retombe sur la vidéo classique
+        print("combo ignoré :", e)
+    if combo:
+        D, s1, D2, s2, caption = combo
+        print("COMBO :", D["last"], "+", D2["last"])
+        part1, d1 = make_part(D, s1, outdir, "p1")
+        part2, _ = make_part(D2, s2, outdir, "p2")
+        concat(part1, d1, part2, final)
+    else:
+        built = pick.build(games, day)
+        if not built:
+            print("Pas de joueur exploitable.")
+            return None
+        D, segs, caption = built
+        part, _ = make_part(D, segs, outdir, "solo")
+        os.replace(part, final)
     thumb = cover.from_D(D, os.path.join(outdir, f"miniature_{day.isoformat()}.jpg"))
     auto = post and os.environ.get("AUTO_PUBLISH") == "1"
     if auto:

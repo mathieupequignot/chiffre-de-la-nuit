@@ -52,6 +52,34 @@ def angle_of(p):
     return a, gs + bonus
 
 
+def ranking(games):
+    """Toutes les perfs classées par impact : [(score, angle, joueur, match)]."""
+    out = []
+    for g in games:
+        for p in g["players"]:
+            if p["pts"] == 0 and p["reb"] == 0:
+                continue
+            a, s = angle_of(p)
+            out.append((s, a, p, g))
+    return sorted(out, key=lambda x: -x[0])
+
+
+def choose_combo(games):
+    """Deuxième grosse perf de la nuit, dans un AUTRE match : un vrai exploit (triple-double, 40 pts, 20-20, 8 paniers à 3)
+    ou une perf presque aussi forte que la n°1 (30 pts et plus, au moins 85 % de son impact). Sinon None."""
+    r = ranking(games)
+    if len(r) < 2:
+        return None
+    s1, _, _, g1 = r[0]
+    for s, a, p, g in r[1:]:
+        if g["id"] == g1["id"]:
+            continue
+        if a != "best" or (p["pts"] >= 30 and s >= 0.85 * s1):
+            return a, p, g
+        return None
+    return None
+
+
 def choose(games):
     best = None
     for g in games:
@@ -106,13 +134,15 @@ def hook_of(angle, p, ctx, rnd):
                        (f"Personne n'a fait mieux que {last} cette nuit.", ["PERSONNE N'A FAIT", f"MIEUX QUE {L}"])])
 
 
-def build(games, paris_day, seed=None, ctx=None):
+def build(games, paris_day, seed=None, ctx=None, ch=None, mode="solo", other=None):
+    """mode : solo (vidéo classique), combo1 (1re perf, sans conclusion), combo2 (2e perf + conclusion commune).
+    other : joueur de l'autre partie du combo (pour l'accroche et la conclusion)."""
     ctx = ctx or {}
-    ch = choose(games)
+    ch = ch or choose(games)
     if not ch:
         return None
     angle, p, g = ch
-    rnd = random.Random(seed or paris_day.isoformat())
+    rnd = random.Random((seed or paris_day.isoformat()) + mode)
     me, opp = team(p["team"]), team(g["away"] if p["team"] == g["home"] else g["home"])
     my_pts = g["home_pts"] if p["team"] == g["home"] else g["away_pts"]
     op_pts = g["away_pts"] if p["team"] == g["home"] else g["home_pts"]
@@ -151,17 +181,26 @@ def build(games, paris_day, seed=None, ctx=None):
                "best": ("le meilleur match de la nuit", "MVP DE LA NUIT")}[angle]
 
     hook_voice, hook_screen = hook_of(angle, p, ctx, rnd)
+    nick = lambda q: "Wemby" if is_wemby(q) else q["last"]
+    if mode == "combo1":
+        hook_voice = rnd.choice([f"Deux énormes perfs cette nuit ! On commence par {nick(p)}.",
+                                 f"Double dose cette nuit : {nick(p)} et {nick(other)} ! D'abord {nick(p)}."])
+        hook_screen = ["DOUBLE DOSE", "CETTE NUIT !"]
+    elif mode == "combo2":
+        hook_voice = rnd.choice([f"Et ce n'est pas tout ! Dans un autre match, {nick(p)} a sorti le grand jeu.",
+                                 f"Et ce n'est pas fini : {nick(p)} aussi a régalé !"])
+        hook_screen = ["ET CE N'EST", f"PAS TOUT…"]
     segs = [("H", "[excited] " + hook_voice)] + [("A", s) for s in hook]
     segs.append(("B", rnd.choice(["Et ça, c'est {n}, avec {m} {o} !", "Le patron de la soirée ? {n}, avec {m} {o}.",
                                   "Tout ça signé {n}, avec {m} {o} !"]).format(n=full, m=me["avec"].replace("avec ", "", 1), o=opp["face"])))
     fg = None
-    if p["fga"] >= 8 and p["fgm"] / p["fga"] >= 0.5:
+    if mode == "solo" and p["fga"] >= 8 and p["fgm"] / p["fga"] >= 0.5:
         fg = (p["fgm"], p["fga"])
         segs.append(("C", rnd.choice(["[impressed] Et à {m} sur {a} au tir, s'il vous plaît !",
                                       "[impressed] Avec {m} tirs réussis sur {a}… propre !",
                                       "[impressed] Et quelle adresse : {m} sur {a} au tir !"]).format(m=p["fgm"], a=p["fga"])))
     pm = None
-    if p["pm"] >= 10 and win:
+    if mode == "solo" and p["pm"] >= 10 and win:
         pm = p["pm"]
         segs.append(("D", f"Et quand il était sur le terrain, son équipe a fait +{pm} !"))
     w_hi, w_lo = max(my_pts, op_pts), min(my_pts, op_pts)
@@ -173,8 +212,13 @@ def build(games, paris_day, seed=None, ctx=None):
         ("QUELLE", "PERFORMANCE", "On en reparle demain.", "Franchement… quelle performance !"),
         (f"{last}", "INARRÊTABLE", "Qui va l'arrêter ?", f"{p['last']} est inarrêtable… mais qui va l'arrêter ?"),
     ]) if win else (f"{last}", "SEUL CONTRE TOUS", "Ça ne suffit pas toujours.", f"{p['last']} seul contre tous… et parfois, ça ne suffit pas.")
-    segs.append(("F", punch[3]))
-    segs.append(("G", "Abonne-toi pour ne rater aucun chiffre de la nuit !"))
+    if mode == "combo2":
+        a1, a2 = nick(other).upper(), nick(p).upper()
+        punch = rnd.choice([("DEUX MONSTRES", "CETTE NUIT", "Lequel tu prends ?", f"Deux monstres cette nuit… et toi, tu prends qui : {nick(other)} ou {nick(p)} ?"),
+                            (f"{a1} OU {a2} ?", "TON MVP DE LA NUIT", "Réponds en commentaire", f"Alors, ton MVP de la nuit : {nick(other)} ou {nick(p)} ? Dis-le en commentaire !")])
+    if mode != "combo1":
+        segs.append(("F", punch[3]))
+        segs.append(("G", "Abonne-toi pour ne rater aucun chiffre de la nuit !"))
 
     D = dict(date_label=date_label, angle=angle, first=p["first"].upper(), last=p["last"].upper(), me=me, opp=opp,
              my_pts=my_pts, op_pts=op_pts, win=win, home=g["home"], away=g["away"], home_pts=g["home_pts"], away_pts=g["away_pts"],
@@ -205,3 +249,35 @@ def build(games, paris_day, seed=None, ctx=None):
         youtube=f"{base}\n\n{' '.join(tags['youtube'])}",
     )
     return D, segs, caption
+
+
+def build_combo(games, paris_day, seed=None):
+    """Deux grosses perfs dans deux matchs différents -> (D1, segs1, D2, segs2, caption, cover) ; None si pas de combo."""
+    first = choose(games)
+    second = choose_combo(games)
+    if not first or not second:
+        return None
+    p1, p2 = first[1], second[1]
+    D1, s1, c1 = build(games, paris_day, seed, ch=first, mode="combo1", other=p2)
+    D2, s2, c2 = build(games, paris_day, seed, ch=second, mode="combo2", other=p1)
+    import re
+    tag = lambda t: "#" + re.sub(r"[^0-9A-Za-zÀ-ÿ]", "", t)
+    nick = lambda q: "Wemby" if is_wemby(q) else q["last"]
+    line = lambda q, D: (f"{q['first']} {q['last']} : {q['pts']} pts, {q['reb']} reb, {q['ast']} pd "
+                         f"{D['me']['avec']} {D['opp']['face']} ({'victoire' if D['win'] else 'défaite'} "
+                         f"{max(D['my_pts'], D['op_pts'])}-{min(D['my_pts'], D['op_pts'])}).")
+    hook = f"Double dose cette nuit : {nick(p1)} et {nick(p2)} ont régalé !"
+    base = f"{hook} 🤯\n{line(p1, D1)}\n{line(p2, D2)}\n\nTon MVP de la nuit : {nick(p1)} ou {nick(p2)} ? 👇"
+    who = f"{tag(p1['last'])} {tag(p2['last'])}"
+    caption = dict(
+        text=base,
+        tiktok=f"{base}\n\n{who} #NBA #basketball #NBAFrance",
+        instagram=f"{base}\n\nAbonne-toi pour le chiffre de chaque nuit 🔔\n\n{who} #NBA #basketball #basket #NBAFrance #NBADailyNews #nbastats #sport",
+        youtube_title=f"{nick(p1)} et {nick(p2)} ont régalé cette nuit 🤯 #Shorts"[:100],
+        youtube=f"{base}\n\n#Shorts #NBA {who}",
+    )
+    # miniature : la perf n°1 en grand, la n°2 en rappel
+    cov = dict(D1["cover"])
+    cov["extra"] = f"& {p2['last'].upper()} : {D2['cover']['num']} {D2['cover']['unit']}"
+    D1["cover"] = cov
+    return D1, s1, D2, s2, caption
