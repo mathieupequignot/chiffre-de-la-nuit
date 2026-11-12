@@ -103,7 +103,7 @@ def glow_text(c, txt, size, col, x, y, alpha=1, scale=1):
 def header(c, p):
     a = min(1, p / 0.3)
     panel(c, [90, 120, 990, 210], (10, 14, 26, 220), a, r=45, outline=CYAN + (160,))
-    text(c, "DRILL DE LA SEMAINE", "Black", 34, CYAN, W / 2, 148, alpha=a)
+    text(c, "DRILL DU JOUR", "Black", 34, CYAN, W / 2, 148, alpha=a)
     text(c, D["header"], "Black", 40, WHITE, W / 2, 188, alpha=a, maxw=820)
 
 
