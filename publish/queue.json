@@ -1,27 +1,5 @@
 [
  {
-  "key": "chiffre_2026-11-09",
-  "video": "chiffre_2026-11-09.mp4",
-  "cover": "chiffre_2026-11-09.jpg",
-  "instagram": "Tu as vu ce que Reaves a fait cette nuit ? 🤯\nAustin Reaves : 43 pts, 5 reb, 4 pd avec les Lakers face à Detroit (victoire 121-116).\n\nQuelle note sur 10 pour ce match ? 👇\n\nAbonne-toi pour le chiffre de chaque nuit 🔔\n\n#Reaves #NBA #Lakers #Pistons #basketball #basket #NBAFrance #NBADailyNews #nbastats #sport",
-  "yt_title": "Tu as vu ce que Reaves a fait cette nuit  🤯 #Shorts",
-  "yt_desc": "Tu as vu ce que Reaves a fait cette nuit ? 🤯\nAustin Reaves : 43 pts, 5 reb, 4 pd avec les Lakers face à Detroit (victoire 121-116).\n\nQuelle note sur 10 pour ce match ? 👇\n\n#Shorts #NBA #Reaves",
-  "at": "2026-11-09T08:00:00+01:00",
-  "discord_mid": "1569259110220701837",
-  "status": {
-   "tiktok": "ok",
-   "youtube": "ok",
-   "instagram": "ok"
-  },
-  "ids": {
-   "tiktok": "v_inbox_file~v2.7706090116862724118",
-   "youtube": "WMeYQtfRw40"
-  },
-  "errors": {
-   "instagram": 2
-  }
- },
- {
   "key": "quiz_2026-11-09_facile",
   "video": "quiz_2026-11-09_facile.mp4",
   "cover": "quiz_2026-11-09_facile.jpg",
@@ -183,11 +161,15 @@
   "at": "2026-11-12T08:00:00+01:00",
   "discord_mid": "1570329996315328542",
   "status": {
-   "tiktok": "ok"
+   "tiktok": "ok",
+   "instagram": "ok",
+   "youtube": "ok"
   },
   "tiktok_caption": null,
   "ids": {
-   "tiktok": "v_inbox_file~v2.7707173308558723094"
+   "tiktok": "v_inbox_file~v2.7707173308558723094",
+   "instagram": "18205427527329324",
+   "youtube": "2_WSttCcURU"
   }
  }
 ]
