@@ -63,5 +63,6 @@ jobs:
           git config user.name "drill-bot"
           git config user.email "drill-bot@users.noreply.github.com"
           rm -f docs/proto/*.wav
-          git add -A publish/queue.json docs/media drill/state.json docs/proto/drill_* 2>/dev/null || true
+          git add -A publish/queue.json docs/media drill/state.json
+          git add -A docs/proto 2>/dev/null || true
           git commit -m "Exercice de la semaine" && git pull --rebase -q && git push || echo "rien à publier"
