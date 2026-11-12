@@ -9,7 +9,7 @@ nxt = None
 for e in q:
     at = dt.datetime.fromisoformat(e["at"])
     st = e.get("status", {})
-    if at > now and at - now <= MAX and any(st.get(k) not in ("ok", "annulé", "échec", "trop tard") for k in ("instagram", "youtube")):
+    if at > now and at - now <= MAX and any(st.get(k) not in ("ok", "annulé", "échec", "trop tard") for k in ("instagram", "youtube", "facebook")):
         nxt = at if nxt is None or at < nxt else nxt
 if nxt is None:
     print("Rien à publier dans les 4 h : pas d'attente."); sys.exit(0)

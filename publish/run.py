@@ -42,6 +42,12 @@ def platforms():
     if instagram.enabled():
         p["instagram"] = lambda e: instagram.publish_reel(queue.url(e["video"]), e["instagram"], queue.url(e["cover"]) if e["cover"] else None)
     try:
+        from . import facebook
+        if facebook.enabled():
+            p["facebook"] = lambda e: facebook.publish_reel(queue.url(e["video"]), e["instagram"])
+    except ImportError:
+        pass
+    try:
         from . import youtube
         if youtube.enabled():
             p["youtube"] = lambda e: youtube.upload(os.path.join(queue.MEDIA, e["video"]), e["yt_title"], e["yt_desc"],
@@ -88,9 +94,9 @@ def main():
             for k in todo: e["status"][k] = "annulé"
             discord_post.notify(f"🚫 Publication annulée (❌) : {e['key']}")
             continue
-        if "instagram" in todo and not live(e):
-            print(f"{e['key']} : vidéo pas encore en ligne sur GitHub Pages, Instagram au prochain passage")
-            todo = [k for k in todo if k != "instagram"]
+        if any(k in todo for k in ("instagram", "facebook")) and not live(e):
+            print(f"{e['key']} : vidéo pas encore en ligne sur GitHub Pages, Instagram/Facebook au prochain passage")
+            todo = [k for k in todo if k not in ("instagram", "facebook")]
         for k in todo:
             try:
                 pid = plats[k](e)
