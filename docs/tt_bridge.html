@@ -9,11 +9,12 @@
   const f = new URLSearchParams(location.search).get('f');
   try {
     if (!/^[\w.-]+\.mp4$/.test(f || '')) throw new Error('nom de fichier invalide');
-    if (!window.opener) throw new Error("pas d'onglet TikTok relié");
+    const target = window.opener || (window.parent !== window ? window.parent : null);
+    if (!target) throw new Error("pas d'onglet TikTok relié");
     const buf = await (await fetch('media/' + f)).arrayBuffer();
-    window.opener.postMessage({tt_bridge: true, name: f, buf}, 'https://www.tiktok.com', [buf]);
+    target.postMessage({tt_bridge: true, name: f, buf}, 'https://www.tiktok.com', [buf]);
     s.textContent = 'Vidéo envoyée à TikTok (' + f + '). Cet onglet peut être fermé.';
-    setTimeout(() => window.close(), 1500);
+    if (window.opener) setTimeout(() => window.close(), 1500);
   } catch (e) { s.textContent = 'Erreur : ' + e.message; }
 })();
 </script></body></html>
