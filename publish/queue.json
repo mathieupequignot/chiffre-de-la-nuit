@@ -182,7 +182,12 @@
   "yt_desc": "Le meilleur joueur de la nuit, c'est lui. 🤯\nVictor Wembanyama : 32 pts, 9 reb, 1 pd avec San Antonio face à Chicago (victoire 124-119).\n\nIl ira jusqu'où cette saison ? 👇\n\n#Shorts #NBA #Wembanyama",
   "at": "2026-11-12T08:00:00+01:00",
   "discord_mid": "1570329996315328542",
-  "status": {},
-  "tiktok_caption": null
+  "status": {
+   "tiktok": "ok"
+  },
+  "tiktok_caption": null,
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7707173308558723094"
+  }
  }
 ]
