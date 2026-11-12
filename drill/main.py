@@ -348,18 +348,22 @@ def schedule(video, cover_path, at, platforms=None):
     from publish import queue
     from chiffre import discord_post
     cap = caption()
-    if platforms == ["facebook"]:
+    yt_title = f"{D['hook'][0].capitalize()} {D['hook'][1].lower()} Le drill {D['header'].title()} 🏀 #Shorts"
+    if platforms and "tiktok" not in platforms and "instagram" not in platforms:
+        # Exercice quotidien (Facebook + YouTube) : lien boutique direct, pas d'aperçu Discord
         cap = cap.replace("lien en bio 🔗", f"👉 {SHOP}")
         key = "drill_" + D["id"]
-        queue.add(key, video, cover_path, cap, "", "", at, None, None, platforms)
+        yt = "youtube" in platforms
+        queue.add(key, video, cover_path, cap, yt_title if yt else "", f"{cap}\n\n#Shorts" if yt else "",
+                  at, None, None, platforms)
         mark_done(D["id"])
+        noms = " + ".join(p.capitalize() for p in platforms)
         try:
-            discord_post.notify(f"🏀 Exercice du jour (Facebook uniquement) : {D['header']} — publication auto à {at}.")
+            discord_post.notify(f"🏀 Exercice du jour ({noms}) : {D['header']} — publication auto à {at}.")
         except Exception:
             pass
-        print("Programmé (Facebook) :", key, at)
+        print("Programmé :", key, at, platforms)
         return
-    yt_title = f"{D['hook'][0].capitalize()} {D['hook'][1].lower()} Le drill {D['header'].title()} 🏀 #Shorts"
     msg = (f"**🏀 Exercice du jour (tous les comptes) : {D['header']}** ({D['program']}) — publication automatique le {at} "
            f"(Instagram + YouTube + Facebook ; brouillon TikTok quelques heures avant). Mets ❌ sur ce message pour l'annuler.")
     mid = None

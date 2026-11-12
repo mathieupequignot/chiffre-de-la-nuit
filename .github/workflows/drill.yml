@@ -51,8 +51,8 @@ jobs:
           PLAT="${{ inputs.platforms }}"
           if [ "${{ github.event_name }}" = "schedule" ]; then
             AT="$(TZ=Europe/Paris date +%F) 18:00"
-            DOW=$(TZ=Europe/Paris date +%u)   # 4 = jeudi, 7 = dimanche : tous les comptes ; sinon Facebook seul
-            if [ "$DOW" = "4" ] || [ "$DOW" = "7" ]; then PLAT=""; else PLAT="facebook"; fi
+            DOW=$(TZ=Europe/Paris date +%u)   # 4 = jeudi, 7 = dimanche : tous les comptes ; sinon Facebook + YouTube
+            if [ "$DOW" = "4" ] || [ "$DOW" = "7" ]; then PLAT=""; else PLAT="facebook,youtube"; fi
           fi
           if [ -n "$AT" ]; then
             python -m drill.main --out out_drill --drill "$DRILL" --queue-at "$AT" --platforms "$PLAT"
