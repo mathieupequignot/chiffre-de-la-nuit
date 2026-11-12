@@ -8,8 +8,13 @@
   "yt_desc": "5 trucs fous sur Wemby 🤯 Le n°1 va te faire rire 😂\nLequel t'a le plus surpris ? Et quel joueur pour le prochain épisode ? 👇\n\n#Shorts #NBA #Wembanyama #Wemby #Spurs #basketball #NBAFrance #basket #lesaviezvous",
   "at": "2026-11-12T19:00:00+01:00",
   "discord_mid": null,
-  "status": {},
-  "tiktok_caption": "5 trucs fous sur Wemby 🤯 Le n°1 va te faire rire 😂\nLequel t'a le plus surpris ? Et quel joueur pour le prochain épisode ? 👇\n\n#NBA #Wembanyama #Wemby #Spurs #basketball #NBAFrance #basket #lesaviezvous"
+  "status": {
+   "tiktok": "ok"
+  },
+  "tiktok_caption": "5 trucs fous sur Wemby 🤯 Le n°1 va te faire rire 😂\nLequel t'a le plus surpris ? Et quel joueur pour le prochain épisode ? 👇\n\n#NBA #Wembanyama #Wemby #Spurs #basketball #NBAFrance #basket #lesaviezvous",
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7707269752590387222"
+  }
  },
  {
   "key": "top5_wemby_2",
@@ -35,7 +40,8 @@
   "status": {
    "tiktok": "ok",
    "instagram": "ok",
-   "youtube": "ok"
+   "youtube": "ok",
+   "facebook": "trop tard"
   },
   "tiktok_caption": null,
   "ids": {
@@ -55,7 +61,8 @@
   "status": {
    "tiktok": "ok",
    "instagram": "ok",
-   "youtube": "ok"
+   "youtube": "ok",
+   "facebook": "trop tard"
   },
   "tiktok_caption": null,
   "ids": {
@@ -76,13 +83,15 @@
   "status": {
    "tiktok": "ok",
    "instagram": "ok",
-   "youtube": "ok"
+   "youtube": "ok",
+   "facebook": "ok"
   },
   "tiktok_caption": "Ta main faible te lâche sous pression ? 🏀 Pound dribble 3 hauteurs : 10 à la cheville, 10 au genou, 10 à la hanche. Commence par ta main faible. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet DRIBBLE 30 (30 jours pour devenir shifty) : lien en bio 🔗\n\n#basket #basketball #handles #basketballdrills #entrainementbasket #hooper #playground",
   "ids": {
    "tiktok": "v_inbox_file~v2.7706908752289302550",
    "instagram": "18121636099767062",
-   "youtube": "P0iQE6jwTlg"
+   "youtube": "P0iQE6jwTlg",
+   "facebook": "1874074720405179"
   }
  },
  {
@@ -97,7 +106,8 @@
   "status": {
    "tiktok": "ok",
    "youtube": "ok",
-   "instagram": "ok"
+   "instagram": "ok",
+   "facebook": "trop tard"
   },
   "tiktok_caption": null,
   "ids": {
@@ -121,7 +131,8 @@
   "status": {
    "tiktok": "ok",
    "instagram": "ok",
-   "youtube": "ok"
+   "youtube": "ok",
+   "facebook": "trop tard"
   },
   "tiktok_caption": null,
   "ids": {
@@ -142,13 +153,15 @@
   "status": {
    "tiktok": "ok",
    "instagram": "ok",
-   "youtube": "ok"
+   "youtube": "ok",
+   "facebook": "ok"
   },
   "tiktok_caption": null,
   "ids": {
    "tiktok": "v_inbox_file~v2.7707173308558723094",
    "instagram": "18205427527329324",
-   "youtube": "2_WSttCcURU"
+   "youtube": "2_WSttCcURU",
+   "facebook": "1886211675887503"
   }
  },
  {
@@ -163,13 +176,15 @@
   "status": {
    "tiktok": "ok",
    "instagram": "ok",
-   "youtube": "ok"
+   "youtube": "ok",
+   "facebook": "ok"
   },
   "tiktok_caption": null,
   "ids": {
    "tiktok": "v_inbox_file~v2.7707190687300749334",
    "instagram": "18344341543262789",
-   "youtube": "WByH1aCcl_E"
+   "youtube": "WByH1aCcl_E",
+   "facebook": "1126303683527328"
   }
  }
 ]
