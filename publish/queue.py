@@ -22,9 +22,10 @@ def save(q):
     json.dump(q, open(QUEUE, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 
-def add(key, video, cover, instagram, yt_title, yt_desc, at_paris, discord_mid=None, tiktok_caption=None):
+def add(key, video, cover, instagram, yt_title, yt_desc, at_paris, discord_mid=None, tiktok_caption=None, platforms=None):
     """at_paris : 'HH:MM' (aujourd'hui) ou 'AAAA-MM-JJ HH:MM' (heure de Paris). Heure passée = publication au prochain passage.
-    tiktok_caption : description TikTok envoyée sur Discord quand le brouillon arrive (vidéos programmées à l'avance)."""
+    tiktok_caption : description TikTok envoyée sur Discord quand le brouillon arrive (vidéos programmées à l'avance).
+    platforms : liste des plateformes visées (ex. ["facebook"]) ; None = toutes."""
     os.makedirs(MEDIA, exist_ok=True)
     v = f"{key}.mp4"; shutil.copy(video, os.path.join(MEDIA, v))
     c = None
@@ -38,7 +39,8 @@ def add(key, video, cover, instagram, yt_title, yt_desc, at_paris, discord_mid=N
     at = day.replace(hour=h, minute=m, second=0, microsecond=0)
     q = [e for e in load() if e["key"] != key]
     q.append(dict(key=key, video=v, cover=c, instagram=instagram, yt_title=yt_title[:100], yt_desc=yt_desc,
-                  at=at.isoformat(), discord_mid=discord_mid, status={}, tiktok_caption=tiktok_caption))
+                  at=at.isoformat(), discord_mid=discord_mid, status={}, tiktok_caption=tiktok_caption,
+                  **({"platforms": platforms} if platforms else {})))
     save(q)
 
 

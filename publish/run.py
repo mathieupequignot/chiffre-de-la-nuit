@@ -64,7 +64,7 @@ def main():
     if tiktok.enabled():
         for e in q:
             at = dt.datetime.fromisoformat(e["at"])
-            if e["status"].get("tiktok") in ("ok", "échec") or now - at > dt.timedelta(hours=20) or at - now > dt.timedelta(hours=5):
+            if (e.get("platforms") and "tiktok" not in e["platforms"]) or e["status"].get("tiktok") in ("ok", "échec") or now - at > dt.timedelta(hours=20) or at - now > dt.timedelta(hours=5):
                 continue  # trop tard, ou trop tôt (le brouillon arrive au plus 5 h avant l'heure prévue)
             try:
                 e.setdefault("ids", {})["tiktok"] = tiktok.upload_draft(os.path.join(queue.MEDIA, e["video"]))
@@ -84,7 +84,8 @@ def main():
         at = dt.datetime.fromisoformat(e["at"])
         if at > now:
             continue
-        todo = [k for k in plats if e["status"].get(k) not in ("ok", "annulé", "échec", "trop tard")]
+        todo = [k for k in plats if e["status"].get(k) not in ("ok", "annulé", "échec", "trop tard")
+                and (not e.get("platforms") or k in e["platforms"])]
         if not todo:
             continue
         if now - at > dt.timedelta(hours=20):

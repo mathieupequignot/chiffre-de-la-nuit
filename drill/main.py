@@ -339,14 +339,29 @@ def mark_done(k):
     _json.dump(st, open(STATE, "w"), ensure_ascii=False, indent=1)
 
 
-def schedule(video, cover_path, at):
-    """File de publication (Instagram + YouTube auto, brouillon TikTok) + aperçu Discord (❌ = annulation)."""
+SHOP = "https://1cvkuk-kx.myshopify.com"
+
+
+def schedule(video, cover_path, at, platforms=None):
+    """File de publication + aperçu Discord (❌ = annulation).
+    platforms=["facebook"] : exercice du jour réservé à Facebook (pas d'aperçu Discord, simple notification)."""
     from publish import queue
     from chiffre import discord_post
     cap = caption()
+    if platforms == ["facebook"]:
+        cap = cap.replace("lien en bio 🔗", f"👉 {SHOP}")
+        key = "drill_" + D["id"]
+        queue.add(key, video, cover_path, cap, "", "", at, None, None, platforms)
+        mark_done(D["id"])
+        try:
+            discord_post.notify(f"🏀 Exercice du jour (Facebook uniquement) : {D['header']} — publication auto à {at}.")
+        except Exception:
+            pass
+        print("Programmé (Facebook) :", key, at)
+        return
     yt_title = f"{D['hook'][0].capitalize()} {D['hook'][1].lower()} Le drill {D['header'].title()} 🏀 #Shorts"
-    msg = (f"**🏀 Exercice de la semaine : {D['header']}** ({D['program']}) — publication automatique le {at} "
-           f"(Instagram + YouTube ; brouillon TikTok quelques heures avant). Mets ❌ sur ce message pour l'annuler.")
+    msg = (f"**🏀 Exercice du jour (tous les comptes) : {D['header']}** ({D['program']}) — publication automatique le {at} "
+           f"(Instagram + YouTube + Facebook ; brouillon TikTok quelques heures avant). Mets ❌ sur ce message pour l'annuler.")
     mid = None
     if os.environ.get("DISCORD_BOT_TOKEN"):
         try:
@@ -363,6 +378,7 @@ def schedule(video, cover_path, at):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--out", default="out_drill"); ap.add_argument("--drill", default="pound")
     ap.add_argument("--queue-at", help="'AAAA-MM-JJ HH:MM' (Paris) : programme la publication")
+    ap.add_argument("--platforms", default="", help="ex. facebook (vide = toutes les plateformes)")
     a = ap.parse_args()
     global D
     D = DRILLS[next_drill() if a.drill == "next" else a.drill]
@@ -394,7 +410,8 @@ def main():
     open(os.path.join(a.out, D["file"] + ".txt"), "w", encoding="utf-8").write(caption())
     print("Vidéo :", final, f"{T.total:.1f}s")
     if a.queue_at:
-        schedule(final, os.path.join(a.out, D["file"] + ".jpg"), a.queue_at)
+        schedule(final, os.path.join(a.out, D["file"] + ".jpg"), a.queue_at,
+                 [x for x in a.platforms.split(",") if x] or None)
 
 
 if __name__ == "__main__":

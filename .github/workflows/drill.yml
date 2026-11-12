@@ -2,8 +2,7 @@ name: Exercice de la semaine (Playground Lab)
 
 on:
   schedule:
-    - cron: "0 9 * * 6"   # samedi ~10h Paris : prépare le drill suivant, publié le dimanche à 18:00
-    - cron: "0 9 * * 2"   # mardi ~10h Paris : prépare le drill suivant, publié le jeudi à 18:00
+    - cron: "17 9 * * *"   # tous les jours ~10h Paris : exercice du jour publié à 18:00 (Facebook ; + Instagram/YouTube/TikTok le jeudi et le dimanche)
   workflow_dispatch:
     inputs:
       drill:
@@ -11,6 +10,9 @@ on:
         default: "next"
       queue_at:
         description: "Programmer : AAAA-MM-JJ HH:MM (vide = simple aperçu, aucune publication)"
+        required: false
+      platforms:
+        description: "Plateformes (facebook = Facebook seul ; vide = toutes)"
         required: false
 
 permissions:
@@ -46,10 +48,14 @@ jobs:
         run: |
           DRILL="${{ inputs.drill || 'next' }}"
           AT="${{ inputs.queue_at }}"
-          if [ "${{ github.event.schedule }}" = "0 9 * * 6" ]; then AT="$(TZ=Europe/Paris date -d 'next sunday' +%F) 18:00"; fi
-          if [ "${{ github.event.schedule }}" = "0 9 * * 2" ]; then AT="$(TZ=Europe/Paris date -d 'next thursday' +%F) 18:00"; fi
+          PLAT="${{ inputs.platforms }}"
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            AT="$(TZ=Europe/Paris date +%F) 18:00"
+            DOW=$(TZ=Europe/Paris date +%u)   # 4 = jeudi, 7 = dimanche : tous les comptes ; sinon Facebook seul
+            if [ "$DOW" = "4" ] || [ "$DOW" = "7" ]; then PLAT=""; else PLAT="facebook"; fi
+          fi
           if [ -n "$AT" ]; then
-            python -m drill.main --out out_drill --drill "$DRILL" --queue-at "$AT"
+            python -m drill.main --out out_drill --drill "$DRILL" --queue-at "$AT" --platforms "$PLAT"
           else
             python -m drill.main --out docs/proto --drill "$DRILL"
           fi
