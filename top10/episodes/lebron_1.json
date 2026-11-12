@@ -1,0 +1,63 @@
+{
+  "file": "5_trucs_fous_lebron",
+  "nba_id": "jamesle01",
+  "photo": "lebron.png",
+  "title": ["5 TRUCS FOUS", "SUR LEBRON"],
+  "header": "5 TRUCS FOUS SUR LEBRON",
+  "cover": ["5 TRUCS", "FOUS SUR", "LEBRON"],
+  "cover_tag": "LE N°1 VA TE FAIRE RIRE",
+  "hook": "[excited] Tu crois connaître LeBron ? Cinq trucs fous sur lui… et le numéro un s'est passé ce mois-ci, en plein match !",
+  "facts": [
+    {
+      "voice": "Numéro cinq. Cet été, il signe aux Sixers pour moins de quatre millions de dollars cette saison… L'an dernier, il en touchait plus de cinquante-deux !",
+      "visual": {"type": "bars", "value": "-92 %", "label": "SON SALAIRE", "bars": [["LAKERS 2025-26", "52,6 M$", 1.0, "silver"], ["SIXERS 2026-27", "3,9 M$", 0.074, "accent"]], "note": "RECORD DE BAISSE EN NBA"},
+      "sources": [
+        "https://fortune.com/2026/07/24/lebron-james-philadelphia-76ers-billionaire-minimum-contract/",
+        "https://cbssports.com/nba/news/lebron-james-76ers-contract-explained",
+        "https://www.ibtimes.co.uk/lebron-james-pay-cut-76ers-1811672",
+        "https://www.espn.com/nba/story/_/id/49440164"
+      ]
+    },
+    {
+      "voice": "Numéro quatre. Enfant, il déménage sans arrêt avec sa mère… et en CM1, il manque quatre-vingt-trois jours d'école !",
+      "visual": {"type": "big", "value": "83", "unit": " JOURS", "label": "D'ÉCOLE MANQUÉS EN CM1", "sub": "IL DÉMÉNAGEAIT SANS ARRÊT"},
+      "sources": [
+        "https://www.the74million.org/article/jordan-what-lebron-james-can-teach-us-about-chronic-absenteeism-and-what-schools-can-do-about-it/",
+        "https://www.future-ed.org/what-lebron-james-can-teach-us-about-chronic-absenteeism/",
+        "https://www.goodmorningamerica.com/news/story/lebron-james-opening-school-risk-kids-culmination-decade-56913186",
+        "https://africa.espn.com/nba/story/_/id/9825052/how-lebron-james-life-changed-fourth-grade-espn-magazine"
+      ]
+    },
+    {
+      "voice": "Numéro trois. [surprised] LeBron est gaucher ! Mais il tire de la main droite… parce que ses idoles tiraient comme ça.",
+      "visual": {"type": "versus", "no": "TIR DE LA GAUCHE", "yes": "TIR DE LA DROITE ✓", "sub": "IL EST GAUCHER !"},
+      "sources": [
+        "https://www.complex.com/sports/2017/05/lebron-james-provides-interesting-explanation-for-why-he-shoots-right-handed",
+        "https://www.givemesport.com/1047188-video-lebron-provides-surprising-reason-he-shoots-righthanded"
+      ]
+    },
+    {
+      "voice": "Numéro deux. Sa ligne de stats en carrière : vingt-sept points, sept rebonds, sept passes. Et pourtant… il n'a jamais fait vingt-sept, sept, sept dans un match de saison régulière !",
+      "visual": {"type": "list", "value": "27-7-7", "label": "SA MOYENNE EN CARRIÈRE", "items": ["27 PTS : 82 FOIS", "7 REB : 232 FOIS", "LES 3 ENSEMBLE : 0"]},
+      "sources": [
+        "https://cp24.com/news/sports/2026/10/19/lebron-james-by-the-numbers-going-into-year-24-of-his-one-of-a-kind-nba-career",
+        "https://sportskeeda.com/basketball/news-lebron-james-drops-one-emoji-reaction-never-achieving-career-average-statline",
+        "https://larrybrownsports.com/basketball/lebron-james-has-not-posted-rarest-stat-line/504687"
+      ]
+    },
+    {
+      "voice": "[laughs] Et numéro un. En plein match, il fonce dans un fan et renverse son verre de vin rouge… alors il en boit une gorgée ! Son verdict : « C'était correct. »",
+      "visual": {"type": "emoji", "emoji": "🍷", "top": "EN PLEIN MATCH CONTRE CHICAGO", "top_col": "wine", "bottom": "SON AVIS : « C'ÉTAIT CORRECT »"},
+      "sources": [
+        "https://ny1.com/nyc/all-boroughs/ap-top-news/2026/11/03/a-toast-to-a-win-lebron-james-takes-a-sip-of-wine-after-crashing-into-76ers-fan",
+        "https://6abc.com/post/lebron-james-takes-sip-wine-crashing-76ers-fan/20010549/",
+        "https://www.si.com/nba/76ers/lebron-sip-glass-wine-mid-game-fan-did-with-cup-too-funny"
+      ]
+    }
+  ],
+  "outro": "[excited] Lequel t'a le plus surpris ? Dis-le en commentaire… et dis-moi quel joueur tu veux dans le prochain épisode !",
+  "caption": "5 trucs fous sur LeBron 🤯 Le n°1 s'est passé en plein match 🍷\nLequel t'a le plus surpris ? Et quel joueur pour le prochain épisode ? 👇",
+  "yt_title": "5 trucs fous sur LeBron James 🤯",
+  "hashtags": ["#NBA", "#LeBronJames", "#LeBron", "#Sixers", "#76ers", "#basketball", "#NBAFrance", "#basket", "#lesaviezvous"],
+  "sources": ["AP", "ESPN", "CBS Sports", "Fortune", "Complex", "The 74"]
+}
