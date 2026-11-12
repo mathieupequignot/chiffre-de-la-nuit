@@ -1,6 +1,8 @@
 name: Photo de profil Facebook
 on:
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   pic:
     runs-on: ubuntu-latest
@@ -14,4 +16,7 @@ jobs:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
-        run: python -m publish.fb_picture
+        run: |
+          python -m publish.fb_picture
+          git config user.name bot; git config user.email bot@users.noreply.github.com
+          git add docs/avatar.jpg && git commit -m "Avatar" && git pull --rebase -q && git push
