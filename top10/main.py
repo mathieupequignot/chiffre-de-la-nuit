@@ -280,7 +280,8 @@ def generic(c, V, p, cy=900):
             text(c, V["top"], "Black", 56, WHITE, W / 2, cy - 250, alpha=b1, maxw=760)
         em = emoji(V.get("emoji", "🏀"), 260)
         b2 = ease_out((p - 1.2) / 0.6)
-        if em is not None: blit(c, em, W / 2, cy + 10, alpha=b2, scale=0.8 + 0.2 * ease_back(min(1, max(0, p - 1.2) / 0.4)))
+        k_ = 0.75 if (V.get("top") and V.get("bottom")) else 1.0  # entre deux bandeaux : emoji plus petit (pas de chevauchement)
+        if em is not None: blit(c, em, W / 2, cy + (15 if k_ < 1 else 10), alpha=b2, scale=k_ * (0.8 + 0.2 * ease_back(min(1, max(0, p - 1.2) / 0.4))))
         if V.get("bottom"):
             b3 = ease_out((p - 3.0) / 0.4)
             panel(c, [90, cy + 200, 990, cy + 360], YEL + (255,), b3, r=30)
