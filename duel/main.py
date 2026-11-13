@@ -81,9 +81,10 @@ class TL:
         self.c = {k: (a, b) for k, a, b in cues}
         self.total = total + 1.6
         self.span = {}
+        hold = lambda k: 0.4 if k.startswith("r") or k == "E" else -0.12  # le gagnant reste affiché un peu plus
         for i, k in enumerate(order):
-            a = 0.0 if i == 0 else self.c[k][0] - 0.12
-            b = self.c[order[i + 1]][0] - 0.12 if i + 1 < len(order) else self.total
+            a = 0.0 if i == 0 else self.c[k][0] + hold(k)
+            b = self.c[order[i + 1]][0] + hold(order[i + 1]) if i + 1 < len(order) else self.total
             self.span[k] = (a, b)
         self.order = order
 
@@ -103,7 +104,7 @@ def win_times(T):
         txt = re.sub(r"\[[^\]]*\]", "", R["voice"]).strip()
         parts = re.split(r"(?<=[.…!?])\s+", txt)
         frac = 1 - len(parts[-1]) / max(1, len(txt)) if len(parts) > 1 else 0.7
-        out[k] = T.span[k][0] + 0.12 + (b - a) * frac
+        out[k] = a + (b - a) * frac  # instant réel dans la voix
     return out
 
 
