@@ -1,0 +1,41 @@
+{
+  "format": "duel",
+  "file": "duel_jordan_lebron",
+  "players": {
+    "a": {"name": "JORDAN", "nba_id": 893, "color": [206, 17, 65]},
+    "b": {"name": "LEBRON", "nba_id": 2544, "photo": "lebron.png", "silhouette": true, "color": [0, 107, 182]}
+  },
+  "hook": "[excited] Jordan ou LeBron ? Huit stats, face à face… et le score final va faire débat !",
+  "hook_tag": "8 STATS · 1 SEUL GOAT ?",
+  "rounds": [
+    {"label": "POINTS EN CARRIÈRE", "a": "32 292", "b": "43 591", "unit": "SAISON RÉGULIÈRE", "win": "b",
+     "voice": "Points en carrière : trente-deux mille pour Jordan… plus de quarante-trois mille pour LeBron. Point LeBron !"},
+    {"label": "POINTS PAR MATCH", "a": "30,1", "b": "26,7", "unit": "MOYENNE EN CARRIÈRE", "win": "a", "note": "RECORD DE L'HISTOIRE POUR JORDAN",
+     "voice": "Points par match : trente virgule un, le record de l'histoire. Point Jordan !"},
+    {"label": "TITRES NBA", "a": "6", "b": "4", "win": "a",
+     "voice": "Les titres : six contre quatre. Jordan prend la tête !"},
+    {"label": "PASSES DÉCISIVES", "a": "5 633", "b": "12 081", "unit": "EN CARRIÈRE", "win": "b",
+     "voice": "Les passes : LeBron en a plus du double. Égalité !"},
+    {"label": "TITRES DE MVP", "a": "5", "b": "4", "win": "a",
+     "voice": "Les MVP : cinq contre quatre. Jordan repasse devant !"},
+    {"label": "REBONDS", "a": "6 672", "b": "12 167", "unit": "EN CARRIÈRE", "win": "b",
+     "voice": "Les rebonds : presque le double pour LeBron. Trois partout !"},
+    {"label": "FINALES NBA", "a": "6/6", "b": "4/10", "count": false, "unit": "FINALES GAGNÉES", "win": "a", "note": "JORDAN N'A JAMAIS PERDU UNE FINALE",
+     "voice": "Les Finales : six sur six pour Jordan… quatre sur dix pour LeBron. Point Jordan !"},
+    {"label": "SÉLECTIONS ALL-STAR", "a": "14", "b": "22", "win": "b", "note": "RECORD DE L'HISTOIRE POUR LEBRON",
+     "voice": "[excited] Dernière manche, les All-Star : quatorze contre vingt-deux… et LeBron égalise !"}
+  ],
+  "verdict": "ÉGALITÉ PARFAITE !",
+  "cta": "C'EST QUI LE GOAT ? 👇",
+  "outro": "[surprised] Quatre partout ! Alors… c'est qui le GOAT pour toi ? Dis-le en commentaire !",
+  "cover_tag": "QUI EST LE GOAT ?",
+  "caption": "Jordan ou LeBron ? 8 stats, face à face 🐐 Le score final va faire débat 😳\nC'est qui le GOAT pour toi ? 👇",
+  "yt_title": "Jordan vs LeBron : 8 stats, qui gagne ? 🐐",
+  "hashtags": ["#NBA", "#Jordan", "#LeBron", "#GOAT", "#MichaelJordan", "#LeBronJames", "#basketball", "#NBAFrance", "#basket"],
+  "sources": {
+    "jordan": ["https://www.basketball-reference.com/players/j/jordami01.html", "https://www.statmuse.com/nba/ask/jordan-career"],
+    "lebron": ["https://www.basketball-reference.com/players/j/jamesle01.html", "https://www.thescore.com/nba/news/3574278",
+               "https://cp24.com/news/sports/2026/10/19/lebron-james-by-the-numbers-going-into-year-24-of-his-one-of-a-kind-nba-career"],
+    "note": "Stats LeBron (saison régulière) au 13 nov. 2026, saison 2026-27 en cours : 10 matchs joués."
+  }
+}

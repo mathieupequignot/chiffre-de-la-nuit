@@ -561,7 +561,11 @@ def cover(SIL, out):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--out", default="out_top10"); ap.add_argument("--episode", default="a")
     ap.add_argument("--queue-at", help="'AAAA-MM-JJ HH:MM' : programme la publication (Instagram, YouTube, brouillon TikTok) + aperçu Discord")
-    a = ap.parse_args(); use(a.episode)
+    a = ap.parse_args()
+    if a.episode.endswith(".json") and '"format": "duel"' in open(a.episode, encoding="utf-8").read():
+        from duel.main import run  # format « Duel » (2 joueurs, stat par stat) : même workflow
+        return run(a.episode, a.out, a.queue_at)
+    use(a.episode)
     os.makedirs(a.out, exist_ok=True)
     global PH
     PH = load_photo()
