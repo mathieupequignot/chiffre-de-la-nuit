@@ -240,11 +240,18 @@
   "yt_desc": "Tu rates tes tirs ouverts ? 🏀 Form shooting une main : 1 m du cercle, coude sous le ballon, follow-through tenu. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet SHOOT 30 (30 jours pour devenir un shooter fiable) : 👉 https://1cvkuk-kx.myshopify.com\n\n#basket #basketball #shooting #basketballdrills #entrainementbasket #shooter #playground\n\n#Shorts",
   "at": "2026-11-13T18:00:00+01:00",
   "discord_mid": null,
-  "status": {},
+  "status": {
+   "facebook": "ok",
+   "youtube": "ok"
+  },
   "tiktok_caption": null,
   "platforms": [
    "facebook",
    "youtube"
-  ]
+  ],
+  "ids": {
+   "facebook": "1002847239532257",
+   "youtube": "TQncvsSOdeI"
+  }
  }
 ]
