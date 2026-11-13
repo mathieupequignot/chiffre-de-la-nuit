@@ -3,7 +3,7 @@
   "file": "duel_jordan_lebron",
   "players": {
     "a": {"name": "JORDAN", "nba_id": 893, "color": [206, 17, 65]},
-    "b": {"name": "LEBRON", "nba_id": 2544, "photo": "lebron.png", "silhouette": true, "color": [0, 107, 182]}
+    "b": {"name": "LEBRON", "nba_id": 2544, "color": [0, 107, 182]}
   },
   "hook": "[excited] Jordan ou LeBron ? Huit stats, face à face… et le score final va faire débat !",
   "hook_tag": "8 STATS · 1 SEUL GOAT ?",

@@ -180,7 +180,7 @@ def round_panel(c, i, p, d, t, WT):
     text(c, f"MANCHE {i + 1}/{len(J['rounds'])}", "Black", 44, SILVER, W / 2, 950, alpha=min(1, p / 0.2))
     t0 = outlined(R["label"], "Black", 96, YEL, 10)
     blit(c, t0, W / 2, 1040, scale=(0.6 + 0.4 * pin) * min(1, 1000 / t0.width))
-    e = ease_out((p - 0.5) / 1.1)
+    e = ease_out((p - 0.4) / 0.8)
     won = t >= WT[k]
     va, vb = R["a"], R["b"]
     for side, x, v in (("a", 280, va), ("b", 800, vb)):
