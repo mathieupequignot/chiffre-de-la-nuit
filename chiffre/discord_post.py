@@ -54,3 +54,15 @@ def notify(content):
     ch = os.environ.get("DISCORD_CHANNEL_ID")
     if ch and os.environ.get("DISCORD_BOT_TOKEN"):
         requests.post(f"{API}/channels/{ch}/messages", headers=_h(), json={"content": content[:1990]}, timeout=30)
+
+
+def notify_file(content, path, name="miniature.jpg"):
+    """Message + une image jointe (ex. miniature à enregistrer pour TikTok)."""
+    ch = os.environ.get("DISCORD_CHANNEL_ID")
+    if not (ch and os.environ.get("DISCORD_BOT_TOKEN")):
+        return
+    with open(path, "rb") as fh:
+        r = requests.post(f"{API}/channels/{ch}/messages", headers=_h(),
+                          data={"payload_json": json.dumps({"content": content[:1990]})},
+                          files={"files[0]": (name, fh, "image/jpeg")}, timeout=60)
+    r.raise_for_status()

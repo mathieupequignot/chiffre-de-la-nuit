@@ -69,8 +69,14 @@ def main():
             try:
                 e.setdefault("ids", {})["tiktok"] = tiktok.upload_draft(os.path.join(queue.MEDIA, e["video"]))
                 e["status"]["tiktok"] = "ok"
-                discord_post.notify(f"📥 Brouillon TikTok prêt : {e['key']} — à publier vers {at.strftime('%H:%M')} depuis TikTok (boîte de réception)."
-                                    + (" Description dans le message suivant 👇" if e.get("tiktok_caption") else ""))
+                msg = (f"📥 Brouillon TikTok prêt : {e['key']} — à publier vers {at.strftime('%H:%M')} depuis TikTok (boîte de réception)."
+                       + (" Miniature ci-jointe (à enregistrer puis choisir comme couverture)." if e.get("cover") else "")
+                       + (" Description dans le message suivant 👇" if e.get("tiktok_caption") else ""))
+                cover = os.path.join(queue.MEDIA, e["cover"]) if e.get("cover") else None
+                try:  # miniature jointe au message (TikTok ne la reçoit pas avec le brouillon)
+                    discord_post.notify_file(msg, cover) if cover and os.path.exists(cover) else discord_post.notify(msg)
+                except Exception as ex:
+                    print("Miniature Discord impossible :", ex); discord_post.notify(msg)
                 if e.get("tiktok_caption"):
                     discord_post.notify(e["tiktok_caption"])
             except Exception:
