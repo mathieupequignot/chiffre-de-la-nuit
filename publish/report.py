@@ -23,8 +23,9 @@ def ig_views(mid):
     tok = os.environ.get("IG_TOKEN", "").strip()
     if not (tok and mid):
         return None
+    from publish.instagram import _base
     for metric in ("views", "plays"):
-        j = requests.get(f"{G}/{mid}/insights", params={"metric": metric, "access_token": tok}, timeout=30).json()
+        j = requests.get(f"{_base()}/{mid}/insights", params={"metric": metric, "access_token": tok}, timeout=30).json()
         if j.get("data"):
             return int(j["data"][0]["values"][0]["value"])
     print("Instagram", mid, j.get("error", {}).get("message"))
@@ -38,6 +39,10 @@ def fb_views(vid):
     j = requests.get(f"{G}/{vid}/video_insights", params={"metric": "blue_reels_play_count,fb_reels_total_plays",
                                                           "access_token": tok}, timeout=30).json()
     vals = {d["name"]: d["values"][0]["value"] for d in j.get("data", []) if d.get("values")}
+    if os.environ.get("REPORT_DEBUG"):
+        print("FB debug", vid, json.dumps(j)[:600])
+        for m in ("post_video_views", "total_video_views", "post_impressions_unique", "fb_reels_replay_count"):
+            print("FB debug", m, json.dumps(requests.get(f"{G}/{vid}/video_insights", params={"metric": m, "access_token": tok}, timeout=30).json())[:300])
     for k in ("blue_reels_play_count", "fb_reels_total_plays"):
         if k in vals:
             return int(vals[k])

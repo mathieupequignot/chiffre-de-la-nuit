@@ -39,4 +39,5 @@ jobs:
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
-        run: python -m publish.report ${{ inputs.date && format('--date {0}', inputs.date) || '' }}
+          REPORT_DEBUG: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
+        run: python -m publish.report --no-post ${{ inputs.date && format('--date {0}', inputs.date) || '' }}
