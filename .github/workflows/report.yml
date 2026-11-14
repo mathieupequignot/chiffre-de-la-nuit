@@ -1,0 +1,42 @@
+name: Rapport des vues (21h)
+
+on:
+  schedule:
+    - cron: "47 19 * * *"   # ~20h47 Paris (hiver) : envoyé vers 21h (les crons GitHub ont souvent quelques minutes de retard)
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Jour des vidéos (AAAA-MM-JJ) — vide = la veille"
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Attendre 21h00 (heure de Paris)
+        if: github.event_name == 'schedule'
+        run: |
+          now=$(TZ=Europe/Paris date +%s); target=$(TZ=Europe/Paris date -d "21:00" +%s)
+          [ $now -lt $target ] && sleep $((target - now)) || true
+      - name: Rapport
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+        run: python -m publish.report ${{ inputs.date && format('--date {0}', inputs.date) || '' }}
