@@ -30,7 +30,7 @@ qui ne passe plus que mar/jeu/sam/dim). Préparés le samedi, le lundi et le mer
 de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
 - [x] Victor Wembanyama — wemby.png (épisodes 1 et 2)
 - [x] LeBron James — lebron.png (épisode du 18 nov. 2026)
-- [ ] Stephen Curry — curry.png
+- [x] Stephen Curry — curry.png (épisode du lun. 16 nov. 2026)
 - [ ] Luka Dončić — doncic.png
 - [ ] Giannis Antetokounmpo — giannis.png
 - [ ] Shai Gilgeous-Alexander — sga.png
@@ -39,6 +39,17 @@ de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
 - [ ] Kevin Durant — durant.png
 - [ ] Cooper Flagg — flagg.png
 - [ ] Kyrie Irving — kyrie.png
+- [ ] Joel Embiid — embiid.png (ajouté le 14/11 : photo arrivée le 12/11)
+- [ ] Jayson Tatum — tatum.png (ajouté le 14/11)
+- [ ] Rudy Gobert — gobert.png (ajouté le 14/11, Français)
+- [ ] Ja Morant — morant.png (ajouté le 14/11)
+- [ ] Devin Booker — booker.png (ajouté le 14/11)
+- [ ] Jaylen Brown — brown.png (ajouté le 14/11)
+- [ ] Trae Young — trae.png (ajouté le 14/11)
+- [ ] Jalen Brunson — brunson.png (ajouté le 14/11)
+- [ ] Donovan Mitchell — mitchell.png (ajouté le 14/11)
+(Photos aussi présentes mais jugées pas assez « grand public » pour la série : banchero, coulibaly, cunningham, maxey,
+reaves, risacher, sarr, towns — à utiliser seulement s'ils font l'actualité.)
 Critère de choix : uniquement des superstars très connues du grand public (objectif : un maximum de vues).
 Si la photo du joueur est présente dans top10/assets/, mettre `"photo": "<fichier>"` dans le JSON de l'épisode.
 **Quand il ne reste plus que 4 joueurs non traités avec photo**, le signaler à Mathieu sur Discord pour qu'il en envoie
@@ -91,6 +102,23 @@ Types de visuels : `big` (grand nombre animé), `bars` (comparaison en barres, `
 `nba_id` : identifiant Basketball-Reference présent dans quiz/nba_ids.json, ou identifiant NBA direct.
 
 ## Carnet (un bloc par épisode, le plus récent en haut)
+### Épisode 4 — Curry (« 5 trucs fous sur Curry ») — programmé le lun. 16 nov. 2026, 12:30
+- Faits : né dans le même hôpital que LeBron à Akron (NBA.com Warriors, NBC Sports, Bleacher Report) ; 402 trois-points
+  en 2015-16, ancien record 286… le sien (ESPN, AP/ABC, Guinness) ; rencontre Ayesha à 15 ans à l'église, elle le trouve
+  « pas pour elle » (ET, The Knot) ; 1er joueur à 4 000 trois-points, mars 2025 (ESPN, CBS, AP/ABC) ; n°1 : la réunion
+  ratée de Nike en 2013 (« Steph-on » + diapo au nom de Kevin Durant) → Under Armour (NBC Sports/Dell Curry, Fox, Complex).
+  Écarté : « seule Davidson lui a offert une bourse » (Virginia Tech/Greenberg contestent → doute = on enlève).
+  Durée 38,1 s (151 mots de voix, outro raccourcie).
+- Amélioration testée (1) : **relance au milieu** (« Et reste jusqu'au bout pour le un ! » au début du n°3, ~14 s) :
+  les guides rétention 2026 (socialk.it, joyspace) conseillent un « re-hook » vers 30–40 % de la vidéo, là où
+  l'attention chute. Hook gardé avec aperçu du n°1 (« c'est une gaffe énorme »), comme LeBron.
+- Stats Instagram (14 nov., 391 abonnés) : Wemby 1 = 25 likes / 0 com. (2 j) ; Wemby 2 = 28 likes / 0 com. en ~4 h
+  → au niveau des meilleurs chiffres de la nuit Wemby (15–51) et 3–5× les autres vidéos (chiffre hors Wemby 5–18,
+  quiz 2–12, drills 5–10). Point faible : **0 commentaire** malgré l'appel en fin de vidéo (les quiz en ont 1–2) →
+  piste pour un prochain épisode : une question fermée et facile (« Tu en connaissais combien sur 5 ? »).
+  Insights (vues) toujours inaccessibles (#10).
+- Programme : 9 joueurs ajoutés (photos arrivées le 12/11). Pas d'alerte photos : 17 joueurs non traités avec photo.
+
 ### Épisode 3 — LeBron (« 5 trucs fous sur LeBron ») — programmé le mer. 18 nov. 2026, 18:30
 - Faits : salaire 52,6 M$ → 3,9 M$ aux Sixers (Fortune, CBS, IBTimes) ; 83 jours d'école manqués en CM1
   (The 74, FutureEd, GMA, ESPN) ; gaucher qui tire de la droite (Complex, GiveMeSport) ; jamais de 27-7-7 en saison
