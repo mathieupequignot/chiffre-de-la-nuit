@@ -58,31 +58,6 @@
   }
  },
  {
-  "key": "chiffre_2026-11-11",
-  "video": "chiffre_2026-11-11.mp4",
-  "cover": "chiffre_2026-11-11.jpg",
-  "instagram": "Personne n'a fait mieux que Wagner cette nuit. 🤯\nFranz Wagner : 33 pts, 7 reb, 7 pd avec Orlando face à Sacramento (victoire 107-100).\n\nTu le mets dans ton top 5 actuel ? 👇\n\nAbonne-toi pour le chiffre de chaque nuit 🔔\n\n#Wagner #NBA #Magic #Kings #basketball #basket #NBAFrance #NBADailyNews #nbastats #sport",
-  "yt_title": "Personne n'a fait mieux que Wagner cette nuit 🤯 #Shorts",
-  "yt_desc": "Personne n'a fait mieux que Wagner cette nuit. 🤯\nFranz Wagner : 33 pts, 7 reb, 7 pd avec Orlando face à Sacramento (victoire 107-100).\n\nTu le mets dans ton top 5 actuel ? 👇\n\n#Shorts #NBA #Wagner",
-  "at": "2026-11-11T08:00:00+01:00",
-  "discord_mid": "1569981545098514452",
-  "status": {
-   "tiktok": "ok",
-   "youtube": "ok",
-   "instagram": "ok",
-   "facebook": "trop tard"
-  },
-  "tiktok_caption": null,
-  "ids": {
-   "tiktok": "v_inbox_file~v2.7706816722556274710",
-   "youtube": "vjm62d7V4KM",
-   "instagram": "18058313324655984"
-  },
-  "errors": {
-   "instagram": 1
-  }
- },
- {
   "key": "quiz_2026-11-11_facile",
   "video": "quiz_2026-11-11_facile.mp4",
   "cover": "quiz_2026-11-11_facile.jpg",
@@ -276,11 +251,17 @@
   "at": "2026-11-14T08:00:00+01:00",
   "discord_mid": "1571051300018462812",
   "status": {
-   "tiktok": "ok"
+   "tiktok": "ok",
+   "instagram": "ok",
+   "facebook": "ok",
+   "youtube": "ok"
   },
   "tiktok_caption": null,
   "ids": {
-   "tiktok": "v_inbox_file~v2.7707911795960432662"
+   "tiktok": "v_inbox_file~v2.7707911795960432662",
+   "instagram": "18577424419074728",
+   "facebook": "1139794528980357",
+   "youtube": "SSLDBmZeCw0"
   }
  }
 ]
