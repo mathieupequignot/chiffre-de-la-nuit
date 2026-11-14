@@ -57,11 +57,23 @@ def yt_views(ids):
         h = {"Authorization": f"Bearer {youtube._access_token()}"}
         j = requests.get("https://www.googleapis.com/youtube/v3/videos", headers=h,
                          params={"part": "statistics", "id": ",".join(ids[:50])}, timeout=30).json()
-        if "error" in j:
-            print("YouTube :", j["error"].get("message")); return {}
-        return {it["id"]: int(it["statistics"].get("viewCount", 0)) for it in j.get("items", [])}
+        if "error" not in j:
+            return {it["id"]: int(it["statistics"].get("viewCount", 0)) for it in j.get("items", [])}
+        print("YouTube API :", j["error"].get("message"), "-> compteur public de la page")
     except Exception as e:
-        print("YouTube :", e); return {}
+        print("YouTube API :", e, "-> compteur public de la page")
+    out = {}   # repli : compteur public affiché sur la page de la vidéo
+    for i in ids:
+        try:
+            html = requests.get(f"https://www.youtube.com/watch?v={i}", timeout=30,
+                                headers={"User-Agent": "Mozilla/5.0", "Accept-Language": "fr-FR"},
+                                cookies={"CONSENT": "YES+1"}).text
+            m = re.search(r'"viewCount":"(\d+)"', html)
+            if m:
+                out[i] = int(m.group(1))
+        except Exception as e:
+            print("YouTube page", i, e)
+    return out
 
 
 def tt_videos(day):
