@@ -1,0 +1,129 @@
+{
+  "file": "5_trucs_fous_curry",
+  "nba_id": "curryst01",
+  "photo": "curry.png",
+  "title": [
+    "5 TRUCS FOUS",
+    "SUR CURRY"
+  ],
+  "header": "5 TRUCS FOUS SUR CURRY",
+  "cover": [
+    "5 TRUCS",
+    "FOUS SUR",
+    "CURRY"
+  ],
+  "cover_tag": "LE N°1 VA TE FAIRE RIRE",
+  "hook": "[excited] Tu crois connaître Steph Curry ? Cinq trucs fous sur lui… et le numéro un, c'est une gaffe énorme !",
+  "facts": [
+    {
+      "voice": "Numéro cinq. [surprised] Curry et LeBron sont nés dans le même hôpital, à Akron, dans l'Ohio !",
+      "visual": {
+        "type": "versus",
+        "no": "NÉ EN CAROLINE",
+        "yes": "NÉ À AKRON ✓",
+        "sub": "MÊME HÔPITAL QUE LEBRON !"
+      },
+      "sources": [
+        "https://www.nba.com/warriors/news-blogs/warriors-sound-akron-born-mvps",
+        "https://www.nbcsports.com/nba/news/stephen-curry-and-lebron-james-were-born-at-same-hospital-in-akron-ohio",
+        "https://bleacherreport.com/articles/2481272-steph-curry-lebron-james-were-coincidentally-born-at-the-same-hospital-in-ohio"
+      ]
+    },
+    {
+      "voice": "Numéro quatre. En 2016, il met quatre cent deux trois-points en une saison. L'ancien record ? Deux cent quatre-vingt-six… le sien !",
+      "visual": {
+        "type": "bars",
+        "value": "402",
+        "label": "TROIS-POINTS EN UNE SAISON",
+        "bars": [
+          [
+            "CURRY 2015-16",
+            "402",
+            1.0,
+            "accent"
+          ],
+          [
+            "CURRY 2014-15",
+            "286",
+            0.71,
+            "silver"
+          ]
+        ],
+        "note": "IL BAT SON PROPRE RECORD"
+      },
+      "sources": [
+        "https://africa.espn.com/nba/story/_/id/15200619/stephen-curry-golden-state-warriors-nails-400th-3-pointer-cap-season-record",
+        "https://abc7news.com/post/stephen-curry-hits-400th-3-pointer-of-season/1290430/",
+        "https://www.guinnessworldrecords.com/world-records/77683-most-three-point-field-goals-in-an-nba-season"
+      ]
+    },
+    {
+      "voice": "Numéro trois. Et reste jusqu'au bout pour le un ! À quinze ans, il rencontre Ayesha à l'église… elle décide qu'il n'est pas pour elle. Aujourd'hui, c'est sa femme.",
+      "visual": {
+        "type": "list",
+        "value": "15 ANS",
+        "label": "IL RENCONTRE AYESHA",
+        "items": [
+          "À L'ÉGLISE",
+          "ELLE : « PAS POUR MOI »",
+          "MARIÉS EN 2011"
+        ]
+      },
+      "sources": [
+        "https://www.etonline.com/ayesha-and-steph-currys-relationship-timeline-from-young-sweethearts-to-13-years-of-marriage-220905",
+        "https://www.theknot.com/content/steph-ayesha-curry-marriage"
+      ]
+    },
+    {
+      "voice": "Numéro deux. En 2025, il devient le premier joueur de l'histoire à quatre mille trois-points !",
+      "visual": {
+        "type": "big",
+        "value": "4000",
+        "unit": "",
+        "label": "TROIS-POINTS EN CARRIÈRE",
+        "sub": "1ER DE L'HISTOIRE NBA"
+      },
+      "sources": [
+        "https://www.espn.com.au/nba/story/_/id/44244689/warriors-steph-curry-reaches-4000-career-3-pointers",
+        "https://www.cbssports.com/nba/news/warriors-stephen-curry-becomes-first-nba-player-to-make-4000-3-pointers-and-5000-is-within-his-reach",
+        "https://abc7news.com/post/golden-state-warriors-stephen-curry-becomes-1st-player-nba-make-4000-3-pointers/16019671/"
+      ]
+    },
+    {
+      "voice": "[laughs] Et numéro un. En 2013, Nike veut le garder. En réunion, ils écorchent son prénom… et une diapo affiche le nom de Kevin Durant ! Il part chez Under Armour.",
+      "visual": {
+        "type": "emoji",
+        "emoji": "🤦",
+        "top": "NIKE L'APPELLE « STEPH-ON »",
+        "bottom": "LA DIAPO DIT « DURANT »"
+      },
+      "sources": [
+        "https://www.nbcsports.com/nba/news/dell-curry-nike-mispronounced-stephens-name-left-kevin-durants-name-on-slide-in-2013-pitch-meeting",
+        "https://www.foxsports.com/stories/nba/how-nike-botched-pitch-to-stephon-curry-and-lost-him-to-under-armour",
+        "https://www.complex.com/sneakers/a/brendan-dunne/steph-curry-left-nike-got-his-name-wrong"
+      ]
+    }
+  ],
+  "outro": "[excited] Lequel t'a le plus surpris ? Et quel joueur pour le prochain épisode ? Dis-le en commentaire !",
+  "caption": "5 trucs fous sur Steph Curry 🤯 Le n°1 est une gaffe énorme 🤦\nLequel t'a le plus surpris ? Et quel joueur pour le prochain épisode ? 👇",
+  "yt_title": "5 trucs fous sur Steph Curry 🤯",
+  "hashtags": [
+    "#NBA",
+    "#StephenCurry",
+    "#Curry",
+    "#Warriors",
+    "#basketball",
+    "#NBAFrance",
+    "#basket",
+    "#lesaviezvous"
+  ],
+  "sources": [
+    "ESPN",
+    "NBA.com",
+    "NBC Sports",
+    "CBS Sports",
+    "AP",
+    "Fox Sports",
+    "ET"
+  ]
+}
