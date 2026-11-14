@@ -2,7 +2,7 @@ name: Exercice de la semaine (Playground Lab)
 
 on:
   schedule:
-    - cron: "17 9 * * *"   # tous les jours ~10h Paris : exercice du jour publié à 18:00 (Facebook ; + Instagram/YouTube/TikTok le jeudi et le dimanche)
+    - cron: "17 9 * * *"   # tous les jours ~10h Paris : exercice du jour publié à 18:00 (Facebook + YouTube + Instagram ; + TikTok le jeudi et le dimanche)
   workflow_dispatch:
     inputs:
       drill:
@@ -51,8 +51,8 @@ jobs:
           PLAT="${{ inputs.platforms }}"
           if [ "${{ github.event_name }}" = "schedule" ]; then
             AT="$(TZ=Europe/Paris date +%F) 18:00"
-            DOW=$(TZ=Europe/Paris date +%u)   # 4 = jeudi, 7 = dimanche : tous les comptes ; sinon Facebook + YouTube
-            if [ "$DOW" = "4" ] || [ "$DOW" = "7" ]; then PLAT=""; else PLAT="facebook,youtube"; fi
+            DOW=$(TZ=Europe/Paris date +%u)   # 4 = jeudi, 7 = dimanche : tous les comptes ; sinon Facebook + YouTube + Instagram
+            if [ "$DOW" = "4" ] || [ "$DOW" = "7" ]; then PLAT=""; else PLAT="facebook,youtube,instagram"; fi
           fi
           if [ -n "$AT" ]; then
             python -m drill.main --out out_drill --drill "$DRILL" --queue-at "$AT" --platforms "$PLAT"

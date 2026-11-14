@@ -13,7 +13,8 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 - **Visuels** : couleurs d'équipe emblématiques (a = gauche, b = droite, couleurs bien contrastées, ex. rouge vs bleu).
   Photos : uniquement celles de top10/assets/ (fournies par Mathieu). Sans photo pour LES DEUX joueurs, on met
   les deux en silhouette (`nba_id` = identifiant NBA, photo officielle noircie) pour garder un rendu homogène.
-- **Publication** : 1 duel par semaine, le DIMANCHE à 18:30 (Instagram + YouTube auto, brouillon TikTok ~5 h avant,
+- **Publication** (décidé par Mathieu le 14 nov. 2026) : 3 duels par semaine, MARDI, JEUDI et SAMEDI à 20:00
+  (préparés le dimanche, le mardi et le jeudi par une tâche programmée) (Instagram + YouTube auto, brouillon TikTok ~5 h avant,
   aperçu Discord ❌ = annulation). Clé de file : `duel_<file>`.
 
 ## Règles absolues

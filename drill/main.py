@@ -349,8 +349,8 @@ def schedule(video, cover_path, at, platforms=None):
     from chiffre import discord_post
     cap = caption()
     yt_title = f"{D['hook'][0].capitalize()} {D['hook'][1].lower()} Le drill {D['header'].title()} 🏀 #Shorts"
-    if platforms and "tiktok" not in platforms and "instagram" not in platforms:
-        # Exercice quotidien (Facebook + YouTube) : lien boutique direct, pas d'aperçu Discord
+    if platforms and "tiktok" not in platforms:
+        # Exercice quotidien (Facebook + YouTube + Instagram) : lien boutique direct, pas d'aperçu Discord
         cap = cap.replace("lien en bio 🔗", f"👉 {SHOP}")
         key = "drill_" + D["id"]
         yt = "youtube" in platforms
