@@ -273,7 +273,12 @@
   "yt_desc": "Si tu ne trouves pas celui-là, rends ton maillot 😅 Niveau facile · 1 franchise. Ta réponse en commentaire 👇\n\n#Shorts #NBA #quizNBA",
   "at": "2026-11-14T12:30:00+01:00",
   "discord_mid": "1571068066735980677",
-  "status": {},
-  "tiktok_caption": null
+  "status": {
+   "tiktok": "ok"
+  },
+  "tiktok_caption": null,
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7707929067022354455"
+  }
  }
 ]
