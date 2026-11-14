@@ -39,17 +39,10 @@ def fb_views(vid):
     j = requests.get(f"{G}/{vid}/video_insights", params={"metric": "blue_reels_play_count,fb_reels_total_plays",
                                                           "access_token": tok}, timeout=30).json()
     vals = {d["name"]: d["values"][0]["value"] for d in j.get("data", []) if d.get("values")}
-    if os.environ.get("REPORT_DEBUG"):
-        print("FB debug", vid, json.dumps(j)[:600])
-        for m in ("post_video_views", "total_video_views", "post_impressions_unique", "fb_reels_replay_count"):
-            print("FB debug", m, json.dumps(requests.get(f"{G}/{vid}/video_insights", params={"metric": m, "access_token": tok}, timeout=30).json())[:300])
     for k in ("blue_reels_play_count", "fb_reels_total_plays"):
         if k in vals:
             return int(vals[k])
-    j2 = requests.get(f"{G}/{vid}", params={"fields": "views", "access_token": tok}, timeout=30).json()
-    if "views" in j2:
-        return int(j2["views"])
-    print("Facebook", vid, j.get("error", {}).get("message"), j2.get("error", {}).get("message"))
+    print("Facebook", vid, j.get("error", {}).get("message"))
     return None
 
 
@@ -214,8 +207,9 @@ def summary(day, rows, tot, extra_tt):
     if allv:
         lines += [f"🏆 Meilleure vidéo : {best['kind']} — {best['title']} ({sp(bv)} vues)",
                   f"📱 Meilleur réseau : {by_net[1]} ({sp(tot[by_net[0]])} vues)"]
-    if any(r["v"].get("tiktok") is None for r in rows):
-        lines.append("ℹ️ TikTok : vues pas encore accessibles par l'API (droit « video.list » à activer).")
+    manque = [n for k, n in NETS if any(r["v"].get(k) is None for r in rows)]
+    if manque:
+        lines.append(f"ℹ️ Vues pas encore accessibles : {', '.join(manque)} (autorisation de lecture des stats à ajouter).")
     if extra_tt:
         lines.append("TikTok, autres vidéos du jour : " + " · ".join(f"{(v.get('title') or '')[:30]} ({fmt(v['view_count'])})" for v in extra_tt[:5]))
     lines.append("« × » = pas publiée sur ce réseau · « – » = chiffre indisponible")
