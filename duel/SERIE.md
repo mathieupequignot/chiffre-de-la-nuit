@@ -32,7 +32,7 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 2. Aperçu : workflow « Vidéo spéciale (10 trucs fous) » (top10.yml) avec `episode = duel/episodes/<slug>.json`
    → vidéo dans docs/proto/ ; vérifier images + miniature, puis `git rm -r docs/proto` et pousser
    (sinon la mise en file échoue).
-3. Publication : relancer avec `queue_at = AAAA-MM-JJ 18:30`.
+3. Publication : relancer avec `queue_at = AAAA-MM-JJ 20:00`.
 
 ## Programme des duels (à cocher)
 - [x] Michael Jordan vs LeBron James — programmé dim. 15 nov. 2026

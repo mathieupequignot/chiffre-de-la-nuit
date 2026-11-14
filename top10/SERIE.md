@@ -59,7 +59,7 @@ Jordan, Kobe, Shaq, Iverson, Magic, Bird, Dirk, Tony Parker…).
 1. Écrire `top10/episodes/<slug>.json` (voir le modèle ci-dessous).
 2. Aperçu : lancer le workflow « Vidéo spéciale (10 trucs fous) » avec `episode = top10/episodes/<slug>.json`
    (sans date) → la vidéo arrive dans docs/proto/ ; vérifier les images (textes qui débordent, chevauchements).
-3. Publication : relancer avec `queue_at = AAAA-MM-JJ 18:30` → aperçu Discord (❌ = annuler) et publication auto.
+3. Publication : relancer avec `queue_at = AAAA-MM-JJ 12:30` → aperçu Discord (❌ = annuler) et publication auto.
 
 ### Modèle de JSON
 ```json
