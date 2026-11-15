@@ -156,6 +156,8 @@ def followers(yt_video_id=None):
                 print("Abonnés YouTube : compteur public introuvable")
         except Exception as e:
             print("Abonnés YouTube page :", e)
+    if os.environ.get("TT_STATS") != "1":   # nécessite le droit user.info.stats (et fait tourner le jeton TikTok)
+        return out
     try:
         from publish import tiktok
         h = {"Authorization": f"Bearer {tiktok._access_token()}"}
