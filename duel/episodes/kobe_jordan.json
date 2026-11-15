@@ -1,0 +1,45 @@
+{
+  "format": "duel",
+  "file": "duel_kobe_jordan",
+  "players": {
+    "a": {"name": "KOBE", "nba_id": 977, "color": [85, 37, 130]},
+    "b": {"name": "JORDAN", "nba_id": 893, "color": [206, 17, 65]}
+  },
+  "hook": "[excited] Kobe ou Jordan ? Huit stats, face à face… et le score final va faire débat !",
+  "hook_tag": "8 STATS · LE MAÎTRE OU L'ÉLÈVE ?",
+  "rounds": [
+    {"label": "POINTS EN CARRIÈRE", "a": "33 643", "b": "32 292", "unit": "SAISON RÉGULIÈRE", "win": "a",
+     "voice": "Points en carrière : trente-trois mille six cents pour Kobe… trente-deux mille trois cents pour Jordan. Point Kobe !"},
+    {"label": "POINTS PAR MATCH", "a": "25,0", "b": "30,1", "unit": "MOYENNE EN CARRIÈRE", "win": "b", "note": "RECORD DE L'HISTOIRE POUR JORDAN",
+     "voice": "Points par match : vingt-cinq contre trente virgule un, le record de l'histoire. Égalité !"},
+    {"label": "TITRES NBA", "a": "5", "b": "6", "win": "b",
+     "voice": "Les titres : cinq bagues pour Kobe… six pour Jordan. Jordan prend la tête !"},
+    {"label": "RECORD EN UN MATCH", "a": "81", "b": "69", "unit": "POINTS · SAISON RÉGULIÈRE", "win": "a", "note": "81 POINTS CONTRE TORONTO EN 2006",
+     "voice": "Record de points en un match : soixante-neuf pour Jordan… quatre-vingt-un pour Kobe ! Deux partout !"},
+    {"label": "TITRES DE MVP", "a": "1", "b": "5", "win": "b",
+     "voice": "Les MVP : un seul pour Kobe, cinq pour Jordan. Jordan repasse devant !"},
+    {"label": "PANIERS À 3 POINTS", "a": "1 827", "b": "581", "unit": "EN CARRIÈRE", "win": "a",
+     "voice": "Les paniers à trois points : plus de trois fois plus pour Kobe. Trois partout !"},
+    {"label": "MVP DES FINALES", "a": "2", "b": "6", "win": "b", "note": "JORDAN : MVP À CHACUNE DE SES 6 FINALES",
+     "voice": "Les MVP des Finales : deux contre six. Point Jordan !"},
+    {"label": "SÉLECTIONS ALL-STAR", "a": "18", "b": "14", "win": "a",
+     "voice": "[excited] Dernière manche, les All-Star : dix-huit sélections contre quatorze… et Kobe égalise !"}
+  ],
+  "verdict": "ÉGALITÉ PARFAITE !",
+  "cta": "C'EST QUI LE MEILLEUR ? 👇",
+  "outro": "[surprised] Quatre partout ! Alors… Kobe ou Jordan ? Dis-le en commentaire !",
+  "cover_tag": "QUI EST LE MEILLEUR ?",
+  "caption": "Kobe ou Jordan ? 8 stats, face à face 🐍🐐 Le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇",
+  "yt_title": "Kobe vs Jordan : 8 stats, qui gagne ? 🐍🐐",
+  "hashtags": ["#NBA", "#Kobe", "#Jordan", "#KobeBryant", "#MichaelJordan", "#Lakers", "#Bulls", "#basketball", "#NBAFrance", "#basket"],
+  "sources": {
+    "kobe": ["https://www.statscrew.com/basketball/stats/p-bryanko01", "https://www.landofbasketball.com/nba_players_stats/kobe_bryant_tot.htm",
+             "https://www.landofbasketball.com/nba_players_rankings/all_time/kobe_bryant.htm", "https://pr.nba.com/kobe-bryant-career-numbers",
+             "https://www.wikiwand.com/en/List_of_career_achievements_by_Kobe_Bryant", "https://www.startribune.com/kobe-bryant-s-career-stats/567315742"],
+    "jordan": ["https://www.statscrew.com/basketball/stats/p-jordami01", "https://www.landofbasketball.com/nba_players_rankings/all_time/michael_jordan.htm",
+               "https://www.statmuse.com/nba/ask/jordan-career", "https://www.nba.com/history/legends/profiles/michael-jordan",
+               "https://www.nba.com/news/legendary-moments-history-michael-jordan-69-points-vs-cleveland-cavs-1990",
+               "https://en.wikipedia.org/wiki/List_of_career_achievements_by_Michael_Jordan"],
+    "note": "Saison régulière, carrière entière (statscrew = données Basketball-Reference). Points : 33 643 (statscrew, landofbasketball, NBA PR) vs 32 292 (statscrew, landofbasketball, StatMuse). 3 pts : 1 827 (statscrew, landofbasketball) vs 581 (statscrew, landofbasketball, Wikipedia). Records en un match : 81 vs Toronto 22/01/2006 (NBA PR, StarTribune/AP) ; 69 vs Cleveland 28/03/1990 (NBA.com). Titres 5/6, MVP 1/5, MVP Finales 2/6, All-Star 18/14 : NBA.com + Wikipedia/StarTribune."
+  }
+}
