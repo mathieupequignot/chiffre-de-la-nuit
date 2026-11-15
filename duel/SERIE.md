@@ -36,7 +36,7 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 
 ## Programme des duels (à cocher)
 - [x] Michael Jordan vs LeBron James — programmé dim. 15 nov. 2026
-- [ ] Kobe Bryant vs Michael Jordan
+- [x] Kobe Bryant vs Michael Jordan — programmé mar. 17 nov. 2026, 20:00
 - [ ] Magic Johnson vs Larry Bird
 - [ ] Shaquille O'Neal vs Kareem Abdul-Jabbar
 - [ ] LeBron James vs Kobe Bryant
@@ -48,6 +48,17 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 Si un duel fait l'actualité ou est réclamé en commentaire, il peut passer devant.
 
 ## Carnet (le plus récent en haut)
+### Duel 2 — Kobe vs Jordan — programmé le mar. 17 nov. 2026, 20:00
+- Préparé automatiquement le dim. 15 nov. (1er duel non coché du programme ; aucun des deux n'a de photo → 2 silhouettes).
+- Kobe = a (violet Lakers 85,37,130), Jordan = b (rouge Bulls) : contraste correct à l'écran.
+- Manches : points carrière 33 643 vs 32 292 (K), points/match 25,0 vs 30,1 (J), titres 5 vs 6 (J), record en un match
+  81 vs 69 (K), MVP 1 vs 5 (J), paniers à 3 pts 1 827 vs 581 (K), MVP des Finales 2 vs 6 (J), All-Star 18 vs 14 (K) → 4-4.
+  Volontairement d'autres stats que Jordan-LeBron (record en un match, 3 pts, MVP des Finales) pour varier.
+- Appris : le bandeau de miniature (`cover_tag`) déborde sous la chèvre 🐐 au-delà de ~17 caractères
+  (« QUI EST LE MEILLEUR ? » coupait le « ? ») → garder « QUI EST LE GOAT ? » ou plus court.
+- Éviter la note « 2e plus gros match de l'histoire » pour les 81 pts de Kobe sans revérifier le classement du jour.
+- Vidéo de 38,9 s (un peu longue : voix des manches à raccourcir si besoin). Résultats : à relever.
+
 ### Duel 1 — Jordan vs LeBron — programmé le dim. 15 nov. 2026, 18:30
 - Inspiré d'une vidéo TikTok envoyée par Mathieu (format « duel stat par stat »).
 - Manches : points carrière (L), points/match (J), titres (J), passes (L), MVP (J), rebonds (L), Finales 6/6 vs 4/10 (J),
