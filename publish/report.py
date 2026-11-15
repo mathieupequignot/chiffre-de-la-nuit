@@ -145,17 +145,7 @@ def followers(yt_video_id=None):
     except Exception as e:
         print("Abonnés YouTube API :", e)
     if out["youtube"] is None and yt_video_id:   # repli : compteur public de la chaîne
-        try:
-            hd = {"User-Agent": "Mozilla/5.0", "Accept-Language": "en-US"}
-            html = requests.get(f"https://www.youtube.com/watch?v={yt_video_id}", timeout=30, headers=hd, cookies={"CONSENT": "YES+1"}).text
-            m = re.search(r'"subscriberCountText":\{[^}]*?"simpleText":"([^"]+)"', html) or \
-                re.search(r'"subscriberCountText":\{.*?"content":"([^"]+)"', html)
-            if m:
-                out["youtube"] = _num(m.group(1))
-            else:
-                print("Abonnés YouTube : compteur public introuvable")
-        except Exception as e:
-            print("Abonnés YouTube page :", e)
+        out["youtube"] = yt_public_subs(yt_video_id)
     if os.environ.get("TT_STATS") != "1":   # nécessite le droit user.info.stats (et fait tourner le jeton TikTok)
         return out
     try:
@@ -168,6 +158,28 @@ def followers(yt_video_id=None):
     except Exception as e:
         print("Abonnés TikTok :", e)
     return out
+
+
+def yt_public_subs(video_id):
+    hd = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)", "Accept-Language": "en-US,en;q=0.9"}
+    ck = {"CONSENT": "YES+1", "SOCS": "CAI"}
+    pat = [r'"simpleText":"([\d.,]+[KM]?) subscribers?"', r'"content":"([\d.,]+[KM]?) subscribers?"',
+           r'"label":"([\d.,]+[KM]?) subscribers?"', r'([\d.,]+[KM]?) subscribers?']
+    try:
+        html = requests.get(f"https://www.youtube.com/watch?v={video_id}", timeout=30, headers=hd, cookies=ck).text
+        pages = [html]
+        m = re.search(r'"channelId":"(UC[\w-]{22})"', html)
+        if m:
+            pages.append(requests.get(f"https://www.youtube.com/channel/{m.group(1)}", timeout=30, headers=hd, cookies=ck).text)
+        for page in pages:
+            for p in pat:
+                m2 = re.search(p, page)
+                if m2:
+                    return _num(m2.group(1))
+        print("Abonnés YouTube : compteur public introuvable", m and m.group(1), len(html))
+    except Exception as e:
+        print("Abonnés YouTube page :", e)
+    return None
 
 
 HIST = os.path.join(HERE, "stats_history.json")
