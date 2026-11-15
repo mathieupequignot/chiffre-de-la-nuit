@@ -99,6 +99,92 @@ def tt_videos(day):
         print("TikTok :", e); return None
 
 
+# ---------- abonnés par réseau (None = indisponible)
+def _num(txt):
+    """'1,2 k' / '1.2K' / '391' -> int."""
+    m = re.search(r"([\d.,\s\u202f\xa0]+)\s*([kKmM])?", txt or "")
+    if not m:
+        return None
+    n = m.group(1).replace("\u202f", "").replace("\xa0", "").replace(" ", "")
+    mult = {"k": 1e3, "m": 1e6}.get((m.group(2) or "").lower(), 1)
+    if mult > 1:
+        return int(float(n.replace(",", ".")) * mult)
+    return int(re.sub(r"[.,]", "", n)) if re.sub(r"[.,]", "", n).isdigit() else None
+
+
+def followers(yt_video_id=None):
+    out = {"tiktok": None, "instagram": None, "youtube": None, "facebook": None}
+    tok = os.environ.get("IG_TOKEN", "").strip()
+    if tok:
+        try:
+            from publish.instagram import _base
+            uid = os.environ.get("IG_USER_ID", "").strip() or "me"
+            j = requests.get(f"{_base()}/{uid}", params={"fields": "followers_count", "access_token": tok}, timeout=30).json()
+            out["instagram"] = j.get("followers_count")
+            if out["instagram"] is None: print("Abonnés Instagram :", j.get("error", {}).get("message"))
+        except Exception as e:
+            print("Abonnés Instagram :", e)
+    ftok = os.environ.get("FB_PAGE_TOKEN", "").strip()
+    if ftok:
+        try:
+            from publish.facebook import PAGE_ID
+            j = requests.get(f"{G}/{PAGE_ID}", params={"fields": "followers_count,fan_count", "access_token": ftok}, timeout=30).json()
+            out["facebook"] = j.get("followers_count", j.get("fan_count"))
+            if out["facebook"] is None: print("Abonnés Facebook :", j.get("error", {}).get("message"))
+        except Exception as e:
+            print("Abonnés Facebook :", e)
+    try:
+        from publish import youtube
+        h = {"Authorization": f"Bearer {youtube._access_token()}"}
+        j = requests.get("https://www.googleapis.com/youtube/v3/channels", headers=h,
+                         params={"part": "statistics", "mine": "true"}, timeout=30).json()
+        if j.get("items"):
+            out["youtube"] = int(j["items"][0]["statistics"].get("subscriberCount", 0))
+        else:
+            print("Abonnés YouTube API :", j.get("error", {}).get("message"), "-> page publique")
+    except Exception as e:
+        print("Abonnés YouTube API :", e)
+    if out["youtube"] is None and yt_video_id:   # repli : compteur public de la chaîne
+        try:
+            hd = {"User-Agent": "Mozilla/5.0", "Accept-Language": "en-US"}
+            html = requests.get(f"https://www.youtube.com/watch?v={yt_video_id}", timeout=30, headers=hd, cookies={"CONSENT": "YES+1"}).text
+            m = re.search(r'"subscriberCountText":\{[^}]*?"simpleText":"([^"]+)"', html) or \
+                re.search(r'"subscriberCountText":\{.*?"content":"([^"]+)"', html)
+            if m:
+                out["youtube"] = _num(m.group(1))
+            else:
+                print("Abonnés YouTube : compteur public introuvable")
+        except Exception as e:
+            print("Abonnés YouTube page :", e)
+    try:
+        from publish import tiktok
+        h = {"Authorization": f"Bearer {tiktok._access_token()}"}
+        j = requests.get("https://open.tiktokapis.com/v2/user/info/?fields=follower_count", headers=h, timeout=30).json()
+        fc = j.get("data", {}).get("user", {}).get("follower_count")
+        out["tiktok"] = int(fc) if fc is not None else None
+        if fc is None: print("Abonnés TikTok :", j.get("error"))
+    except Exception as e:
+        print("Abonnés TikTok :", e)
+    return out
+
+
+HIST = os.path.join(HERE, "stats_history.json")
+
+
+def save_followers(day, f):
+    """Garde un relevé par jour ; renvoie la variation depuis le relevé précédent."""
+    try:
+        h = json.load(open(HIST, encoding="utf-8"))
+    except Exception:
+        h = {}
+    prev = max((d for d in h if d < str(day)), default=None)
+    delta = {k: (v - h[prev][k]) if (prev and isinstance(v, int) and isinstance(h[prev].get(k), int)) else None
+             for k, v in f.items()}
+    h[str(day)] = {**{k: v for k, v in f.items()}, **{k: h.get(str(day), {}).get(k) for k, v in f.items() if v is None}}
+    json.dump(dict(sorted(h.items())), open(HIST, "w", encoding="utf-8"), indent=1)
+    return delta
+
+
 def day_start(d):
     return dt.datetime(d.year, d.month, d.day, tzinfo=PARIS)
 
@@ -157,11 +243,11 @@ def fmt(n):
     return str(n)
 
 
-def image(day, rows, out):
+def image(day, rows, out, fol=None, dfol=None):
     from PIL import Image, ImageDraw
     from chiffre.render import font
     W, PAD, RH = 1080, 40, 118
-    H = 260 + RH * (len(rows) + 1) + 120
+    H = 260 + RH * (len(rows) + 1) + (290 if fol else 120)
     im = Image.new("RGB", (W, H), (14, 14, 18)); d = ImageDraw.Draw(im)
     OR, WH, GR, GN = (255, 122, 26), (245, 245, 245), (140, 142, 152), (80, 220, 120)
     d.text((PAD, 50), "RAPPORT DES VUES", font=font("Black", 64), fill=OR)
@@ -170,7 +256,7 @@ def image(day, rows, out):
     cols = [560, 690, 820, 950]   # centres des colonnes réseaux
     y = 210
     for (k, n), x in zip(NETS, cols):
-        d.text((x, y + 20), n, font=font("ExtraBold", 28), fill=GR, anchor="mm")
+        d.text((x, y + 20), n, font=font("ExtraBold", 24), fill=GR, anchor="mm")
     y += 60
     tot = {k: 0 for k, _ in NETS}
     for i, r in enumerate(rows):
@@ -191,19 +277,46 @@ def image(day, rows, out):
     for (k, _), x in zip(NETS, cols):
         has = any(isinstance(r["v"].get(k), int) for r in rows)
         d.text((x, y + 50), fmt(tot[k]) if has else "–", font=font("Black", 40), fill=OR, anchor="mm")
+    if fol:
+        y += 130
+        d.rounded_rectangle([PAD - 10, y, W - PAD + 10, y + 210], 22, fill=(30, 26, 22))
+        d.text((PAD + 10, y + 40), "ABONNÉS", font=font("Black", 44), fill=OR, anchor="lm")
+        d.text((PAD + 10, y + 95), f"au {dt.datetime.now(PARIS).strftime('%d/%m')}", font=font("SemiBold", 28), fill=GR, anchor="lm")
+        d.text((PAD + 10, y + 160), "TOTAL " + fmt(sum(v for v in fol.values() if isinstance(v, int))),
+               font=font("Black", 34), fill=WH, anchor="lm")
+        for (k, n), x in zip(NETS, cols):
+            d.text((x, y + 40), n, font=font("ExtraBold", 26), fill=GR, anchor="mm")
+            d.text((x, y + 105), fmt(fol.get(k)), font=font("Black", 44), fill=WH, anchor="mm")
+            dv = (dfol or {}).get(k)
+            if isinstance(dv, int):
+                d.text((x, y + 160), f"{dv:+d}", font=font("ExtraBold", 32), fill=GN if dv > 0 else (GR if dv == 0 else (240, 80, 80)), anchor="mm")
     im.save(out, quality=92)
     return out, tot
 
 
-def summary(day, rows, tot, extra_tt):
+def fol_line(fol, dfol):
+    if not fol or not any(isinstance(v, int) for v in fol.values()):
+        return None
+    parts = []
+    for k, n in NETS:
+        v, dv = fol.get(k), (dfol or {}).get(k)
+        parts.append(f"{n} {fmt(v)}" + (f" ({dv:+d})" if isinstance(dv, int) else ""))
+    tot = sum(v for v in fol.values() if isinstance(v, int))
+    return "👥 Abonnés : " + " · ".join(parts) + f" — total {tot:,}".replace(",", " ")
+
+
+def summary(day, rows, tot, extra_tt, fol=None, dfol=None):
+    fl = fol_line(fol, dfol)
     if not rows:
-        return f"📊 **Rapport du {day.strftime('%d/%m')}** : aucune vidéo publiée ce jour-là."
+        return f"📊 **Rapport du {day.strftime('%d/%m')}** : aucune vidéo publiée ce jour-là." + (f"\n{fl}" if fl else "")
     allv = sum(v for v in tot.values())
     best = max(rows, key=lambda r: sum(v for v in r["v"].values() if isinstance(v, int)))
     bv = sum(v for v in best["v"].values() if isinstance(v, int))
     by_net = max(((k, n) for k, n in NETS), key=lambda kn: tot[kn[0]])
     sp = lambda n: f"{n:,}".replace(",", " ")
     lines = [f"📊 **Rapport du {day.strftime('%d/%m')}** — {len(rows)} vidéos, **{sp(allv)} vues** au total"]
+    if fl:
+        lines.append(fl)
     if allv:
         lines += [f"🏆 Meilleure vidéo : {best['kind']} — {best['title']} ({sp(bv)} vues)",
                   f"📱 Meilleur réseau : {by_net[1]} ({sp(tot[by_net[0]])} vues)"]
@@ -221,12 +334,21 @@ def main():
     a = ap.parse_args()
     day = dt.date.fromisoformat(a.date) if a.date else dt.datetime.now(PARIS).date() - dt.timedelta(days=1)
     rows, extra = collect(day)
+    yid = next((r["ids"].get("youtube") for r in rows if r["ids"].get("youtube")), None)
+    if not yid:
+        q = json.load(open(os.path.join(HERE, "queue.json"), encoding="utf-8"))
+        yid = next((e.get("ids", {}).get("youtube") for e in reversed(q) if e.get("ids", {}).get("youtube")), None)
+    fol = followers(yid)
+    print("Abonnés :", fol)
+    dfol = save_followers(dt.datetime.now(PARIS).date(), fol) if not a.no_post else {}
     os.makedirs("out_report", exist_ok=True)
-    png, tot = image(day, rows, f"out_report/rapport_{day}.jpg")
-    msg = summary(day, rows, tot, extra)
+    png, tot = image(day, rows, f"out_report/rapport_{day}.jpg", fol, dfol)
+    msg = summary(day, rows, tot, extra, fol, dfol)
     print(msg)
     for r in rows: print(r["kind"], r["title"], r["v"])
-    if not a.no_post:
+    if a.no_post:
+        print("(test : rien envoyé sur Discord)")
+    else:
         from chiffre import discord_post
         if rows:
             discord_post.notify_file(msg, png, f"rapport_{day}.jpg")

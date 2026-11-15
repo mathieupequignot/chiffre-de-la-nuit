@@ -8,9 +8,13 @@ on:
       date:
         description: "Jour des vidéos (AAAA-MM-JJ) — vide = la veille"
         required: false
+      test:
+        description: "Test : afficher le rapport dans le journal sans l'envoyer sur Discord"
+        type: boolean
+        default: false
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   report:
@@ -39,4 +43,10 @@ jobs:
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
-        run: python -m publish.report ${{ inputs.date && format('--date {0}', inputs.date) || '' }}
+        run: python -m publish.report ${{ inputs.date && format('--date {0}', inputs.date) || '' }} ${{ inputs.test && '--no-post' || '' }}
+      - name: Garder l'historique des abonnés
+        if: ${{ !inputs.test }}
+        run: |
+          git config user.name "publish-bot"
+          git config user.email "publish-bot@users.noreply.github.com"
+          git add publish/stats_history.json && git commit -m "Rapport : abonnés du jour" && git pull --rebase -q && git push || true
