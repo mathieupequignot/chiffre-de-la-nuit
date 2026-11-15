@@ -297,7 +297,12 @@
   "yt_desc": "Silhouette + équipes… tu l'as en combien de secondes ? ⏱️ Niveau facile · 1 franchise. Ta réponse en commentaire 👇\n\n#Shorts #NBA #quizNBA",
   "at": "2026-11-15T12:30:00+01:00",
   "discord_mid": "1571430307339444307",
-  "status": {},
-  "tiktok_caption": null
+  "status": {
+   "tiktok": "ok"
+  },
+  "tiktok_caption": null,
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7708300198006786070"
+  }
  }
 ]
