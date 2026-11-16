@@ -182,6 +182,80 @@ def yt_public_subs(video_id):
     return None
 
 
+# ---------- boutique Shopify (visites + ventes du jour)
+SHOP = os.environ.get("SHOPIFY_STORE", "1cvkuk-kx.myshopify.com").strip()
+SHOP_API = "2025-10"
+
+
+def _shop_token():
+    """Jeton Admin API : SHOPIFY_TOKEN (shpat_…) ou, pour une appli du Dev Dashboard, SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET."""
+    if os.environ.get("SHOPIFY_TOKEN", "").strip():
+        return os.environ["SHOPIFY_TOKEN"].strip()
+    cid, sec = os.environ.get("SHOPIFY_CLIENT_ID", "").strip(), os.environ.get("SHOPIFY_CLIENT_SECRET", "").strip()
+    if not (cid and sec):
+        return None
+    j = requests.post(f"https://{SHOP}/admin/oauth/access_token", timeout=30,
+                      data={"grant_type": "client_credentials", "client_id": cid, "client_secret": sec}).json()
+    if "access_token" not in j:
+        print("Shopify jeton :", j)
+    return j.get("access_token")
+
+
+def _shopql(tok, q):
+    gql = "query($q: String!) { shopifyqlQuery(query: $q) { tableData { columns { name } rows } parseErrors } }"
+    j = requests.post(f"https://{SHOP}/admin/api/{SHOP_API}/graphql.json", timeout=30, json={"query": gql, "variables": {"q": q}},
+                      headers={"X-Shopify-Access-Token": tok}).json()
+    r = (j.get("data") or {}).get("shopifyqlQuery") or {}
+    if j.get("errors") or r.get("parseErrors"):
+        print("ShopifyQL :", j.get("errors") or r.get("parseErrors"))
+        return None
+    rows = (r.get("tableData") or {}).get("rows") or []
+    if isinstance(rows, str):
+        rows = json.loads(rows)
+    return rows[0] if rows else {}
+
+
+def _f(v):
+    try:
+        return float(str(v).replace(",", "."))
+    except Exception:
+        return None
+
+
+def shop_stats(day):
+    """{'visits', 'orders', 'sales', 'currency'} pour la journée (None = indisponible)."""
+    out = {"visits": None, "orders": None, "sales": None}
+    try:
+        tok = _shop_token()
+        if not tok:
+            return None
+        d = str(day)
+        r = _shopql(tok, f"FROM sessions SHOW sessions SINCE {d} UNTIL {d}")
+        if r is not None:
+            v = _f(r.get("sessions")) if isinstance(r, dict) else _f(r[0])
+            out["visits"] = int(v) if v is not None else 0
+        r = _shopql(tok, f"FROM sales SHOW orders, total_sales SINCE {d} UNTIL {d}")
+        if r is not None:
+            o, t = (r.get("orders"), r.get("total_sales")) if isinstance(r, dict) else (r[0], r[1])
+            out["orders"] = int(_f(o) or 0)
+            out["sales"] = _f(t) or 0.0
+        if out["orders"] is None:   # repli : comptage direct des commandes
+            a, b = day_start(day).isoformat(), day_start(day + dt.timedelta(days=1)).isoformat()
+            gql = "query($q: String!) { orders(first: 100, query: $q) { nodes { totalPriceSet { shopMoney { amount } } } } }"
+            j = requests.post(f"https://{SHOP}/admin/api/{SHOP_API}/graphql.json", timeout=30,
+                              json={"query": gql, "variables": {"q": f"created_at:>='{a}' created_at:<'{b}'"}},
+                              headers={"X-Shopify-Access-Token": tok}).json()
+            nodes = ((j.get("data") or {}).get("orders") or {}).get("nodes")
+            if nodes is not None:
+                out["orders"] = len(nodes)
+                out["sales"] = sum(float(n["totalPriceSet"]["shopMoney"]["amount"]) for n in nodes)
+            else:
+                print("Shopify commandes :", j.get("errors"))
+    except Exception as e:
+        print("Shopify :", e)
+    return out
+
+
 HIST = os.path.join(HERE, "stats_history.json")
 
 
@@ -257,11 +331,11 @@ def fmt(n):
     return str(n)
 
 
-def image(day, rows, out, fol=None, dfol=None):
+def image(day, rows, out, fol=None, dfol=None, shop=None):
     from PIL import Image, ImageDraw
     from chiffre.render import font
     W, PAD, RH = 1080, 40, 118
-    H = 260 + RH * (len(rows) + 1) + (290 if fol else 120)
+    H = 260 + RH * (len(rows) + 1) + (290 if fol else 120) + (250 if shop else 0)
     im = Image.new("RGB", (W, H), (14, 14, 18)); d = ImageDraw.Draw(im)
     OR, WH, GR, GN = (255, 122, 26), (245, 245, 245), (140, 142, 152), (80, 220, 120)
     d.text((PAD, 50), "RAPPORT DES VUES", font=font("Black", 64), fill=OR)
@@ -304,6 +378,18 @@ def image(day, rows, out, fol=None, dfol=None):
             dv = (dfol or {}).get(k)
             if isinstance(dv, int):
                 d.text((x, y + 160), f"{dv:+d}", font=font("ExtraBold", 32), fill=GN if dv > 0 else (GR if dv == 0 else (240, 80, 80)), anchor="mm")
+        y += 210
+    if shop:
+        y += 30
+        d.rounded_rectangle([PAD - 10, y, W - PAD + 10, y + 210], 22, fill=(20, 28, 24))
+        d.text((PAD + 10, y + 40), "BOUTIQUE", font=font("Black", 44), fill=GN, anchor="lm")
+        d.text((PAD + 10, y + 95), f"le {day.strftime('%d/%m')}", font=font("SemiBold", 28), fill=GR, anchor="lm")
+        sales = shop.get("sales")
+        cells = [("Visites", fmt(shop.get("visits")), 560), ("Ventes", fmt(shop.get("orders")), 755),
+                 ("Encaissé", "–" if sales is None else f"{sales:.2f} €".replace(".", ","), 950)]
+        for lab, val, x in cells:
+            d.text((x, y + 40), lab, font=font("ExtraBold", 26), fill=GR, anchor="mm")
+            d.text((x, y + 110), val, font=font("Black", 44), fill=WH, anchor="mm")
     im.save(out, quality=92)
     return out, tot
 
@@ -319,8 +405,16 @@ def fol_line(fol, dfol):
     return "👥 Abonnés : " + " · ".join(parts) + f" — total {tot:,}".replace(",", " ")
 
 
-def summary(day, rows, tot, extra_tt, fol=None, dfol=None):
-    fl = fol_line(fol, dfol)
+def shop_line(shop):
+    if not shop or all(v is None for v in shop.values()):
+        return None
+    sales = shop.get("sales")
+    return (f"🛒 Boutique : {fmt(shop.get('visits'))} visites · {fmt(shop.get('orders'))} vente(s)"
+            + ("" if sales is None else f" · {sales:.2f} €".replace(".", ",")))
+
+
+def summary(day, rows, tot, extra_tt, fol=None, dfol=None, shop=None):
+    fl = "\n".join(x for x in (fol_line(fol, dfol), shop_line(shop)) if x) or None
     if not rows:
         return f"📊 **Rapport du {day.strftime('%d/%m')}** : aucune vidéo publiée ce jour-là." + (f"\n{fl}" if fl else "")
     allv = sum(v for v in tot.values())
@@ -356,8 +450,10 @@ def main():
     print("Abonnés :", fol)
     dfol = save_followers(dt.datetime.now(PARIS).date(), fol) if not a.no_post else {}
     os.makedirs("out_report", exist_ok=True)
-    png, tot = image(day, rows, f"out_report/rapport_{day}.jpg", fol, dfol)
-    msg = summary(day, rows, tot, extra, fol, dfol)
+    shop = shop_stats(day)
+    print("Boutique :", shop)
+    png, tot = image(day, rows, f"out_report/rapport_{day}.jpg", fol, dfol, shop)
+    msg = summary(day, rows, tot, extra, fol, dfol, shop)
     print(msg)
     for r in rows: print(r["kind"], r["title"], r["v"])
     if a.no_post:
