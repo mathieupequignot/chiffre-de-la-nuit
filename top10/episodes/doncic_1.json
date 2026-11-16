@@ -13,7 +13,7 @@
     "LUKA"
   ],
   "cover_tag": "LE N°1 EST IMPROBABLE",
-  "hook": "[excited] Tu crois connaître Luka Doncic ? Cinq trucs fous sur lui… et le numéro un, c'est un enterrement !",
+  "hook": "[excited] Tu crois connaître Luka Doncic ? Cinq trucs fous… et le numéro un, c'est un enterrement !",
   "facts": [
     {
       "voice": "Numéro cinq. À seize ans, il joue déjà en pro au Real Madrid. Le plus jeune de l'histoire du club !",
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "voice": "Numéro deux. [surprised] Contre les Knicks, il rate un lancer franc exprès, reprend le ballon et égalise ! Bilan : soixante points, vingt et un rebonds, dix passes. Du jamais vu.",
+      "voice": "Numéro deux. [surprised] Contre les Knicks, il rate un lancer franc exprès, reprend le ballon et égalise ! Soixante points, vingt et un rebonds, dix passes : du jamais vu.",
       "visual": {
         "type": "list",
         "value": "60-21-10",
