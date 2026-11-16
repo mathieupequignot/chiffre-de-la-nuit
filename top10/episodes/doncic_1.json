@@ -1,0 +1,139 @@
+{
+  "file": "5_trucs_fous_doncic",
+  "nba_id": "doncilu01",
+  "photo": "doncic.png",
+  "title": [
+    "5 TRUCS FOUS",
+    "SUR LUKA"
+  ],
+  "header": "5 TRUCS FOUS SUR LUKA",
+  "cover": [
+    "5 TRUCS",
+    "FOUS SUR",
+    "LUKA"
+  ],
+  "cover_tag": "LE N°1 EST IMPROBABLE",
+  "hook": "[excited] Tu crois connaître Luka Doncic ? Cinq trucs fous sur lui… et le numéro un, c'est un enterrement !",
+  "facts": [
+    {
+      "voice": "Numéro cinq. À seize ans, il joue déjà en pro au Real Madrid. Le plus jeune de l'histoire du club !",
+      "visual": {
+        "type": "versus",
+        "no": "AU LYCÉE",
+        "yes": "REAL MADRID ✓",
+        "sub": "PRO À 16 ANS !"
+      },
+      "sources": [
+        "https://www.eurohoops.net/en/acb/870232/luka-doncics-pro-debut-four-year-anniversary/",
+        "https://bleacherreport.com/articles/2588799-all-hail-luka-doncic-europes-16-year-old-hoops-prince"
+      ]
+    },
+    {
+      "voice": "Numéro quatre. À dix-neuf ans, il est élu MVP de l'Euroligue. Le plus jeune de l'histoire !",
+      "visual": {
+        "type": "big",
+        "value": "19",
+        "unit": " ANS",
+        "label": "MVP DE L'EUROLIGUE",
+        "sub": "LE PLUS JEUNE DE L'HISTOIRE"
+      },
+      "sources": [
+        "https://www.cbssports.com/nba/news/nba-draft-prospect-luka-doncic-wins-euroleague-title-final-four-mvp-and-euroleague-mvp-for-real-madrid",
+        "https://english.sta.si/2516012/doncic-becomes-youngest-ever-euroleague-mvp",
+        "https://arizonasports.com/nba/phoenix-suns/luka-doncic-youngest-euroleague-mvp"
+      ]
+    },
+    {
+      "voice": "Numéro trois. Et reste jusqu'au bout pour le un ! En 2024, il plante soixante-treize points à Atlanta. Seuls Chamberlain et Kobe ont fait mieux.",
+      "visual": {
+        "type": "bars",
+        "value": "73",
+        "label": "POINTS EN UN MATCH",
+        "bars": [
+          [
+            "CHAMBERLAIN",
+            "100",
+            1.0,
+            "silver"
+          ],
+          [
+            "KOBE",
+            "81",
+            0.81,
+            "silver"
+          ],
+          [
+            "DONCIC",
+            "73",
+            0.73,
+            "accent"
+          ]
+        ],
+        "note": "4E TOTAL DE L'HISTOIRE"
+      },
+      "sources": [
+        "https://sports.yahoo.com/luka-doncic-scores-73-points-vs-hawks-tied-for-fourth-most-in-nba-history-023607554.html",
+        "https://www.fox4news.com/sports/luka-doncic-73-points-atlanta-hawks",
+        "https://www.tsn.ca/nba/luka-doncic-finishes-with-73-points-tied-for-fourth-most-in-a-game-ever-1.2068335"
+      ]
+    },
+    {
+      "voice": "Numéro deux. [surprised] Contre les Knicks, il rate un lancer franc exprès, reprend le ballon et égalise ! Bilan : soixante points, vingt et un rebonds, dix passes. Du jamais vu.",
+      "visual": {
+        "type": "list",
+        "value": "60-21-10",
+        "label": "IL RATE UN LANCER EXPRÈS",
+        "items": [
+          "IL REPREND LE BALLON",
+          "PANIER : PROLONGATION",
+          "1RE FOIS DANS L'HISTOIRE"
+        ]
+      },
+      "sources": [
+        "https://www.cbssports.com/nba/news/doncic-has-60-21-10-rallies-mavs-to-wild-ot-win-over-knicks",
+        "https://www.si.com/nba/2022/12/28/luka-doncic-historic-60-point-triple-double-comeback-win",
+        "https://www.espn.com/nba/recap/_/gameId/401468667"
+      ]
+    },
+    {
+      "voice": "[laughs] Et numéro un. Quand Dallas l'échange aux Lakers en 2025, des fans en costume noir font un faux enterrement devant la salle… avec un cercueil !",
+      "visual": {
+        "type": "emoji",
+        "emoji": "⚰️",
+        "top": "ÉCHANGÉ AUX LAKERS",
+        "bottom": "LES FANS SORTENT UN CERCUEIL"
+      },
+      "sources": [
+        "https://www.foxnews.com/sports/disgruntled-mavericks-fans-protest-luka-doncic-trade-symbolic-funeral-outside-teams-arena",
+        "https://www.si.com/nba/mavericks/news/dallas-mavericks-fans-protest-luka-doncic-la-lakers-trade-outside-of-american-airlines-center-anthony-davis",
+        "https://www.complex.com/sports/a/treyalston/dallas-mavericks-luka-doncic-coffin"
+      ]
+    }
+  ],
+  "outro": "[excited] Alors, Luka top 3 de la NBA : oui ou non ? Dis-le en commentaire… et choisis le prochain joueur !",
+  "end": [
+    "LUKA TOP 3 NBA ?",
+    "OUI OU NON ?"
+  ],
+  "caption": "5 trucs fous sur Luka Doncic 🤯 Le n°1 est improbable ⚰️\nLuka, top 3 de la NBA : oui ou non ? Et quel joueur pour le prochain épisode ? 👇",
+  "yt_title": "5 trucs fous sur Luka Doncic 🤯",
+  "hashtags": [
+    "#NBA",
+    "#LukaDoncic",
+    "#Doncic",
+    "#Lakers",
+    "#basketball",
+    "#NBAFrance",
+    "#basket",
+    "#lesaviezvous"
+  ],
+  "sources": [
+    "ESPN",
+    "CBS Sports",
+    "Sports Illustrated",
+    "Fox News",
+    "Yahoo Sports",
+    "Eurohoops",
+    "STA"
+  ]
+}

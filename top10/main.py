@@ -411,8 +411,9 @@ def frame(t, T, parts, groups, SIL, intro_sil):
     elif k == "E":
         if PH is not None:
             blit(c, PH["mid"], W / 2, 1270, alpha=min(1, p / 0.4))
-        text(c, "LEQUEL T'A LE PLUS", "Black", 92, WHITE, W / 2, 620, alpha=min(1, p / 0.3))
-        text(c, "SURPRIS ?", "Black", 150, YEL, W / 2, 760, alpha=min(1, p / 0.3), scale=0.85 + 0.15 * ease_back(min(1, p / 0.4)))
+        et, eb = (EP.get("json", {}).get("end") or ["LEQUEL T'A LE PLUS", "SURPRIS ?"])[:2]  # option JSON `end`
+        text(c, et, "Black", 92, WHITE, W / 2, 620, alpha=min(1, p / 0.3), maxw=900)
+        text(c, eb, "Black", 150, YEL, W / 2, 760, alpha=min(1, p / 0.3), scale=0.85 + 0.15 * ease_back(min(1, p / 0.4)), maxw=940)
         b = ease_out((p - 2.2) / 0.5)
         panel(c, [140, 860, 940, 1060], (20, 20, 28, 235), b, r=34)
         text(c, "PROCHAIN ÉPISODE :", "Black", 50, SILVER, W / 2, 920, alpha=b)
