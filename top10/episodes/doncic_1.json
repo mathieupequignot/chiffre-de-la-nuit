@@ -29,7 +29,7 @@
       ]
     },
     {
-      "voice": "Numéro quatre. À dix-neuf ans, il est élu MVP de l'Euroligue. Le plus jeune de l'histoire !",
+      "voice": "Numéro quatre. À dix-neuf ans, il est élu MVP de l'Euroligue. Un record !",
       "visual": {
         "type": "big",
         "value": "19",
@@ -68,8 +68,7 @@
             0.73,
             "accent"
           ]
-        ],
-        "note": "4E TOTAL DE L'HISTOIRE"
+        ]
       },
       "sources": [
         "https://sports.yahoo.com/luka-doncic-scores-73-points-vs-hawks-tied-for-fourth-most-in-nba-history-023607554.html",
@@ -96,7 +95,7 @@
       ]
     },
     {
-      "voice": "[laughs] Et numéro un. Quand Dallas l'échange aux Lakers en 2025, des fans en costume noir font un faux enterrement devant la salle… avec un cercueil !",
+      "voice": "[laughs] Et numéro un. Quand Dallas l'échange aux Lakers en 2025, des fans en costume noir font un faux enterrement devant la salle… cercueil compris !",
       "visual": {
         "type": "emoji",
         "emoji": "⚰️",
