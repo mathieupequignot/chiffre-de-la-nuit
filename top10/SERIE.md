@@ -31,8 +31,8 @@ de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
 - [x] Victor Wembanyama — wemby.png (épisodes 1 et 2)
 - [x] LeBron James — lebron.png (épisode du 18 nov. 2026)
 - [x] Stephen Curry — curry.png (épisode du lun. 16 nov. 2026)
-- [ ] Luka Dončić — doncic.png
-- [ ] Giannis Antetokounmpo — giannis.png
+- [x] Luka Dončić — doncic.png (épisode du ven. 20 nov. 2026)
+- [ ] Giannis Antetokounmpo — giannis.png (⚠️ joue désormais à Miami d'après le chiffre de la nuit du 15/11 : vérifier et mettre `color` Heat)
 - [ ] Shai Gilgeous-Alexander — sga.png
 - [ ] Anthony Edwards — edwards.png
 - [ ] Nikola Jokić — jokic.png
@@ -96,12 +96,34 @@ Jordan, Kobe, Shaq, Iverson, Magic, Bird, Dirk, Tony Parker…).
   "sources": ["ESPN", "AP"]
 }
 ```
+Option `end` : ["LIGNE 1", "LIGNE 2"] remplace la question de l'écran de fin (défaut « LEQUEL T'A LE PLUS / SURPRIS ? »).
+Avec 3 barres dans `bars`, ne pas mettre de `note` (elle tombe sur les sous-titres).
 Types de visuels : `big` (grand nombre animé), `bars` (comparaison en barres, `frac` entre 0 et 1),
 `versus` (choix barré → choix retenu), `list` (titre + 3 cases), `emoji` (emoji + bandeaux). Option `shout`
 (texte géant jaune qui claque vers 3,4 s). Textes courts, en MAJUSCULES, 30 caractères max par ligne.
 `nba_id` : identifiant Basketball-Reference présent dans quiz/nba_ids.json, ou identifiant NBA direct.
 
 ## Carnet (un bloc par épisode, le plus récent en haut)
+### Épisode 5 — Dončić (« 5 trucs fous sur Luka ») — programmé le ven. 20 nov. 2026, 12:30
+- Faits : pro au Real Madrid à 16 ans, plus jeune de l'histoire du club (Eurohoops, Bleacher Report) ; MVP de l'Euroligue
+  à 19 ans, record (CBS, STA, Arizona Sports) ; 73 points à Atlanta en 2024, seuls Chamberlain et Kobe au-dessus (Yahoo,
+  Fox 4, TSN) ; lancer franc raté exprès → égalisation, 60-21-10 inédit (CBS/AP, SI, ESPN) ; n°1 : faux enterrement avec
+  cercueil par des fans de Dallas après l'échange aux Lakers, 2 fév. 2025 (Fox News, SI, Complex). Équipe actuelle
+  vérifiée : Lakers (43 pts contre Phoenix la nuit du 15/11, en pleine série de 40 pts → joueur d'actualité).
+  Durée 37,0 s (1er rendu 40,2 s : 2 phrases raccourcies).
+- Amélioration testée (1) : **question de fin fermée et clivante** (« Luka top 3 de la NBA : oui ou non ? ») au lieu de
+  « Lequel t'a le plus surpris ? », à l'écran (nouvelle option JSON `end`), à la voix et dans la légende. Pourquoi : les
+  « 5 trucs » ont 0 commentaire, alors que le Duel Jordan/LeBron (« C'est qui le GOAT pour toi ? ») en a 20 ; les guides
+  2026 (socialk.it) : un avis tranché à donner en un mot = le commentaire le plus facile. Relance au milieu et aperçu du
+  n°1 dans l'accroche conservés.
+- Code : `end` dans top10/main.py (défaut inchangé, Duel non concerné). Avec 3 barres, la `note` chevauchait les
+  sous-titres → enlevée sur cet épisode.
+- Stats Instagram (16 nov. 13:20, 393 abonnés) : Curry = 8 likes / 0 com. en ~1,5 h ; Wemby 2 = 29 likes / 0 com. ;
+  Duel Jordan-LeBron = 46 likes / **20 com.** ; chiffre Dončić 33 / 1, chiffre Giannis 35 / 2, drill Mikan 22 / 0,
+  quiz 2–4. → les « 5 trucs » sont au niveau des bons chiffres en likes mais toujours à 0 commentaire : le débat
+  binaire est la piste n°1. À relever : effet de la question oui/non sur cet épisode.
+- Pas d'alerte photos : 15 joueurs non traités avec photo.
+
 ### Épisode 4 — Curry (« 5 trucs fous sur Curry ») — programmé le lun. 16 nov. 2026, 12:30
 - Faits : né dans le même hôpital que LeBron à Akron (NBA.com Warriors, NBC Sports, Bleacher Report) ; 402 trois-points
   en 2015-16, ancien record 286… le sien (ESPN, AP/ABC, Guinness) ; rencontre Ayesha à 15 ans à l'église, elle le trouve
