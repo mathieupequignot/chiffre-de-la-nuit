@@ -122,7 +122,7 @@ Types de visuels : `big` (grand nombre animé), `bars` (comparaison en barres, `
   Duel Jordan-LeBron = 46 likes / **20 com.** ; chiffre Dončić 33 / 1, chiffre Giannis 35 / 2, drill Mikan 22 / 0,
   quiz 2–4. → les « 5 trucs » sont au niveau des bons chiffres en likes mais toujours à 0 commentaire : le débat
   binaire est la piste n°1. À relever : effet de la question oui/non sur cet épisode.
-- Pas d'alerte photos : 15 joueurs non traités avec photo.
+- Pas d'alerte photos : 16 joueurs non traités avec photo.
 
 ### Épisode 4 — Curry (« 5 trucs fous sur Curry ») — programmé le lun. 16 nov. 2026, 12:30
 - Faits : né dans le même hôpital que LeBron à Akron (NBA.com Warriors, NBC Sports, Bleacher Report) ; 402 trois-points
