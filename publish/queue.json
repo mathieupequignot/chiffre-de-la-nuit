@@ -35,29 +35,6 @@
   "tiktok_caption": "5 trucs fous sur LeBron 🤯 Le n°1 s'est passé en plein match 🍷\nLequel t'a le plus surpris ? Et quel joueur pour le prochain épisode ? 👇\n\n#NBA #LeBronJames #LeBron #Sixers #76ers #basketball #NBAFrance #basket #lesaviezvous"
  },
  {
-  "key": "drill_form-shooting",
-  "video": "drill_form-shooting.mp4",
-  "cover": "drill_form-shooting.jpg",
-  "instagram": "Tu rates tes tirs ouverts ? 🏀 Form shooting une main : 1 m du cercle, coude sous le ballon, follow-through tenu. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet SHOOT 30 (30 jours pour devenir un shooter fiable) : 👉 https://1cvkuk-kx.myshopify.com\n\n#basket #basketball #shooting #basketballdrills #entrainementbasket #shooter #playground",
-  "yt_title": "Tu rates tes tirs ouverts ? Le drill Form Shooting · Une Main 🏀 #Shorts",
-  "yt_desc": "Tu rates tes tirs ouverts ? 🏀 Form shooting une main : 1 m du cercle, coude sous le ballon, follow-through tenu. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet SHOOT 30 (30 jours pour devenir un shooter fiable) : 👉 https://1cvkuk-kx.myshopify.com\n\n#basket #basketball #shooting #basketballdrills #entrainementbasket #shooter #playground\n\n#Shorts",
-  "at": "2026-11-13T18:00:00+01:00",
-  "discord_mid": null,
-  "status": {
-   "facebook": "ok",
-   "youtube": "ok"
-  },
-  "tiktok_caption": null,
-  "platforms": [
-   "facebook",
-   "youtube"
-  ],
-  "ids": {
-   "facebook": "1002847239532257",
-   "youtube": "TQncvsSOdeI"
-  }
- },
- {
   "key": "duel_duel_jordan_lebron",
   "video": "duel_duel_jordan_lebron.mp4",
   "cover": "duel_duel_jordan_lebron.jpg",
@@ -285,13 +262,22 @@
   "yt_desc": "Tu regardes ton ballon quand tu dribbles ? 🏀 Figure 8 : petits dribbles bas et rapides autour des jambes, yeux levés. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet DRIBBLE 30 (30 jours pour devenir shifty) : 👉 https://1cvkuk-kx.myshopify.com\n\n#basket #basketball #handles #basketballdrills #entrainementbasket #hooper #playground\n\n#Shorts",
   "at": "2026-11-16T18:00:00+01:00",
   "discord_mid": null,
-  "status": {},
+  "status": {
+   "instagram": "ok",
+   "facebook": "ok",
+   "youtube": "ok"
+  },
   "tiktok_caption": null,
   "platforms": [
    "facebook",
    "youtube",
    "instagram"
-  ]
+  ],
+  "ids": {
+   "instagram": "17999944311024031",
+   "facebook": "2682380062199207",
+   "youtube": "-e9kedNADzQ"
+  }
  },
  {
   "key": "top5_5_trucs_fous_doncic",
