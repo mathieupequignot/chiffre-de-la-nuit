@@ -37,7 +37,7 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 ## Programme des duels (à cocher)
 - [x] Michael Jordan vs LeBron James — programmé dim. 15 nov. 2026
 - [x] Kobe Bryant vs Michael Jordan — programmé mar. 17 nov. 2026, 20:00
-- [ ] Magic Johnson vs Larry Bird
+- [x] Magic Johnson vs Larry Bird — programmé jeu. 19 nov. 2026, 20:00
 - [ ] Shaquille O'Neal vs Kareem Abdul-Jabbar
 - [ ] LeBron James vs Kobe Bryant
 - [ ] Stephen Curry vs Kobe Bryant
@@ -48,6 +48,19 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 Si un duel fait l'actualité ou est réclamé en commentaire, il peut passer devant.
 
 ## Carnet (le plus récent en haut)
+### Duel 3 — Magic vs Bird — programmé le jeu. 19 nov. 2026, 20:00
+- Préparé automatiquement le mar. 17 nov. (1er duel non coché ; aucun duel du programme n'a de photo pour les deux joueurs,
+  ni Magic ni Bird n'en a → 2 silhouettes, nba_id 77142 et 1449, rendu OK).
+- Magic = a (violet Lakers 85,37,130), Bird = b (vert Celtics 0,122,51) : bon contraste.
+- Manches : points carrière 17 707 vs 21 791 (B), passes 10 141 vs 5 695 (M), titres 5 vs 3 (M), points/match 19,5 vs 24,3 (B),
+  MVP des Finales 3 vs 2 (M), rebonds 6 559 vs 8 974 (B), lancers francs 84,8 % vs 88,6 % (B, `count: false`),
+  Finales face à face 2 vs 1 (M : 1984 Celtics, 1985 et 1987 Lakers) → 4-4. MVP (3-3) et All-Star (12-12) écartés : égalités.
+- Sources : Basketball-Reference + StatMuse + Land of Basketball (stats), NESN + Heavy + NBA.com (titres, Finales).
+- Appris : vidéo de 34,5 s avec des voix de manche courtes (≤ ~12 mots) → bonne durée, à garder.
+  « LE DUEL MYTHIQUE » (16 car.) touchait déjà la chèvre de la miniature → raccourci en « DUEL MYTHIQUE » ; viser ≤ 14 caractères.
+  Une manche « face à face » (Finales entre eux) fait une très bonne dernière manche pour une vraie rivalité.
+- Résultats : à relever.
+
 ### Duel 2 — Kobe vs Jordan — programmé le mar. 17 nov. 2026, 20:00
 - Préparé automatiquement le dim. 15 nov. (1er duel non coché du programme ; aucun des deux n'a de photo → 2 silhouettes).
 - Kobe = a (violet Lakers 85,37,130), Jordan = b (rouge Bulls) : contraste correct à l'écran.
