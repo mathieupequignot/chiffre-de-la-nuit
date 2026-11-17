@@ -1,0 +1,45 @@
+{
+  "format": "duel",
+  "file": "duel_magic_bird",
+  "players": {
+    "a": {"name": "MAGIC", "nba_id": 77142, "color": [85, 37, 130]},
+    "b": {"name": "BIRD", "nba_id": 1449, "color": [0, 122, 51]}
+  },
+  "hook": "[excited] Magic ou Bird ? Huit stats, face à face… et le score final va faire débat !",
+  "hook_tag": "8 STATS · LA RIVALITÉ ULTIME",
+  "rounds": [
+    {"label": "POINTS EN CARRIÈRE", "a": "17 707", "b": "21 791", "unit": "SAISON RÉGULIÈRE", "win": "b",
+     "voice": "Points en carrière : dix-sept mille sept cents pour Magic… vingt et un mille huit cents pour Bird. Point Bird !"},
+    {"label": "PASSES DÉCISIVES", "a": "10 141", "b": "5 695", "unit": "EN CARRIÈRE", "win": "a",
+     "voice": "Les passes : plus de dix mille pour Magic, presque le double. Égalité !"},
+    {"label": "TITRES NBA", "a": "5", "b": "3", "win": "a",
+     "voice": "Les titres : cinq bagues contre trois. Magic prend la tête !"},
+    {"label": "POINTS PAR MATCH", "a": "19,5", "b": "24,3", "unit": "MOYENNE EN CARRIÈRE", "win": "b",
+     "voice": "Points par match : dix-neuf virgule cinq contre vingt-quatre virgule trois. Deux partout !"},
+    {"label": "MVP DES FINALES", "a": "3", "b": "2", "win": "a", "note": "MAGIC MVP DES FINALES DÈS SA 1RE SAISON",
+     "voice": "Les MVP des Finales : trois contre deux. Magic repasse devant !"},
+    {"label": "REBONDS", "a": "6 559", "b": "8 974", "unit": "EN CARRIÈRE", "win": "b",
+     "voice": "Les rebonds : près de neuf mille pour Bird. Trois partout !"},
+    {"label": "LANCERS FRANCS", "a": "84,8 %", "b": "88,6 %", "count": false, "unit": "RÉUSSITE EN CARRIÈRE", "win": "b",
+     "voice": "Aux lancers francs : quatre-vingt-huit virgule six pour cent. Bird passe devant !"},
+    {"label": "FINALES FACE À FACE", "a": "2", "b": "1", "unit": "1984 · 1985 · 1987", "win": "a", "note": "LAKERS-CELTICS : 3 FINALES ENTRE EUX",
+     "voice": "[excited] Dernière manche, leurs Finales face à face : deux victoires à une pour Magic… et il égalise !"}
+  ],
+  "verdict": "ÉGALITÉ PARFAITE !",
+  "cta": "C'EST QUI LE MEILLEUR ? 👇",
+  "outro": "[surprised] Quatre partout ! Alors… Magic ou Bird ? Dis-le en commentaire !",
+  "cover_tag": "LE DUEL MYTHIQUE",
+  "caption": "Magic ou Bird ? 8 stats, face à face 💜💚 La rivalité qui a sauvé la NBA… et le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇",
+  "yt_title": "Magic vs Bird : 8 stats, qui gagne ? 💜💚",
+  "hashtags": ["#NBA", "#MagicJohnson", "#LarryBird", "#Lakers", "#Celtics", "#Magic", "#Bird", "#basketball", "#NBAFrance", "#basket"],
+  "sources": {
+    "magic": ["https://www.basketball-reference.com/players/j/johnsma02.html", "https://www.statmuse.com/nba/ask/career-of-magic-johnson",
+              "https://www.landofbasketball.com/nba_players_stats/magic_johnson_tot.htm"],
+    "bird": ["https://www.basketball-reference.com/players/b/birdla01.html", "https://www.statmuse.com/nba/ask/larry-bird-career-stats",
+             "https://www.landofbasketball.com/nba_players_stats/larry_bird_tot.htm"],
+    "duel": ["https://nesn.com/2026/01/larry-bird-vs-magic-johnson-head-to-head-finals-battles-and-who-had-the-edge",
+             "https://heavy.com/sports/2017/06/larry-bird-magic-johnson-stats-championships-titles-rings-head-to-head-record-playoff-numbers/",
+             "https://www.nba.com/lakers/news/on-this-day-june-9-1987-magics-hook-shot-sinks-celtics"],
+    "note": "Saison régulière, carrière entière. Points 17 707 / 21 791, passes 10 141 / 5 695, rebonds 6 559 / 8 974, LF 84,8 % / 88,6 %, pts/match 19,5 / 24,3 : Basketball-Reference + StatMuse + Land of Basketball. Titres 5/3, MVP des Finales 3 (1980, 1982, 1987) / 2 (1984, 1986) : Basketball-Reference + NESN + Heavy. Finales face à face : 1984 Celtics, 1985 et 1987 Lakers (NESN, Heavy, NBA.com). MVP 3-3 et All-Star 12-12 écartés (égalités)."
+  }
+}
