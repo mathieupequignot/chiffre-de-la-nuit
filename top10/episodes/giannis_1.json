@@ -1,0 +1,61 @@
+{
+  "file": "5_trucs_fous_giannis",
+  "nba_id": "antetgi01",
+  "photo": "giannis.png",
+  "color": [152, 0, 46],
+  "title": ["5 TRUCS FOUS", "SUR GIANNIS"],
+  "header": "5 TRUCS FOUS SUR GIANNIS",
+  "cover": ["5 TRUCS", "FOUS SUR", "GIANNIS"],
+  "cover_tag": "LE N°1 EST INCROYABLE",
+  "hook": "[excited] Giannis, le patron du Heat ? Cinq trucs fous sur lui… et le numéro un, c'est un sprint dans le froid !",
+  "facts": [
+    {
+      "voice": "Numéro cinq. Enfant, il vendait des lunettes de soleil dans les rues d'Athènes avec son frère.",
+      "visual": {"type": "emoji", "emoji": "🕶️", "top": "ENFANT À ATHÈNES", "bottom": "IL VEND DES LUNETTES"},
+      "sources": [
+        "https://olympics.com/en/news/giannis-antetokounmpo-nba-milwaukee-bucks-greece",
+        "https://www.nbcsports.com/nba/news/giannis-antetokounmpo-tells-story-of-selling-wares-on-streets-of-athens-video"
+      ]
+    },
+    {
+      "voice": "Numéro quatre. MVP et meilleur défenseur la même saison ! Avant lui, seuls Jordan et Olajuwon.",
+      "visual": {"type": "versus", "no": "MVP SEULEMENT", "yes": "MVP + DÉFENSEUR ✓", "sub": "COMME JORDAN ET OLAJUWON"},
+      "sources": [
+        "https://www.audacy.com/national/sports/giannis-joins-mj-olajuwon-as-same-year-mvp-dpoy-winners",
+        "https://www.fox6now.com/sports/espn-giannis-antetokounmpo-wins-his-2nd-consecutive-mvp-award"
+      ]
+    },
+    {
+      "voice": "Numéro trois. Et reste jusqu'au bout pour le un ! Cinquante points pour offrir le titre 2021 à Milwaukee, le premier en cinquante ans.",
+      "visual": {"type": "big", "value": "50", "unit": " PTS", "label": "LE MATCH DU TITRE 2021", "sub": "1ER TITRE DES BUCKS EN 50 ANS"},
+      "sources": [
+        "https://www.bangordailynews.com/2021/07/21/sports/bucks-50-year-wait-ends-with-a-title-behind-50-points-from-giannis/",
+        "https://www.skysports.com/nba/news/36244/12360189/nba-finals-giannis-antetokounmpo-seals-milwaukee-bucks-first-title-since-1971-with-heroic-50-point-performance"
+      ]
+    },
+    {
+      "voice": "Numéro deux. [surprised] Lui, Thanasis et Kostas : les trois premiers frères champions NBA de l'histoire !",
+      "visual": {"type": "list", "value": "3 FRÈRES", "label": "TOUS CHAMPIONS NBA", "items": ["KOSTAS : LAKERS 2020", "GIANNIS : BUCKS 2021", "THANASIS : BUCKS 2021"]},
+      "sources": [
+        "https://www.cbsnews.com/news/giannis-antetokounmpo-brothers-milwaukee-bucks-nba-title/",
+        "https://www.eurohoops.net/en/interviews/1232998/kostas-antetokounmpo-i-still-cant-believe-we-are-the-first-three-brothers-with-nba-rings/amp/"
+      ]
+    },
+    {
+      "voice": "[laughs] Et numéro un. Rookie, il envoie son argent à sa famille… plus de quoi payer le taxi ! Il court vers la salle en plein hiver, et un couple le reconnaît et le dépose.",
+      "visual": {"type": "emoji", "emoji": "🏃", "top": "PAS D'ARGENT POUR LE TAXI", "bottom": "IL COURT JUSQU'À LA SALLE"},
+      "sources": [
+        "https://www.si.com/extra-mustard/2021/07/21/bucks-finals-giannis-antetokounmpo-rookie-ride-strangers",
+        "https://www.si.com/nba/bucks/old-school/rookie-giannis-antetokounmpo-run-to-milwaukee-bucks-arena-he-couldnt-afford-a-taxi",
+        "https://www.complex.com/sports/2014/03/giannis-antetokounmpo-nearly-ran-to-the-arena-for-game",
+        "https://www.nbcsports.com/nba/news/the-one-where-giannis-antetokounmpo-doesnt-have-cab-fare-so-runs-to-bucks-game"
+      ]
+    }
+  ],
+  "outro": "[excited] Giannis à Miami, bonne idée : oui ou non ? Dis-le en commentaire… et choisis le prochain joueur !",
+  "end": ["GIANNIS AU HEAT :", "OUI OU NON ?"],
+  "caption": "5 trucs fous sur Giannis 🤯 Le n°1 est incroyable 🏃‍♂️❄️\nGiannis à Miami, bonne idée : oui ou non ? Et quel joueur pour le prochain épisode ? 👇",
+  "yt_title": "5 trucs fous sur Giannis Antetokounmpo 🤯",
+  "hashtags": ["#NBA", "#Giannis", "#Antetokounmpo", "#Heat", "#MiamiHeat", "#basketball", "#NBAFrance", "#basket", "#lesaviezvous"],
+  "sources": ["Sports Illustrated", "CBS News", "AP", "Sky Sports", "Olympics.com", "NBC Sports", "Eurohoops", "Complex"]
+}
