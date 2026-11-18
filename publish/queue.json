@@ -288,11 +288,12 @@
   "status": {
    "instagram": "ok",
    "facebook": "ok",
-   "youtube": "ok"
+   "youtube": "ok",
+   "tiktok": "échec"
   },
   "tiktok_caption": null,
   "errors": {
-   "tiktok": 1
+   "tiktok": 2
   },
   "ids": {
    "instagram": "18163763212511308",
