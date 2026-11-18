@@ -23,29 +23,6 @@
   }
  },
  {
-  "key": "duel_duel_jordan_lebron",
-  "video": "duel_duel_jordan_lebron.mp4",
-  "cover": "duel_duel_jordan_lebron.jpg",
-  "instagram": "Jordan ou LeBron ? 8 stats, face à face 🐐 Le score final va faire débat 😳\nC'est qui le GOAT pour toi ? 👇\n\nAbonne-toi pour le prochain duel 🔔\n\n#NBA #Jordan #LeBron #GOAT #MichaelJordan #LeBronJames #basketball #NBAFrance #basket",
-  "yt_title": "Jordan vs LeBron : 8 stats, qui gagne ? 🐐 #Shorts",
-  "yt_desc": "Jordan ou LeBron ? 8 stats, face à face 🐐 Le score final va faire débat 😳\nC'est qui le GOAT pour toi ? 👇\n\n#Shorts #NBA #Jordan #LeBron #GOAT #MichaelJordan #LeBronJames #basketball #NBAFrance #basket",
-  "at": "2026-11-15T18:30:00+01:00",
-  "discord_mid": "1570949292263342195",
-  "status": {
-   "tiktok": "ok",
-   "instagram": "ok",
-   "facebook": "ok",
-   "youtube": "ok"
-  },
-  "tiktok_caption": "Jordan ou LeBron ? 8 stats, face à face 🐐 Le score final va faire débat 😳\nC'est qui le GOAT pour toi ? 👇\n\n#NBA #Jordan #LeBron #GOAT #MichaelJordan #LeBronJames #basketball #NBAFrance #basket",
-  "ids": {
-   "tiktok": "v_inbox_file~v2.7708389211103086614",
-   "instagram": "18055779572813063",
-   "facebook": "1161143606454578",
-   "youtube": "Hvj_7ZBadao"
-  }
- },
- {
   "key": "top5_5_trucs_fous_curry",
   "video": "top5_5_trucs_fous_curry.mp4",
   "cover": "top5_5_trucs_fous_curry.jpg",
@@ -66,29 +43,6 @@
    "instagram": "18103216238382008",
    "facebook": "2337403780132616",
    "youtube": "1CHedm7TBH0"
-  }
- },
- {
-  "key": "drill_mikan",
-  "video": "drill_mikan.mp4",
-  "cover": "drill_mikan.jpg",
-  "instagram": "Tu rates les lay-ups faciles ? 🏀 Mikan drill : main droite côté droit, main gauche côté gauche, ballon au-dessus des épaules. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet SHOOT 30 (30 jours pour devenir un shooter fiable) : lien en bio 🔗\n\n#basket #basketball #shooting #basketballdrills #entrainementbasket #shooter #playground",
-  "yt_title": "Tu rates les lay-ups faciles ? Le drill Mikan Drill 🏀 #Shorts",
-  "yt_desc": "Tu rates les lay-ups faciles ? 🏀 Mikan drill : main droite côté droit, main gauche côté gauche, ballon au-dessus des épaules. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet SHOOT 30 (30 jours pour devenir un shooter fiable) : lien en bio 🔗\n\n#basket #basketball #shooting #basketballdrills #entrainementbasket #shooter #playground\n\n#Shorts",
-  "at": "2026-11-15T18:00:00+01:00",
-  "discord_mid": "1571464805968248862",
-  "status": {
-   "tiktok": "ok",
-   "instagram": "ok",
-   "facebook": "ok",
-   "youtube": "ok"
-  },
-  "tiktok_caption": "Tu rates les lay-ups faciles ? 🏀 Mikan drill : main droite côté droit, main gauche côté gauche, ballon au-dessus des épaules. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet SHOOT 30 (30 jours pour devenir un shooter fiable) : lien en bio 🔗\n\n#basket #basketball #shooting #basketballdrills #entrainementbasket #shooter #playground",
-  "ids": {
-   "tiktok": "v_inbox_file~v2.7708370329709660163",
-   "instagram": "17995448376060372",
-   "facebook": "1120755910571869",
-   "youtube": "gd14uy5JG6I"
   }
  },
  {
@@ -291,13 +245,22 @@
   "yt_desc": "Ta main faible est à la traîne ? 🏀 Two-ball dribble : deux ballons, un seul bruit. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet DRIBBLE 30 (30 jours pour devenir shifty) : 👉 https://1cvkuk-kx.myshopify.com\n\n#basket #basketball #handles #basketballdrills #entrainementbasket #hooper #playground\n\n#Shorts",
   "at": "2026-11-18T18:00:00+01:00",
   "discord_mid": null,
-  "status": {},
+  "status": {
+   "instagram": "ok",
+   "facebook": "ok",
+   "youtube": "ok"
+  },
   "tiktok_caption": null,
   "platforms": [
    "facebook",
    "youtube",
    "instagram"
-  ]
+  ],
+  "ids": {
+   "instagram": "18131510428923454",
+   "facebook": "1140678388373134",
+   "youtube": "eN8LDhA4TB8"
+  }
  },
  {
   "key": "top5_5_trucs_fous_giannis",
