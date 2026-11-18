@@ -32,7 +32,7 @@ de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
 - [x] LeBron James — lebron.png (épisode du 18 nov. 2026)
 - [x] Stephen Curry — curry.png (épisode du lun. 16 nov. 2026)
 - [x] Luka Dončić — doncic.png (épisode du ven. 20 nov. 2026)
-- [ ] Giannis Antetokounmpo — giannis.png (⚠️ joue désormais à Miami d'après le chiffre de la nuit du 15/11 : vérifier et mettre `color` Heat)
+- [x] Giannis Antetokounmpo — giannis.png (épisode du lun. 23 nov. 2026 ; joue au Heat depuis l'été 2026 → `color` Heat dans le JSON)
 - [ ] Shai Gilgeous-Alexander — sga.png
 - [ ] Anthony Edwards — edwards.png
 - [ ] Nikola Jokić — jokic.png
@@ -104,6 +104,30 @@ Types de visuels : `big` (grand nombre animé), `bars` (comparaison en barres, `
 `nba_id` : identifiant Basketball-Reference présent dans quiz/nba_ids.json, ou identifiant NBA direct.
 
 ## Carnet (un bloc par épisode, le plus récent en haut)
+### Épisode 6 — Giannis (« 5 trucs fous sur Giannis ») — programmé le lun. 23 nov. 2026, 12:30
+- Équipe vérifiée : Miami Heat (échangé cet été contre Herro, Ware, Jaquez, Jakucionis + 3 premiers tours ; AP 18/11,
+  Yahoo, NBA.com Heat). Il retrouve les Bucks le 18/11 → joueur d'actualité. `color` Heat [152,0,46] dans le JSON
+  (la table TEAM garde le vert Bucks, non modifiée). La photo fournie le montre en maillot Bucks : OK, mais une photo
+  au Heat serait mieux.
+- Faits : vendait des lunettes de soleil dans les rues d'Athènes avec Thanasis (Olympics.com, NBC Sports) ; MVP + DPOY
+  la même saison 2019-20, seuls Jordan et Olajuwon avant (AP via Fox 6, Audacy) ; 50 pts au match 6 de la finale 2021,
+  1er titre des Bucks en 50 ans (AP/Bangor Daily News, Sky Sports) ; Giannis, Thanasis, Kostas = 1er trio de frères
+  champions NBA (CBS News, Eurohoops) ; n°1 : rookie, il envoie son argent à sa famille, plafond de retrait atteint,
+  court vers la salle en plein hiver, un couple le reconnaît et le dépose (SI ×2, Complex, NBC Sports).
+- Améliorations testées (2) : (1) **accroche d'actualité** (« Giannis, le patron du Heat ? ») : les guides sport 2026
+  (fluxnote) conseillent d'ouvrir sur le contexte le plus fort ; l'actu (transfert + retour à Milwaukee) donne une
+  raison de regarder maintenant. (2) **vidéo plus courte** : ~140 mots de voix → **34,5 s** (Dončić 37 s, LeBron 40 s) ;
+  les mêmes guides donnent < 30 s comme meilleur taux de complétion pour le sport. Question de fin oui/non conservée
+  (« Giannis au Heat : oui ou non ? ») pour confirmer l'effet testé sur Dončić.
+- Rendu : l'emoji 🕶️ s'affichait en petit pictogramme noir presque invisible (variante texte) → remplacé par 😎.
+  À éviter : emojis avec sélecteur de variante (FE0F). Titre de l'accroche qui frôle le haut de la tête : acceptable.
+- 1er passage de programmation en échec (installation ffmpeg/apt > 8 min côté GitHub) → relancé, OK.
+- Stats Instagram (18 nov. 13:20, 396 abonnés) : Curry = **47 likes** / 0 com. (2 j, record de la série) ; LeBron =
+  8 / 0 en ~2 h ; Wemby 2 = 29 / 0 ; Wemby 1 = 25 / 0. Duels : Jordan-LeBron 56 / **33 com.**, Kobe-Jordan 20 / 8 en
+  ~17 h. Chiffre Giannis 35 / 2. → les « 5 trucs » sont la série qui fait le plus de likes après les duels, mais
+  toujours 0 commentaire : la question débat (Dončić, puis Giannis) reste LA piste à mesurer.
+- Pas d'alerte photos : 15 joueurs non traités avec photo.
+
 ### Épisode 5 — Dončić (« 5 trucs fous sur Luka ») — programmé le ven. 20 nov. 2026, 12:30
 - Faits : pro au Real Madrid à 16 ans, plus jeune de l'histoire du club (Eurohoops, Bleacher Report) ; MVP de l'Euroligue
   à 19 ans, record (CBS, STA, Arizona Sports) ; 73 points à Atlanta en 2024, seuls Chamberlain et Kobe au-dessus (Yahoo,
