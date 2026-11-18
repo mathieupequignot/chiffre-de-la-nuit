@@ -288,13 +288,15 @@
   "status": {
    "instagram": "ok",
    "facebook": "ok",
-   "youtube": "ok"
+   "youtube": "ok",
+   "tiktok": "ok"
   },
   "tiktok_caption": null,
   "ids": {
    "instagram": "18163763212511308",
    "facebook": "1179549918357072",
-   "youtube": "mGYLcWRcKDk"
+   "youtube": "mGYLcWRcKDk",
+   "tiktok": "v_inbox_file~v2.7709419394807613462"
   }
  }
 ]
