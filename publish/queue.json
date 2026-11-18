@@ -9,11 +9,17 @@
   "at": "2026-11-18T12:30:00+01:00",
   "discord_mid": "1570435045531979917",
   "status": {
-   "tiktok": "ok"
+   "tiktok": "ok",
+   "instagram": "ok",
+   "facebook": "ok",
+   "youtube": "ok"
   },
   "tiktok_caption": "5 trucs fous sur LeBron 🤯 Le n°1 s'est passé en plein match 🍷\nLequel t'a le plus surpris ? Et quel joueur pour le prochain épisode ? 👇\n\n#NBA #LeBronJames #LeBron #Sixers #76ers #basketball #NBAFrance #basket #lesaviezvous",
   "ids": {
-   "tiktok": "v_inbox_file~v2.7709403823596406786"
+   "tiktok": "v_inbox_file~v2.7709403823596406786",
+   "instagram": "18114185999223513",
+   "facebook": "2290687818379732",
+   "youtube": "bCuY84I0fhU"
   }
  },
  {
@@ -60,29 +66,6 @@
    "instagram": "18103216238382008",
    "facebook": "2337403780132616",
    "youtube": "1CHedm7TBH0"
-  }
- },
- {
-  "key": "quiz_2026-11-15_facile",
-  "video": "quiz_2026-11-15_facile.mp4",
-  "cover": "quiz_2026-11-15_facile.jpg",
-  "instagram": "Silhouette + équipes… tu l'as en combien de secondes ? ⏱️ Niveau facile · 1 franchise. Ta réponse en commentaire 👇\n\nAbonne-toi pour les quiz de chaque jour 🔔\n\n#NBA #quizNBA #basketball #basket #NBAFrance #NBADailyNews #devinelejoueur #quiz #nbatrivia #sport",
-  "yt_title": "Qui est ce joueur NBA ? 🤔 Niveau facile (1 franchise) #Shorts",
-  "yt_desc": "Silhouette + équipes… tu l'as en combien de secondes ? ⏱️ Niveau facile · 1 franchise. Ta réponse en commentaire 👇\n\n#Shorts #NBA #quizNBA",
-  "at": "2026-11-15T12:30:00+01:00",
-  "discord_mid": "1571430307339444307",
-  "status": {
-   "tiktok": "ok",
-   "instagram": "ok",
-   "facebook": "ok",
-   "youtube": "ok"
-  },
-  "tiktok_caption": null,
-  "ids": {
-   "tiktok": "v_inbox_file~v2.7708300198006786070",
-   "instagram": "18145643464722274",
-   "facebook": "2040892873265039",
-   "youtube": "CKpa2iM4pdY"
   }
  },
  {
