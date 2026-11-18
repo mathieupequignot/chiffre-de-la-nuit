@@ -11,7 +11,7 @@
   "facts": [
     {
       "voice": "Numéro cinq. Enfant, il vendait des lunettes de soleil dans les rues d'Athènes avec son frère.",
-      "visual": {"type": "emoji", "emoji": "🕶️", "top": "ENFANT À ATHÈNES", "bottom": "IL VEND DES LUNETTES"},
+      "visual": {"type": "emoji", "emoji": "😎", "top": "ENFANT À ATHÈNES", "bottom": "IL VEND DES LUNETTES"},
       "sources": [
         "https://olympics.com/en/news/giannis-antetokounmpo-nba-milwaukee-bucks-greece",
         "https://www.nbcsports.com/nba/news/giannis-antetokounmpo-tells-story-of-selling-wares-on-streets-of-athens-video"
