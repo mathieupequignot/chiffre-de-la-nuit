@@ -285,7 +285,19 @@
   "yt_desc": "Double dose cette nuit : Grimes et Sensabaugh ont régalé ! 🤯\nQuentin Grimes : 47 pts, 6 reb, 3 pd avec les Lakers face à Charlotte (victoire 118-114).\nBrice Sensabaugh : 40 pts, 11 reb, 5 pd avec Utah face aux Clippers (victoire 132-107).\n\nTon MVP de la nuit : Grimes ou Sensabaugh ? 👇\n\n#Shorts #NBA #Grimes #Sensabaugh",
   "at": "2026-11-18T08:00:00+01:00",
   "discord_mid": "1572518997042135081",
-  "status": {},
-  "tiktok_caption": null
+  "status": {
+   "instagram": "ok",
+   "facebook": "ok",
+   "youtube": "ok"
+  },
+  "tiktok_caption": null,
+  "errors": {
+   "tiktok": 1
+  },
+  "ids": {
+   "instagram": "18163763212511308",
+   "facebook": "1179549918357072",
+   "youtube": "mGYLcWRcKDk"
+  }
  }
 ]
