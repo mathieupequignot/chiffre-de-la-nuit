@@ -22,7 +22,7 @@
      "voice": "Le record en un match : soixante et un points pour Shaq, le jour de son anniversaire ! Trois partout !"},
     {"label": "SÉLECTIONS ALL-STAR", "a": "15", "b": "19", "win": "b",
      "voice": "Les All-Star : quinze contre dix-neuf. Kareem passe devant !"},
-    {"label": "MEILLEUR % AUX TIRS", "a": "10", "b": "1", "unit": "SAISONS N°1 EN NBA", "win": "a", "note": "RECORD DE L'HISTOIRE POUR SHAQ",
+    {"label": "MEILLEUR % AUX TIRS", "a": "10", "b": "1", "unit": "FOIS N°1 EN NBA", "win": "a", "note": "RECORD DE L'HISTOIRE POUR SHAQ",
      "voice": "[excited] Dernière manche : meilleur pourcentage de la NBA, dix saisons contre une… et Shaq égalise !"}
   ],
   "verdict": "ÉGALITÉ PARFAITE !",
