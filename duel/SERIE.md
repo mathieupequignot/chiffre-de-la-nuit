@@ -38,7 +38,7 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 - [x] Michael Jordan vs LeBron James — programmé dim. 15 nov. 2026
 - [x] Kobe Bryant vs Michael Jordan — programmé mar. 17 nov. 2026, 20:00
 - [x] Magic Johnson vs Larry Bird — programmé jeu. 19 nov. 2026, 20:00
-- [ ] Shaquille O'Neal vs Kareem Abdul-Jabbar
+- [x] Shaquille O'Neal vs Kareem Abdul-Jabbar — programmé sam. 21 nov. 2026, 20:00
 - [ ] LeBron James vs Kobe Bryant
 - [ ] Stephen Curry vs Kobe Bryant
 - [ ] Tim Duncan vs Shaquille O'Neal
@@ -48,6 +48,21 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 Si un duel fait l'actualité ou est réclamé en commentaire, il peut passer devant.
 
 ## Carnet (le plus récent en haut)
+### Duel 4 — Shaq vs Kareem — programmé le sam. 21 nov. 2026, 20:00
+- Préparé automatiquement le jeu. 19 nov. (1er duel non coché ; aucun duel du programme n'a de photo pour les deux joueurs,
+  ni Shaq ni Kareem n'en a → 2 silhouettes, nba_id 406 et 76003, rendu OK).
+- Shaq = a (violet Lakers 85,37,130), Kareem = b (vert Bucks 0,128,72 : son titre, ses 3 premiers MVP et son record de 55 pts à Milwaukee).
+  Or (jaune) évité : texte blanc illisible sur les cases gagnantes.
+- Manches : points carrière 28 596 vs 38 387 (K), adresse au tir 58,2 % vs 55,9 % (S, `count: false`), titres 4 vs 6 (K),
+  MVP des Finales 3 vs 2 (S), MVP 1 vs 6 (K), record en un match 61 vs 55 (S : 6 mars 2000 vs Clippers / 10 déc. 1971 vs Celtics),
+  All-Star 15 vs 19 (K), meilleur % aux tirs de la NBA 10 fois vs 1 (S, record) → 4-4. Rebonds, contres (K) et titres de meilleur marqueur (2-2) écartés.
+- Sources : StatMuse + ESPN + Land of Basketball + NBA.com (stats, palmarès), Basketball-Reference + Wikipedia + Guinness (% aux tirs), CBS + Statitudes (records en un match).
+  Note : WebFetch direct sur basketball-reference.com bloqué (permission) → miroir aws.basketball-reference.com utilisable.
+- Appris : vidéo de 36,7 s. Une `unit` de plus de ~20 caractères devient minuscule (« SAISONS AU MEILLEUR % DE LA NBA ») → viser ≤ 18.
+  La `unit` est commune aux deux cases : éviter un pluriel faux (« 1 SAISONS ») → « FOIS N°1 EN NBA ».
+  Le score final du joueur a en violet (max(couleur) > 120) reste un peu sombre sur fond noir ; lisible mais à surveiller.
+- Résultats : à relever.
+
 ### Duel 3 — Magic vs Bird — programmé le jeu. 19 nov. 2026, 20:00
 - Préparé automatiquement le mar. 17 nov. (1er duel non coché ; aucun duel du programme n'a de photo pour les deux joueurs,
   ni Magic ni Bird n'en a → 2 silhouettes, nba_id 77142 et 1449, rendu OK).
