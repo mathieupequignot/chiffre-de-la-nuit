@@ -139,11 +139,17 @@
   "at": "2026-11-19T20:00:00+01:00",
   "discord_mid": null,
   "status": {
-   "tiktok": "ok"
+   "tiktok": "ok",
+   "instagram": "ok",
+   "facebook": "ok",
+   "youtube": "ok"
   },
   "tiktok_caption": "Magic ou Bird ? 8 stats, face à face 💜💚 La rivalité qui a sauvé la NBA… et le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇\n\n#NBA #MagicJohnson #LarryBird #Lakers #Celtics #Magic #Bird #basketball #NBAFrance #basket",
   "ids": {
-   "tiktok": "v_inbox_file~v2.7709887292915173398"
+   "tiktok": "v_inbox_file~v2.7709887292915173398",
+   "instagram": "18149314639561396",
+   "facebook": "4216334422002697",
+   "youtube": "a-IpztALb2E"
   }
  },
  {
