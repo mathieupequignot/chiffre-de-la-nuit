@@ -1,0 +1,52 @@
+{
+  "format": "duel",
+  "file": "duel_shaq_kareem",
+  "players": {
+    "a": {"name": "SHAQ", "nba_id": 406, "color": [85, 37, 130]},
+    "b": {"name": "KAREEM", "nba_id": 76003, "color": [0, 128, 72]}
+  },
+  "hook": "[excited] Shaq ou Kareem ? Huit stats, face à face… et le score final va faire débat !",
+  "hook_tag": "8 STATS · LE ROI DES PIVOTS ?",
+  "rounds": [
+    {"label": "POINTS EN CARRIÈRE", "a": "28 596", "b": "38 387", "unit": "SAISON RÉGULIÈRE", "win": "b",
+     "voice": "Points en carrière : vingt-huit mille six cents pour Shaq… plus de trente-huit mille pour Kareem. Point Kareem !"},
+    {"label": "ADRESSE AU TIR", "a": "58,2 %", "b": "55,9 %", "count": false, "unit": "RÉUSSITE EN CARRIÈRE", "win": "a",
+     "voice": "L'adresse au tir : cinquante-huit virgule deux pour cent pour Shaq. Égalité !"},
+    {"label": "TITRES NBA", "a": "4", "b": "6", "win": "b",
+     "voice": "Les titres : quatre bagues contre six. Kareem reprend la tête !"},
+    {"label": "MVP DES FINALES", "a": "3", "b": "2", "win": "a", "note": "SHAQ : 3 D'AFFILÉE (2000-2002)",
+     "voice": "Les MVP des Finales : trois d'affilée pour Shaq. Deux partout !"},
+    {"label": "TITRES DE MVP", "a": "1", "b": "6", "win": "b", "note": "RECORD DE L'HISTOIRE POUR KAREEM",
+     "voice": "Les MVP : six pour Kareem, le record de l'histoire. Il repasse devant !"},
+    {"label": "RECORD EN UN MATCH", "a": "61", "b": "55", "unit": "POINTS · SAISON RÉGULIÈRE", "win": "a",
+     "voice": "Le record en un match : soixante et un points pour Shaq, le jour de son anniversaire ! Trois partout !"},
+    {"label": "SÉLECTIONS ALL-STAR", "a": "15", "b": "19", "win": "b",
+     "voice": "Les All-Star : quinze contre dix-neuf. Kareem passe devant !"},
+    {"label": "N°1 AUX TIRS", "a": "10", "b": "1", "unit": "SAISONS AU MEILLEUR % DE LA NBA", "win": "a", "note": "RECORD DE L'HISTOIRE POUR SHAQ",
+     "voice": "[excited] Dernière manche : meilleur pourcentage de la NBA, dix saisons contre une… et Shaq égalise !"}
+  ],
+  "verdict": "ÉGALITÉ PARFAITE !",
+  "cta": "C'EST QUI LE MEILLEUR ? 👇",
+  "outro": "[surprised] Quatre partout ! Alors… Shaq ou Kareem ? Dis-le en commentaire !",
+  "cover_tag": "DUEL DE GÉANTS",
+  "caption": "Shaq ou Kareem ? 8 stats, face à face 💪 Le plus grand pivot de l'histoire… et le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇",
+  "yt_title": "Shaq vs Kareem : 8 stats, qui gagne ? 💪",
+  "hashtags": ["#NBA", "#Shaq", "#Kareem", "#ShaquilleONeal", "#KareemAbdulJabbar", "#Lakers", "#Bucks", "#basketball", "#NBAFrance", "#basket"],
+  "sources": {
+    "shaq": ["https://www.statmuse.com/nba/ask/shaq-career-stats-stats", "https://www.espn.com/nba/player/stats/_/id/614",
+             "https://www.landofbasketball.com/nba_players/shaquille_oneal.htm", "https://www.statmuse.com/nba/player/shaquille-o'neal-2780",
+             "https://www.nba.com/news/legendary-moments-history-shaquille-oneal-61-points-birthday-2000",
+             "https://www.cbsnews.com/news/shaqs-61-leads-streaking-lakers"],
+    "kareem": ["https://www.landofbasketball.com/nba_players_stats/kareem_abdul_jabbar_tot.htm", "https://www.statmuse.com/nba/ask/kareem-abdul-jabbar",
+               "https://www.nba.com/lakers/history/alumni/kareem-abdul-jabbar", "https://www.landofbasketball.com/nba_players/a/kareem_abdul_jabbar.htm",
+               "https://www.landofbasketball.com/nba_players_points/50_point_games/kareem_abdul_jabbar_rs.htm",
+               "https://www.statitudes.com/p/on-this-day-dec-10"],
+    "duel": ["https://www.landofbasketball.com/player_comparison_points/kareem_abdul_jabbar_vs_shaquille_oneal.htm",
+             "https://fadeawayworld.net/shaquille-oneal-vs-kareem-abdul-jabbar-comparison-who-is-the-greater-center",
+             "https://aws.basketball-reference.com/leaders/fg_pct_yearly.html",
+             "https://en.wikipedia.org/wiki/List_of_NBA_annual_field_goal_percentage_leaders",
+             "https://www.nba.com/news/players-with-multiple-field-goal-percentage-titles",
+             "https://www.guinnessworldrecords.com/world-records/101879-most-seasons-leading-nba-in-field-goal-percentage-individual"],
+    "note": "Saison régulière, carrière entière. Points 28 596 / 38 387 (StatMuse + ESPN / Land of Basketball + NBA.com), % tirs 58,2 / 55,9 (StatMuse + ESPN / StatMuse + Land of Basketball). Titres 4/6, MVP 1/6, MVP des Finales 3 (2000-2002) / 2 (1971, 1985), All-Star 15/19 : Land of Basketball + StatMuse + NBA.com + Fadeaway World. Record en un match : Shaq 61 (6 mars 2000 vs Clippers, NBA.com + CBS), Kareem 55 (10 déc. 1971 vs Celtics, Land of Basketball + Statitudes). Saisons en tête du % aux tirs : Shaq 10 (record), Kareem 1 (1976-77) : Basketball-Reference + Wikipedia (+ NBA.com et Guinness pour Shaq). Rebonds, contres, titres de meilleur marqueur (2-2) écartés."
+  }
+}
