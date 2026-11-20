@@ -54,8 +54,13 @@
   "yt_desc": "5 trucs fous sur Luka Doncic 🤯 Le n°1 est improbable ⚰️\nLuka, top 3 de la NBA : oui ou non ? Et quel joueur pour le prochain épisode ? 👇\n\n#Shorts #NBA #LukaDoncic #Doncic #Lakers #basketball #NBAFrance #basket #lesaviezvous",
   "at": "2026-11-20T12:30:00+01:00",
   "discord_mid": "1571880715606565015",
-  "status": {},
-  "tiktok_caption": "5 trucs fous sur Luka Doncic 🤯 Le n°1 est improbable ⚰️\nLuka, top 3 de la NBA : oui ou non ? Et quel joueur pour le prochain épisode ? 👇\n\n#NBA #LukaDoncic #Doncic #Lakers #basketball #NBAFrance #basket #lesaviezvous"
+  "status": {
+   "tiktok": "ok"
+  },
+  "tiktok_caption": "5 trucs fous sur Luka Doncic 🤯 Le n°1 est improbable ⚰️\nLuka, top 3 de la NBA : oui ou non ? Et quel joueur pour le prochain épisode ? 👇\n\n#NBA #LukaDoncic #Doncic #Lakers #basketball #NBAFrance #basket #lesaviezvous",
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7710141075205556246"
+  }
  },
  {
   "key": "chiffre_2026-11-17",
@@ -303,7 +308,12 @@
   "yt_desc": "Le meilleur joueur de la nuit, c'est lui. 🤯\nVictor Wembanyama : 32 pts, 11 reb, 3 pd avec San Antonio face aux Clippers (victoire 124-112).\n\nIl ira jusqu'où cette saison ? 👇\n\n#Shorts #NBA #Wembanyama",
   "at": "2026-11-20T08:00:00+01:00",
   "discord_mid": "1573227947266154558",
-  "status": {},
-  "tiktok_caption": null
+  "status": {
+   "tiktok": "ok"
+  },
+  "tiktok_caption": null,
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7710141047997188099"
+  }
  }
 ]
