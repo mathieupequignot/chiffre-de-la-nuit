@@ -136,11 +136,17 @@
   "at": "2026-11-21T20:00:00+01:00",
   "discord_mid": null,
   "status": {
-   "tiktok": "ok"
+   "tiktok": "ok",
+   "instagram": "ok",
+   "facebook": "ok",
+   "youtube": "ok"
   },
   "tiktok_caption": "Shaq ou Kareem ? 8 stats, face à face 💪 Le plus grand pivot de l'histoire… et le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇\n\n#NBA #Shaq #Kareem #ShaquilleONeal #KareemAbdulJabbar #Lakers #Bucks #basketball #NBAFrance #basket",
   "ids": {
-   "tiktok": "v_inbox_file~v2.7710629596399634454"
+   "tiktok": "v_inbox_file~v2.7710629596399634454",
+   "instagram": "17918672481518922",
+   "facebook": "1409722494333530",
+   "youtube": "MDt7u7wlLJg"
   }
  },
  {
