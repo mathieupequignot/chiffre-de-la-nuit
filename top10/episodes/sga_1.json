@@ -2,15 +2,28 @@
   "file": "5_trucs_fous_sga",
   "nba_id": "gilgesh01",
   "photo": "sga.png",
-  "title": ["5 TRUCS FOUS", "SUR SGA"],
+  "title": [
+    "5 TRUCS FOUS",
+    "SUR SGA"
+  ],
   "header": "5 TRUCS FOUS SUR SGA",
-  "cover": ["5 TRUCS", "FOUS SUR", "SGA"],
+  "cover": [
+    "5 TRUCS",
+    "FOUS SUR",
+    "SGA"
+  ],
   "cover_tag": "LE N°1 VA TE FAIRE RIRE",
-  "hook": "[excited] Attention : après ça, tu ne verras plus jamais SGA pareil. Cinq trucs fous… et le numéro un, c'est la faute de son père !",
+  "hook": "[excited] Attention : après ça, tu ne verras plus jamais SGA pareil. Et le numéro un, c'est la faute de son père !",
   "facts": [
     {
-      "voice": "Numéro cinq. Sa mère a couru le 400 mètres aux Jeux olympiques de Barcelone, en 1992, pour Antigua-et-Barbuda !",
-      "visual": {"type": "big", "value": "400", "unit": " M", "label": "SA MÈRE AUX JO 1992", "sub": "POUR ANTIGUA-ET-BARBUDA"},
+      "voice": "Numéro cinq. Sa mère a couru le 400 mètres aux Jeux olympiques de Barcelone, en 1992 !",
+      "visual": {
+        "type": "big",
+        "value": "400",
+        "unit": " M",
+        "label": "SA MÈRE AUX JO 1992",
+        "sub": "POUR ANTIGUA-ET-BARBUDA"
+      },
       "sources": [
         "https://olympics.com/en/athletes/charmaine-ann-marie-gilgeous",
         "https://en.wikipedia.org/wiki/Charmaine_Gilgeous",
@@ -18,24 +31,57 @@
       ]
     },
     {
-      "voice": "Numéro quatre. À son entrée au lycée, au Canada, il se fait recaler de l'équipe junior. Depuis, il est devenu MVP de la NBA.",
-      "visual": {"type": "versus", "no": "PRIS DANS L'ÉQUIPE", "yes": "RECALÉ… PUIS MVP ✓", "sub": "LYCÉE ST. THOMAS MORE (CANADA)"},
+      "voice": "Numéro quatre. Au lycée, au Canada, il se fait recaler de l'équipe junior. Depuis, il est devenu MVP de la NBA.",
+      "visual": {
+        "type": "versus",
+        "no": "PRIS DANS L'ÉQUIPE",
+        "yes": "RECALÉ… PUIS MVP ✓",
+        "sub": "LYCÉE ST. THOMAS MORE (CANADA)"
+      },
       "sources": [
         "https://www.newson6.com/story/664d5c14028a4152499ee6d3/sgas-journey:-cut-from-high-school-team-to-nba-all-star-starter",
         "https://www.on3.com/news/sga-went-from-not-making-high-school-jv-team-to-nba-finals-mvp"
       ]
     },
     {
-      "voice": "Numéro trois. Et reste jusqu'au bout pour le un ! En 2025 : MVP, meilleur marqueur et MVP des Finales. Avant lui, seuls Jordan, Shaq et Kareem.",
-      "visual": {"type": "list", "value": "3 TROPHÉES", "label": "EN UNE SEULE SAISON", "items": ["MVP", "MEILLEUR MARQUEUR", "MVP DES FINALES"]},
+      "voice": "Numéro trois. Et reste jusqu'au bout pour le un ! En 2025 : MVP, meilleur marqueur et MVP des Finales. Seuls Jordan, Shaq et Kareem l'avaient fait.",
+      "visual": {
+        "type": "list",
+        "value": "3 TROPHÉES",
+        "label": "EN UNE SEULE SAISON",
+        "items": [
+          "MVP",
+          "MEILLEUR MARQUEUR",
+          "MVP DES FINALES"
+        ]
+      },
       "sources": [
         "https://cbssports.com/nba/news/shai-gilgeous-alexander-wins-nba-finals-mvp-completing-season-not-seen-since-shaquille-oneal-michael-jordan",
         "https://www.si.com/nba/sga-fourth-nba-player-sweep-season-finals-mvps-scoring-title"
       ]
     },
     {
-      "voice": "Numéro deux. [surprised] Cent quarante et un matchs de suite à vingt points ou plus ! Il a effacé le record de Wilt Chamberlain.",
-      "visual": {"type": "bars", "value": "141", "label": "MATCHS DE SUITE À 20 PTS +", "bars": [["SGA", "141", 1.0, "accent"], ["CHAMBERLAIN", "126", 0.89, "silver"]], "note": "NOUVEAU RECORD NBA"},
+      "voice": "Numéro deux. [surprised] Cent quarante et un matchs de suite à vingt points ou plus ! Le record de Wilt Chamberlain, effacé.",
+      "visual": {
+        "type": "bars",
+        "value": "141",
+        "label": "MATCHS DE SUITE À 20 PTS +",
+        "bars": [
+          [
+            "SGA",
+            "141",
+            1.0,
+            "accent"
+          ],
+          [
+            "CHAMBERLAIN",
+            "126",
+            0.89,
+            "silver"
+          ]
+        ],
+        "note": "NOUVEAU RECORD NBA"
+      },
       "sources": [
         "https://www.ajc.com/news/2026/10/thunder-star-and-nba-mvp-shai-gilgeous-alexanders-record-20-point-streak-ends-at-141-games/",
         "https://nbcsports.com/nba/news/shai-gilgeous-alexanders-historic-streak-scoring-20-points-in-141-games-ends",
@@ -43,8 +89,13 @@
       ]
     },
     {
-      "voice": "[laughs] Et numéro un. Il reçoit son trophée de MVP de la conférence Ouest… et son père refuse de le lâcher ! Shai lui lance : tu fais comme si c'était le tien !",
-      "visual": {"type": "emoji", "emoji": "🏆", "top": "SON PÈRE GARDE LE TROPHÉE", "bottom": "« COMME SI C'ÉTAIT LE TIEN ! »"},
+      "voice": "[laughs] Et numéro un. Son père prend son trophée de MVP de l'Ouest… et refuse de le rendre ! Shai lui lance : tu fais comme si c'était le tien !",
+      "visual": {
+        "type": "emoji",
+        "emoji": "🏆",
+        "top": "SON PÈRE GARDE LE TROPHÉE",
+        "bottom": "« COMME SI C'ÉTAIT LE TIEN ! »"
+      },
       "sources": [
         "https://www.si.com/nba/shai-gilgeous-alexander-hilariously-calls-out-dad-holding-mvp-trophy",
         "https://www.aol.com/sports/shai-gilgeous-alexanders-dad-steals-040023230.html",
@@ -53,9 +104,33 @@
     }
   ],
   "outro": "[excited] SGA, meilleur joueur du monde : oui ou non ? Dis-le en commentaire… et choisis le prochain joueur !",
-  "end": ["SGA N°1 MONDIAL :", "OUI OU NON ?"],
+  "end": [
+    "SGA N°1 MONDIAL :",
+    "OUI OU NON ?"
+  ],
   "caption": "5 trucs fous sur Shai Gilgeous-Alexander 🤯 Le n°1 va te faire rire 🏆😂\nSGA, meilleur joueur du monde : oui ou non ? Et quel joueur pour le prochain épisode ? 👇",
   "yt_title": "5 trucs fous sur Shai Gilgeous-Alexander 🤯",
-  "hashtags": ["#NBA", "#SGA", "#ShaiGilgeousAlexander", "#Thunder", "#OKC", "#basketball", "#NBAFrance", "#basket", "#lesaviezvous", "#pourtoi", "#fyp"],
-  "sources": ["CBS Sports", "Sports Illustrated", "AP", "NBC Sports", "Fox Sports", "Olympics.com", "News On 6", "On3"]
+  "hashtags": [
+    "#NBA",
+    "#SGA",
+    "#ShaiGilgeousAlexander",
+    "#Thunder",
+    "#OKC",
+    "#basketball",
+    "#NBAFrance",
+    "#basket",
+    "#lesaviezvous",
+    "#pourtoi",
+    "#fyp"
+  ],
+  "sources": [
+    "CBS Sports",
+    "Sports Illustrated",
+    "AP",
+    "NBC Sports",
+    "Fox Sports",
+    "Olympics.com",
+    "News On 6",
+    "On3"
+  ]
 }
