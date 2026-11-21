@@ -13,7 +13,7 @@
     "SGA"
   ],
   "cover_tag": "LE N°1 VA TE FAIRE RIRE",
-  "hook": "[excited] Attention : après ça, tu ne verras plus jamais SGA pareil. Et le numéro un, c'est la faute de son père !",
+  "hook": "[excited] Attention : tu ne verras plus jamais SGA pareil. Et le numéro un, c'est la faute de son père !",
   "facts": [
     {
       "voice": "Numéro cinq. Sa mère a couru le 400 mètres aux Jeux olympiques de Barcelone, en 1992 !",
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "voice": "Numéro quatre. Au lycée, au Canada, il se fait recaler de l'équipe junior. Depuis, il est devenu MVP de la NBA.",
+      "voice": "Numéro quatre. Au lycée, il se fait recaler de l'équipe junior. Depuis, il est devenu MVP de la NBA.",
       "visual": {
         "type": "versus",
         "no": "PRIS DANS L'ÉQUIPE",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "voice": "Numéro trois. Et reste jusqu'au bout pour le un ! En 2025 : MVP, meilleur marqueur et MVP des Finales. Seuls Jordan, Shaq et Kareem l'avaient fait.",
+      "voice": "Numéro trois. Et reste jusqu'au bout pour le un ! En 2025 : MVP, meilleur marqueur et MVP des Finales. Comme Jordan, Shaq et Kareem.",
       "visual": {
         "type": "list",
         "value": "3 TROPHÉES",
@@ -89,7 +89,7 @@
       ]
     },
     {
-      "voice": "[laughs] Et numéro un. Son père prend son trophée de MVP de l'Ouest… et refuse de le rendre ! Shai lui lance : tu fais comme si c'était le tien !",
+      "voice": "[laughs] Et numéro un. Son père prend son trophée de MVP de l'Ouest… et refuse de le rendre ! Shai : tu fais comme si c'était le tien !",
       "visual": {
         "type": "emoji",
         "emoji": "🏆",
