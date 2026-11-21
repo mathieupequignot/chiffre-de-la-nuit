@@ -33,7 +33,7 @@ de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
 - [x] Stephen Curry — curry.png (épisode du lun. 16 nov. 2026)
 - [x] Luka Dončić — doncic.png (épisode du ven. 20 nov. 2026)
 - [x] Giannis Antetokounmpo — giannis.png (épisode du lun. 23 nov. 2026 ; joue au Heat depuis l'été 2026 → `color` Heat dans le JSON)
-- [ ] Shai Gilgeous-Alexander — sga.png
+- [x] Shai Gilgeous-Alexander — sga.png (épisode du mer. 25 nov. 2026)
 - [ ] Anthony Edwards — edwards.png
 - [ ] Nikola Jokić — jokic.png
 - [ ] Kevin Durant — durant.png
@@ -104,6 +104,26 @@ Types de visuels : `big` (grand nombre animé), `bars` (comparaison en barres, `
 `nba_id` : identifiant Basketball-Reference présent dans quiz/nba_ids.json, ou identifiant NBA direct.
 
 ## Carnet (un bloc par épisode, le plus récent en haut)
+### Épisode 7 — SGA (« 5 trucs fous sur SGA ») — programmé le mer. 25 nov. 2026, 12:30
+- Équipe vérifiée : Thunder (CBS Sports nov. 2026 ; AP 22/10/2026). Couleur `sga` déjà dans TEAM.
+- Faits : mère sur 400 m aux JO de Barcelone 1992 pour Antigua-et-Barbuda (Olympics.com, Wikipedia, Heavy) ; recalé de
+  l'équipe JV de St. Thomas More en 1re année de lycée (News On 6/KOTV, On3) ; MVP + meilleur marqueur + MVP des Finales
+  en 2025, comme Jordan, Shaq, Kareem (CBS, SI) ; 141 matchs de suite à 20 pts+, record de Chamberlain (126) battu,
+  série arrêtée le 22/10/2026 (AP/AJC, NBC Sports, Fox/AP) ; n°1 : son père garde le trophée de MVP de la finale de
+  conférence Ouest 2025, « You acting like it's yours! » (SI, AOL, Yardbarker). Écarté : Ares qui fait presque tomber le
+  trophée de MVP des Finales (une seule source solide). Durée **40,0 s** (1er rendu 40,8 s : hook et 3 faits raccourcis ;
+  ~150 mots de voix = limite, viser 140).
+- Améliorations testées (2) : (1) **accroche « avertissement »** (« Attention : tu ne verras plus jamais SGA pareil »)
+  + aperçu du n°1 (« c'est la faute de son père ») : étude Virlo sur 1 977 listicles sport (oct.–nov. 2026), les hooks
+  avertissement / affirmation forte font le plus souvent 2× les vues habituelles du compte. (2) **hashtags mixtes**
+  (11 : niche + génériques #pourtoi #fyp) : OpusClip (13,5 M de TikToks 2026) voit des vues médianes ~2,5× plus hautes
+  avec un mélange niche + générique qu'avec des hashtags de niche seuls (corrélation). Question de fin oui/non conservée.
+- Stats Instagram (21 nov. 13:15, 408 abonnés) : **Dončić = 46 likes / 3 commentaires** en ~1 j → premiers commentaires
+  de la série : la question oui/non fonctionne, on la garde. Curry 47 / 0, LeBron 26 / 0, Wemby 2 = 29 / 0,
+  Wemby 1 = 25 / 0. Duels : Jordan-LeBron 58 / 36, Kobe-Jordan 24 / 10, Magic-Bird 18 / 1. Chiffre de la nuit Wemby 33,
+  autres 1–15 ; quiz 0–8. → les « 5 trucs » restent la 2e série en likes, derrière les duels pour les commentaires.
+- Pas d'alerte photos : 14 joueurs non traités avec photo.
+
 ### Épisode 6 — Giannis (« 5 trucs fous sur Giannis ») — programmé le lun. 23 nov. 2026, 12:30
 - Équipe vérifiée : Miami Heat (échangé cet été contre Herro, Ware, Jaquez, Jakucionis + 3 premiers tours ; AP 18/11,
   Yahoo, NBA.com Heat). Il retrouve les Bucks le 18/11 → joueur d'actualité. `color` Heat [152,0,46] dans le JSON
