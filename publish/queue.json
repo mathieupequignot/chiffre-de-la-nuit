@@ -265,7 +265,12 @@
   "yt_desc": "Tu le reconnais rien qu'à sa silhouette ? 👀 Niveau facile · 5 franchises. Ta réponse en commentaire 👇\n\n#Shorts #NBA #quizNBA",
   "at": "2026-11-22T12:30:00+01:00",
   "discord_mid": "1573968313342758962",
-  "status": {},
-  "tiktok_caption": null
+  "status": {
+   "tiktok": "ok"
+  },
+  "tiktok_caption": null,
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7710898934608316438"
+  }
  }
 ]
