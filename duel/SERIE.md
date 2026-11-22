@@ -39,7 +39,7 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 - [x] Kobe Bryant vs Michael Jordan — programmé mar. 17 nov. 2026, 20:00
 - [x] Magic Johnson vs Larry Bird — programmé jeu. 19 nov. 2026, 20:00
 - [x] Shaquille O'Neal vs Kareem Abdul-Jabbar — programmé sam. 21 nov. 2026, 20:00
-- [ ] LeBron James vs Kobe Bryant
+- [x] LeBron James vs Kobe Bryant — programmé mar. 24 nov. 2026, 20:00
 - [ ] Stephen Curry vs Kobe Bryant
 - [ ] Tim Duncan vs Shaquille O'Neal
 - [ ] Victor Wembanyama vs Shaquille O'Neal (au même nombre de saisons : préciser « APRÈS 3 SAISONS »)
@@ -48,6 +48,22 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 Si un duel fait l'actualité ou est réclamé en commentaire, il peut passer devant.
 
 ## Carnet (le plus récent en haut)
+### Duel 5 — Kobe vs LeBron — programmé le mar. 24 nov. 2026, 20:00
+- Préparé automatiquement le dim. 22 nov. (1er duel non coché ; aucun duel du programme n'a de photo pour les deux joueurs,
+  pas de kobe.png → 2 silhouettes, nba_id 977 et 2544, rendu OK).
+- Kobe = a (violet Lakers éclairci 100,45,155 : score final mieux lisible qu'en 85,37,130), LeBron = b (rouge 76ers 237,23,76 :
+  LeBron joue à Philadelphie en 2026-27 selon Basketball-Reference et Land of Basketball → éviter #Lakers pour lui).
+- Manches : points carrière 33 643 vs « 43 600+ » (L, `count: false`), titres 5 vs 4 (K), MVP 1 vs 4 (L), record en un match 81 vs 61 (K),
+  MVP des Finales 2 vs 4 (L), All-Defensive 12 vs 6 (K), All-Star 18 vs 22 (L), meilleur marqueur 2 vs 1 (K) → 4-4.
+  Écartés : All-Star MVP (4-3 K), All-NBA (15-21 L), passes, rebonds.
+- Sources : Land of Basketball + Basketball-Reference + NBA PR (2016) + StatMuse + Wikiwand + Fox (61 pts).
+- Appris : le total de points d'un joueur en activité bouge chaque soir et les sources ne sont pas synchrones (BBR 43 628 après 12 matchs,
+  LoB 43 649 après 13) → afficher un plancher vérifié (« 43 600+ ») plutôt qu'un chiffre exact qui sera faux le jour J.
+  Ici WebFetch sur ESPN / aws.basketball-reference refusé (permission) : Land of Basketball (profil) + StatMuse restent lisibles.
+  Libellé « ALL-DEFENSIVE » + unit « SÉLECTIONS » tient bien ; « FOIS N°1 EN NBA » réutilisable pour tout titre statistique.
+  Vidéo de 39,4 s (limite haute) : 1re voix de manche trop longue, à raccourcir la prochaine fois.
+- Résultats : à relever.
+
 ### Duel 4 — Shaq vs Kareem — programmé le sam. 21 nov. 2026, 20:00
 - Préparé automatiquement le jeu. 19 nov. (1er duel non coché ; aucun duel du programme n'a de photo pour les deux joueurs,
   ni Shaq ni Kareem n'en a → 2 silhouettes, nba_id 406 et 76003, rendu OK).
