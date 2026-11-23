@@ -1,0 +1,129 @@
+{
+  "file": "5_trucs_fous_edwards",
+  "nba_id": "edwaran01",
+  "photo": "edwards.png",
+  "title": [
+    "5 TRUCS FOUS",
+    "SUR EDWARDS"
+  ],
+  "header": "5 TRUCS FOUS SUR EDWARDS",
+  "cover": [
+    "5 TRUCS",
+    "FOUS SUR",
+    "EDWARDS"
+  ],
+  "cover_tag": "LE N°1 VA TE FAIRE RIRE",
+  "hook": "[excited] Quel rapport entre Anthony Edwards et une star du baseball ? Réponse au numéro un !",
+  "facts": [
+    {
+      "voice": "Numéro cinq. Enfant, c'était une star du football américain à Atlanta. Et il jure d'y retourner s'il gagne un titre NBA !",
+      "visual": {
+        "type": "list",
+        "value": "FOOT US",
+        "label": "SA PREMIÈRE PASSION",
+        "items": [
+          "RUNNING BACK",
+          "STAR À ATLANTA",
+          "LA NFL APRÈS UN TITRE ?"
+        ]
+      },
+      "sources": [
+        "https://www.startribune.com/timberwolves-anthony-edwards/600163053",
+        "https://www.cbssports.com/nba/news/anthony-edwards-says-he-wants-to-play-in-the-nfl-if-he-wins-an-nba-championship-in-next-3-4-years",
+        "https://www.foxsports.com/stories/nba/anthony-edwards-says-he-will-try-football-he-wins-nba-title"
+      ]
+    },
+    {
+      "voice": "Numéro quatre. Trois paquets de chips épicées par jour : vingt et un par semaine, d'après lui !",
+      "visual": {
+        "type": "big",
+        "value": "21",
+        "unit": "",
+        "label": "PAQUETS DE CHIPS / SEMAINE",
+        "sub": "SES HOT FRIES, DEPUIS SES 5 ANS"
+      },
+      "sources": [
+        "https://bleacherreport.com/articles/10063643-t-wolves-anthony-edwards-says-diet-includes-21-bags-of-chesters-hot-fries-per-week",
+        "https://www.tmz.com/2023/01/30/anthony-edwards-chesters-hot-fries-timberwolves-nba/",
+        "https://fansided.com/2023/01/31/anthony-edwards-gnarly-snacking-vice"
+      ]
+    },
+    {
+      "voice": "Numéro trois. Reste jusqu'au bout pour le un ! Son dunk sur John Collins : dunk de l'année… avec un doigt déboîté !",
+      "visual": {
+        "type": "list",
+        "value": "1 DUNK",
+        "label": "SUR JOHN COLLINS (2024)",
+        "items": [
+          "DUNK DE L'ANNÉE",
+          "PHOTO DE L'ANNÉE",
+          "1 DOIGT DÉBOÎTÉ"
+        ]
+      },
+      "sources": [
+        "https://www.nba.com/news/anthony-edwards-viral-dunk-john-collins-timberwolves-jazz-march-18",
+        "https://www.fox9.com/sports/anthony-edwards-sweeps-dunk-block-photo-year-nba-fan-favorite-awards",
+        "https://www.cbssports.com/nba/news/watch-anthony-edwards-wins-dunk-of-the-year-and-perhaps-the-century-with-vicious-slam-over-john-collins"
+      ]
+    },
+    {
+      "voice": "Numéro deux. [surprised] La veille d'être numéro un de la draft, il avoue : je ne peux pas regarder le basket !",
+      "visual": {
+        "type": "versus",
+        "no": "FAN DE BASKET",
+        "yes": "N°1 DE LA DRAFT ✓",
+        "sub": "« JE NE PEUX PAS EN REGARDER »"
+      },
+      "sources": [
+        "https://www.cbssports.com/nba/news/anthony-edwards-potential-top-pick-in-nba-draft-is-still-not-really-into-basketball",
+        "https://www.complex.com/sports/2020/11/anthony-edwards-i-cant-watch-basketball",
+        "https://www.si.com/nba/video/2020/11/18/nba-draft-anthony-edwards-basketball-quote"
+      ]
+    },
+    {
+      "voice": "[laughs] Et numéro un. Rookie, on lui parle de son futur patron, la star du baseball Alex Rodriguez. Sa réponse : c'est qui ? Je ne connais rien au baseball !",
+      "visual": {
+        "type": "emoji",
+        "emoji": "😂",
+        "top": "« C'EST QUI ? »",
+        "bottom": "SON FUTUR PATRON : A-ROD"
+      },
+      "sources": [
+        "https://www.startribune.com/wolves-anthony-edwards-doesnt-know-new-owner-alex-rodriguez-was-a-baseball-star/600045813",
+        "https://www.cbssports.com/nba/news/alex-rodriguez-responds-after-timberwolves-anthony-edwards-said-i-dont-know-who-that-is",
+        "https://www.si.com/extra-mustard/2021/04/14/timberwolves-alex-rodriguez-anthony-edwards-video"
+      ]
+    }
+  ],
+  "outro": "[excited] Ant, futur MVP : oui ou non ? Dis-le en commentaire… et choisis le prochain joueur !",
+  "end": [
+    "ANT FUTUR MVP :",
+    "OUI OU NON ?"
+  ],
+  "caption": "5 trucs fous sur Anthony Edwards 🤯 Le n°1 va te faire rire ⚾😂\nAnt, futur MVP : oui ou non ? Et quel joueur pour le prochain épisode ? 👇",
+  "yt_title": "5 trucs fous sur Anthony Edwards 🤯",
+  "hashtags": [
+    "#NBA",
+    "#AnthonyEdwards",
+    "#AntEdwards",
+    "#Timberwolves",
+    "#Wolves",
+    "#basketball",
+    "#NBAFrance",
+    "#basket",
+    "#lesaviezvous",
+    "#pourtoi",
+    "#fyp"
+  ],
+  "sources": [
+    "CBS Sports",
+    "Sports Illustrated",
+    "Star Tribune",
+    "NBA.com",
+    "Fox Sports",
+    "Bleacher Report",
+    "Complex",
+    "TMZ",
+    "FOX 9"
+  ]
+}
