@@ -35,7 +35,7 @@ de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
 - [x] Luka Dončić — doncic.png (épisode du ven. 20 nov. 2026)
 - [x] Giannis Antetokounmpo — giannis.png (épisode du lun. 23 nov. 2026 ; joue au Heat depuis l'été 2026 → `color` Heat dans le JSON)
 - [x] Shai Gilgeous-Alexander — sga.png (épisode du mer. 25 nov. 2026)
-- [ ] Anthony Edwards — edwards.png
+- [x] Anthony Edwards — edwards.png (épisode du ven. 27 nov. 2026)
 - [ ] Nikola Jokić — jokic.png
 - [ ] Kevin Durant — durant.png
 - [ ] Cooper Flagg — flagg.png
@@ -105,6 +105,26 @@ Types de visuels : `big` (grand nombre animé), `bars` (comparaison en barres, `
 `nba_id` : identifiant Basketball-Reference présent dans quiz/nba_ids.json, ou identifiant NBA direct.
 
 ## Carnet (un bloc par épisode, le plus récent en haut)
+### Épisode 8 — Edwards (« 5 trucs fous sur Edwards ») — programmé le ven. 27 nov. 2026, 12:30
+- Équipe vérifiée : Timberwolves (ESPN 27/10/2026 ; AP via MPR News 20/11/2026 : en rééducation après une arthroscopie
+  du genou droit le 29/10, pas de date de retour). Couleur `edwards` déjà dans TEAM.
+- Faits : enfant star du football américain à Atlanta + promet la NFL s'il gagne un titre (Star Tribune, CBS, Fox
+  Sports) ; ~21 paquets de Hot Fries par semaine, d'après lui (GQ via Bleacher Report, TMZ, FanSided) ; dunk sur John
+  Collins (18/03/2024) élu dunk + photo de l'année, doigt déboîté (NBA.com, FOX 9, CBS) ; la veille de la draft 2020
+  (n°1) : « I can't watch basketball » (CBS, Complex, SI) ; n°1 : rookie, ne sait pas qui est A-Rod, son futur
+  propriétaire, « I don't know nothing about baseball » (Star Tribune, CBS, SI). Écartés : « un chien ou un lion »
+  (sources faibles), « youngest to 1,000 3PM » (une seule source), McDonald's commandé en conférence (doublon « bouffe »).
+- Amélioration testée (1) : **accroche mystère avec un nom concret** (« Quel rapport entre Anthony Edwards et une star
+  du baseball ? Réponse au numéro un ! ») au lieu de l'avertissement générique : Virlo, semaine du 2 nov. 2026
+  (1,1 M de TikToks) : hooks curiosité/mystère 31,6 % de réussite contre 21,8 % pour l'affirmation forte ; Opus (2026) :
+  mettre le nom/chiffre le plus concret dans les 3 premières secondes. Question de fin oui/non et hashtags mixtes conservés.
+- Stats Instagram (23 nov. 13:22, 418 abonnés) : **Dončić = 48 likes / 3 com.** (3 j, record de la série) ; Curry
+  46 / 0 ; LeBron 26 / 0 ; Wemby 2 = 29 / 0 ; Wemby 1 = 25 / 0 ; Giannis publié il y a 50 min (0 / 0). Duels : Jordan-LeBron
+  58 / 36, Kobe-Jordan 24 / 10, Shaq-Kareem 19 / 0, Magic-Bird 18 / 1. Chiffre Wemby-Herro 44, autres 4–35 ; drill
+  retreat 39. → les « 5 trucs » restent au niveau des meilleurs formats en likes ; seul l'épisode à question oui/non
+  a des commentaires : on la garde. SGA (oui/non + avertissement) et Giannis à relever au prochain épisode.
+- Pas d'alerte photos : 13 joueurs non traités avec photo.
+
 ### Épisode 7 — SGA (« 5 trucs fous sur SGA ») — programmé le mer. 25 nov. 2026, 12:30
 - Équipe vérifiée : Thunder (CBS Sports nov. 2026 ; AP 22/10/2026). Couleur `sga` déjà dans TEAM.
 - Faits : mère sur 400 m aux JO de Barcelone 1992 pour Antigua-et-Barbuda (Olympics.com, Wikipedia, Heavy) ; recalé de
