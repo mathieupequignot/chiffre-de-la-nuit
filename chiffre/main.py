@@ -81,10 +81,14 @@ def run(day, fixture=None, post=True, outdir="out"):
     # (record de la saison : indisponible avec l'offre gratuite d'API-NBA -> pas de contexte pour l'instant)
     final = os.path.join(outdir, f"chiffre_de_la_nuit_{day.isoformat()}.mp4")
     combo = None
-    try:
-        combo = pick.build_combo(games, day)
-    except Exception as e:  # le combo est un bonus : en cas de souci on retombe sur la vidéo classique
-        print("combo ignoré :", e)
+    # « Double dose » (2 perfs dans la même vidéo) désactivée le 23 nov. 2026 à la demande de Mathieu :
+    # l'accroche « double dose » rend le début moins prenant (Harden/Sengun 1 like, Grimes/Sensabaugh 5).
+    # Toujours une seule perf, avec une accroche centrée sur le joueur. Réactivable avec CHIFFRE_COMBO=1.
+    if os.environ.get("CHIFFRE_COMBO") == "1":
+        try:
+            combo = pick.build_combo(games, day)
+        except Exception as e:  # le combo est un bonus : en cas de souci on retombe sur la vidéo classique
+            print("combo ignoré :", e)
     if combo:
         D, s1, D2, s2, caption = combo
         print("COMBO :", D["last"], "+", D2["last"])
