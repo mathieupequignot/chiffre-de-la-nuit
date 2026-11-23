@@ -254,13 +254,23 @@
   "yt_desc": "Ton spin te fait perdre la balle ? 🏀 Plante le pied avant, pivote, ballon collé à la hanche. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet DRIBBLE 30 (30 jours pour devenir shifty) : 👉 https://1cvkuk-kx.myshopify.com\n\n#basket #basketball #handles #basketballdrills #entrainementbasket #hooper #playground\n\n#Shorts",
   "at": "2026-11-23T18:00:00+01:00",
   "discord_mid": null,
-  "status": {},
+  "status": {
+   "facebook": "ok",
+   "youtube": "ok"
+  },
   "tiktok_caption": null,
   "platforms": [
    "facebook",
    "youtube",
    "instagram"
-  ]
+  ],
+  "errors": {
+   "instagram": 1
+  },
+  "ids": {
+   "facebook": "1892847658371897",
+   "youtube": "fDhduoHfmHU"
+  }
  },
  {
   "key": "top5_5_trucs_fous_edwards",
