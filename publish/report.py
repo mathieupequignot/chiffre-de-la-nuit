@@ -273,6 +273,24 @@ def save_followers(day, f):
     return delta
 
 
+PERF = os.path.join(HERE, "perf_history.json")
+
+
+def save_perf(day, rows):
+    """Historique durable des performances, vidéo par vidéo (vues ~J+1 sur chaque réseau), lu par le labo
+    d'optimisation (OPTIMISATION.md). La file d'attente, elle, est vidée au bout de 3 jours."""
+    try:
+        h = json.load(open(PERF, encoding="utf-8"))
+    except Exception:
+        h = {}
+    for r in rows:
+        e = r["e"]
+        h[e["key"]] = dict(date=str(day), heure=r["at"].strftime("%H:%M"), format=r["kind"], titre=r["title"],
+                           accroche=(e.get("instagram") or "").split("\n")[0][:150],
+                           vues={k: v for k, v in r["v"].items() if isinstance(v, int)})
+    json.dump(h, open(PERF, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+
 def day_start(d):
     return dt.datetime(d.year, d.month, d.day, tzinfo=PARIS)
 
@@ -456,6 +474,11 @@ def main():
     msg = summary(day, rows, tot, extra, fol, dfol, shop)
     print(msg)
     for r in rows: print(r["kind"], r["title"], r["v"])
+    if not a.no_post:
+        try:
+            save_perf(day, rows)
+        except Exception as ex:
+            print("Historique des performances :", ex)
     if a.no_post:
         print("(test : rien envoyé sur Discord)")
     else:

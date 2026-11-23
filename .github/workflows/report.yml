@@ -52,4 +52,4 @@ jobs:
         run: |
           git config user.name "publish-bot"
           git config user.email "publish-bot@users.noreply.github.com"
-          git add publish/stats_history.json && git commit -m "Rapport : abonnés du jour" && git pull --rebase -q && git push || true
+          git add publish/stats_history.json publish/perf_history.json && git commit -m "Rapport : abonnés et vues du jour" && git pull --rebase -q && git push || true
