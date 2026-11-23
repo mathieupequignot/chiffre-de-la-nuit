@@ -16,8 +16,8 @@ les règles à ne jamais enfreindre et ce qu'on a appris épisode après épisod
 - **Fin** : « Lequel t'a le plus surpris ? » + « Tu choisis le joueur du prochain épisode » (pousse aux commentaires).
 - **Joueurs prioritaires** : ceux que le public FR suit (Wemby et les Français, puis LeBron, Curry, Jokić,
   Dončić, Giannis, Edwards, SGA…), ou le joueur le plus réclamé en commentaire.
-- **Publication** : voir « Rythme » ci-dessous (3 par semaine, lun/mer/ven 12:30) (Instagram + YouTube + Facebook auto ; brouillon TikTok
-  à la même heure, avec sur Discord : vidéo + miniature, puis la description seule, puis 1 récapitulatif des autres réseaux), en plus du chiffre de la nuit et du quiz.
+- **Publication** : voir « Rythme » ci-dessous (5 par semaine, lun/mar/mer/ven/sam 12:30) (Instagram + YouTube + Facebook auto ; brouillon TikTok
+  à la même heure, avec sur Discord : vidéo + miniature, puis la description seule, puis 1 récapitulatif des autres réseaux), en plus du chiffre de la nuit, des duels et de l'exercice.
 
 ## Miniature (v2, 10/11)
 Fond aux couleurs de l'équipe (table TEAM dans top10/main.py, ou champ JSON `color`), rayons, joueur détouré avec contour blanc
@@ -25,8 +25,9 @@ Fond aux couleurs de l'équipe (table TEAM dans top10/main.py, ou champ JSON `co
 Nouveau joueur hors table : ajouter sa couleur dans TEAM.
 
 ## Programme des joueurs (photos fournies par Mathieu dans top10/assets/)
-Rythme (décidé par Mathieu le 14 nov. 2026) : 3 épisodes par semaine, LUNDI, MERCREDI et VENDREDI à 12:30 (créneau du quiz,
-qui ne passe plus que mar/jeu/sam/dim). Préparés le samedi, le lundi et le mercredi. Ordre de passage par défaut : Si un joueur est très réclamé en commentaire ou fait l'actualité
+Rythme (décidé par Mathieu le 23 nov. 2026, quiz supprimé) : 5 épisodes par semaine, LUNDI, MARDI, MERCREDI, VENDREDI et
+SAMEDI à 12:30. Préparés le samedi (→ lun), le dimanche (→ mar), le lundi (→ mer), le mercredi (→ ven) et le jeudi (→ sam),
+toujours sur le prochain créneau libre à au moins 2 jours. (Avant : 3 par semaine lun/mer/ven, décidé le 14 nov.) Ordre de passage par défaut : Si un joueur est très réclamé en commentaire ou fait l'actualité
 de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
 - [x] Victor Wembanyama — wemby.png (épisodes 1 et 2)
 - [x] LeBron James — lebron.png (épisode du 18 nov. 2026)
