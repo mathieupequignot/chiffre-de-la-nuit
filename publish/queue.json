@@ -31,8 +31,13 @@
   "yt_desc": "5 trucs fous sur Giannis 🤯 Le n°1 est incroyable 🏃‍♂️❄️\nGiannis à Miami, bonne idée : oui ou non ? Et quel joueur pour le prochain épisode ? 👇\n\n#Shorts #NBA #Giannis #Antetokounmpo #Heat #MiamiHeat #basketball #NBAFrance #basket #lesaviezvous",
   "at": "2026-11-23T12:30:00+01:00",
   "discord_mid": "1572609164033654806",
-  "status": {},
-  "tiktok_caption": "5 trucs fous sur Giannis 🤯 Le n°1 est incroyable 🏃‍♂️❄️\nGiannis à Miami, bonne idée : oui ou non ? Et quel joueur pour le prochain épisode ? 👇\n\n#NBA #Giannis #Antetokounmpo #Heat #MiamiHeat #basketball #NBAFrance #basket #lesaviezvous"
+  "status": {
+   "tiktok": "ok"
+  },
+  "tiktok_caption": "5 trucs fous sur Giannis 🤯 Le n°1 est incroyable 🏃‍♂️❄️\nGiannis à Miami, bonne idée : oui ou non ? Et quel joueur pour le prochain épisode ? 👇\n\n#NBA #Giannis #Antetokounmpo #Heat #MiamiHeat #basketball #NBAFrance #basket #lesaviezvous",
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7711256889702713366"
+  }
  },
  {
   "key": "duel_duel_shaq_kareem",
@@ -254,7 +259,12 @@
   "yt_desc": "Double dose cette nuit : Murray et Adebayo ont régalé ! 🤯\nJamal Murray : 45 pts, 5 reb, 7 pd avec Denver face à Chicago (victoire 151-145).\nBam Adebayo : 24 pts, 15 reb, 12 pd avec Miami face à Oklahoma City (victoire 123-113).\n\nTon MVP de la nuit : Murray ou Adebayo ? 👇\n\n#Shorts #NBA #Murray #Adebayo",
   "at": "2026-11-23T08:00:00+01:00",
   "discord_mid": "1574317662136307797",
-  "status": {},
-  "tiktok_caption": null
+  "status": {
+   "tiktok": "ok"
+  },
+  "tiktok_caption": null,
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7711260964079044630"
+  }
  }
 ]
