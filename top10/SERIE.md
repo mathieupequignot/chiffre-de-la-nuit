@@ -123,6 +123,8 @@ Types de visuels : `big` (grand nombre animé), `bars` (comparaison en barres, `
   58 / 36, Kobe-Jordan 24 / 10, Shaq-Kareem 19 / 0, Magic-Bird 18 / 1. Chiffre Wemby-Herro 44, autres 4–35 ; drill
   retreat 39. → les « 5 trucs » restent au niveau des meilleurs formats en likes ; seul l'épisode à question oui/non
   a des commentaires : on la garde. SGA (oui/non + avertissement) et Giannis à relever au prochain épisode.
+- Rendu : **36,6 s** (147 mots de voix), aucun débordement. 1er aperçu en échec (apt coupé par le timeout → « dpkg was
+  interrupted » aux essais suivants) → top10.yml lance désormais `sudo dpkg --configure -a` avant chaque essai ; relancé, OK.
 - Pas d'alerte photos : 13 joueurs non traités avec photo.
 
 ### Épisode 7 — SGA (« 5 trucs fous sur SGA ») — programmé le mer. 25 nov. 2026, 12:30
