@@ -8,6 +8,9 @@ Ce fichier est lu et mis à jour par la tâche programmée « Labo d'optimisatio
 Maximiser, dans cet ordre : **vues** (TikTok, YouTube, Instagram, Facebook), **abonnés gagnés**, **commentaires/partages**,
 puis ventes de la boutique (programmes Playground Lab liés aux exercices).
 
+## Compte rendu
+Un seul message Discord par passage, via le workflow « Message Discord » (`discord-msg.yml`, entrée `message`).
+
 ## Données disponibles
 - `publish/perf_history.json` : vues de chaque vidéo à ~J+1, réseau par réseau (rempli chaque soir par le rapport de 21h),
   avec format, heure, accroche. C'est la source principale.

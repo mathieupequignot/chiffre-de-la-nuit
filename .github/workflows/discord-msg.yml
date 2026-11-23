@@ -1,0 +1,25 @@
+name: Message Discord (labo / tâches programmées)
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: "Texte du message à envoyer sur le Discord de Mathieu"
+        required: true
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: Envoyer
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+          MSG: ${{ inputs.message }}
+        run: python -c "import os; from chiffre import discord_post; discord_post.notify(os.environ['MSG'])"
