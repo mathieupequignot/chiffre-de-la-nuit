@@ -24,10 +24,18 @@ def save(q):
 
 def add(key, video, cover, instagram, yt_title, yt_desc, at_paris, discord_mid=None, tiktok_caption=None, platforms=None):
     """at_paris : 'HH:MM' (aujourd'hui) ou 'AAAA-MM-JJ HH:MM' (heure de Paris). Heure passée = publication au prochain passage.
-    tiktok_caption : description TikTok envoyée sur Discord quand le brouillon arrive (vidéos programmées à l'avance).
+    tiktok_caption : description TikTok envoyée seule sur Discord à l'heure de publication (avec le brouillon TikTok).
     platforms : liste des plateformes visées (ex. ["facebook"]) ; None = toutes."""
     os.makedirs(MEDIA, exist_ok=True)
     v = f"{key}.mp4"; shutil.copy(video, os.path.join(MEDIA, v))
+    dv = None  # copie allégée (720p) pour l'envoi Discord à l'heure de publication (limite ~10 Mo)
+    if os.path.getsize(video) > 9_500_000 and shutil.which("ffmpeg"):
+        import subprocess
+        dv = f"{key}_discord.mp4"
+        r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", video, "-vf", "scale=720:-2", "-c:v", "libx264", "-preset", "veryfast",
+                            "-b:v", "1400k", "-maxrate", "1600k", "-bufsize", "3200k", "-c:a", "aac", "-b:a", "96k",
+                            os.path.join(MEDIA, dv)])
+        dv = dv if r.returncode == 0 else None
     c = None
     if cover and os.path.exists(cover):
         c = f"{key}.jpg"; shutil.copy(cover, os.path.join(MEDIA, c))
@@ -40,7 +48,7 @@ def add(key, video, cover, instagram, yt_title, yt_desc, at_paris, discord_mid=N
     q = [e for e in load() if e["key"] != key]
     q.append(dict(key=key, video=v, cover=c, instagram=instagram, yt_title=yt_title[:100], yt_desc=yt_desc,
                   at=at.isoformat(), discord_mid=discord_mid, status={}, tiktok_caption=tiktok_caption,
-                  **({"platforms": platforms} if platforms else {})))
+                  **({"discord_video": dv} if dv else {}), **({"platforms": platforms} if platforms else {})))
     save(q)
 
 

@@ -365,7 +365,7 @@ def schedule(video, cover_path, at, platforms=None):
         print("Programmé :", key, at, platforms)
         return
     msg = (f"**🏀 Exercice du jour (tous les comptes) : {D['header']}** ({D['program']}) — publication automatique le {at} "
-           f"(Instagram + YouTube + Facebook ; brouillon TikTok quelques heures avant). Mets ❌ sur ce message pour l'annuler.")
+           f"(TikTok en brouillon + Instagram, YouTube, Facebook). Mets ❌ sur ce message pour l'annuler.")
     mid = None
     if os.environ.get("DISCORD_BOT_TOKEN"):
         try:

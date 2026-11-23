@@ -35,7 +35,7 @@ def post(video_path, content, cover_path=None, tiktok=None):
     except Exception as e:  # non bloquant : déjà connecté auparavant
         print("gateway:", e)
     ch = os.environ["DISCORD_CHANNEL_ID"]
-    files = {"files[0]": ("chiffre_de_la_nuit.mp4", open(video_path, "rb"), "video/mp4")}
+    files = {"files[0]": (os.path.basename(video_path), open(video_path, "rb"), "video/mp4")}
     if cover_path and os.path.exists(cover_path):
         files["files[1]"] = ("miniature.jpg", open(cover_path, "rb"), "image/jpeg")
     try:

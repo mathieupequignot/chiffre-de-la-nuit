@@ -103,8 +103,8 @@ def run(day, fixture=None, post=True, outdir="out"):
     auto = post and os.environ.get("AUTO_PUBLISH") == "1"
     if auto:
         msg = (f"**Le chiffre de la nuit — {D['date_label'].lower()}**\n"
-               f"📸 Instagram + ▶️ YouTube : publication automatique à 8h00.\n"
-               f"🎵 TikTok : la vidéo arrive dans tes brouillons ; description à copier dans le message suivant 👇")
+               f"Aperçu — publication automatique à 8h00 (TikTok en brouillon + Instagram, YouTube, Facebook). "
+               f"Mets ❌ sur ce message pour l'annuler.")
     else:
         msg = (f"**Le chiffre de la nuit — {D['date_label'].lower()}**\n\n"
            f"🎵 **TikTok** (légende + hashtags) :\n```{caption['tiktok']}```\n"
@@ -115,11 +115,11 @@ def run(day, fixture=None, post=True, outdir="out"):
     print("Vidéo :", final)
     mid = None
     if post and os.environ.get("DISCORD_BOT_TOKEN"):
-        mid = discord_post.post(final, msg, thumb, caption["tiktok"] if auto else None)
+        mid = discord_post.post(final, msg, thumb)
     if post and os.environ.get("AUTO_PUBLISH") == "1":
         from publish import queue
         queue.add(f"chiffre_{day.isoformat()}", final, thumb, caption["instagram"], caption["youtube_title"],
-                  caption["youtube"], "08:00", mid)
+                  caption["youtube"], "08:00", mid, caption["tiktok"])
     return final
 
 

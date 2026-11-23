@@ -438,8 +438,8 @@ def captions(P):
 def short_message(P):
     lab = LEVELS[P["level"]][0]
     return (f"**🧩 Quiz {lab.lower()}** — 🔒 réponse : ||{P['name']}||\n"
-            f"📸 Instagram + ▶️ YouTube : publication automatique à {TIMES[P['level']]}.\n"
-            f"🎵 TikTok : la vidéo arrive dans tes brouillons ; description à copier dans le message suivant 👇")
+            f"Aperçu — publication automatique à {TIMES[P['level']]} (TikTok en brouillon + Instagram, YouTube, Facebook). "
+            f"Mets ❌ sur ce message pour l'annuler.")
 
 
 def message(P):
@@ -512,13 +512,12 @@ def daily(day, post=True, outdir="out_quiz"):
         print("Quiz", lvl, ":", P["name"], video)
         if post and os.environ.get("DISCORD_BOT_TOKEN"):
             auto = os.environ.get("AUTO_PUBLISH") == "1"
-            mid = discord_post.post(video, short_message(P) if auto else message(P), cover,
-                                    captions(P)["tiktok"] if auto else None)
+            mid = discord_post.post(video, short_message(P) if auto else message(P), cover)
             if auto:
                 from publish import queue
                 c = captions(P)
                 queue.add(f"quiz_{day}_{lvl}", video, cover, c["instagram"], c["youtube_title"], c["youtube"],
-                          {"facile": "12:30", "moyen": "18:00", "difficile": "21:00"}[lvl], mid)
+                          {"facile": "12:30", "moyen": "18:00", "difficile": "21:00"}[lvl], mid, c["tiktok"])
         used.append({"date": day, "level": lvl, "id": P["id"]})
         json.dump(used, open(USED, "w"), indent=1)
 

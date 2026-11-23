@@ -377,7 +377,7 @@ def schedule(video, cover_path, at):
     from chiffre import discord_post
     tags = " ".join(J["hashtags"]); base = J["caption"]
     msg = (f"**⚔️ Duel : {J['players']['a']['name']} vs {J['players']['b']['name']}** — publication automatique le {at} "
-           f"(Instagram + YouTube ; brouillon TikTok quelques heures avant). Mets ❌ sur ce message pour l'annuler.")
+           f"(TikTok en brouillon + Instagram, YouTube, Facebook). Mets ❌ sur ce message pour l'annuler.")
     mid = None
     if os.environ.get("DISCORD_BOT_TOKEN"):
         try:

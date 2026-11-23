@@ -611,7 +611,7 @@ def schedule(video, cover_path, at):
     base = J.get("caption", " ".join(TITLE).title())
     yt_title = J.get("yt_title", " ".join(TITLE).capitalize())
     msg = (f"**🎬 Nouvel épisode « {' '.join(TITLE).lower()} »** — publication automatique le {at} "
-           f"(Instagram + YouTube ; brouillon TikTok quelques heures avant).\n"
+           f"(TikTok en brouillon + Instagram, YouTube, Facebook).\n"
            f"Mets ❌ sur ce message pour l'annuler. Sources des faits : {', '.join(J.get('sources', [])) or '—'}")
     mid = None
     if os.environ.get("DISCORD_BOT_TOKEN"):
