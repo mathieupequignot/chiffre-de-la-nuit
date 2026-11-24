@@ -25,30 +25,6 @@
   "reported": true
  },
  {
-  "key": "duel_duel_shaq_kareem",
-  "video": "duel_duel_shaq_kareem.mp4",
-  "cover": "duel_duel_shaq_kareem.jpg",
-  "instagram": "Shaq ou Kareem ? 8 stats, face à face 💪 Le plus grand pivot de l'histoire… et le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇\n\nAbonne-toi pour le prochain duel 🔔\n\n#NBA #Shaq #Kareem #ShaquilleONeal #KareemAbdulJabbar #Lakers #Bucks #basketball #NBAFrance #basket",
-  "yt_title": "Shaq vs Kareem : 8 stats, qui gagne ? 💪 #Shorts",
-  "yt_desc": "Shaq ou Kareem ? 8 stats, face à face 💪 Le plus grand pivot de l'histoire… et le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇\n\n#Shorts #NBA #Shaq #Kareem #ShaquilleONeal #KareemAbdulJabbar #Lakers #Bucks #basketball #NBAFrance #basket",
-  "at": "2026-11-21T20:00:00+01:00",
-  "discord_mid": null,
-  "status": {
-   "tiktok": "ok",
-   "instagram": "ok",
-   "facebook": "ok",
-   "youtube": "ok"
-  },
-  "tiktok_caption": "Shaq ou Kareem ? 8 stats, face à face 💪 Le plus grand pivot de l'histoire… et le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇\n\n#NBA #Shaq #Kareem #ShaquilleONeal #KareemAbdulJabbar #Lakers #Bucks #basketball #NBAFrance #basket",
-  "ids": {
-   "tiktok": "v_inbox_file~v2.7710629596399634454",
-   "instagram": "17918672481518922",
-   "facebook": "1409722494333530",
-   "youtube": "MDt7u7wlLJg"
-  },
-  "reported": true
- },
- {
   "key": "top5_5_trucs_fous_sga",
   "video": "top5_5_trucs_fous_sga.mp4",
   "cover": "top5_5_trucs_fous_sga.jpg",
@@ -142,9 +118,21 @@
   "yt_desc": "Kobe ou LeBron ? 8 stats, face à face 🐍👑 Le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇\n\n#Shorts #NBA #Kobe #LeBron #KobeBryant #LeBronJames #MambaMentality #basketball #NBAFrance #basket",
   "at": "2026-11-24T20:00:00+01:00",
   "discord_mid": "1574078281836142755",
-  "status": {},
+  "status": {
+   "tiktok": "ok",
+   "instagram": "ok",
+   "facebook": "ok",
+   "youtube": "ok"
+  },
   "tiktok_caption": "Kobe ou LeBron ? 8 stats, face à face 🐍👑 Le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇\n\n#NBA #Kobe #LeBron #KobeBryant #LeBronJames #MambaMentality #basketball #NBAFrance #basket",
-  "discord_video": "duel_duel_lebron_kobe_discord.mp4"
+  "discord_video": "duel_duel_lebron_kobe_discord.mp4",
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7711829483556259862",
+   "instagram": "18123903010988467",
+   "facebook": "1147736634321982",
+   "youtube": "0PWgAXLCgnE"
+  },
+  "reported": true
  },
  {
   "key": "chiffre_2026-11-23",
