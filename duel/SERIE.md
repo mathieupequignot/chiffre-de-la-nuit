@@ -42,7 +42,7 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 - [x] Magic Johnson vs Larry Bird — programmé jeu. 19 nov. 2026, 20:00
 - [x] Shaquille O'Neal vs Kareem Abdul-Jabbar — programmé sam. 21 nov. 2026, 20:00
 - [x] LeBron James vs Kobe Bryant — programmé mar. 24 nov. 2026, 20:00
-- [ ] Stephen Curry vs Kobe Bryant
+- [x] Stephen Curry vs Kobe Bryant — programmé jeu. 26 nov. 2026, 20:00
 - [ ] Tim Duncan vs Shaquille O'Neal
 - [ ] Victor Wembanyama vs Shaquille O'Neal (au même nombre de saisons : préciser « APRÈS 3 SAISONS »)
 - [ ] Allen Iverson vs Stephen Curry
@@ -50,6 +50,21 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 Si un duel fait l'actualité ou est réclamé en commentaire, il peut passer devant.
 
 ## Carnet (le plus récent en haut)
+### Duel 6 — Curry vs Kobe — programmé le jeu. 26 nov. 2026, 20:00
+- Préparé automatiquement le mar. 24 nov. (1er duel non coché ; aucun duel du programme n'a de photo pour les deux joueurs,
+  curry.png existe mais pas kobe.png → 2 silhouettes, nba_id 201939 et 977, rendu OK).
+- Curry = a (bleu Warriors 0,107,182), Kobe = b (violet Lakers 100,45,155) : bleu/violet assez contrastés à l'écran, score final lisible.
+- Manches : points carrière « 26 800+ » vs 33 643 (K), paniers à 3 pts « 4 290+ » vs 1 827 (C), titres 4 vs 5 (K), MVP 2 vs 1 (C),
+  record en un match 62 vs 81 (K), lancers francs 91,3 % vs 83,7 % (C, `count: false`), MVP des Finales 1 vs 2 (K),
+  3 pts en un match 13 vs 12 (C : 7 nov. 2016 vs Pelicans, record NBA battu ; Kobe 12 le 7 janv. 2003 vs Seattle) → 4-4.
+  Écartés : All-Star (12 vs 18), titres de meilleur marqueur (2-2), points/match (24,8 vs 25,0 : trop serré pour un joueur en activité).
+- Sources : StatMuse + Basketball-Reference + Land of Basketball + NBA.com (Curry), Statscrew + Land of Basketball + Star Tribune (Kobe),
+  StatMuse + ESPN (records en un match), SI + StatMuse (62 pts). Titre 2026 : Knicks (Brunson MVP des Finales) → Curry reste à 4 titres.
+- Appris : Curry blessé (abdomen) depuis le 12 nov., ~1 mois → totaux figés, mais planchers « + » gardés par prudence.
+  Vidéo de 33,0 s avec des voix courtes : bonne durée. Une dernière manche « record en un match » très serrée (13 vs 12) marche bien
+  pour finir en égalité. Note de 34 caractères (« CURRY A BATTU LE RECORD NBA DE KOBE ») tient sur une ligne.
+  WebFetch statmuse parfois refusé (permission) ; statscrew.com donne des totaux carrière complets et lisibles.
+- Résultats : à relever.
 ### Duel 5 — Kobe vs LeBron — programmé le mar. 24 nov. 2026, 20:00
 - Préparé automatiquement le dim. 22 nov. (1er duel non coché ; aucun duel du programme n'a de photo pour les deux joueurs,
   pas de kobe.png → 2 silhouettes, nba_id 977 et 2544, rendu OK).
