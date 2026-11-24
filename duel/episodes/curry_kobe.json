@@ -1,0 +1,51 @@
+{
+  "format": "duel",
+  "file": "duel_curry_kobe",
+  "players": {
+    "a": {"name": "CURRY", "nba_id": 201939, "color": [0, 107, 182]},
+    "b": {"name": "KOBE", "nba_id": 977, "color": [100, 45, 155]}
+  },
+  "hook": "[excited] Curry ou Kobe ? Huit stats, face à face… et le score final va faire débat !",
+  "hook_tag": "8 STATS · 1 SEUL GAGNANT ?",
+  "rounds": [
+    {"label": "POINTS EN CARRIÈRE", "a": "26 800+", "b": "33 643", "count": false, "unit": "SAISON RÉGULIÈRE", "win": "b",
+     "voice": "Points en carrière : vingt-six mille huit cents contre trente-trois mille six cents. Point Kobe !"},
+    {"label": "PANIERS À 3 PTS", "a": "4 290+", "b": "1 827", "count": false, "unit": "EN CARRIÈRE", "win": "a", "note": "RECORD DE L'HISTOIRE POUR CURRY",
+     "voice": "Les paniers à trois points : plus du double pour Curry. Égalité !"},
+    {"label": "TITRES NBA", "a": "4", "b": "5", "win": "b",
+     "voice": "Les titres : cinq contre quatre. Kobe reprend la tête !"},
+    {"label": "TITRES DE MVP", "a": "2", "b": "1", "win": "a",
+     "voice": "Les MVP : deux contre un. Curry égalise !"},
+    {"label": "RECORD EN UN MATCH", "a": "62", "b": "81", "unit": "POINTS", "win": "b",
+     "voice": "Le record en un match : quatre-vingt-un points ! Point Kobe !"},
+    {"label": "LANCERS FRANCS", "a": "91,3 %", "b": "83,7 %", "count": false, "unit": "RÉUSSITE EN CARRIÈRE", "win": "a",
+     "voice": "Les lancers francs : quatre-vingt-onze pour cent pour Curry. Trois partout !"},
+    {"label": "MVP DES FINALES", "a": "1", "b": "2", "win": "b",
+     "voice": "Les MVP des Finales : deux contre un. Kobe repasse devant !"},
+    {"label": "3 PTS EN UN MATCH", "a": "13", "b": "12", "unit": "RECORD PERSONNEL", "win": "a", "note": "CURRY A BATTU LE RECORD NBA DE KOBE",
+     "voice": "[excited] Dernière manche, le plus de trois points en un match : treize contre douze… et Curry égalise !"}
+  ],
+  "verdict": "ÉGALITÉ PARFAITE !",
+  "cta": "C'EST QUI LE MEILLEUR ? 👇",
+  "outro": "[surprised] Quatre partout ! Alors… Curry ou Kobe ? Dis-le en commentaire !",
+  "cover_tag": "QUI EST LE GOAT ?",
+  "caption": "Curry ou Kobe ? 8 stats, face à face 🎯🐍 Le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇",
+  "yt_title": "Curry vs Kobe : 8 stats, qui gagne ? 🎯🐍",
+  "hashtags": ["#NBA", "#Curry", "#Kobe", "#StephenCurry", "#KobeBryant", "#Warriors", "#Lakers", "#basketball", "#NBAFrance", "#basket"],
+  "sources": {
+    "curry": ["https://www.statmuse.com/nba/ask/stephen-curry-total-3-pointers-career",
+              "https://www.basketball-reference.com/players/c/curryst01.html",
+              "https://www.landofbasketball.com/all_time_leaders/3_pointers_total_career_season.htm",
+              "https://www.nba.com/player/201939/stephen-curry",
+              "https://www.statmuse.com/nba/ask/curry-career-high-points",
+              "https://www.si.com/nba/2021/01/04/steph-curry-career-high-62-points-warriors-beat-trail-blazers",
+              "https://www.statmuse.com/nba/ask/curry-career-high-in-3s",
+              "https://www.espn.com/nba/story/_/id/17997995/stephen-curry-golden-state-warriors-sinks-nba-record-13-3-pointers-victory"],
+    "kobe": ["https://www.statscrew.com/basketball/stats/p-bryanko01",
+             "https://www.landofbasketball.com/nba_players_stats/kobe_bryant.htm",
+             "https://www.startribune.com/kobe-bryant-s-career-stats/567315742",
+             "https://www.statmuse.com/nba/ask/game-kobe-hit-12-threes",
+             "https://global.espn.com/nba/story/_/id/44628607/which-nba-players-most-3-pointers-single-game"],
+    "note": "Curry (saison régulière) au 24 nov. 2026 : 26 806 pts, 4 291 paniers à 3 pts, 91,3 % LF (1 079 matchs, blessé à l'abdomen depuis le 12 nov., absent ~1 mois) → planchers affichés. 4 titres, 2 MVP, 1 MVP des Finales (titre 2026 : Knicks). Kobe : 33 643 pts, 1 827 à 3 pts, 83,7 % LF, 5 titres, 1 MVP, 2 MVP des Finales, 81 pts (22 janv. 2006), 12 paniers à 3 pts le 7 janv. 2003 vs Seattle (record NBA à l'époque, battu par Curry avec 13 le 7 nov. 2016 vs Pelicans)."
+  }
+}
