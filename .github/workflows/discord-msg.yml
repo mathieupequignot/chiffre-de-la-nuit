@@ -6,6 +6,9 @@ on:
       message:
         description: "Texte du message à envoyer sur le Discord de Mathieu"
         required: true
+      video:
+        description: "Optionnel : chemin d'une vidéo du dépôt à joindre (ex. docs/media/xxx_discord.mp4, < 10 Mo)"
+        required: false
 
 jobs:
   send:
@@ -16,10 +19,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install requests
+      - run: pip install requests websocket-client
       - name: Envoyer
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
           MSG: ${{ inputs.message }}
-        run: python -c "import os; from chiffre import discord_post; discord_post.notify(os.environ['MSG'])"
+          VIDEO: ${{ inputs.video }}
+        run: |
+          python -c "
+          import os; from chiffre import discord_post
+          v = os.environ.get('VIDEO')
+          discord_post.post(v, os.environ['MSG']) if v else discord_post.notify(os.environ['MSG'])
+          "
