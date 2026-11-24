@@ -28,5 +28,35 @@
   "vues": {
    "youtube": 646
   }
+ },
+ "chiffre_2026-11-23": {
+  "date": "2026-11-23",
+  "heure": "08:00",
+  "format": "Chiffre de la nuit",
+  "titre": "Murray et Adebayo ont régalé cette nuit",
+  "accroche": "Double dose cette nuit : Murray et Adebayo ont régalé ! 🤯",
+  "vues": {
+   "youtube": 867
+  }
+ },
+ "top5_5_trucs_fous_giannis": {
+  "date": "2026-11-23",
+  "heure": "12:30",
+  "format": "5 trucs fous",
+  "titre": "5 trucs fous sur Giannis Antetokounmpo",
+  "accroche": "5 trucs fous sur Giannis 🤯 Le n°1 est incroyable 🏃‍♂️❄️",
+  "vues": {
+   "youtube": 248
+  }
+ },
+ "drill_spin-move": {
+  "date": "2026-11-23",
+  "heure": "18:00",
+  "format": "Drill",
+  "titre": "Ton spin te fait perdre la balle ? Le drill Spin Move 🏀",
+  "accroche": "Ton spin te fait perdre la balle ? 🏀 Plante le pied avant, pivote, ballon collé à la hanche. 👇",
+  "vues": {
+   "youtube": 140
+  }
  }
 }
