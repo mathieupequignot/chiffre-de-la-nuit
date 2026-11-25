@@ -63,7 +63,7 @@
       ]
     },
     {
-      "voice": "Numéro deux. [surprised] Champion NBA, sa priorité : rentrer en Serbie pour ses courses de chevaux… quitte à réclamer un avion à son patron !",
+      "voice": "Numéro deux. [surprised] Champion NBA, il n'a qu'une idée : vite rentrer en Serbie… pour ses courses de chevaux !",
       "visual": {
         "type": "versus",
         "no": "LA FÊTE DU TITRE",
@@ -92,7 +92,7 @@
       ]
     }
   ],
-  "outro": "[excited] Jokić plus fort que Wemby : oui ou non ? Dis-le en commentaire… et choisis le prochain joueur !",
+  "outro": "[excited] Jokić plus fort que Wemby : oui ou non ? Dis-le en commentaire !",
   "end": [
     "PLUS FORT QUE WEMBY :",
     "OUI OU NON ?"
