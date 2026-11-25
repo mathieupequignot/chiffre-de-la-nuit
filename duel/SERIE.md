@@ -27,6 +27,19 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 4. Le choix des 8 stats est éditorial (on peut viser l'égalité), mais chaque chiffre affiché est exact.
 5. Ne pas toucher au chiffre de la nuit, au quiz, ni à la série « 5 trucs fous » (top10/).
 
+## Consignes du labo (OPTIMISATION.md — à appliquer tant qu'elles sont là)
+- **Test du 25 nov. 2026 — accroche « affirmation choc » en « tu »** (à partir du duel préparé le jeu. 26 nov.) :
+  la phrase `hook` n'est plus « X ou Y ? Huit stats, face à face… » mais une **affirmation choc** qui reprend le chiffre
+  le plus frappant d'UNE des 8 manches (déjà vérifié par 2 sources, jamais un chiffre nouveau), s'adresse au spectateur
+  (« tu ») et promet le retournement. ≤ 20 mots. Exemple (Kobe-LeBron) : « [excited] LeBron a marqué dix mille points
+  de plus que Kobe… et pourtant, tu vas voir, le score final va te surprendre ! ». `hook_tag` assorti, ≤ 26 caractères
+  (ex. « +10 000 POINTS… ET POURTANT ? »). Tout le reste (manches, fin, question, légende, hashtags) reste inchangé.
+  Pourquoi : les duels baissent (likes Instagram 59 → 24 → 18 → 19 → 11, commentaires 36 → 10 → 1 → 0 → 0 ; YouTube
+  231 vues à J+1 contre ~900 pour le chiffre de la nuit) ; Virlo (sports TikTok/Instagram, 6 oct.–16 nov. 2026) :
+  accroches « tu » 27,6 % de vidéos à 2× les vues habituelles (meilleur type en sport) et « affirmation choc » 28,3 %
+  (commentaire d'actu sport) ; étude Virlo d'octobre déjà notée dans top10/SERIE.md : question 25,2 % seulement.
+  Bilan prévu le dim. 6 déc. par le labo.
+
 ## Fabriquer un épisode
 1. `duel/episodes/<slug>.json` (modèle : duel/episodes/jordan_lebron.json ; `"format": "duel"` obligatoire).
    Champs d'une manche : label, a, b (texte affiché, ex. "32 292", "30,1", "6/6"), unit (petite ligne), win ("a"/"b"),

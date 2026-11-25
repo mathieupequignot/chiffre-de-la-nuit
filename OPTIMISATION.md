@@ -54,6 +54,42 @@ Un seul message Discord par passage, via le workflow « Message Discord » (`dis
 - 14 nov. 2026 : miniature v2 des « 5 trucs fous » validée (on peut l'améliorer, pas la dégrader).
 
 ## Journal du labo (le plus récent en haut)
+### 25 nov. 2026 (mer.) — 1er passage
+**Mesure.** Vues : seules celles de YouTube sont lisibles (Instagram #10, Facebook read_insights, TikTok non relevé) ;
+`perf_history.json` n'a que 9 vidéos (22–24 nov.) → données trop maigres pour YouTube seul. Instagram (likes, ig-stats
+du 25 nov. 20:45, 426 abonnés, +37 depuis le 15 nov.) sert donc de mesure principale.
+- **YouTube (vues ~J+1)** : chiffre 967 (Wemby-Herro), 867 (Murray-Adebayo), **1** (McDaniels, 24 nov. : anomalie
+  probable du compteur public ou vidéo bloquée → à surveiller) ; drill 646 / 140 / 588 ; quiz 785 ; « 5 trucs » Giannis
+  248 ; duel Kobe-LeBron 231. → sur YouTube, les formats courts du quotidien font ~3× les séries.
+- **Instagram, médiane des likes, 7 derniers jours (18–25 nov.) vs 2 semaines d'avant (4–17 nov.)** :
+  chiffre 12 vs 15 (−20 %) ; « 5 trucs » 32,5 vs 29 (+12 %) ; duel 18 vs 41,5 (**−57 %**, commentaires 36 → 10 → 1 → 0 → 0) ;
+  exercice 11 vs 7 (+57 %, retreat 39 et two-ball 22 en tête).
+- Meilleures : Jordan-LeBron 59 likes / 36 com., Wemby 43 pts 51, « 5 trucs » Dončić 48, Wemby-Herro 44, Tatum 39 en 13 h.
+  Pires : pull-up 2, Harden-Sengun 4, Flagg 4, quiz 2–4, Kobe-LeBron 11.
+- **Effet joueur** (chiffre, likes) : superstar ≈ 15 (Dončić 34/18/10, Tatum 39, Giannis 12, Curry 15, SGA 10), Wemby 15–51,
+  autres ≈ 6 même sur 50 pts (Cunningham 52 pts → 6, Harden 51 pts → 4). C'est le 1er facteur, loin devant l'accroche.
+- Heure / accroche / durée : pas d'effet lisible (créneaux fixes par format, joueur qui écrase tout).
+**Verdicts.** Aucune expérience du labo à trancher (1er passage). Chiffre en solo depuis le 24 nov. : trop tôt.
+**Veille (25 nov.).** Virlo sports (6 oct.–16 nov. 2026, 14 933 vidéos) : accroches « tu » 27,6 % à 2× les vues, action
+dès la 1re image 26,5 %, tutoriels 31,6 % (bon signe pour les exercices) ; commentaire d'actu : « affirmation choc » 28,3 %.
+YouTube Shorts : priorité au contenu original (pas de reprise de clips), Shorts > ~30 jours peu poussés (théorie Joos, SEJ).
+Reels (SocialPilot, sept. 2026) : 1re image décisive, partages en DM très pondérés, légendes à mots-clés > hashtags,
+comptes « agrégateurs » pénalisés. Facebook Reels (NestScale, oct. 2026) : 15–30 s, 3–5 hashtags précis.
+**Changements (2).**
+1. *Chiffre de la nuit — priorité aux superstars* (chiffre/pick.py, `STARS` + `is_star`) : bonus +5 au score d'impact
+   (comme les Français ; Wemby +8) pour ~22 stars grand public (LeBron, Curry, Dončić, Giannis, SGA, Jokić, Edwards, Durant,
+   Tatum, Embiid, Flagg, Kyrie, Morant, Booker, J. Brown, Trae, Brunson, D. Mitchell, Harden, A. Davis, Leonard, Lillard),
+   prénom vérifié (pas Seth Curry ni Bronny). Hypothèse : à perf proche, une star fait ~2,5× plus. Testé sur la nuit
+   d'exemple (rendu OK). Mesure : médiane likes Instagram du chiffre (réf. 15) et vues YouTube J+1 (réf. ~900).
+   **Bilan : mer. 2 déc.**
+2. *Duel — accroche « affirmation choc » en « tu »* (duel/SERIE.md, « Consignes du labo ») à partir du duel préparé le
+   jeu. 26 nov. (publié sam. 28). Hypothèse : la question « X ou Y ? » s'use ; une affirmation chiffrée + retournement
+   retient mieux. Mesure : médiane likes Instagram (réf. 18 sur 7 j, 41,5 avant), commentaires, vues YouTube (réf. 231).
+   **Bilan : dim. 6 déc.**
+**Idées en attente.** Duels plus courts (YouTube) ou photos des deux joueurs (jordan.png, kobe.png… à demander à Mathieu) ;
+exercices : plus de dribble « sous pression » (retreat, two-ball en tête) ; accès aux vues Instagram/Facebook/TikTok
+(permissions des applis : à faire par Mathieu, le labo n'y touche pas) ; question de fin « réponds en 1 mot » pour les duels.
+
 ### 23 nov. 2026 — mise en place
 - Historique durable des vues par vidéo créé (`publish/perf_history.json`, rempli chaque soir à partir du 24 nov.).
 - Point de départ (likes Instagram, 9–21 nov.) : duels 18–58 likes et jusqu'à 36 commentaires ; « 5 trucs fous » 25–47 ;

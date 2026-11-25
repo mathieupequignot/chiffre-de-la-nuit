@@ -31,6 +31,28 @@ def is_wemby(p):
     return "wembanyama" in p["last"].lower()
 
 
+# Superstars que le grand public suit (labo d'optimisation, 25 nov. 2026) : nom de famille → début du prénom
+# (pour ne pas confondre Stephen et Seth Curry, LeBron et Bronny James…). Données Instagram 1er–25 nov. :
+# chiffre de la nuit sur une star ≈ 15 likes (médiane), sur un autre joueur ≈ 6, même avec 50 points.
+STARS = {"james": "le", "curry": "ste", "doncic": "lu", "antetokounmpo": "gi", "gilgeous-alexander": "sh",
+         "jokic": "ni", "edwards": "an", "durant": "ke", "tatum": "jay", "embiid": "jo", "flagg": "co",
+         "irving": "ky", "morant": "ja", "booker": "de", "brown": "jay", "young": "tr", "brunson": "ja",
+         "mitchell": "don", "harden": "ja", "davis": "ant", "leonard": "ka", "lillard": "da"}
+
+
+def _norm(s):
+    import unicodedata
+    return "".join(c for c in unicodedata.normalize("NFD", (s or "").lower()) if unicodedata.category(c) != "Mn").strip()
+
+
+def is_star(p):
+    pre = STARS.get(_norm(p["last"]))
+    if not pre:
+        return False
+    f = _norm(p.get("first")).replace(".", "")
+    return f.startswith(pre) if len(f) > 2 else (not f or f[0] == pre[0])
+
+
 def angle_of(p):
     """Angle du récit + score d'impact. On classe par impact (game score + bonus d'exploit),
     et non plus par catégorie : un 52-24 passe devant un triple-double à 32 points."""
@@ -38,7 +60,7 @@ def angle_of(p):
     td = _double_count(p) >= 3
     bonus = (8 if td else 0) + (6 if p["pts"] >= 40 else 0) + (6 if p["pts"] >= 50 else 0) \
         + (6 if p["pts"] >= 20 and p["reb"] >= 20 else 0) + (5 if p["tpm"] >= 8 else 0) \
-        + (8 if is_wemby(p) else (5 if is_french(p) else 0))  # Wemby et les Français passent devant à niveau proche
+        + (8 if is_wemby(p) else (5 if is_french(p) or is_star(p) else 0))  # Wemby, les Français et les superstars passent devant à niveau proche
     if td:
         a = "triple_double"
     elif p["pts"] >= 40:
