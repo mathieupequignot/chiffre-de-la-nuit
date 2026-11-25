@@ -43,13 +43,35 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 - [x] Shaquille O'Neal vs Kareem Abdul-Jabbar — programmé sam. 21 nov. 2026, 20:00
 - [x] LeBron James vs Kobe Bryant — programmé mar. 24 nov. 2026, 20:00
 - [x] Stephen Curry vs Kobe Bryant — programmé jeu. 26 nov. 2026, 20:00
-- [ ] Tim Duncan vs Shaquille O'Neal
+- [x] Tim Duncan vs Shaquille O'Neal — programmé ven. 27 nov. 2026, 20:00
 - [ ] Victor Wembanyama vs Shaquille O'Neal (au même nombre de saisons : préciser « APRÈS 3 SAISONS »)
 - [ ] Allen Iverson vs Stephen Curry
 - [ ] Nikola Jokić vs Shaquille O'Neal
+- [ ] Kobe Bryant vs Shaquille O'Neal
+- [ ] Stephen Curry vs Kevin Durant
+- [ ] Giannis Antetokounmpo vs Nikola Jokić
+- [ ] Victor Wembanyama vs Nikola Jokić
+- [ ] Bill Russell vs Wilt Chamberlain
+- [ ] Steve Nash vs Jason Kidd
 Si un duel fait l'actualité ou est réclamé en commentaire, il peut passer devant.
 
 ## Carnet (le plus récent en haut)
+### Duel 7 — Duncan vs Shaq — programmé le ven. 27 nov. 2026, 20:00
+- Préparé automatiquement le mer. 25 nov. (1er duel non coché ; aucun duel restant n'a de photo pour les deux joueurs,
+  ni Duncan ni Shaq n'en a → 2 silhouettes, nba_id 1495 et 406, rendu OK).
+- Duncan = a (gris argent Spurs 125,135,148 : le noir Spurs serait invisible sur le fond), Shaq = b (violet Lakers 100,45,155) :
+  bon contraste, texte blanc lisible sur la case grise, score final « 4 » gris lisible sur fond noir.
+- Manches : titres 5 vs 4 (D), points carrière 26 496 vs 28 596 (S), rebonds 15 091 vs 13 099 (D), points/match 19,0 vs 23,7 (S),
+  MVP 2 vs 1 (D), record en un match 53 vs 61 (S : Duncan 26 déc. 2001 vs Dallas, Shaq 6 mars 2000 vs Clippers),
+  contres 3 020 vs 2 732 (D), adresse au tir 50,6 % vs 58,2 % (S, `count: false`) → 4-4.
+  Écartés : MVP des Finales (3-3), All-Star (15-15), All-Defensive (15 vs 3).
+- Sources : Land of Basketball + RealGM + ESPN (Duncan), StatMuse + RealGM + Land of Basketball (Shaq),
+  StatMuse + Land of Basketball + RealGM (53 pts), NBA.com + CBS (61 pts, déjà vérifié au duel 4).
+- Appris : vidéo de 34,4 s avec des voix de manche ≤ ~12 mots : bonne durée. RealGM (basketball.realgm.com/player/wd/Summary/<id>)
+  donne totaux, moyennes, % et palmarès (titres, MVP, All-Defensive) sur une page lisible : très bonne 2e source.
+  Le programme est complété de 6 rivalités (Kobe-Shaq, Curry-Durant, Giannis-Jokić, Wemby-Jokić, Russell-Chamberlain, Nash-Kidd).
+  jokic.png, curry.png, durant.png, giannis.png, wemby.png existent : Curry-Durant, Giannis-Jokić et Wemby-Jokić peuvent passer aux vraies photos.
+- Résultats : à relever.
 ### Duel 6 — Curry vs Kobe — programmé le jeu. 26 nov. 2026, 20:00
 - Préparé automatiquement le mar. 24 nov. (1er duel non coché ; aucun duel du programme n'a de photo pour les deux joueurs,
   curry.png existe mais pas kobe.png → 2 silhouettes, nba_id 201939 et 977, rendu OK).
