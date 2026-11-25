@@ -1,0 +1,53 @@
+{
+  "format": "duel",
+  "file": "duel_duncan_shaq",
+  "players": {
+    "a": {"name": "DUNCAN", "nba_id": 1495, "color": [125, 135, 148]},
+    "b": {"name": "SHAQ", "nba_id": 406, "color": [100, 45, 155]}
+  },
+  "hook": "[excited] Duncan ou Shaq ? Huit stats, face à face… et le score final va faire débat !",
+  "hook_tag": "8 STATS · LE ROI DES PIVOTS ?",
+  "rounds": [
+    {"label": "TITRES NBA", "a": "5", "b": "4", "win": "a",
+     "voice": "Les titres : cinq bagues contre quatre. Point Duncan !"},
+    {"label": "POINTS EN CARRIÈRE", "a": "26 496", "b": "28 596", "unit": "SAISON RÉGULIÈRE", "win": "b",
+     "voice": "Points en carrière : vingt-huit mille six cents pour Shaq. Égalité !"},
+    {"label": "REBONDS", "a": "15 091", "b": "13 099", "unit": "EN CARRIÈRE", "win": "a",
+     "voice": "Les rebonds : plus de quinze mille pour Duncan. Il reprend la tête !"},
+    {"label": "POINTS PAR MATCH", "a": "19,0", "b": "23,7", "unit": "MOYENNE EN CARRIÈRE", "win": "b",
+     "voice": "Points par match : vingt-trois virgule sept pour Shaq. Deux partout !"},
+    {"label": "TITRES DE MVP", "a": "2", "b": "1", "win": "a", "note": "DUNCAN : 2 D'AFFILÉE (2002, 2003)",
+     "voice": "Les MVP : deux contre un. Duncan repasse devant !"},
+    {"label": "RECORD EN UN MATCH", "a": "53", "b": "61", "unit": "POINTS", "win": "b",
+     "voice": "Le record en un match : soixante et un points pour Shaq ! Trois partout !"},
+    {"label": "CONTRES", "a": "3 020", "b": "2 732", "unit": "EN CARRIÈRE", "win": "a",
+     "voice": "Les contres : plus de trois mille pour Duncan. Point Duncan !"},
+    {"label": "ADRESSE AU TIR", "a": "50,6 %", "b": "58,2 %", "count": false, "unit": "RÉUSSITE EN CARRIÈRE", "win": "b",
+     "voice": "[excited] Dernière manche, l'adresse au tir : cinquante-huit pour cent pour Shaq… et il égalise !"}
+  ],
+  "verdict": "ÉGALITÉ PARFAITE !",
+  "cta": "C'EST QUI LE MEILLEUR ? 👇",
+  "outro": "[surprised] Quatre partout ! Alors… Duncan ou Shaq ? Dis-le en commentaire !",
+  "cover_tag": "DUEL DE GÉANTS",
+  "caption": "Duncan ou Shaq ? 8 stats, face à face 💪 Les deux monstres des années 2000… et le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇",
+  "yt_title": "Duncan vs Shaq : 8 stats, qui gagne ? 💪",
+  "hashtags": ["#NBA", "#TimDuncan", "#Shaq", "#ShaquilleONeal", "#Spurs", "#Lakers", "#basketball", "#NBAFrance", "#basket"],
+  "sources": {
+    "duncan": [
+      "https://www.landofbasketball.com/nba_players/d/tim_duncan.htm",
+      "https://basketball.realgm.com/player/wd/Summary/272",
+      "https://africa.espn.com/nba/player/stats/_/id/215/tim-duncan",
+      "https://old.statmuse.com/nba/ask/tim-duncan-most-points-in-a-game",
+      "https://www.landofbasketball.com/nba_players_points/50_point_games/tim_duncan_rs.htm",
+      "https://basketball.realgm.com/wiretap/148193/San-Antonio-Dallas-Recap"
+    ],
+    "shaq": [
+      "https://www.statmuse.com/nba/ask/shaq-totals",
+      "https://basketball.realgm.com/player/wd/Summary/755",
+      "https://www.landofbasketball.com/nba_players_rankings/all_time/shaquille_oneal.htm",
+      "https://www.nba.com/news/legendary-moments-history-shaquille-oneal-61-points-birthday-2000",
+      "https://www.cbsnews.com/news/shaqs-61-leads-streaking-lakers"
+    ],
+    "note": "Saison régulière, carrière entière (deux joueurs retraités, chiffres figés). Points 26 496 / 28 596, rebonds 15 091 / 13 099, contres 3 020 / 2 732 : Land of Basketball + RealGM + ESPN (Duncan), StatMuse + RealGM + Land of Basketball (Shaq). Points/match 19,0 / 23,7 et % aux tirs 50,6 / 58,2 : RealGM + ESPN (Duncan), StatMuse + RealGM (Shaq). Titres 5 / 4 et MVP 2 (2002, 2003) / 1 (2000) : Land of Basketball + RealGM (Duncan), StatMuse + RealGM (Shaq). Record en un match : Duncan 53 (26 déc. 2001 vs Mavericks, StatMuse + Land of Basketball + RealGM), Shaq 61 (6 mars 2000 vs Clippers, NBA.com + CBS, déjà vérifié pour le duel Shaq-Kareem). Écartés : MVP des Finales (3-3), All-Star (15-15), All-Defensive (15 vs 3, trop écrasant)."
+  }
+}
