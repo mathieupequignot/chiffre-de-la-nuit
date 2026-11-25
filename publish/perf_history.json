@@ -58,5 +58,35 @@
   "vues": {
    "youtube": 140
   }
+ },
+ "chiffre_2026-11-24": {
+  "date": "2026-11-24",
+  "heure": "08:00",
+  "format": "Chiffre de la nuit",
+  "titre": "Personne n'a fait mieux que McDaniels cette nuit",
+  "accroche": "Personne n'a fait mieux que McDaniels cette nuit. 🤯",
+  "vues": {
+   "youtube": 1
+  }
+ },
+ "drill_step-back": {
+  "date": "2026-11-24",
+  "heure": "18:00",
+  "format": "Drill",
+  "titre": "Pas d'espace pour tirer ? Le drill Step-Back 🏀",
+  "accroche": "Pas d'espace pour tirer ? 🏀 Step-back : attaque, pousse sur le pied avant, atterris équilibré et tire. 👇",
+  "vues": {
+   "youtube": 588
+  }
+ },
+ "duel_duel_lebron_kobe": {
+  "date": "2026-11-24",
+  "heure": "20:00",
+  "format": "Duel",
+  "titre": "Kobe vs LeBron : 8 stats, qui gagne ? 🐍👑",
+  "accroche": "Kobe ou LeBron ? 8 stats, face à face 🐍👑 Le score final va faire débat 😳",
+  "vues": {
+   "youtube": 231
+  }
  }
 }
