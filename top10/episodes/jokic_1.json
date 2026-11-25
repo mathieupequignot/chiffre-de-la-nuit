@@ -1,0 +1,126 @@
+{
+  "file": "5_trucs_fous_jokic",
+  "nba_id": "jokicni01",
+  "photo": "jokic.png",
+  "title": [
+    "5 TRUCS FOUS",
+    "SUR JOKIĆ"
+  ],
+  "header": "5 TRUCS FOUS SUR JOKIĆ",
+  "cover": [
+    "5 TRUCS",
+    "FOUS SUR",
+    "JOKIĆ"
+  ],
+  "cover_tag": "LE N°1 VA TE FAIRE RIRE",
+  "hook": "[excited] Jokić ? Quarante joueurs choisis avant lui à la draft… et c'est lui le génie de la NBA ! Le numéro un va te faire rire.",
+  "facts": [
+    {
+      "voice": "Numéro cinq. Avant la NBA, il buvait environ trois litres de Coca par jour. Le dernier ? Dans l'avion pour Denver !",
+      "visual": {
+        "type": "big",
+        "value": "3",
+        "unit": " L",
+        "label": "DE COCA PAR JOUR",
+        "sub": "AVANT D'ARRIVER EN NBA"
+      },
+      "sources": [
+        "https://www.cbssports.com/nba/news/nuggets-nikola-jokic-used-to-drink-three-liters-of-coca-cola-every-day",
+        "https://www.si.com/extra-mustard/2017/01/03/nikola-jokic-drank-coca-cola-three-liters-daily-denver-nuggets",
+        "https://foxsports.com/stories/other/nikola-jokic-used-to-drink-three-liters-of-coca-cola-every-day"
+      ]
+    },
+    {
+      "voice": "Numéro quatre. Reste jusqu'au bout pour le un ! Un triple-double en quatorze minutes : le plus rapide de l'histoire !",
+      "visual": {
+        "type": "big",
+        "value": "14:33",
+        "unit": "",
+        "label": "POUR UN TRIPLE-DOUBLE",
+        "sub": "RECORD DE 1955 EFFACÉ (2018)"
+      },
+      "sources": [
+        "https://www.si.com/nba/2018/02/16/nikola-jokic-fastest-triple-double-record",
+        "https://www.cbssports.com/nba/news/nikola-jokic-records-fastest-triple-double-in-nba-history-in-stunning-performance",
+        "https://guinnessworldrecords.com/world-records/554860-fastest-triple-double-by-an-nba-player"
+      ]
+    },
+    {
+      "voice": "Numéro trois. La saison dernière, il finit meilleur rebondeur ET meilleur passeur de la NBA. Une première dans l'histoire !",
+      "visual": {
+        "type": "list",
+        "value": "1RE HISTORIQUE",
+        "label": "SAISON 2025-26",
+        "items": [
+          "N°1 AUX REBONDS",
+          "N°1 AUX PASSES",
+          "JAMAIS VU EN NBA"
+        ]
+      },
+      "sources": [
+        "https://www.nba.com/news/nikola-jokic-first-player-lead-nba-assists-rebounds",
+        "https://thescore.com/nba/news/3521843/jokic-becomes-1st-player-to-lead-nba-in-rebounds-assists-in-same-season"
+      ]
+    },
+    {
+      "voice": "Numéro deux. [surprised] Champion NBA, sa priorité : rentrer en Serbie pour ses courses de chevaux… quitte à réclamer un avion à son patron !",
+      "visual": {
+        "type": "versus",
+        "no": "LA FÊTE DU TITRE",
+        "yes": "SES CHEVAUX ✓",
+        "sub": "« LE DIMANCHE, J'AI MES COURSES »"
+      },
+      "sources": [
+        "https://malaysia.news.yahoo.com/nba-finals-its-on-nuggets-josh-kroenke-to-get-nikola-jokic-a-plane-to-serbia-in-time-for-sunday-horse-racing-180519888.html",
+        "https://africa.espn.com/nba/story/_/id/37874286/nikola-jokic-back-serbia-harness-races",
+        "https://www.cbsnews.com/colorado/news/nikola-jokic-sombor-denver-nuggets-back-serbian-hometown-watch-family-horses-compete"
+      ]
+    },
+    {
+      "voice": "[laughs] Et numéro un. Son nom est annoncé à la draft… pendant une pub Taco Bell ! Depuis, il dit n'en avoir jamais mangé.",
+      "visual": {
+        "type": "emoji",
+        "emoji": "🌮",
+        "top": "DRAFTÉ PENDANT UNE PUB",
+        "bottom": "IL N'EN A JAMAIS MANGÉ"
+      },
+      "sources": [
+        "https://www.foxnews.com/sports/nuggets-nikola-jokic-why-hes-never-eaten-taco-bell",
+        "https://bleacherreport.com/articles/25163278-video-nikola-jokic-says-hes-never-eaten-taco-bell-after-draft-night-commercial",
+        "https://www.si.com/nba/nikola-jokic-never-eaten-taco-bell-iconic-nba-draft-moment",
+        "https://www.cbssports.com/nba/news/is-nikola-jokic-the-most-unlikely-mvp-in-nba-history-that-depends-on-the-context-of-the-question"
+      ]
+    }
+  ],
+  "outro": "[excited] Jokić plus fort que Wemby : oui ou non ? Dis-le en commentaire… et choisis le prochain joueur !",
+  "end": [
+    "PLUS FORT QUE WEMBY :",
+    "OUI OU NON ?"
+  ],
+  "caption": "5 trucs fous sur Nikola Jokić 🤯 Le n°1 va te faire rire 🌮😂\nJokić plus fort que Wemby : oui ou non ? Et quel joueur pour le prochain épisode ? 👇",
+  "yt_title": "5 trucs fous sur Nikola Jokić 🤯",
+  "hashtags": [
+    "#NBA",
+    "#Jokic",
+    "#NikolaJokic",
+    "#Nuggets",
+    "#Denver",
+    "#basketball",
+    "#NBAFrance",
+    "#basket",
+    "#lesaviezvous",
+    "#pourtoi",
+    "#fyp"
+  ],
+  "sources": [
+    "NBA.com",
+    "ESPN/AP",
+    "CBS Sports",
+    "Sports Illustrated",
+    "Fox News",
+    "Bleacher Report",
+    "theScore",
+    "Yahoo Sports",
+    "Guinness World Records"
+  ]
+}
