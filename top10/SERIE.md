@@ -36,7 +36,7 @@ de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
 - [x] Giannis Antetokounmpo — giannis.png (épisode du lun. 23 nov. 2026 ; joue au Heat depuis l'été 2026 → `color` Heat dans le JSON)
 - [x] Shai Gilgeous-Alexander — sga.png (épisode du mer. 25 nov. 2026)
 - [x] Anthony Edwards — edwards.png (épisode du ven. 27 nov. 2026)
-- [ ] Nikola Jokić — jokic.png
+- [x] Nikola Jokić — jokic.png (épisode du sam. 28 nov. 2026)
 - [ ] Kevin Durant — durant.png
 - [ ] Cooper Flagg — flagg.png
 - [ ] Kyrie Irving — kyrie.png
@@ -105,6 +105,30 @@ Types de visuels : `big` (grand nombre animé), `bars` (comparaison en barres, `
 `nba_id` : identifiant Basketball-Reference présent dans quiz/nba_ids.json, ou identifiant NBA direct.
 
 ## Carnet (un bloc par épisode, le plus récent en haut)
+### Épisode 9 — Jokić (« 5 trucs fous sur Jokić ») — programmé le sam. 28 nov. 2026, 12:30
+- Équipe vérifiée : Nuggets (joueur de la semaine à l'Ouest le 23/11/2026 : NBA.com Nuggets, Denver Gazette) → joueur
+  d'actualité, passé en tête comme prévu par l'ordre du programme. Couleur `jokic` déjà dans TEAM.
+- Faits : ~3 L de Coca par jour avant la NBA, dernier dans l'avion pour Denver (CBS, SI, Fox Sports) ; triple-double en
+  14 min 33 s contre les Bucks (15/02/2018), record de 1955 effacé (SI, CBS, Guinness) ; 2025-26 : 1er de l'histoire
+  meilleur rebondeur ET passeur (NBA.com, theScore) ; champion 2023 : « I need to go home. On Sundays, I have my horse
+  racing » + courses de trot à Sombor (Yahoo Sports, AP via ESPN et CBS News) ; n°1 : drafté (41e, 2014) pendant une
+  pub Taco Bell, dit n'en avoir jamais mangé (Fox News, Bleacher Report, SI, CBS). Écartés : « il dormait pendant la
+  draft » (une seule source solide), « top 3 points/rebonds/passes 2024-25 » (la source parle aussi des interceptions),
+  « record toujours en vigueur » pour le triple-double (non vérifié en 2026 → formulé « effacé en 2018 »).
+- Amélioration testée (1) : **accroche « affirmation choc » avec un chiffre concret** (« Quarante joueurs choisis avant
+  lui à la draft… et c'est lui le génie de la NBA ! ») au lieu de l'accroche mystère : Virlo, vidéos sans visage
+  (oct.–nov. 2026, 36 443 vidéos) : hooks « shock statement » 31,3 % de vidéos à 2× les vues habituelles, contre 27,9 %
+  pour le teasing d'histoire et 25,2 % pour la question. Question de fin oui/non (« plus fort que Wemby ? », débat FR)
+  et hashtags mixtes conservés. Outro raccourcie (« choisis le prochain joueur » reste à l'écran et dans la légende).
+- Stats Instagram (25 nov. 13:18, 423 abonnés) : Dončić 48 likes / 2 com. (5 j) ; Curry 46 / 0 ; Giannis **27 / 0**
+  en 2 j (accroche d'actu : pas d'effet visible, en dessous de Curry/Dončić) ; LeBron 26 ; Wemby 2 = 29 ; Wemby 1 = 25 ;
+  SGA 3 / 0 après ~1 h. Duels : Jordan-LeBron 59 / 36, Kobe-Jordan 24 / 10, Kobe-LeBron 11 / 0 en 17 h. Chiffre :
+  Wemby-Herro 44, Tatum 23, autres 4–15 ; drills 2–39. → la notoriété du joueur reste le 1er facteur ; la question
+  oui/non n'a donné des commentaires que sur Dončić : à confirmer avec SGA/Edwards/Jokić.
+- Rendu : **35,8 s** (145 mots de voix), aucun débordement ; emoji 🌮 bien rendu ; accent du « Ć » qui frôle le bandeau
+  rouge sur la miniature (acceptable).
+- Pas d'alerte photos : 12 joueurs non traités avec photo.
+
 ### Épisode 8 — Edwards (« 5 trucs fous sur Edwards ») — programmé le ven. 27 nov. 2026, 12:30
 - Équipe vérifiée : Timberwolves (ESPN 27/10/2026 ; AP via MPR News 20/11/2026 : en rééducation après une arthroscopie
   du genou droit le 29/10, pas de date de retour). Couleur `edwards` déjà dans TEAM.
