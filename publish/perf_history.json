@@ -88,5 +88,35 @@
   "vues": {
    "youtube": 231
   }
+ },
+ "chiffre_2026-11-25": {
+  "date": "2026-11-25",
+  "heure": "08:00",
+  "format": "Chiffre de la nuit",
+  "titre": "Tu as vu ce que Tatum a fait cette nuit",
+  "accroche": "Tu as vu ce que Tatum a fait cette nuit ? 🤯",
+  "vues": {
+   "youtube": 0
+  }
+ },
+ "top5_5_trucs_fous_sga": {
+  "date": "2026-11-25",
+  "heure": "12:30",
+  "format": "5 trucs fous",
+  "titre": "5 trucs fous sur Shai Gilgeous-Alexander",
+  "accroche": "5 trucs fous sur Shai Gilgeous-Alexander 🤯 Le n°1 va te faire rire 🏆😂",
+  "vues": {
+   "youtube": 199
+  }
+ },
+ "drill_change-of-pace": {
+  "date": "2026-11-25",
+  "heure": "18:00",
+  "format": "Drill",
+  "titre": "Tu n'arrives pas à passer ton déf ? Le drill Change Of Pace ",
+  "accroche": "Tu n'arrives pas à passer ton défenseur ? 🏀 Change of pace : lent, puis explose sur 3 dribbles. 👇",
+  "vues": {
+   "youtube": 70
+  }
  }
 }
