@@ -50,36 +50,6 @@
   "reported": true
  },
  {
-  "key": "drill_spin-move",
-  "video": "drill_spin-move.mp4",
-  "cover": "drill_spin-move.jpg",
-  "instagram": "Ton spin te fait perdre la balle ? 🏀 Plante le pied avant, pivote, ballon collé à la hanche. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet DRIBBLE 30 (30 jours pour devenir shifty) : 👉 https://1cvkuk-kx.myshopify.com\n\n#basket #basketball #handles #basketballdrills #entrainementbasket #hooper #playground",
-  "yt_title": "Ton spin te fait perdre la balle ? Le drill Spin Move 🏀 #Shorts",
-  "yt_desc": "Ton spin te fait perdre la balle ? 🏀 Plante le pied avant, pivote, ballon collé à la hanche. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet DRIBBLE 30 (30 jours pour devenir shifty) : 👉 https://1cvkuk-kx.myshopify.com\n\n#basket #basketball #handles #basketballdrills #entrainementbasket #hooper #playground\n\n#Shorts",
-  "at": "2026-11-23T18:00:00+01:00",
-  "discord_mid": null,
-  "status": {
-   "facebook": "ok",
-   "youtube": "ok",
-   "instagram": "ok"
-  },
-  "tiktok_caption": null,
-  "platforms": [
-   "facebook",
-   "youtube",
-   "instagram"
-  ],
-  "errors": {
-   "instagram": 1
-  },
-  "ids": {
-   "facebook": "1892847658371897",
-   "youtube": "fDhduoHfmHU",
-   "instagram": "18141544723658328"
-  },
-  "reported": true
- },
- {
   "key": "top5_5_trucs_fous_edwards",
   "video": "top5_5_trucs_fous_edwards.mp4",
   "cover": "top5_5_trucs_fous_edwards.jpg",
@@ -266,8 +236,20 @@
   "yt_desc": "Ton tir part de travers ? 🏀 Lay-down shooting : allongé, tir vers le haut, backspin, le ballon retombe dans ta main. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet SHOOT 30 (30 jours pour devenir un shooter fiable) : lien en bio 🔗\n\n#basket #basketball #shooting #basketballdrills #entrainementbasket #shooter #playground\n\n#Shorts",
   "at": "2026-11-26T18:00:00+01:00",
   "discord_mid": "1575457792742006784",
-  "status": {},
-  "tiktok_caption": "Ton tir part de travers ? 🏀 Lay-down shooting : allongé, tir vers le haut, backspin, le ballon retombe dans ta main. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet SHOOT 30 (30 jours pour devenir un shooter fiable) : lien en bio 🔗\n\n#basket #basketball #shooting #basketballdrills #entrainementbasket #shooter #playground"
+  "status": {
+   "tiktok": "ok",
+   "instagram": "ok",
+   "facebook": "ok",
+   "youtube": "ok"
+  },
+  "tiktok_caption": "Ton tir part de travers ? 🏀 Lay-down shooting : allongé, tir vers le haut, backspin, le ballon retombe dans ta main. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet SHOOT 30 (30 jours pour devenir un shooter fiable) : lien en bio 🔗\n\n#basket #basketball #shooting #basketballdrills #entrainementbasket #shooter #playground",
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7712526074819020822",
+   "instagram": "18143191327726183",
+   "facebook": "1825244675345535",
+   "youtube": "VFBzWLSrXuY"
+  },
+  "reported": true
  },
  {
   "key": "top5_5_trucs_fous_durant",
