@@ -1,0 +1,60 @@
+{
+  "file": "5_trucs_fous_durant",
+  "nba_id": "duranke01",
+  "photo": "durant.png",
+  "title": ["5 TRUCS FOUS", "SUR DURANT"],
+  "header": "5 TRUCS FOUS SUR DURANT",
+  "cover": ["5 TRUCS", "FOUS SUR", "DURANT"],
+  "cover_tag": "LE N°1 VA TE FAIRE RIRE",
+  "hook": "[excited] Kevin Durant a dépassé Michael Jordan… mais il s'est fait piéger par son propre Twitter !",
+  "facts": [
+    {
+      "voice": "Numéro cinq. Avant la draft, il ne soulève pas une seule fois quatre-vingt-quatre kilos au développé couché. Drafté deuxième quand même !",
+      "visual": {"type": "big", "value": "0", "unit": " FOIS", "label": "84 KG AU DÉVELOPPÉ COUCHÉ", "sub": "TESTS DE LA DRAFT 2007"},
+      "sources": [
+        "https://www.espn.com/blog/truehoop/post/_/id/45385/kevin-durants-draft-combine-flop",
+        "https://www.complex.com/sports/2017/05/remember-when-everyone-freaked-out-after-kevin-durant-struggled-lift-weights-nba-combine",
+        "https://www.nba.com/news/kevin-durant-passes-michael-jordan-for-no-5-on-all-time-scoring-list"
+      ]
+    },
+    {
+      "voice": "Numéro quatre. Élu MVP en 2014, il pleure devant sa mère : tu dormais le ventre vide pour nous… c'est toi, la vraie MVP !",
+      "visual": {"type": "versus", "no": "LUI, LE MVP", "yes": "SA MÈRE, LA VRAIE MVP ✓", "sub": "DISCOURS DU 6 MAI 2014"},
+      "sources": [
+        "https://www.nba.com/news/kevin-durant-you-the-real-mvp-speech-mothers-day",
+        "https://www.si.com/si-wire/2014/05/06/kevin-durant-delivers-poignant-mvp-speech"
+      ]
+    },
+    {
+      "voice": "Numéro trois. Et reste jusqu'au bout ! Quatre médailles d'or olympiques : aucun basketteur n'avait fait ça.",
+      "visual": {"type": "bars", "value": "4", "label": "MÉDAILLES D'OR OLYMPIQUES", "bars": [["DURANT", "4", 1.0, "accent"], ["ANCIEN RECORD", "3", 0.75, "silver"]], "note": "1ER HOMME DE L'HISTOIRE"},
+      "sources": [
+        "https://bleacherreport.com/articles/10131493-kevin-durant-wins-historic-4th-gold-medal-for-usa-vs-france-at-2024-paris-olympics",
+        "https://andscape.com/features/kevin-durant-now-the-gold-standard-for-usa-mens-basketball/"
+      ]
+    },
+    {
+      "voice": "Numéro deux. En mars 2026, avec Houston, il dépasse Michael Jordan au total de points en carrière.",
+      "visual": {"type": "list", "value": "JORDAN DÉPASSÉ", "label": "AU TOTAL DE POINTS EN CARRIÈRE", "items": ["21 MARS 2026", "32 294 POINTS", "AVEC HOUSTON"]},
+      "sources": [
+        "https://www.nba.com/news/kevin-durant-passes-michael-jordan-for-no-5-on-all-time-scoring-list",
+        "https://www.si.com/nba/rockets/kevin-durant-passes-michael-jordan-fifth-all-time-scoring-list"
+      ]
+    },
+    {
+      "voice": "[laughs] Et numéro un. Sur Twitter, il défend Kevin Durant… en parlant de lui à la troisième personne ! Oups : c'était son vrai compte. Il s'est excusé.",
+      "visual": {"type": "emoji", "emoji": "🤦", "top": "IL PARLE DE LUI AU « IL »", "bottom": "SUR SON VRAI COMPTE !"},
+      "sources": [
+        "https://www.si.com/nba/2017/09/18/kevin-durant-deleted-tweet-billy-donovan-russell-westbrook-thunder",
+        "https://www.nbcsports.com/nba/news/kevin-durant-cops-to-tweets-calls-elements-of-them-childish-and-idiotic",
+        "https://cbssports.com/nba/news/kevin-durant-burner-account-controversy"
+      ]
+    }
+  ],
+  "outro": "[excited] KD plus fort que Jordan : oui ou non ? Dis-le en commentaire !",
+  "end": ["KD PLUS FORT QUE", "JORDAN : OUI OU NON ?"],
+  "caption": "5 trucs fous sur Kevin Durant 🤯 Le n°1 va te faire rire 🤦😂\nKD plus fort que Jordan : oui ou non ? Et quel joueur pour le prochain épisode ? 👇",
+  "yt_title": "5 trucs fous sur Kevin Durant 🤯",
+  "hashtags": ["#NBA", "#KevinDurant", "#KD", "#Rockets", "#Houston", "#basketball", "#NBAFrance", "#basket", "#lesaviezvous", "#pourtoi", "#fyp"],
+  "sources": ["ESPN", "Complex", "NBA.com", "Sports Illustrated", "Bleacher Report", "Andscape", "NBC Sports", "CBS Sports"]
+}
