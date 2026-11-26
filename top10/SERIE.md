@@ -37,7 +37,7 @@ de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
 - [x] Shai Gilgeous-Alexander — sga.png (épisode du mer. 25 nov. 2026)
 - [x] Anthony Edwards — edwards.png (épisode du ven. 27 nov. 2026)
 - [x] Nikola Jokić — jokic.png (épisode du sam. 28 nov. 2026)
-- [ ] Kevin Durant — durant.png
+- [x] Kevin Durant — durant.png (épisode du lun. 30 nov. 2026)
 - [ ] Cooper Flagg — flagg.png
 - [ ] Kyrie Irving — kyrie.png
 - [ ] Joel Embiid — embiid.png (ajouté le 14/11 : photo arrivée le 12/11)
@@ -105,6 +105,28 @@ Types de visuels : `big` (grand nombre animé), `bars` (comparaison en barres, `
 `nba_id` : identifiant Basketball-Reference présent dans quiz/nba_ids.json, ou identifiant NBA direct.
 
 ## Carnet (un bloc par épisode, le plus récent en haut)
+### Épisode 10 — Durant (« 5 trucs fous sur Durant ») — programmé le lun. 30 nov. 2026, 12:30
+- Équipe vérifiée : Rockets (Washington Post 23/11/2026 : 32 pts contre les Clippers ; ESPN, Rockets-Suns 25/11/2026).
+  Couleur `durant` (rouge Rockets) déjà dans TEAM. La photo fournie le montre en t-shirt Warriors : OK (cf. Giannis).
+- Faits : 0 répétition à 84 kg (185 lb) au développé couché, seul prospect dans ce cas en 2007, puis drafté n°2 (ESPN
+  TrueHoop, Complex, NBA.com) ; discours de MVP du 6 mai 2014, « You the real MVP », « You went to sleep hungry » (NBA.com,
+  SI) ; 1er basketteur avec 4 médailles d'or olympiques (Bleacher Report, Andscape) ; dépasse Jordan (32 292) le
+  21/03/2026 avec Houston, 32 294 pts (NBA.com/AP, SI) ; n°1 : tweets de 2017 à la 3e personne contre le Thunder et
+  Billy Donovan depuis son vrai compte, excuses ensuite (SI, NBC Sports, CBS). Écartés : « 33 000 points » le 25/11
+  (une seule source faible), classement exact « 5e » en nov. 2026 (non revérifié → « Jordan dépassé » seulement).
+- Amélioration testée (1) : **accroche « affirmation choc » reconduite** (« Kevin Durant a dépassé Michael Jordan… mais
+  il s'est fait piéger par son propre Twitter ! »), pour avoir 2 mesures avant de trancher (Jokić = 1re). Virlo (MAJ
+  19/11/2026, 6 sem.) : vidéos sans visage, « shock statement » 31,3 % > story tease 27,9 % > question 25,2 % ; listicles
+  sport : la « bold claim » est la plus utilisée (44 %), l'avertissement à 25,8 % (petit échantillon). Question de fin
+  clivante avec la légende de comparaison (« KD plus fort que Jordan : oui ou non ? ») pour tenter de relancer les
+  commentaires (SGA à 0). Piste suivante : viser ~30 s (médiane des vidéos sans visage qui percent = 24 s chez Virlo).
+- Stats Instagram (26 nov. 13:16, 434 abonnés) : **SGA 40 likes / 0 com.** en ~1 j (accroche avertissement + hashtags
+  mixtes : 3e meilleur épisode après Dončić 48 / 2 et Curry 46 / 0) ; Giannis 27 / 0 ; LeBron 26 ; Wemby 2 = 29.
+  Chiffre : Tatum 55 / 1, Wemby 34–44, autres 4–15 ; duels récents en baisse (Kobe-LeBron 11, Shaq-Kareem 19) ; drills
+  2–39. → les « 5 trucs » restent au niveau des meilleurs chiffres ; commentaires toujours rares hors Dončić.
+- Rendu : **38,1 s** (138 mots de voix), aucun débordement ; emoji 🤦 bien rendu ; avatar centré.
+- Pas d'alerte photos : 11 joueurs non traités avec photo.
+
 ### Épisode 9 — Jokić (« 5 trucs fous sur Jokić ») — programmé le sam. 28 nov. 2026, 12:30
 - Équipe vérifiée : Nuggets (joueur de la semaine à l'Ouest le 23/11/2026 : NBA.com Nuggets, Denver Gazette) → joueur
   d'actualité, passé en tête comme prévu par l'ordre du programme. Couleur `jokic` déjà dans TEAM.
