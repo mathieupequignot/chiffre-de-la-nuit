@@ -57,18 +57,37 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 - [x] LeBron James vs Kobe Bryant — programmé mar. 24 nov. 2026, 20:00
 - [x] Stephen Curry vs Kobe Bryant — programmé jeu. 26 nov. 2026, 20:00
 - [x] Tim Duncan vs Shaquille O'Neal — programmé ven. 27 nov. 2026, 20:00
+- [x] Giannis Antetokounmpo vs Nikola Jokić — programmé sam. 28 nov. 2026, 20:00 (passé devant : 2 photos, pas de Shaq 2 soirs de suite)
 - [ ] Victor Wembanyama vs Shaquille O'Neal (au même nombre de saisons : préciser « APRÈS 3 SAISONS »)
 - [ ] Allen Iverson vs Stephen Curry
 - [ ] Nikola Jokić vs Shaquille O'Neal
 - [ ] Kobe Bryant vs Shaquille O'Neal
 - [ ] Stephen Curry vs Kevin Durant
-- [ ] Giannis Antetokounmpo vs Nikola Jokić
 - [ ] Victor Wembanyama vs Nikola Jokić
 - [ ] Bill Russell vs Wilt Chamberlain
 - [ ] Steve Nash vs Jason Kidd
 Si un duel fait l'actualité ou est réclamé en commentaire, il peut passer devant.
 
 ## Carnet (le plus récent en haut)
+### Duel 8 — Giannis vs Jokić — programmé le sam. 28 nov. 2026, 20:00
+- Préparé automatiquement le jeu. 26 nov. Passé devant Wemby-Shaq (1er non coché) : giannis.png ET jokic.png existent
+  (1er duel avec de vraies photos) et Shaq était déjà dans le duel du ven. 27. 1er duel avec la nouvelle accroche
+  « affirmation choc » en « tu » (test du labo) : « Jokić a plus de trois fois plus de triple-doubles que Giannis… et pourtant,
+  le score final va te surprendre ! », hook_tag « 200 TRIPLE-DOUBLES… MAIS ? ».
+- Giannis = a (rouge Heat éclairci 200,16,46 : échangé de Milwaukee à Miami à l'été 2026 selon BBR, Wikipedia, Land of Basketball),
+  Jokić = b (bleu Nuggets éclairci 25,85,165). Attention : la photo giannis.png est en maillot des Bucks → décalage avec le rouge Heat,
+  acceptable ; une photo en maillot du Heat serait mieux.
+- Manches : MVP 2 vs 3 (J), points carrière « 21 900+ » vs « 18 400+ » (G), passes « 4 500+ » vs « 6 200+ » (J),
+  record en un match 64 vs 61 (G : 13 déc. 2023 vs Pacers / 1er avr. 2025 vs Wolves, 2 prol.), paniers à 3 pts « 560+ » vs « 940+ » (J),
+  All-Star 10 vs 8 (G), Défenseur de l'année 1 vs 0 (G), triple-doubles « 58+ » vs « 200+ » (J, 2e de l'histoire derrière Westbrook 209) → 4-4.
+  Écartés : titres (1-1), MVP des Finales (1-1), rebonds (9 085 vs 9 152 : trop serré, bouge chaque soir), lancers francs.
+- Sources : BBR + Wikipedia + Land of Basketball + ESPN (Giannis), StatMuse + ESPN + NBA.com + Yahoo/AP + Denver Gazette (Jokić),
+  liste Wikipedia des triple-doubles (au 12 nov.), NBA.com (récompenses 2025-26 : SGA MVP, Wemby DPOY).
+- Appris : deux joueurs en activité → toutes les stats cumulées en planchers « + » avec `count: false` ; les sources divergent de
+  quelques unités (ESPN parfois en retard d'un ou deux matchs). Vidéo de 38,0 s (haut de fourchette : voix de manche à ~10 mots max).
+  Les vraies photos rendent bien mieux que les silhouettes ; le nom « JOKIĆ » de l'accroche chevauche les têtes mais reste lisible.
+  WebFetch : StatMuse « most points in a game » et BBR Jokić refusés (permission) ; Land of Basketball, ESPN (espn.in) et Wikipedia lisibles.
+- Résultats : à relever.
 ### Duel 7 — Duncan vs Shaq — programmé le ven. 27 nov. 2026, 20:00
 - Préparé automatiquement le mer. 25 nov. (1er duel non coché ; aucun duel restant n'a de photo pour les deux joueurs,
   ni Duncan ni Shaq n'en a → 2 silhouettes, nba_id 1495 et 406, rendu OK).
