@@ -122,9 +122,21 @@
   "yt_desc": "Curry ou Kobe ? 8 stats, face à face 🎯🐍 Le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇\n\n#Shorts #NBA #Curry #Kobe #StephenCurry #KobeBryant #Warriors #Lakers #basketball #NBAFrance #basket",
   "at": "2026-11-26T20:00:00+01:00",
   "discord_mid": "1574802739324784812",
-  "status": {},
+  "status": {
+   "tiktok": "ok",
+   "instagram": "ok",
+   "facebook": "ok",
+   "youtube": "ok"
+  },
   "tiktok_caption": "Curry ou Kobe ? 8 stats, face à face 🎯🐍 Le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇\n\n#NBA #Curry #Kobe #StephenCurry #KobeBryant #Warriors #Lakers #basketball #NBAFrance #basket",
-  "discord_video": "duel_duel_curry_kobe_discord.mp4"
+  "discord_video": "duel_duel_curry_kobe_discord.mp4",
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7712571767931684886",
+   "instagram": "18116849321065210",
+   "facebook": "1707896180924599",
+   "youtube": "s6rds1c4hiI"
+  },
+  "reported": true
  },
  {
   "key": "chiffre_2026-11-25",
