@@ -1,0 +1,60 @@
+{
+  "format": "duel",
+  "file": "duel_giannis_jokic",
+  "players": {
+    "a": {"name": "GIANNIS", "photo": "giannis.png", "nba_id": 203507, "color": [200, 16, 46]},
+    "b": {"name": "JOKIĆ", "photo": "jokic.png", "nba_id": 203999, "color": [25, 85, 165]}
+  },
+  "hook": "[excited] Jokić a plus de trois fois plus de triple-doubles que Giannis… et pourtant, le score final va te surprendre !",
+  "hook_tag": "200 TRIPLE-DOUBLES… MAIS ?",
+  "rounds": [
+    {"label": "TITRES DE MVP", "a": "2", "b": "3", "win": "b", "note": "JOKIĆ : 2021, 2022 ET 2024",
+     "voice": "Les MVP : trois pour Jokić, deux pour Giannis. Point Jokić !"},
+    {"label": "POINTS EN CARRIÈRE", "a": "21 900+", "b": "18 400+", "count": false, "unit": "SAISON RÉGULIÈRE", "win": "a",
+     "voice": "Points en carrière : près de vingt-deux mille pour Giannis. Égalité !"},
+    {"label": "PASSES DÉCISIVES", "a": "4 500+", "b": "6 200+", "count": false, "unit": "EN CARRIÈRE", "win": "b",
+     "voice": "Les passes : plus de six mille deux cents pour Jokić. Il reprend la tête !"},
+    {"label": "RECORD EN UN MATCH", "a": "64", "b": "61", "unit": "POINTS", "win": "a",
+     "voice": "Record en un match : soixante-quatre points pour Giannis ! Deux partout !"},
+    {"label": "PANIERS À 3 POINTS", "a": "560+", "b": "940+", "count": false, "unit": "EN CARRIÈRE", "win": "b",
+     "voice": "Les paniers à trois points : plus de neuf cent quarante pour Jokić. Point Jokić !"},
+    {"label": "SÉLECTIONS ALL-STAR", "a": "10", "b": "8", "win": "a",
+     "voice": "Les All-Star : dix sélections contre huit. Trois partout !"},
+    {"label": "DÉFENSEUR DE L'ANNÉE", "a": "1", "b": "0", "win": "a", "note": "GIANNIS : MVP ET DPOY EN 2020",
+     "voice": "Défenseur de l'année : Giannis l'a été, pas Jokić. Giannis passe devant !"},
+    {"label": "TRIPLE-DOUBLES", "a": "58+", "b": "200+", "count": false, "unit": "EN CARRIÈRE", "win": "b", "note": "JOKIĆ : 2E DE L'HISTOIRE",
+     "voice": "[excited] Dernière manche, les triple-doubles : plus de deux cents pour Jokić… et il égalise !"}
+  ],
+  "verdict": "ÉGALITÉ PARFAITE !",
+  "cta": "C'EST QUI LE MEILLEUR ? 👇",
+  "outro": "[surprised] Quatre partout ! Alors… Giannis ou Jokić ? Dis-le en commentaire !",
+  "cover_tag": "DUEL DE MVP",
+  "caption": "Giannis ou Jokić ? 8 stats, face à face 💪 Deux monstres, cinq MVP à eux deux… et le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇",
+  "yt_title": "Giannis vs Jokić : 8 stats, qui gagne ? 💪",
+  "hashtags": ["#NBA", "#Giannis", "#Jokic", "#Heat", "#Nuggets", "#GiannisAntetokounmpo", "#basketball", "#NBAFrance", "#basket"],
+  "sources": {
+    "giannis": [
+      "https://www.basketball-reference.com/players/a/antetgi01.html",
+      "https://en.wikipedia.org/wiki/Giannis_Antetokounmpo",
+      "https://www.landofbasketball.com/nba_players_stats/giannis_antetokounmpo_tot.htm",
+      "https://www.landofbasketball.com/nba_players_rankings/all_time/giannis_antetokounmpo.htm",
+      "https://www.landofbasketball.com/nba_players_stats/triple_doubles/giannis_antetokounmpo.htm",
+      "https://www.espn.in/nba/player/stats/_/id/3032977/giannis-antetokounmpo",
+      "https://www.nba.com/news/giannis-antetokounmpo-sets-bucks-record-with-64-points",
+      "https://www.philstar.com/sports/2023/12/14/2318822/giannis-goes-berserk-career-high-64-points-bucks-trample-pacers",
+      "https://roundtable.io/sports/nba/heat/news/miami-heat-remain-winless-despite-giannis-antetokounmpo-triple-double"
+    ],
+    "jokic": [
+      "https://www.statmuse.com/nba/ask/jokic-career-totals",
+      "https://www.espn.com/nba/player/stats/_/id/3112335",
+      "https://www.nba.com/news/nuggets-murray-jokic-make-history-in-win-over-bulls",
+      "https://sports.yahoo.com/articles/jokic-hits-triple-double-no-042723846.html",
+      "https://en.wikipedia.org/wiki/List_of_NBA_career_triple-double_leaders",
+      "https://www.denvergazette.com/2026/01/19/nikola-jokic-named-starter-for-nba-all-star-game-nuggets-stars-eighth-selection/",
+      "https://www.nba.com/news/nikola-jokic-scores-career-best-61-points-in-double-overtime-loss-to-wolves",
+      "https://www.news4jax.com/sports/2025/04/02/jokic-scores-career-high-61-points-plays-nearly-53-minutes-in-140-139-double-ot-loss-to-wolves/",
+      "https://www.nba.com/news/2025-2026-regular-season-awards"
+    ],
+    "note": "Saison régulière, deux joueurs en activité (Giannis au Miami Heat depuis l'été 2026, Jokić aux Nuggets) : planchers vérifiés au 26 nov. 2026. Points 21 954 (BBR, ESPN) / 21 986 (Land of Basketball) vs 18 403 (StatMuse) / 18 385 (ESPN). Passes 4 566-4 570 (BBR, LoB) vs 6 223 (StatMuse) / 6 218 (ESPN). Paniers à 3 pts 565 (LoB, ESPN, BBR) vs 946 (StatMuse) / 945 (ESPN). Triple-doubles : Giannis 58 (Land of Basketball ; Wikipedia au 12 nov. 2026 ; cohérent avec Roundtable : 59 dont 3 en playoffs avant le 26 oct., +2 depuis), Jokić 202 le 22 nov. 2026 vs Bulls (NBA.com + Yahoo/AP), 2e derrière Westbrook (209). MVP : Giannis 2 (2019, 2020 : Wikipedia + BBR), Jokić 3 (2021, 2022, 2024 ; SGA MVP 2025 et 2026 : NBA.com + CBS/AP). All-Star : Giannis 10 (Wikipedia + BBR), Jokić 8 (Denver Gazette + StatMuse). DPOY : Giannis 2020 (Wikipedia + BBR), Jokić jamais (DPOY 2026 Wembanyama, NBA.com). Records : Giannis 64 le 13 déc. 2023 vs Pacers (NBA.com/AP + Philstar ; un seul match à 60+ selon Land of Basketball), Jokić 61 le 1er avr. 2025 vs Timberwolves, 2 prol. (NBA.com + AP). Écartés : titres (1-1), MVP des Finales (1-1), rebonds (trop serrés), lancers francs."
+  }
+}
