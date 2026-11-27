@@ -592,10 +592,10 @@ def mix(voice_wav, T, out_wav):
     out += crowd[:n].astype(np.float32)
     for k in ORDER[1:]:
         add(whoosh(), max(0, T.span[k][0] - 0.12), 0.09)
-    a, b = T.span["MISS"]; add(_sine(220, 0.5, 9) + 0.6 * _sine(330, 0.5, 12), a + (b - a) * 0.72, 0.22)    # clang
+    a, b = T.span["MISS"]; add(_sine(220, 0.5, 9) + 0.6 * _sine(330, 0.5, 12)[:len(_sine(220, 0.5, 9))], a + (b - a) * 0.72, 0.22)    # clang
     a, b = T.span["SHOT"]
     for j in range(int((b - a) / 0.75)):                                                                   # battements de cœur
-        add(_sine(55, 0.22, 18) + 0.5 * _sine(80, 0.18, 20), a + 0.1 + j * 0.75, 0.5)
+        add(_sine(55, 0.22, 18), a + 0.1 + j * 0.75, 0.5); add(_sine(80, 0.18, 20), a + 0.1 + j * 0.75, 0.25)
     a, b = T.span["IN"]
     add(_noise(0.25, 6, 3) * np.exp(-np.arange(int(0.25 * SR)) / SR * 14), a, 0.25)                       # filet
     roar = _noise(3.5, 30, 9) * np.minimum(1, np.arange(int(3.5 * SR)) / (0.2 * SR)) * np.exp(-np.arange(int(3.5 * SR)) / SR * 0.8)
