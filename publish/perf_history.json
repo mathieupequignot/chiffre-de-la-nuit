@@ -118,5 +118,35 @@
   "vues": {
    "youtube": 70
   }
+ },
+ "chiffre_2026-11-26": {
+  "date": "2026-11-26",
+  "heure": "08:00",
+  "format": "Chiffre de la nuit",
+  "titre": "Tu as vu ce que Wemby a fait cette nuit",
+  "accroche": "Tu as vu ce que Wemby a fait cette nuit ? 🤯",
+  "vues": {
+   "youtube": 8
+  }
+ },
+ "drill_lay-down-shooting": {
+  "date": "2026-11-26",
+  "heure": "18:00",
+  "format": "Drill",
+  "titre": "Ton tir part de travers ? Le drill Lay-Down Shooting 🏀",
+  "accroche": "Ton tir part de travers ? 🏀 Lay-down shooting : allongé, tir vers le haut, backspin, le ballon retombe dans ta main. 👇",
+  "vues": {
+   "youtube": 259
+  }
+ },
+ "duel_duel_curry_kobe": {
+  "date": "2026-11-26",
+  "heure": "20:00",
+  "format": "Duel",
+  "titre": "Curry vs Kobe : 8 stats, qui gagne ? 🎯🐍",
+  "accroche": "Curry ou Kobe ? 8 stats, face à face 🎯🐍 Le score final va faire débat 😳",
+  "vues": {
+   "youtube": 181
+  }
  }
 }
