@@ -1,8 +1,11 @@
-name: Prototype « L'action qui a tout changé »
+name: Vidéo « L'action qui a tout changé »
 
 on:
   workflow_dispatch:
     inputs:
+      episode:
+        description: "Épisode JSON (action/episodes/...)"
+        default: "action/episodes/ray_allen_2013.json"
       queue_at:
         description: "Programmer la publication : AAAA-MM-JJ HH:MM (vide = simple aperçu)"
         required: false
@@ -37,7 +40,7 @@ jobs:
           ELEVENLABS_VOICE_ID: qR7W98P3YFvanKmMWcIb
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
-        run: python -m action.main --out docs/proto ${{ inputs.queue_at && format('--queue-at "{0}"', inputs.queue_at) || '' }}
+        run: python -m action.main --episode "${{ inputs.episode }}" --out docs/proto ${{ inputs.queue_at && format('--queue-at "{0}"', inputs.queue_at) || '' }}
       - run: |
           git config user.name "proto-bot"
           git config user.email "proto-bot@users.noreply.github.com"

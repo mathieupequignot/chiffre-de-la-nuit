@@ -1,0 +1,1435 @@
+{
+ "file": "action_ray_allen_2013",
+ "title": "Le tir de Ray Allen (finale NBA 2013, match 6)",
+ "teams": {
+  "A": {
+   "code": "MIA",
+   "color": [
+    152,
+    0,
+    46
+   ],
+   "num": [
+    255,
+    255,
+    255
+   ]
+  },
+  "B": {
+   "code": "SA",
+   "color": [
+    190,
+    198,
+    206
+   ],
+   "num": [
+    20,
+    20,
+    24
+   ],
+   "shorts": [
+    40,
+    40,
+    46
+   ]
+  }
+ },
+ "floor_text": "FINALE NBA 2013",
+ "rope_scene": "ROPE",
+ "empty_scene": "ROPE",
+ "players": {
+  "lebron": {
+   "team": "A",
+   "num": "6",
+   "label": "LEBRON",
+   "pos": [
+    -6,
+    27
+   ]
+  },
+  "allen": {
+   "team": "A",
+   "num": "34",
+   "label": "RAY ALLEN",
+   "pos": [
+    16,
+    21
+   ]
+  },
+  "bosh": {
+   "team": "A",
+   "num": "1",
+   "label": "BOSH",
+   "pos": [
+    -4,
+    13
+   ]
+  },
+  "h4": {
+   "team": "A",
+   "pos": [
+    -21,
+    8
+   ]
+  },
+  "h5": {
+   "team": "A",
+   "pos": [
+    7,
+    15
+   ]
+  },
+  "s1": {
+   "team": "B",
+   "pos": [
+    -5,
+    24.5
+   ]
+  },
+  "s2": {
+   "team": "B",
+   "pos": [
+    14,
+    18.5
+   ]
+  },
+  "s3": {
+   "team": "B",
+   "pos": [
+    -2.5,
+    9.5
+   ]
+  },
+  "s4": {
+   "team": "B",
+   "pos": [
+    -18,
+    8.5
+   ]
+  },
+  "s5": {
+   "team": "B",
+   "pos": [
+    4,
+    11.5
+   ]
+  }
+ },
+ "scenes": [
+  {
+   "cue": "H",
+   "small": "FINALE NBA · IL RESTE",
+   "big": "28 SECONDES",
+   "color": "yellow",
+   "voice": "[excited] Il reste vingt-huit secondes en finale NBA. La fête est prête… mais l'histoire va basculer.",
+   "score": [
+    89,
+    94
+   ],
+   "clock": "0:28.2",
+   "cam": {
+    "from": [
+     [
+      -30,
+      70,
+      60
+     ],
+     [
+      0,
+      14,
+      0
+     ],
+     1300
+    ],
+    "to": [
+     [
+      -10,
+      62,
+      40
+     ],
+     [
+      0,
+      14,
+      2
+     ],
+     1500
+    ]
+   },
+   "labels": [
+    "lebron"
+   ],
+   "ball": [
+    {
+     "do": "dribble",
+     "who": "lebron"
+    }
+   ]
+  },
+  {
+   "cue": "CTX",
+   "small": "JUIN 2013 · MATCH 6",
+   "big": "SAN ANTONIO +5",
+   "color": "silver",
+   "voice": "Juin 2013, match six. San Antonio mène de cinq points. Encore une victoire… et les Spurs sont champions.",
+   "score": [
+    89,
+    94
+   ],
+   "clock": "0:28.2",
+   "cam": {
+    "from": [
+     [
+      0,
+      70,
+      46
+     ],
+     [
+      0,
+      15,
+      0
+     ],
+     1500
+    ],
+    "to": [
+     [
+      8,
+      64,
+      40
+     ],
+     [
+      0,
+      13,
+      0
+     ],
+     1550
+    ]
+   },
+   "labels": [
+    "lebron"
+   ],
+   "ball": [
+    {
+     "do": "dribble",
+     "who": "lebron"
+    }
+   ]
+  },
+  {
+   "cue": "ROPE",
+   "small": "LA FÊTE SE PRÉPARE",
+   "big": "CORDES JAUNES",
+   "color": "yellow",
+   "voice": "Autour du terrain, la sécurité déroule déjà les cordes jaunes. Des milliers de fans de Miami ont quitté la salle.",
+   "score": [
+    89,
+    94
+   ],
+   "cam": {
+    "from": [
+     [
+      28,
+      66,
+      70
+     ],
+     [
+      0,
+      18,
+      0
+     ],
+     1100
+    ],
+    "to": [
+     [
+      -24,
+      66,
+      66
+     ],
+     [
+      0,
+      18,
+      0
+     ],
+     1100
+    ]
+   },
+   "labels": [
+    "lebron"
+   ],
+   "ball": [
+    {
+     "do": "dribble",
+     "who": "lebron"
+    }
+   ]
+  },
+  {
+   "cue": "BACK",
+   "small": "MIAMI REVIENT…",
+   "big": "IL FAUT 3 POINTS",
+   "color": "red",
+   "voice": "LeBron marque à trois points. Moins deux. Puis Leonard ne met qu'un lancer franc sur deux. Miami doit marquer à trois points.",
+   "score": [
+    92,
+    95
+   ],
+   "cam": {
+    "from": [
+     [
+      0,
+      64,
+      40
+     ],
+     [
+      0,
+      15,
+      0
+     ],
+     1500
+    ],
+    "to": [
+     [
+      -6,
+      58,
+      34
+     ],
+     [
+      -2,
+      14,
+      2
+     ],
+     1550
+    ]
+   },
+   "moves": {
+    "lebron": {
+     "to": [
+      -9,
+      25
+     ],
+     "p": [
+      0,
+      0.3
+     ]
+    },
+    "s1": {
+     "to": [
+      -8,
+      23
+     ],
+     "p": [
+      0,
+      0.3
+     ]
+    }
+   },
+   "jumps": {
+    "lebron": [
+     0.08,
+     0.2,
+     1.6
+    ]
+   },
+   "arms": {
+    "lebron": [
+     0.04,
+     0.2
+    ]
+   },
+   "ball": [
+    {
+     "do": "hold",
+     "who": "lebron",
+     "p": [
+      0,
+      0.08
+     ]
+    },
+    {
+     "do": "shot",
+     "who": "lebron",
+     "result": "make",
+     "apex": 9,
+     "p": [
+      0.08,
+      0.3
+     ]
+    },
+    {
+     "do": "through",
+     "floor": 1,
+     "p": [
+      0.3,
+      0.4
+     ]
+    },
+    {
+     "do": "dribble",
+     "who": "lebron",
+     "p": [
+      0.4,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "cue": "MISS",
+   "small": "DERNIÈRE CHANCE",
+   "big": "RATÉ !",
+   "color": "red",
+   "voice": "Dernière chance. LeBron tire à trois points… [surprised] raté !",
+   "score": [
+    92,
+    95
+   ],
+   "cam": {
+    "from": [
+     [
+      -14,
+      52,
+      30
+     ],
+     [
+      -2,
+      12,
+      4
+     ],
+     1500
+    ],
+    "to": [
+     [
+      -6,
+      40,
+      26
+     ],
+     [
+      0,
+      8,
+      5
+     ],
+     1500
+    ]
+   },
+   "chip": "RECONSTITUTION SIMPLIFIÉE",
+   "moves": {
+    "bosh": {
+     "to": [
+      -1,
+      10
+     ],
+     "p": [
+      0.4,
+      1
+     ]
+    },
+    "s3": {
+     "to": [
+      0.5,
+      8
+     ],
+     "p": [
+      0.4,
+      1
+     ]
+    },
+    "s5": {
+     "to": [
+      3,
+      9
+     ],
+     "p": [
+      0.4,
+      1
+     ]
+    },
+    "allen": {
+     "to": [
+      12,
+      14
+     ],
+     "p": [
+      0.2,
+      1
+     ]
+    },
+    "s2": {
+     "to": [
+      10,
+      13
+     ],
+     "p": [
+      0.2,
+      1
+     ]
+    }
+   },
+   "jumps": {
+    "lebron": [
+     0.3,
+     0.45,
+     1.8
+    ]
+   },
+   "arms": {
+    "lebron": [
+     0.26,
+     0.45
+    ]
+   },
+   "rim_shake": [
+    0.72,
+    0.84
+   ],
+   "sfx": [
+    [
+     "clang",
+     0.72
+    ]
+   ],
+   "ball": [
+    {
+     "do": "dribble",
+     "who": "lebron",
+     "p": [
+      0,
+      0.3
+     ]
+    },
+    {
+     "do": "shot",
+     "who": "lebron",
+     "result": "miss",
+     "apex": 9,
+     "p": [
+      0.3,
+      0.72
+     ]
+    },
+    {
+     "do": "arc",
+     "from": [
+      -0.6,
+      5.25,
+      10.4
+     ],
+     "to": [
+      1.5,
+      8.5,
+      9.0
+     ],
+     "apex": 2.2,
+     "p": [
+      0.72,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "cue": "REB",
+   "small": "CHRIS BOSH",
+   "big": "ARRACHE LE REBOND",
+   "color": "white",
+   "voice": "Mais Chris Bosh arrache le rebond, au milieu des joueurs de San Antonio.",
+   "score": [
+    92,
+    95
+   ],
+   "cam": {
+    "from": [
+     [
+      10,
+      30,
+      16
+     ],
+     [
+      1,
+      7,
+      6
+     ],
+     1400
+    ],
+    "to": [
+     [
+      14,
+      26,
+      14
+     ],
+     [
+      2,
+      7,
+      6
+     ],
+     1450
+    ]
+   },
+   "chip": "RECONSTITUTION SIMPLIFIÉE",
+   "moves": {
+    "bosh": {
+     "to": [
+      1.5,
+      8.5
+     ],
+     "p": [
+      0,
+      0.3
+     ]
+    }
+   },
+   "jumps": {
+    "bosh": [
+     0.12,
+     0.42,
+     3.2
+    ],
+    "s3": [
+     0.1,
+     0.38,
+     2.4
+    ],
+    "s5": [
+     0.14,
+     0.4,
+     2.2
+    ]
+   },
+   "arms": {
+    "bosh": [
+     0.1,
+     0.5
+    ],
+    "s3": [
+     0.1,
+     0.38
+    ],
+    "s5": [
+     0.14,
+     0.4
+    ]
+   },
+   "ball": [
+    {
+     "do": "arc",
+     "from": [
+      1.5,
+      8.5,
+      9.0
+     ],
+     "to": "bosh",
+     "ht": 8.4,
+     "apex": 1.0,
+     "p": [
+      0,
+      0.27
+     ]
+    },
+    {
+     "do": "hold",
+     "who": "bosh",
+     "h": 8.4,
+     "p": [
+      0.27,
+      0.42
+     ]
+    },
+    {
+     "do": "hold",
+     "who": "bosh",
+     "h": 6.0,
+     "p": [
+      0.42,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "cue": "LOOK",
+   "small": "ET LÀ…",
+   "big": "REGARDE RAY ALLEN",
+   "color": "yellow",
+   "voice": "Et là… regarde bien Ray Allen.",
+   "score": [
+    92,
+    95
+   ],
+   "cam": {
+    "from": [
+     [
+      24,
+      36,
+      22
+     ],
+     [
+      12,
+      12,
+      4
+     ],
+     1500
+    ],
+    "to": [
+     [
+      26,
+      30,
+      18
+     ],
+     [
+      13,
+      11,
+      4
+     ],
+     1700
+    ]
+   },
+   "chip": "RECONSTITUTION SIMPLIFIÉE",
+   "focus": [
+    "allen",
+    "bosh"
+   ],
+   "glow": [
+    "allen"
+   ],
+   "ball": [
+    {
+     "do": "hold",
+     "who": "bosh",
+     "h": 6.0
+    }
+   ]
+  },
+  {
+   "cue": "CORNER",
+   "small": "IL RECULE",
+   "big": "DANS LE COIN",
+   "color": "yellow",
+   "voice": "Il recule vers le coin, se place derrière la ligne à trois points… et reçoit le ballon.",
+   "score": [
+    92,
+    95
+   ],
+   "cam": {
+    "from": [
+     [
+      22,
+      40,
+      30
+     ],
+     [
+      14,
+      8,
+      3
+     ],
+     1300
+    ],
+    "to": [
+     [
+      32,
+      30,
+      20
+     ],
+     [
+      18,
+      6,
+      4
+     ],
+     1400
+    ]
+   },
+   "chip": "RECONSTITUTION SIMPLIFIÉE",
+   "focus": [
+    "allen",
+    "bosh"
+   ],
+   "glow": [
+    "allen"
+   ],
+   "moves": {
+    "allen": {
+     "to": [
+      23,
+      4.5
+     ],
+     "p": [
+      0,
+      0.62
+     ]
+    },
+    "s2": {
+     "to": [
+      15,
+      9
+     ],
+     "p": [
+      0,
+      0.8
+     ]
+    }
+   },
+   "ball": [
+    {
+     "do": "hold",
+     "who": "bosh",
+     "h": 6.0,
+     "p": [
+      0,
+      0.5
+     ]
+    },
+    {
+     "do": "pass",
+     "from": "bosh",
+     "to": "allen",
+     "p": [
+      0.5,
+      0.8
+     ]
+    },
+    {
+     "do": "hold",
+     "who": "allen",
+     "h": 4.5,
+     "p": [
+      0.8,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "cue": "SHOT",
+   "small": "IL TIRE · IL RESTE",
+   "big": "5,2 SECONDES",
+   "color": "white",
+   "voice": "Il tire… à cinq secondes de la fin.",
+   "score": [
+    92,
+    95
+   ],
+   "clock": "0:05.2",
+   "cam": {
+    "from": [
+     [
+      12,
+      38,
+      15
+     ],
+     [
+      11.5,
+      5,
+      8
+     ],
+     980
+    ],
+    "to": [
+     [
+      11,
+      35,
+      14
+     ],
+     [
+      11.5,
+      5,
+      8.5
+     ],
+     1020
+    ]
+   },
+   "chip": "RECONSTITUTION SIMPLIFIÉE",
+   "slowmo": true,
+   "sfx": [
+    [
+     "heartbeat"
+    ]
+   ],
+   "moves": {
+    "s2": {
+     "to": [
+      20.5,
+      5.5
+     ],
+     "p": [
+      0,
+      0.5
+     ]
+    }
+   },
+   "jumps": {
+    "allen": [
+     0.05,
+     0.3,
+     2.0
+    ]
+   },
+   "arms": {
+    "allen": [
+     0,
+     0.3
+    ],
+    "s2": [
+     0.2,
+     0.7
+    ]
+   },
+   "ball": [
+    {
+     "do": "hold",
+     "who": "allen",
+     "h": 7.8,
+     "p": [
+      0,
+      0.12
+     ]
+    },
+    {
+     "do": "shot",
+     "from": [
+      23,
+      4.5,
+      9.0
+     ],
+     "result": "make",
+     "apex": 5.5,
+     "p": [
+      0.12,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "cue": "IN",
+   "small": "DEDANS !",
+   "big": "95 – 95",
+   "color": "green",
+   "voice": "[excited] Dedans ! Quatre-vingt-quinze partout !",
+   "score": [
+    95,
+    95
+   ],
+   "cam": {
+    "from": [
+     [
+      14,
+      18,
+      11
+     ],
+     [
+      0,
+      5.5,
+      9.5
+     ],
+     1700
+    ],
+    "to": [
+     [
+      10,
+      20,
+      13
+     ],
+     [
+      0,
+      6,
+      9
+     ],
+     1500
+    ]
+   },
+   "labels": false,
+   "cut": true,
+   "shake": true,
+   "flash": true,
+   "swish": true,
+   "sfx": [
+    [
+     "swish",
+     0
+    ],
+    [
+     "roar",
+     0.05
+    ]
+   ],
+   "ball": [
+    {
+     "do": "through",
+     "p": [
+      0,
+      0.35
+     ]
+    },
+    {
+     "do": "at",
+     "at": [
+      0,
+      5.25,
+      2
+     ],
+     "p": [
+      0.35,
+      0.5
+     ]
+    },
+    {
+     "do": "at",
+     "at": [
+      0.8,
+      6.5,
+      0.8
+     ],
+     "p": [
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "cue": "WHY",
+   "small": "PAS UN HASARD",
+   "big": "DES ANNÉES DE TRAVAIL",
+   "color": "yellow",
+   "voice": "Ce recul vers le coin ? Il le travaillait à l'entraînement depuis des années.",
+   "score": [
+    95,
+    95
+   ],
+   "cam": {
+    "from": [
+     [
+      12,
+      30,
+      52
+     ],
+     [
+      12,
+      8,
+      0
+     ],
+     1450
+    ],
+    "to": [
+     [
+      12,
+      28,
+      48
+     ],
+     [
+      12,
+      8,
+      0
+     ],
+     1500
+    ]
+   },
+   "chip": "REPLAY · RECONSTITUTION",
+   "moves": {
+    "allen": {
+     "from": [
+      12,
+      14
+     ],
+     "to": [
+      23,
+      4.5
+     ],
+     "p": [
+      0,
+      0.45
+     ]
+    },
+    "s2": {
+     "from": [
+      10,
+      13
+     ],
+     "to": [
+      20.5,
+      5.5
+     ],
+     "p": [
+      0,
+      0.6
+     ]
+    }
+   },
+   "arms": {
+    "allen": [
+     0.45,
+     0.62
+    ]
+   },
+   "paths": [
+    {
+     "pts": [
+      [
+       12,
+       14
+      ],
+      [
+       23,
+       4.5
+      ]
+     ],
+     "color": "yellow",
+     "p": [
+      0,
+      0.62
+     ]
+    },
+    {
+     "pts": [
+      [
+       1.5,
+       8.5
+      ],
+      [
+       23,
+       4.5
+      ]
+     ],
+     "color": "white",
+     "p": [
+      0.25,
+      0.45
+     ]
+    }
+   ],
+   "steps": [
+    [
+     0.0,
+     "1 · REBOND",
+     [
+      1.5,
+      8.5,
+      11
+     ]
+    ],
+    [
+     0.1,
+     "2 · RECUL",
+     [
+      17.5,
+      9.5,
+      3
+     ]
+    ],
+    [
+     0.28,
+     "3 · PASSE",
+     [
+      12,
+      6.5,
+      6
+     ]
+    ],
+    [
+     0.55,
+     "4 · TIR",
+     [
+      23,
+      4.5,
+      11
+     ]
+    ]
+   ],
+   "ball": [
+    {
+     "do": "hold",
+     "who": "bosh",
+     "h": 6.0,
+     "p": [
+      0,
+      0.25
+     ]
+    },
+    {
+     "do": "pass",
+     "from": "bosh",
+     "to": "allen",
+     "p": [
+      0.25,
+      0.45
+     ]
+    },
+    {
+     "do": "hold",
+     "who": "allen",
+     "h": 7.8,
+     "p": [
+      0.45,
+      0.55
+     ]
+    },
+    {
+     "do": "shot",
+     "from": [
+      23,
+      4.5,
+      9.0
+     ],
+     "result": "make",
+     "apex": 5.5,
+     "p": [
+      0.55,
+      0.92
+     ]
+    },
+    {
+     "do": "through",
+     "p": [
+      0.92,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "cue": "WIN",
+   "small": "PROLONGATION, PUIS MATCH 7",
+   "big": "MIAMI CHAMPION",
+   "color": "red",
+   "voice": "Miami gagne en prolongation… puis le match sept. Le Heat est champion !",
+   "score": [
+    103,
+    100
+   ],
+   "clock": "FINAL · PROL.",
+   "cam": {
+    "from": [
+     [
+      0,
+      60,
+      26
+     ],
+     [
+      0,
+      26,
+      4
+     ],
+     1300
+    ],
+    "to": [
+     [
+      12,
+      56,
+      30
+     ],
+     [
+      0,
+      26,
+      4
+     ],
+     1300
+    ]
+   },
+   "labels": false,
+   "confetti": true,
+   "celebrate": [
+    "lebron",
+    "allen",
+    "bosh",
+    "h4",
+    "h5"
+   ],
+   "sfx": [
+    [
+     "chord",
+     0
+    ],
+    [
+     "roar",
+     0.4
+    ]
+   ],
+   "moves": {
+    "lebron": {
+     "to": [
+      -4,
+      30
+     ],
+     "p": [
+      0,
+      0.5
+     ]
+    },
+    "allen": {
+     "to": [
+      3,
+      29
+     ],
+     "p": [
+      0,
+      0.5
+     ]
+    },
+    "bosh": {
+     "to": [
+      0,
+      33
+     ],
+     "p": [
+      0,
+      0.5
+     ]
+    },
+    "h4": {
+     "to": [
+      -8,
+      33
+     ],
+     "p": [
+      0,
+      0.5
+     ]
+    },
+    "h5": {
+     "to": [
+      7,
+      33
+     ],
+     "p": [
+      0,
+      0.5
+     ]
+    },
+    "s1": {
+     "to": [
+      -22,
+      12
+     ],
+     "p": [
+      0,
+      0.6
+     ]
+    },
+    "s2": {
+     "to": [
+      22,
+      12
+     ],
+     "p": [
+      0,
+      0.6
+     ]
+    },
+    "s3": {
+     "to": [
+      -16,
+      4
+     ],
+     "p": [
+      0,
+      0.6
+     ]
+    },
+    "s4": {
+     "to": [
+      -24,
+      20
+     ],
+     "p": [
+      0,
+      0.6
+     ]
+    },
+    "s5": {
+     "to": [
+      18,
+      4
+     ],
+     "p": [
+      0,
+      0.6
+     ]
+    }
+   },
+   "ball": [
+    {
+     "do": "hold",
+     "who": "lebron",
+     "h": 9
+    }
+   ]
+  },
+  {
+   "cue": "E",
+   "small": "LE PLUS GRAND TIR DES FINALES ?",
+   "big": "OUI OU NON ?",
+   "color": "yellow",
+   "voice": "[excited] Le plus grand tir de l'histoire des finales : oui ou non ? Dis-le en commentaire !",
+   "score": [
+    95,
+    95
+   ],
+   "cam": {
+    "from": [
+     [
+      -20,
+      70,
+      46
+     ],
+     [
+      0,
+      16,
+      0
+     ],
+     1350
+    ],
+    "to": [
+     [
+      20,
+      70,
+      46
+     ],
+     [
+      0,
+      16,
+      0
+     ],
+     1350
+    ]
+   },
+   "labels": [
+    "lebron"
+   ]
+  }
+ ],
+ "cover": {
+  "scene": "SHOT",
+  "p": 0.45,
+  "lines": [
+   "LE TIR QUI A",
+   "TOUT CHANGÉ"
+  ],
+  "band": "FINALE NBA 2013 · 5,2 SECONDES"
+ },
+ "caption": "Il restait 28 secondes… et les cordes jaunes étaient déjà sorties 😳 Le tir de Ray Allen en finale NBA 2013 🏀\nLe plus grand tir de l'histoire des finales : oui ou non ? 👇",
+ "yt_title": "Le tir qui a tout changé : Ray Allen, finale NBA 2013 😳",
+ "hashtags": [
+  "#NBA",
+  "#RayAllen",
+  "#MiamiHeat",
+  "#Spurs",
+  "#NBAFinals",
+  "#LeBron",
+  "#basketball",
+  "#NBAFrance",
+  "#basket",
+  "#pourtoi",
+  "#fyp"
+ ],
+ "source_names": [
+  "NBA.com",
+  "Andscape",
+  "Sports Illustrated",
+  "theScore",
+  "Yahoo Sports"
+ ],
+ "sources": [
+  "https://www.nba.com/news/history-top-moments-ray-allen-3-pointer-2013-finals",
+  "https://andscape.com/features/the-day-chris-boshs-rebound-and-ray-allens-3-pointer-gave-the-heat-an-improbable-finals-win/",
+  "https://www.si.com/nba/2013/12/18/ray-allen-miami-heat-29-seconds-nba-finals-game-6",
+  "https://www.thescore.com/nba/news/1143412/remembering-ray-allens-iconic-finals-3-pointer",
+  "https://sports.yahoo.com/news/nba--ray-allen-s-clutch-game-6-3-pointer-destined-to-go-down-in-nba-finals-lore-073730926.html"
+ ]
+}
