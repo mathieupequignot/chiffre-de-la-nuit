@@ -614,8 +614,16 @@ def main():
     GRAD = _grad(); build()
     vw = os.path.join(a.out, "voix_action.wav")
     cues, total = tts.synth(SEGS, vw)
+    words = words_from_last()
+    if words:   # début/fin de chaque scène = 1er/dernier mot prononcé (plus fiable que l'horodatage des segments)
+        idx, fixed = 0, []
+        for k, txt in SEGS:
+            n = len([w for w in re.findall(r"\[[^\]]*\]|\S+", txt) if not w.startswith("[")])
+            if idx + n > len(words): fixed = []; break
+            fixed.append((k, words[idx][1], words[idx + n - 1][2])); idx += n
+        if fixed: cues = fixed
     T = TL(cues, total)
-    groups = chunks(words_from_last())
+    groups = chunks(words)
     if not groups:
         ws = []
         for k, s, e in cues:
