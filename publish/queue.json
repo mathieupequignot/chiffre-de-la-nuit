@@ -75,33 +75,6 @@
   "reported": true
  },
  {
-  "key": "drill_step-back",
-  "video": "drill_step-back.mp4",
-  "cover": "drill_step-back.jpg",
-  "instagram": "Pas d'espace pour tirer ? 🏀 Step-back : attaque, pousse sur le pied avant, atterris équilibré et tire. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet SHOOT 30 (30 jours pour devenir un shooter fiable) : 👉 https://1cvkuk-kx.myshopify.com\n\n#basket #basketball #shooting #basketballdrills #entrainementbasket #shooter #playground",
-  "yt_title": "Pas d'espace pour tirer ? Le drill Step-Back 🏀 #Shorts",
-  "yt_desc": "Pas d'espace pour tirer ? 🏀 Step-back : attaque, pousse sur le pied avant, atterris équilibré et tire. 👇\n\nEnregistre pour ta prochaine séance 📌\n\nLe programme complet SHOOT 30 (30 jours pour devenir un shooter fiable) : 👉 https://1cvkuk-kx.myshopify.com\n\n#basket #basketball #shooting #basketballdrills #entrainementbasket #shooter #playground\n\n#Shorts",
-  "at": "2026-11-24T18:00:00+01:00",
-  "discord_mid": null,
-  "status": {
-   "instagram": "ok",
-   "facebook": "ok",
-   "youtube": "ok"
-  },
-  "tiktok_caption": null,
-  "platforms": [
-   "facebook",
-   "youtube",
-   "instagram"
-  ],
-  "ids": {
-   "instagram": "18115364405146316",
-   "facebook": "1615741246526876",
-   "youtube": "tlNJvoLZfQw"
-  },
-  "reported": true
- },
- {
   "key": "duel_duel_curry_kobe",
   "video": "duel_duel_curry_kobe.mp4",
   "cover": "duel_duel_curry_kobe.jpg",
@@ -303,8 +276,20 @@
   "yt_desc": "Il restait 28 secondes… et les cordes jaunes étaient déjà sorties 😳 Le tir de Ray Allen en finale NBA 2013 🏀\nLe plus grand tir de l'histoire des finales : oui ou non ? 👇\n\n#Shorts #NBA #RayAllen #MiamiHeat #Spurs #NBAFinals #LeBron #basketball #NBAFrance #basket #pourtoi #fyp",
   "at": "2026-11-27T18:00:00+01:00",
   "discord_mid": "1575908439798972446",
-  "status": {},
+  "status": {
+   "tiktok": "ok",
+   "instagram": "ok",
+   "facebook": "ok",
+   "youtube": "ok"
+  },
   "tiktok_caption": "Il restait 28 secondes… et les cordes jaunes étaient déjà sorties 😳 Le tir de Ray Allen en finale NBA 2013 🏀\nLe plus grand tir de l'histoire des finales : oui ou non ? 👇\n\n#NBA #RayAllen #MiamiHeat #Spurs #NBAFinals #LeBron #basketball #NBAFrance #basket #pourtoi #fyp",
-  "discord_video": "action_ray_allen_2013_discord.mp4"
+  "discord_video": "action_ray_allen_2013_discord.mp4",
+  "ids": {
+   "tiktok": "v_inbox_file~v2.7712904082142349334",
+   "instagram": "18121670794956527",
+   "facebook": "1135901139048403",
+   "youtube": "_9XMVymkU_Q"
+  },
+  "reported": true
  }
 ]
