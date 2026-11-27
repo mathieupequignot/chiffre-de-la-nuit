@@ -52,6 +52,11 @@ SEGS = [(c, v) for c, _, _, _, v in SCENES]
 ORDER = [c for c, *_ in SCENES]
 INFO = {c: (a, b, col) for c, a, b, col, _ in SCENES}
 FILE = "action_ray_allen_2013"
+CAPTION = ("Il restait 28 secondes… et les cordes jaunes étaient déjà sorties 😳 Le tir de Ray Allen en finale NBA 2013 🏀\n"
+           "Le plus grand tir de l'histoire des finales : oui ou non ? 👇")
+YT_TITLE = "Le tir qui a tout changé : Ray Allen, finale NBA 2013 😳"
+HASHTAGS = "#NBA #RayAllen #MiamiHeat #Spurs #NBAFinals #LeBron #basketball #NBAFrance #basket #pourtoi #fyp"
+SOURCES = "NBA.com, Andscape, Sports Illustrated, theScore, Yahoo Sports"
 
 # score / horloge affichés par scène (horloge seulement quand elle est vérifiée)
 SCORE = {"H": (89, 94, "0:28.2"), "CTX": (89, 94, "0:28.2"), "ROPE": (89, 94, None), "BACK": (92, 95, None),
@@ -706,6 +711,7 @@ def cover(T, groups, out):
 # ---------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--out", default="docs/proto"); ap.add_argument("--frames", default="")
+    ap.add_argument("--queue-at", help="'AAAA-MM-JJ HH:MM' : programme la publication + aperçu Discord")
     a = ap.parse_args(); os.makedirs(a.out, exist_ok=True)
     global GRAD
     GRAD = _grad(); build()
@@ -749,6 +755,33 @@ def main():
     for f in (silent, aud, vw, vw.replace(".wav", ".mp3")):
         if os.path.exists(f): os.remove(f)
     print("Vidéo :", final, f"{T.total:.1f}s")
+    if a.queue_at:
+        schedule(final, os.path.join(a.out, FILE + ".jpg"), a.queue_at)
+
+
+def schedule(video, cover_path, at):
+    """File de publication (Instagram, YouTube, Facebook + brouillon TikTok) + aperçu Discord (❌ = annulation)."""
+    from publish import queue
+    from chiffre import discord_post
+    msg = (f"**🎬 Nouveau format « L'action qui a tout changé »** : publication automatique le {at} "
+           f"(TikTok en brouillon + Instagram, YouTube, Facebook).\nMets ❌ sur ce message pour l'annuler. Sources : {SOURCES}")
+    mid = None
+    if os.environ.get("DISCORD_BOT_TOKEN"):
+        light = os.path.splitext(video)[0] + "_apercu.mp4"
+        try:
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", video, "-vf", "scale=720:-2", "-c:v", "libx264", "-preset", "veryfast",
+                            "-b:v", "1400k", "-maxrate", "1600k", "-bufsize", "3200k", "-c:a", "aac", "-b:a", "96k", light], check=True)
+            mid = discord_post.post(light, msg[:1900], cover_path)
+        except Exception as ex:
+            print("Aperçu Discord impossible :", ex)
+            try: discord_post.notify(msg[:1800])
+            except Exception: pass
+        finally:
+            if os.path.exists(light): os.remove(light)
+    key = FILE
+    queue.add(key, video, cover_path, f"{CAPTION}\n\nAbonne-toi pour la prochaine action 🔔\n\n{HASHTAGS}", f"{YT_TITLE} #Shorts",
+              f"{CAPTION}\n\n#Shorts {HASHTAGS}", at, mid, f"{CAPTION}\n\n{HASHTAGS}")
+    print("Programmé :", key, at)
 
 
 if __name__ == "__main__":
