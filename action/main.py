@@ -102,7 +102,7 @@ CAMS = {   # (début de scène, fin de scène)
     "CORNER": (C((22, 40, 30), (14, 8, 3), 1300), C((32, 30, 20), (18, 6, 4), 1400)),
     "SHOT": (C((12, 38, 15), (11.5, 5, 8), 980), C((11, 35, 14), (11.5, 5, 8.5), 1020)),
     "IN": (C((14, 18, 11), (0, 5.5, 9.5), 1700), C((10, 20, 13), (0, 6, 9), 1500)),
-    "WHY": (C((12, 13, 62), (12, 7, 0), 2100), C((12, 12, 58), (12, 7, 0), 2100)),
+    "WHY": (C((12, 30, 52), (12, 8, 0), 1450), C((12, 28, 48), (12, 8, 0), 1500)),
     "WIN": (C((0, 60, 26), (0, 26, 4), 1300), C((12, 56, 30), (0, 26, 4), 1300)),
     "E": (C((-20, 70, 46), (0, 16, 0), 1350), C((20, 70, 46), (0, 16, 0), 1350)),
 }
@@ -148,7 +148,21 @@ def player_state(T, t):
         for n in ("lebron", "allen", "bosh", "h4", "h5"):
             ph = {"lebron": 0, "allen": 0.5, "bosh": 1.1, "h4": 1.7, "h5": 2.3}[n]
             if p > 0.45: z[n] = 2.2 * abs(math.sin((t - a) * 5 + ph))
+    if k == "WHY":
+        pos["allen"] = lerp(np.array((12.0, 14.0)), np.array((23.0, 4.5)), ease_out(min(1, p / 0.45)))
+        pos["s2"] = lerp(np.array((10.0, 13.0)), np.array((20.5, 5.5)), ease_out(min(1, p / 0.6)))
     return pos, z, k, p, t - a
+
+
+ARMS = {"BACK": {"lebron": (0.04, 0.2)}, "MISS": {"lebron": (0.26, 0.45)},
+        "REB": {"bosh": (0.1, 0.5), "s3": (0.1, 0.38), "s5": (0.14, 0.4)},
+        "SHOT": {"allen": (0.0, 0.3), "s2": (0.2, 0.7)}, "WHY": {"allen": (0.45, 0.62)},
+        "WIN": {n: (0.45, 1.01) for n in ("lebron", "allen", "bosh", "h4", "h5")}}
+
+
+def arms_up(k, p, n):
+    r = ARMS.get(k, {}).get(n)
+    return bool(r and r[0] <= p <= r[1])
 
 
 def arc(p0, p1, apex, u):
@@ -187,6 +201,12 @@ def ball_state(pos, z, k, p):
         return arc(np.array([23, 4.5, 9.0]), RIM + [0, 0, 0.6], 5.5, min(1, (p - 0.12) / 0.88))
     if k == "IN":
         u = min(1, p / 0.35); return lerp(RIM + [0, 0, 0.6], np.array([0, 5.25, 2]), u) if p < 0.5 else np.array([0.8, 6.5, 0.8])
+    if k == "WHY":
+        if p < 0.25: return hand(pos, z, "bosh", 6.0)
+        if p < 0.45: return arc(hand(pos, z, "bosh", 6.0), hand(pos, z, "allen", 4.5), 2.5, (p - 0.25) / 0.2)
+        if p < 0.55: return hand(pos, z, "allen", 7.8)
+        if p < 0.92: return arc(np.array([23, 4.5, 9.0]), RIM + [0, 0, 0.6], 5.5, (p - 0.55) / 0.37)
+        return lerp(RIM + [0, 0, 0.6], np.array([0, 5.25, 2]), min(1, (p - 0.92) / 0.08))
     if k == "WIN":
         x, y = pos["lebron"]; return np.array([x, y, z["lebron"] + 9])
     return None
@@ -299,7 +319,7 @@ def _poly3(d, cam, pts, **kw):
     d.polygon([(v[0], v[1]) for v in q], **kw)
 
 
-def draw_hoop(c, cam, net_swish=0.0):
+def draw_hoop(c, cam, net_swish=0.0, shake=0.0):
     d = ImageDraw.Draw(c)
     # poteau + bras
     _poly3(d, cam, [(-0.4, -4, 0), (0.4, -4, 0), (0.4, -4, 12), (-0.4, -4, 12)], fill=(40, 40, 48, 255))
@@ -308,7 +328,7 @@ def draw_hoop(c, cam, net_swish=0.0):
     _poly3(d, cam, [(-3, 4, 9.5), (3, 4, 9.5), (3, 4, 13), (-3, 4, 13)], fill=(255, 255, 255, 70), outline=(255, 255, 255, 255))
     _poly3(d, cam, [(-1, 4.02, 10), (1, 4.02, 10), (1, 4.02, 11.5), (-1, 4.02, 11.5)], outline=(255, 255, 255, 255))
     # filet
-    ring = [(RIM[0] + 0.75 * math.cos(a), RIM[1] + 0.75 * math.sin(a), 10) for a in np.linspace(0, 2 * math.pi, 25)]
+    ring = [(RIM[0] + shake + 0.75 * math.cos(a), RIM[1] + 0.75 * math.sin(a), 10) for a in np.linspace(0, 2 * math.pi, 25)]
     bot = [(RIM[0] + 0.45 * math.cos(a), RIM[1] + 0.45 * math.sin(a), 8.6 - net_swish * 0.6) for a in np.linspace(0, 2 * math.pi, 25)]
     for a, b in zip(ring[::2], bot[::2]):
         pa, pb = cam.proj(a), cam.proj(b)
@@ -317,7 +337,7 @@ def draw_hoop(c, cam, net_swish=0.0):
     if all(pr): d.line([q[:2] for q in pr], fill=(255, 100, 20, 255), width=max(3, int(cam.f / pr[0][2] * 0.18)))
 
 
-def draw_player(c, cam, x, y, z, team, num, label, dim=1.0, glow=0.0):
+def draw_player(c, cam, x, y, z, team, num, label, dim=1.0, glow=0.0, up=False, run=None):
     foot, head = cam.proj((x, y, z)), cam.proj((x, y, z + 6.6))
     if not foot or not head: return
     sh = cam.proj((x, y, 0))
@@ -334,9 +354,26 @@ def draw_player(c, cam, x, y, z, team, num, label, dim=1.0, glow=0.0):
         r = wbody * 1.3
         d.ellipse([sh[0] - r * 1.4, sh[1] - r * 0.42, sh[0] + r * 1.4, sh[1] + r * 0.42], outline=YEL + (int(255 * glow),), width=max(3, int(s * 0.04)))
     fx, fy = foot[0], foot[1]
-    # jambes (short) + maillot
-    d.rounded_rectangle([fx - wbody * 0.42, fy - s * 0.42, fx + wbody * 0.42, fy], radius=wbody * 0.2, fill=(30, 30, 36, 255) if team == "S" else (24, 24, 28, 255))
-    d.rounded_rectangle([fx - wbody / 2, fy - s * 0.8, fx + wbody / 2, fy - s * 0.36], radius=wbody * 0.35, fill=col + (255,))
+    # jambes (qui alternent en course) + short + maillot
+    skin = (120, 84, 60, 255); leg = (24, 24, 28, 255)
+    for sgn in (-1, 1):
+        lift = (math.sin(run + (0 if sgn < 0 else math.pi)) * s * 0.06) if run is not None else 0
+        lift = max(0, lift)
+        d.rounded_rectangle([fx + sgn * wbody * 0.22 - wbody * 0.12, fy - s * 0.3, fx + sgn * wbody * 0.22 + wbody * 0.12, fy - lift],
+                            radius=wbody * 0.1, fill=skin)
+        d.ellipse([fx + sgn * wbody * 0.22 - wbody * 0.16, fy - lift - wbody * 0.12, fx + sgn * wbody * 0.22 + wbody * 0.16, fy - lift + wbody * 0.06], fill=(245, 245, 245, 255))
+    d.rounded_rectangle([fx - wbody * 0.46, fy - s * 0.46, fx + wbody * 0.46, fy - s * 0.26], radius=wbody * 0.15, fill=col + (255,) if team == "H" else (40, 40, 46, 255))
+    # bras (levés au tir / au rebond)
+    aw = max(3, int(wbody * 0.2))
+    for sgn in (-1, 1):
+        sx_, sy_ = fx + sgn * wbody * 0.46, fy - s * 0.74
+        if up: hx_, hy_ = fx + sgn * wbody * 0.42, fy - s * 1.1
+        else:
+            sw = (math.sin(run + (0 if sgn > 0 else math.pi)) * wbody * 0.25) if run is not None else 0
+            hx_, hy_ = fx + sgn * wbody * 0.66 + sw * 0.3, fy - s * 0.42 - abs(sw) * 0.3
+        d.line([sx_, sy_, hx_, hy_], fill=skin, width=aw)
+        d.ellipse([hx_ - aw * 0.6, hy_ - aw * 0.6, hx_ + aw * 0.6, hy_ + aw * 0.6], fill=skin)
+    d.rounded_rectangle([fx - wbody / 2, fy - s * 0.8, fx + wbody / 2, fy - s * 0.4], radius=wbody * 0.35, fill=col + (255,))
     d.rounded_rectangle([fx + wbody * 0.12, fy - s * 0.78, fx + wbody / 2, fy - s * 0.38], radius=wbody * 0.3, fill=dark + (110,))
     # tête
     hr = s * 0.115
@@ -486,9 +523,10 @@ def build():
                        Plane(side.transpose(Image.FLIP_LEFT_RIGHT), (34, -8, 34), (0, 1 / s, 0), (0, 0, -1 / s))]
 
 
-def frame(t, T, groups):
+def frame(t, T, groups, bare=False):
     cam = camera(T, t)
     pos, z, k, p, tl = player_state(T, t)
+    pos0 = player_state(T, t - 1 / FPS)[0]
     c = Image.new("RGBA", (W, H), (10, 10, 14, 255))
     # tribunes (demi-résolution), qui se vident pendant la scène des cordes
     half = Image.new("RGBA", (W // 2, H // 2), (0, 0, 0, 0))
@@ -509,7 +547,8 @@ def frame(t, T, groups):
     if k == "WHY":
         path = [lerp(np.array((12, 14)), np.array((23, 4.5)), u) for u in np.linspace(0, 1, 30)]
         draw_path(c, cam, path, YEL, u=min(1, p * 1.6))
-        draw_path(c, cam, [lerp(np.array((1.5, 8.5)), np.array((23, 4.5)), u) for u in np.linspace(0, 1, 30)], (255, 255, 255), u=min(1, max(0, p * 1.6 - 0.4)))
+        if p > 0.25:
+            draw_path(c, cam, [lerp(np.array((1.5, 8.5)), np.array((23, 4.5)), u) for u in np.linspace(0, 1, 30)], (255, 255, 255), u=min(1, (p - 0.25) / 0.2))
     # objets triés par profondeur
     objs = []
     swish = max(0, 1 - abs(p - 0.25) / 0.25) if k == "IN" else 0
@@ -522,8 +561,26 @@ def frame(t, T, groups):
     if b is not None:
         q = cam.proj(b)
         if q: objs.append((q[2] - 0.5, "ball", b))
+    # traînée du ballon (tirs, passes)
+    trail = []
+    for j in range(1, 7):
+        tb = t - j * 0.035
+        st = player_state(T, tb)
+        if st[2] != k: break
+        bb = ball_state(st[0], st[1], st[2], st[3])
+        if bb is None: break
+        trail.append(bb)
+    if b is not None and trail and np.linalg.norm(trail[0] - b) > 0.35:
+        d = ImageDraw.Draw(c)
+        for j, bb in enumerate(trail):
+            q = cam.proj(bb)
+            if not q: continue
+            r = max(3, cam.f * 0.62 / q[2]) * (1 - j * 0.12)
+            d.ellipse([q[0] - r, q[1] - r, q[0] + r, q[1] + r], fill=(255, 150, 60, int(120 * (1 - j / 7))))
     for depth, kind, o in sorted(objs, key=lambda v: -v[0]):
-        if kind == "hoop": draw_hoop(c, cam, swish)
+        if kind == "hoop":
+            shake = 0.35 * math.sin(tl * 60) * max(0, 1 - (p - 0.72) / 0.12) if (k == "MISS" and 0.72 <= p < 0.84) else 0.0
+            draw_hoop(c, cam, swish, shake)
         elif kind == "ball": draw_ball(c, cam, o)
         else:
             team, num, label = PL[o]
@@ -531,7 +588,15 @@ def frame(t, T, groups):
             if k == "WIN": show = None
             dim = 0.45 if (focus and o not in ("allen", "bosh")) else 1.0
             glow = (0.6 + 0.4 * math.sin(t * 8)) if (o == "allen" and k in ("LOOK", "CORNER")) else 0.0
-            draw_player(c, cam, *pos[o], z[o], team, num, show, dim, glow)
+            v = np.linalg.norm(pos[o] - pos0[o]) * FPS
+            run = t * 14 + hash(o) % 7 if v > 2.5 else None
+            draw_player(c, cam, *pos[o], z[o], team, num, show, dim, glow, arms_up(k, p, o), run)
+    if k == "WHY":   # étapes numérotées du replay
+        for p_on, lab, w in ((0.0, "1 · REBOND", (1.5, 8.5, 11)), (0.1, "2 · RECUL", (17.5, 9.5, 3)),
+                             (0.28, "3 · PASSE", (12, 6.5, 6)), (0.55, "4 · TIR", (23, 4.5, 11))):
+            if p >= p_on:
+                q = cam.proj(w)
+                if q: blit(c, _tag(lab, 34), q[0], q[1], scale=0.7 + 0.3 * ease_back(min(1, (p - p_on) * 8)))
     # effets
     if k == "IN" and tl < 0.5:
         fl = Image.new("RGBA", (W, H), (255, 255, 255, int(200 * (1 - tl / 0.5)))); c.alpha_composite(fl)
@@ -540,6 +605,7 @@ def frame(t, T, groups):
     if k == "SHOT":  # ralenti : bandes de cinéma
         e = ease_out(min(1, tl / 0.4)); d = ImageDraw.Draw(c)
         d.rectangle([0, 0, W, 130 * e], fill=(0, 0, 0, 255)); d.rectangle([0, H - 130 * e, W, H], fill=(0, 0, 0, 255))
+    if bare: return c
     # dégradés haut/bas pour la lisibilité
     c.alpha_composite(GRAD)
     title(c, k, tl)
@@ -588,6 +654,21 @@ def mix(voice_wav, T, out_wav):
         if i >= n: return
         x = x[: n - i]; out[i:i + len(x)] += x * g
 
+    # nappe de tension (tic-tac + basse qui montent jusqu'au tir), silence au ralenti, accord de victoire
+    t_shot, t_in, t_win = T.span["SHOT"][0], T.span["IN"][0], T.span["WIN"][0]
+    tt = np.arange(n) / SR
+    ramp = np.clip(tt / max(t_shot, 1), 0, 1)
+    drone = (np.sin(2 * np.pi * 55 * tt) + 0.5 * np.sin(2 * np.pi * 82.4 * tt) + 0.25 * np.sin(2 * np.pi * 110 * tt)) * (0.04 + 0.07 * ramp)
+    drone *= (tt < t_shot) * np.clip((t_shot - tt) / 0.15, 0, 1)
+    out += drone.astype(np.float32)
+    click = _sine(2400, 0.03, 120)
+    j = 0.0
+    while j < t_shot - 0.2:
+        add(click, j, 0.05 + 0.08 * j / t_shot); j += 0.5
+    for f_ in (261.6, 329.6, 392.0, 523.3):
+        x = np.sin(2 * np.pi * f_ * tt[: int((T.total - t_win) * SR)])
+        env = np.clip(np.arange(len(x)) / (0.6 * SR), 0, 1) * np.clip((len(x) - np.arange(len(x))) / (1.0 * SR), 0, 1)
+        add(x * env, t_win, 0.025)
     crowd = _noise(T.total, 200, 5) * 0.035
     out += crowd[:n].astype(np.float32)
     for k in ORDER[1:]:
@@ -604,6 +685,22 @@ def mix(voice_wav, T, out_wav):
     out = np.clip(out, -1, 1)
     with wave.open(out_wav, "wb") as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((out * 32767).astype(np.int16).tobytes())
+
+
+def cover(T, groups, out):
+    a, b = T.span["SHOT"]
+    c = frame(a + 0.45 * (b - a), T, groups, bare=True)
+    g = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(g)
+    for y in range(0, 900): d.line([0, y, W, y], fill=(0, 0, 0, int(225 * (1 - y / 900) ** 1.2)))
+    c.alpha_composite(g)
+    blit(c, outlined("LE TIR QUI A", "Black", 128, WHITE, 12), W / 2, 300)
+    big = outlined("TOUT CHANGÉ", "Black", 168, YEL, 14); blit(c, big, W / 2, 470, scale=min(1, 1020 / big.width), rot=-3)
+    band = _tag("FINALE NBA 2013 · 5,2 SECONDES", 54)
+    bb = Image.new("RGBA", band.size, (0, 0, 0, 0)); ImageDraw.Draw(bb).rounded_rectangle([0, 0, band.width - 1, band.height - 1], radius=16, fill=(235, 52, 64, 255))
+    tx = text_img("FINALE NBA 2013 · 5,2 SECONDES", "Black", 54, (255, 255, 255)); bb.alpha_composite(tx, (27, 9))
+    blit(c, bb, W / 2, 660, rot=2, scale=min(1, 980 / bb.width))
+    blit(c, _tag("L'ACTION QUI A TOUT CHANGÉ", 34), W / 2, 1760)
+    c.convert("RGB").save(out, quality=92)
 
 
 # ---------------------------------------------------------------- main
@@ -640,10 +737,9 @@ def main():
     silent = os.path.join(a.out, "action_silent.mp4")
     p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
                           "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-pix_fmt", "yuv420p", silent], stdin=subprocess.PIPE)
-    cover_t = T.span["CORNER"][0] + 0.8 * (T.span["CORNER"][1] - T.span["CORNER"][0])
+    cover(T, groups, os.path.join(a.out, FILE + ".jpg"))
     for i in range(int(T.total * FPS)):
         im = frame(i / FPS, T, groups)
-        if abs(i / FPS - cover_t) < 0.5 / FPS: im.save(os.path.join(a.out, FILE + ".jpg"), quality=90)
         p.stdin.write(im.tobytes())
     p.stdin.close(); p.wait()
     aud = os.path.join(a.out, "action_audio.wav"); mix(vw, T, aud)
