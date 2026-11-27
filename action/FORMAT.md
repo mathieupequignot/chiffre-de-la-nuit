@@ -6,10 +6,12 @@ gros titre en deux lignes, sous-titres mot à mot, nappe sonore maison. Validé 
 (« plus propre que les autres » → contenu principal).
 
 ## Rythme
-**3 épisodes par semaine : MARDI, JEUDI et DIMANCHE à 19:00** (heure de Paris), entre l'exercice (18:00) et le duel
-(20:00). Préparés 2 jours avant : le vendredi (→ dim.), le dimanche (→ mar.), le mardi (→ jeu.), par la tâche
-programmée. Créneau visé = le prochain mar./jeu./dim. à au moins 2 jours ; s'il a déjà une entrée `action_*` dans
-publish/queue.json ce jour-là, prendre le créneau libre suivant (jamais deux épisodes le même jour).
+**3 épisodes par semaine : DIMANCHE 12:30, MERCREDI 20:00 et JEUDI 12:30** (heure de Paris) — les créneaux libres de
+la semaine (pas de « 5 trucs » le dimanche et le jeudi, pas de duel le mercredi). Décidé le 27 nov. 2026.
+Préparés 2 jours avant par la tâche programmée : le vendredi (→ dim.), le lundi (→ mer.), le mardi (→ jeu.).
+Créneau visé = le prochain dim./mer./jeu. à au moins 2 jours ; s'il a déjà une entrée `action_*` dans
+publish/queue.json ce jour-là, prendre le créneau libre suivant (jamais deux épisodes le même jour), à l'heure de ce
+jour (12:30 le dimanche et le jeudi, 20:00 le mercredi).
 Exception : épisode 1 (Ray Allen) publié le ven. 27 nov. 2026 à 18:00 (exercice du jour décalé à 19:00).
 
 ## La recette (v2 — 27 nov. 2026)
@@ -43,7 +45,7 @@ Exception : épisode 1 (Ray Allen) publié le ven. 27 nov. 2026 à 18:00 (exerci
    --frames "k:CUE:0.5,…"` → images + `cover.jpg` ; vérifier cadrages, pions visibles, ballon, titres.
 3. Aperçu avec voix : workflow « Prototype « L'action qui a tout changé » » (action.yml) avec `episode=…` (sans
    queue_at) → docs/proto/<file>.mp4 + .jpg ; vérifier une quinzaine d'images ; puis `git rm -r docs/proto`.
-4. Programmation : relancer action.yml avec `episode=…` et `queue_at=AAAA-MM-JJ 19:00` → aperçu Discord (❌ = annuler)
+4. Programmation : relancer action.yml avec `episode=…` et `queue_at=AAAA-MM-JJ HH:MM` (12:30 ou 20:00 selon le jour) → aperçu Discord (❌ = annuler)
    et mise en file (Instagram + YouTube + Facebook auto, brouillon TikTok sur Discord). Vérifier publish/queue.json.
 
 ## Schéma JSON

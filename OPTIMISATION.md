@@ -52,6 +52,9 @@ Un seul message Discord par passage, via le workflow « Message Discord » (`dis
 - 23 nov. 2026 : plus de « double dose » dans le chiffre de la nuit (accroche moins prenante). Réactivable (CHIFFRE_COMBO=1)
   seulement si une nouvelle accroche est testée et que les chiffres le justifient.
 - 14 nov. 2026 : miniature v2 des « 5 trucs fous » validée (on peut l'améliorer, pas la dégrader).
+- 27 nov. 2026 : nouveau format principal « L'action qui a tout changé » (action/, mode d'emploi action/FORMAT.md),
+  3 par semaine : dimanche 12:30, mercredi 20:00, jeudi 12:30 (créneaux libres). Le style 3D validé par Mathieu
+  (terrain, pions, titres en deux lignes, mention « reconstitution simplifiée ») peut être amélioré, pas dégradé.
 
 ## Journal du labo (le plus récent en haut)
 ### 25 nov. 2026 (mer.) — 1er passage
