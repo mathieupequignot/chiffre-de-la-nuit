@@ -1,0 +1,65 @@
+{
+  "format": "duel",
+  "file": "duel_curry_durant",
+  "players": {
+    "a": {"name": "CURRY", "photo": "curry.png", "nba_id": 201939, "color": [0, 107, 182]},
+    "b": {"name": "DURANT", "photo": "durant.png", "nba_id": 201142, "color": [206, 17, 65]}
+  },
+  "hook": "[excited] Durant a plus de six mille points de plus que Curry… et pourtant, tu vas voir, le score final va te surprendre !",
+  "hook_tag": "+6 000 PTS… ET POURTANT ?",
+  "rounds": [
+    {"label": "POINTS EN CARRIÈRE", "a": "26 800+", "b": "33 000+", "count": false, "unit": "SAISON RÉGULIÈRE", "win": "b", "note": "DURANT : 5E DE L'HISTOIRE",
+     "voice": "Points en carrière : plus de trente-trois mille pour Durant. Point Durant !"},
+    {"label": "TITRES NBA", "a": "4", "b": "2", "win": "a",
+     "voice": "Les titres : quatre contre deux. Curry égalise !"},
+    {"label": "MVP DES FINALES", "a": "1", "b": "2", "win": "b", "note": "DURANT : 2017 ET 2018",
+     "voice": "Les MVP des Finales : deux pour Durant, un pour Curry. Point Durant !"},
+    {"label": "TITRES DE MVP", "a": "2", "b": "1", "win": "a",
+     "voice": "Les MVP : deux contre un. Deux partout !"},
+    {"label": "MEILLEUR MARQUEUR", "a": "2", "b": "4", "unit": "FOIS N°1 EN NBA", "win": "b",
+     "voice": "Meilleur marqueur de la saison : quatre fois pour Durant. Il repasse devant !"},
+    {"label": "PANIERS À 3 PTS", "a": "4 290+", "b": "2 370+", "count": false, "unit": "EN CARRIÈRE", "win": "a", "note": "RECORD DE L'HISTOIRE POUR CURRY",
+     "voice": "Les paniers à trois points : près de deux mille de plus pour Curry. Trois partout !"},
+    {"label": "OR OLYMPIQUE", "a": "1", "b": "4", "unit": "MÉDAILLES D'OR", "win": "b", "note": "DURANT : RECORD CHEZ LES HOMMES",
+     "voice": "L'or olympique : quatre médailles pour Durant, un record ! Point Durant !"},
+    {"label": "RECORD EN UN MATCH", "a": "62", "b": "55", "unit": "POINTS", "win": "a",
+     "voice": "[excited] Dernière manche, le record en un match : soixante-deux contre cinquante-cinq… et Curry égalise !"}
+  ],
+  "verdict": "ÉGALITÉ PARFAITE !",
+  "cta": "C'EST QUI LE MEILLEUR ? 👇",
+  "outro": "[surprised] Quatre partout ! Alors… Curry ou Durant ? Dis-le en commentaire !",
+  "cover_tag": "EX-COÉQUIPIERS",
+  "caption": "Curry ou Durant ? 8 stats, face à face 🎯🔥 Deux ex-coéquipiers, six titres à eux deux… et le score final va faire débat 😳\nC'est qui le meilleur pour toi ? 👇",
+  "yt_title": "Curry vs Durant : 8 stats, qui gagne ? 🎯🔥",
+  "hashtags": ["#NBA", "#Curry", "#Durant", "#StephenCurry", "#KevinDurant", "#Warriors", "#Rockets", "#basketball", "#NBAFrance", "#basket"],
+  "sources": {
+    "curry": [
+      "https://statmuse.com/nba/ask/curry-career-stats",
+      "https://www.basketball-reference.com/players/c/curryst01.html",
+      "https://www.statmuse.com/nba/ask/stephen-curry-total-3-pointers-career",
+      "https://en.wikipedia.org/wiki/List_of_NBA_career_3-point_scoring_leaders",
+      "https://www.landofbasketball.com/all_time_leaders/3_pointers_total_career_season.htm",
+      "https://www.nba.com/warriors/news/stephen-curry-injury-update-20261127",
+      "https://www.cbssports.com/nba/news/stephen-curry-injury-update-timeline-warriors/",
+      "https://www.statmuse.com/nba/ask/curry-career-high-points",
+      "https://www.si.com/nba/2021/01/04/steph-curry-career-high-62-points-warriors-beat-trail-blazers",
+      "https://abc7news.com/post/paris-2024-stephen-curry-now-5th-nba-player-history-least-4-nba-championships-2-mvp-awards-olympic-gold-medal/15171523/"
+    ],
+    "durant": [
+      "https://heavy.com/sports/nba/houston-rockets/kevin-durant-closes-in-on-kobe-bryant-record-after-historic-night-for-rockets/",
+      "https://clutchpoints.com/nba/houston-rockets/rockets-news-kevin-durant-joins-lebron-james-kobe-bryant-in-33000-career-points-club",
+      "https://www.nbcsports.com/nba/news/watch-kevin-durant-become-fifth-player-in-nba-history-to-score-33-000-points",
+      "https://www.statmuse.com/nba/ask/kevin-durant-career-total-points",
+      "https://www.nba.com/history/top-moments/kevin-durant-back-to-back-finals-mvps",
+      "https://www.cbssports.com/nba/news/nba-finals-2018-warriors-kevin-durant-named-nba-finals-mvp-for-second-straight-season/amp",
+      "https://www.nba.com/thunder/news/release_durant_mvp_140506",
+      "https://www.si.com/nba/2014/05/06/kevin-durant-most-valuable-player-nba-oklahoma-city-thunder",
+      "https://www.nba.com/news/nba-players-with-multiple-scoring-titles",
+      "https://www.landofbasketball.com/statistics/most_titles/scoring_leaders.htm",
+      "https://on3.com/pro/news/kevin-durant-becomes-most-decorated-mens-basketball-olympian-with-4th-gold-medal-as-team-usa-defeats-france",
+      "https://statmuse.com/nba/ask/kevin-durant-most-points-in-a-game",
+      "https://www.landofbasketball.com/nba_players_stats/top_pts/kevin_durant.htm"
+    ],
+    "note": "Saison régulière, au 28 nov. 2026. Curry blessé (déchirure oblique) depuis le 11 nov., absent au moins jusqu'au mar. 1er déc. (NBA.com/Warriors 27 nov., CBS 28 nov.) : 26 806 pts (StatMuse, 1 079 matchs ; déjà vérifié avec BBR au duel Curry-Kobe), 4 291 paniers à 3 pts (4 248 fin 2025-26 selon Wikipedia + 10 matchs ; StatMuse/BBR au 24 nov.). Durant (Houston) : 33 006 pts après le match du 25 nov. vs Suns (Heavy ; ClutchPoints 32 986 avant le match + NBC : cap des 33 000, 5e de l'histoire). Paniers à 3 pts Durant 2 377 fin 2025-26 (Wikipedia, 10e ; StatMuse) → plancher 2 370+. Titres 4 vs 2, MVP 2 vs 1 (Durant 2014 : NBA.com + SI), MVP des Finales 1 vs 2 (Durant 2017, 2018 : NBA.com + CBS), meilleur marqueur 2 vs 4 (NBA.com + Land of Basketball), or olympique 1 (2024) vs 4 (2012, 2016, 2020, 2024 : On3 + ABC7), records : Curry 62 le 3 janv. 2021 vs Blazers (StatMuse + SI), Durant 55 le 2 avr. 2022 à Atlanta (StatMuse + Land of Basketball). Écarté : points par match (24,8 vs 27,1 → aurait donné 5-3)."
+  }
+}
