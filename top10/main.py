@@ -129,13 +129,15 @@ def _fade(im, start):
     return im
 
 
-def head_box(ph):
-    """Carré autour de la tête : haut de la silhouette, centré sur les pixels opaques du haut."""
+def head_box(ph, scale=1.0):
+    """Carré autour de la tête : haut de la silhouette, centré sur les pixels opaques du haut.
+    `scale` (champ JSON optionnel `avatar_scale`) : < 1 resserre le cadrage (photo en pied large, bras tendu)."""
     a = np.array(ph.getchannel("A")) > 40
     rows = np.where(a.any(1))[0]; top = int(rows[0]) if len(rows) else 0
     full = ph.height / ph.width > 1.25  # photo en pied
     side = int(ph.height * 0.17) if full else (int(ph.height * 0.62) if ph.height < ph.width else int(ph.width * 0.46))
-    band = a[top:top + max(4, int(side * 0.6))]
+    side = max(20, int(side * scale))
+    band = a[top:top + max(4, int(side * 0.3))]  # haut du crâne seulement (un bras tendu ne décentre plus)
     xs = np.where(band.any(0))[0]
     cx = int(xs.mean()) if len(xs) else ph.width // 2
     x0 = max(0, min(ph.width - side, cx - side // 2)); y0 = max(0, top - int(side * 0.06))
@@ -150,7 +152,7 @@ def load_photo():
     full = ph.height / ph.width > 1.25
     big = _fade(_fit(ph, 1180, 1250), 0.72 if full else 0.62)
     mid = _fade(_fit(ph, 860, 950), 0.65 if full else 0.55)
-    face = ph.crop(head_box(ph)).resize((110, 110), Image.LANCZOS)
+    face = ph.crop(head_box(ph, float(EP.get("avatar_scale", 1.0)))).resize((110, 110), Image.LANCZOS)
     av = Image.new("RGBA", (124, 124), (0, 0, 0, 0)); da = ImageDraw.Draw(av)
     da.ellipse([0, 0, 123, 123], fill=ACCENT + (255,))
     bgc = Image.new("RGBA", (110, 110), (30, 30, 40, 255)); bgc.alpha_composite(face)
