@@ -58,17 +58,36 @@ Lu et mis à jour à chaque épisode. Format validé par Mathieu le 14 nov. 2026
 - [x] Stephen Curry vs Kobe Bryant — programmé jeu. 26 nov. 2026, 20:00
 - [x] Tim Duncan vs Shaquille O'Neal — programmé ven. 27 nov. 2026, 20:00
 - [x] Giannis Antetokounmpo vs Nikola Jokić — programmé sam. 28 nov. 2026, 20:00 (passé devant : 2 photos, pas de Shaq 2 soirs de suite)
+- [x] Stephen Curry vs Kevin Durant — programmé lun. 30 nov. 2026, 20:00 (passé devant : 2 photos, Durant vient de passer 33 000 pts)
 - [ ] Victor Wembanyama vs Shaquille O'Neal (au même nombre de saisons : préciser « APRÈS 3 SAISONS »)
 - [ ] Allen Iverson vs Stephen Curry
 - [ ] Nikola Jokić vs Shaquille O'Neal
 - [ ] Kobe Bryant vs Shaquille O'Neal
-- [ ] Stephen Curry vs Kevin Durant
 - [ ] Victor Wembanyama vs Nikola Jokić
 - [ ] Bill Russell vs Wilt Chamberlain
 - [ ] Steve Nash vs Jason Kidd
 Si un duel fait l'actualité ou est réclamé en commentaire, il peut passer devant.
 
 ## Carnet (le plus récent en haut)
+### Duel 9 — Curry vs Durant — programmé le lun. 30 nov. 2026, 20:00
+- Préparé automatiquement le sam. 28 nov. Passé devant Wemby-Shaq, Iverson-Curry et Jokić-Shaq : curry.png ET durant.png existent,
+  et Durant fait l'actu (33 000 pts le 25 nov. vs Suns, 5e de l'histoire). Wemby-Jokić écarté (Jokić déjà dans le duel du sam. 28).
+  Attention : un « 5 trucs fous » Durant sort aussi le lun. 30 à 12:30 (même joueur 2 fois dans la journée, formats différents).
+- Curry = a (bleu Warriors 0,107,182), Durant = b (rouge Rockets 206,17,65 : Durant à Houston depuis 2025). Les deux photos sont
+  en tenue Warriors (Durant en t-shirt d'échauffement bleu) → léger décalage avec le rouge, acceptable ; sujet « ex-coéquipiers » (cover_tag).
+- Accroche « affirmation choc » en « tu » : « Durant a plus de six mille points de plus que Curry… et pourtant, tu vas voir, le score final
+  va te surprendre ! », hook_tag « +6 000 PTS… ET POURTANT ? » (25 car.).
+- Manches : points carrière « 26 800+ » vs « 33 000+ » (D), titres 4 vs 2 (C), MVP des Finales 1 vs 2 (D), MVP 2 vs 1 (C),
+  meilleur marqueur 2 vs 4 (D), paniers à 3 pts « 4 290+ » vs « 2 370+ » (C), médailles d'or olympiques 1 vs 4 (D, record chez les hommes),
+  record en un match 62 vs 55 (C : 3 janv. 2021 vs Blazers / 2 avr. 2022 à Atlanta) → 4-4. Écarté : points par match (24,8 vs 27,1 → 5-3).
+- Sources : StatMuse + Wikipedia (liste des 3 pts, fin 2025-26) + NBA.com/Warriors + CBS (Curry, blessé jusqu'au 1er déc. au moins),
+  Heavy + ClutchPoints + NBC (33 006 pts Durant), NBA.com + CBS (MVP des Finales), NBA.com Thunder + SI (MVP 2014),
+  NBA.com + Land of Basketball (titres de meilleur marqueur), On3 + ABC7 (or olympique), StatMuse + Land of Basketball (55 pts).
+- Appris : 1re version « OR OLYMPIQUE » + unit « MÉDAILLES D'OR » → « 1 MÉDAILLES D'OR » (pluriel faux) ; corrigé en label
+  « MÉDAILLES D'OR » + unit « AUX JEUX OLYMPIQUES » (19 car., lisible). Une manche hors NBA (JO) passe bien quand elle est célèbre.
+  Vidéo de 33,9 s. WebFetch : Land of Basketball, RealGM et Wikipedia (fiches joueurs) parfois refusés (permission) ; StatMuse,
+  NBA.com, Heavy, ClutchPoints, On3 lisibles. La liste Wikipedia des meilleurs marqueurs à 3 pts était lisible.
+- Résultats : à relever.
 ### Duel 8 — Giannis vs Jokić — programmé le sam. 28 nov. 2026, 20:00
 - Préparé automatiquement le jeu. 26 nov. Passé devant Wemby-Shaq (1er non coché) : giannis.png ET jokic.png existent
   (1er duel avec de vraies photos) et Shaq était déjà dans le duel du ven. 27. 1er duel avec la nouvelle accroche
