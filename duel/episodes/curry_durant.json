@@ -20,8 +20,8 @@
      "voice": "Meilleur marqueur de la saison : quatre fois pour Durant. Il repasse devant !"},
     {"label": "PANIERS À 3 PTS", "a": "4 290+", "b": "2 370+", "count": false, "unit": "EN CARRIÈRE", "win": "a", "note": "RECORD DE L'HISTOIRE POUR CURRY",
      "voice": "Les paniers à trois points : près de deux mille de plus pour Curry. Trois partout !"},
-    {"label": "OR OLYMPIQUE", "a": "1", "b": "4", "unit": "MÉDAILLES D'OR", "win": "b", "note": "DURANT : RECORD CHEZ LES HOMMES",
-     "voice": "L'or olympique : quatre médailles pour Durant, un record ! Point Durant !"},
+    {"label": "MÉDAILLES D'OR", "a": "1", "b": "4", "unit": "AUX JEUX OLYMPIQUES", "win": "b", "note": "DURANT : RECORD CHEZ LES HOMMES",
+     "voice": "Les médailles d'or olympiques : quatre pour Durant, un record ! Point Durant !"},
     {"label": "RECORD EN UN MATCH", "a": "62", "b": "55", "unit": "POINTS", "win": "a",
      "voice": "[excited] Dernière manche, le record en un match : soixante-deux contre cinquante-cinq… et Curry égalise !"}
   ],
