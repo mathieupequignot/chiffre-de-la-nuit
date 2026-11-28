@@ -38,7 +38,7 @@ de la semaine, on peut le faire passer devant. Joueur traité = on le coche [x].
 - [x] Anthony Edwards — edwards.png (épisode du ven. 27 nov. 2026)
 - [x] Nikola Jokić — jokic.png (épisode du sam. 28 nov. 2026)
 - [x] Kevin Durant — durant.png (épisode du lun. 30 nov. 2026)
-- [ ] Cooper Flagg — flagg.png
+- [x] Cooper Flagg — flagg.png (épisode du mar. 1er déc. 2026)
 - [ ] Kyrie Irving — kyrie.png
 - [ ] Joel Embiid — embiid.png (ajouté le 14/11 : photo arrivée le 12/11)
 - [ ] Jayson Tatum — tatum.png (ajouté le 14/11)
@@ -98,6 +98,7 @@ Jordan, Kobe, Shaq, Iverson, Magic, Bird, Dirk, Tony Parker…).
 }
 ```
 Option `end` : ["LIGNE 1", "LIGNE 2"] remplace la question de l'écran de fin (défaut « LEQUEL T'A LE PLUS / SURPRIS ? »).
+Option `avatar_scale` (défaut 1) : < 1 resserre l'avatar rond sur le visage (photo en pied large, bras tendu ; Flagg : 0,55).
 Avec 3 barres dans `bars`, ne pas mettre de `note` (elle tombe sur les sous-titres).
 Types de visuels : `big` (grand nombre animé), `bars` (comparaison en barres, `frac` entre 0 et 1),
 `versus` (choix barré → choix retenu), `list` (titre + 3 cases), `emoji` (emoji + bandeaux). Option `shout`
@@ -105,6 +106,32 @@ Types de visuels : `big` (grand nombre animé), `bars` (comparaison en barres, `
 `nba_id` : identifiant Basketball-Reference présent dans quiz/nba_ids.json, ou identifiant NBA direct.
 
 ## Carnet (un bloc par épisode, le plus récent en haut)
+### Épisode 11 — Flagg (« 5 trucs fous sur Flagg ») — programmé le mar. 1er déc. 2026, 12:30
+- Équipe vérifiée : Mavericks (NBA.com, 4/11/2026 : 2e saison, 25,2 pts / 6,5 pd ; 34 pts, 8 pd contre Phoenix la nuit
+  du 27/11, notre chiffre de la nuit) → joueur d'actualité, 1er non coché du programme. Couleur `flagg` déjà dans TEAM.
+- Faits : Dallas gagne la loterie 2025 avec 1,8 % de chances, du 11e au 1er rang (ESPN, NBC Sports) ; à 17 ans, un mois
+  après son bal de lycée, 3 pts sur Anthony Davis face à l'équipe olympique (juillet 2024 : NBA.com, AP via NBC DFW) ;
+  42 pts à 18 ans contre Utah le 15/12/2025, record des 18 ans (LeBron 37) (Al Jazeera, NBC Sports, CBS News) ; 51 pts
+  contre Orlando le 3/04/2026, 1er ado à 50 (CBS Sports, Flashscore, People/AOL) ; n°1 : jeu Chime « Mama, I Made It » :
+  sa carte rookie, lui 2,5 M$, sa mère 1 $, « You've gotta make sure you're not a bust first » (SI, Yardbarker ×2 :
+  Athlon et SportsRush). Écartés : sa mère jamais battue en 1 contre 1 (doublon « maman » avec le n°1), Celtics 1986
+  en DVD dans la voiture (une source lue en entier), ROY 2025-26 (vainqueur non vérifié).
+- Amélioration testée (1) : **vidéo plus courte, ~30 s** (128 mots de voix contre 138–147 ; 1er rendu 31,3 s, rendu
+  final **34,0 s**, la voix varie d'un rendu à l'autre) : piste notée sur Durant (médiane 24 s des vidéos sans visage qui
+  percent, Virlo) ; Opus/Virlo 2026 : le taux de complétion pèse plus que la durée. Accroche « affirmation choc » avec
+  chiffre + nom (« Dix-neuf ans… et Cooper Flagg a déjà battu un record de LeBron ! ») reconduite (3e mesure après
+  Jokić et Durant). Question de fin oui/non et hashtags mixtes conservés.
+- Code : **avatar rond recentré** : `head_box` ne regarde plus que le haut du crâne (30 % du carré au lieu de 60 %, le
+  bras tendu de Flagg décentrait l'avatar) + option JSON `avatar_scale` (0,55 ici : photo quasi en pied). Vérifié sur
+  toutes les photos de top10/assets/ : cadrage identique ou meilleur (Kyrie). Duel non concerné (chiffre/photos.py).
+  Bandeau de miniature : « SA MÈRE VA TE FAIRE RIRE » passait sous l'emoji 🤯 → « SA MÈRE L'A CLASHÉ ».
+- Stats Instagram (28 nov. 13:15, 438 abonnés) : **Edwards 37 likes / 0 com.** en ~1 j (accroche mystère : niveau SGA
+  40 / 0) ; Jokić 6 / 0 en 50 min ; SGA 40 ; Giannis 27 ; Dončić 48 / 2. Nouveau format « action » Ray Allen 2013 =
+  **62 / 2** (meilleur du compte cette semaine) ; duels Duncan-Shaq 21 / 3, Curry-Kobe 27 / 1 ; chiffre Wemby 38, Tatum
+  55, autres 2–12 ; drills 10–22. → les « 5 trucs » tiennent 27–48 likes, mais les commentaires restent rares (seul
+  Dončić) malgré la question oui/non : à surveiller ; l'histoire racontée (action) fait mieux que la liste.
+- Pas d'alerte photos : 10 joueurs non traités avec photo.
+
 ### Épisode 10 — Durant (« 5 trucs fous sur Durant ») — programmé le lun. 30 nov. 2026, 12:30
 - Équipe vérifiée : Rockets (Washington Post 23/11/2026 : 32 pts contre les Clippers ; ESPN, Rockets-Suns 25/11/2026).
   Couleur `durant` (rouge Rockets) déjà dans TEAM. La photo fournie le montre en t-shirt Warriors : OK (cf. Giannis).
