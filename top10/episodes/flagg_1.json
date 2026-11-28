@@ -1,0 +1,139 @@
+{
+  "file": "5_trucs_fous_flagg",
+  "nba_id": "1642843",
+  "photo": "flagg.png",
+  "title": [
+    "5 TRUCS FOUS",
+    "SUR FLAGG"
+  ],
+  "header": "5 TRUCS FOUS SUR FLAGG",
+  "cover": [
+    "5 TRUCS",
+    "FOUS SUR",
+    "FLAGG"
+  ],
+  "cover_tag": "SA MÈRE VA TE FAIRE RIRE",
+  "hook": "[excited] Dix-neuf ans… et Cooper Flagg a déjà battu un record de LeBron !",
+  "facts": [
+    {
+      "voice": "Numéro cinq. Dallas avait un virgule huit pour cent de chances à la loterie. Gagné : Flagg !",
+      "visual": {
+        "type": "big",
+        "value": "1,8",
+        "unit": " %",
+        "label": "DE CHANCES À LA LOTERIE",
+        "sub": "DALLAS, MAI 2025 : DU 11E AU 1ER"
+      },
+      "sources": [
+        "https://www.espn.co.uk/nba/story/_/id/45117355/mavericks-win-nba-draft-lottery-18-odds",
+        "https://www.nbcsports.com/nba/news/dallas-mavericks-jump-from-11th-to-first-win-2025-nba-draft-lottery-will-select-cooper-flagg"
+      ]
+    },
+    {
+      "voice": "Numéro quatre. À dix-sept ans, il met un trois-points sur Anthony Davis… face à l'équipe olympique !",
+      "visual": {
+        "type": "list",
+        "value": "17 ANS",
+        "label": "CONTRE TEAM USA, JUILLET 2024",
+        "items": [
+          "UN MOIS APRÈS SON BAL",
+          "3 PTS SUR ANTHONY DAVIS",
+          "FACE AUX OLYMPIENS"
+        ]
+      },
+      "sources": [
+        "https://www.nba.com/news/cooper-flagg-usa-basketball-camp-steals-show",
+        "https://www.nbcdfw.com/paris-2024-summer-olympics/cooper-flagg-scrimmage-team-usa-basketball-squad/"
+      ]
+    },
+    {
+      "voice": "Numéro trois. Reste jusqu'au bout ! À dix-huit ans : quarante-deux points. LeBron, au même âge : trente-sept.",
+      "visual": {
+        "type": "bars",
+        "value": "42",
+        "label": "POINTS À 18 ANS",
+        "bars": [
+          [
+            "FLAGG",
+            "42",
+            1.0,
+            "accent"
+          ],
+          [
+            "LEBRON",
+            "37",
+            0.88,
+            "silver"
+          ]
+        ],
+        "note": "RECORD DES 18 ANS"
+      },
+      "sources": [
+        "https://www.aljazeera.com/sports/2025/12/16/cooper-flagg-sets-new-record-as-youngest-nba-player-to-score-40-points",
+        "https://www.nbcsports.com/nba/news/watch-mavericks-cooper-flagg-become-first-18-year-old-in-nba-history-to-score-40",
+        "https://www.cbsnews.com/texas/news/cooper-flagg-record-dallas-mavericks-loss-to-utah-jazz-december-15-2025"
+      ]
+    },
+    {
+      "voice": "Numéro deux. Cinquante et un points contre Orlando : premier ado de l'histoire à passer les cinquante !",
+      "visual": {
+        "type": "big",
+        "value": "51",
+        "unit": " PTS",
+        "label": "1ER ADO À 50 POINTS EN NBA",
+        "sub": "CONTRE ORLANDO, 3 AVRIL 2026"
+      },
+      "sources": [
+        "https://www.cbssports.com/nba/news/cooper-flagg-51-points-kon-knueppel-nba-rookie-of-the-year/",
+        "https://www.flashscore.com/news/cooper-flagg-drops-51-points-for-most-ever-in-nba-history-by-a-teenager/Y56qzzuB",
+        "https://www.aol.com/articles/cooper-flagg-19-makes-nba-172007358.html"
+      ]
+    },
+    {
+      "voice": "[laughs] Et numéro un. Sa carte rookie ? Lui : deux millions et demi. Sa mère : un dollar… « Vérifie d'abord que t'es pas un flop ! »",
+      "visual": {
+        "type": "emoji",
+        "emoji": "😂",
+        "top": "LUI : 2,5 MILLIONS $",
+        "bottom": "SA MÈRE : 1 DOLLAR !"
+      },
+      "sources": [
+        "https://www.si.com/collectibles/news/cooper-flagg-s-mom-jokes-she-won-t-pay-more-than-1-for-dallas-mavericks-rookie-card",
+        "https://www.yardbarker.com/nba/articles/stunned_by_his_moms_1_admission_cooper_flagg_boldly_claims_hed_drop_25_million_for_his_own_rookie_card/s1_17667_42382177",
+        "https://www.yardbarker.com/college_basketball/articles/kelly_flagg_jokes_about_cooper_flagg_becoming_a_bust/s1_17615_42379925"
+      ]
+    }
+  ],
+  "outro": "[excited] Flagg, futur numéro un de la NBA : oui ou non ? Dis-le en commentaire !",
+  "end": [
+    "FLAGG, FUTUR N°1",
+    "DE LA NBA : OUI OU NON ?"
+  ],
+  "caption": "5 trucs fous sur Cooper Flagg 🤯 Le n°1 va te faire rire 😂\nFlagg, futur n°1 de la NBA : oui ou non ? Et quel joueur pour le prochain épisode ? 👇",
+  "yt_title": "5 trucs fous sur Cooper Flagg 🤯",
+  "hashtags": [
+    "#NBA",
+    "#CooperFlagg",
+    "#Flagg",
+    "#Mavericks",
+    "#Dallas",
+    "#basketball",
+    "#NBAFrance",
+    "#basket",
+    "#lesaviezvous",
+    "#pourtoi",
+    "#fyp"
+  ],
+  "sources": [
+    "ESPN",
+    "NBC Sports",
+    "NBA.com",
+    "AP",
+    "Al Jazeera",
+    "CBS",
+    "Flashscore",
+    "People",
+    "Sports Illustrated",
+    "Yardbarker"
+  ]
+}
